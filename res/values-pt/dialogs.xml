@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Aguarde</string>
+	<string name="top_error">Erro</string>
+	<string name="top_download">Download</string>
+
+	<string name="fetch_apk">A fazer download de</string>
+
+	<string name="aptoide_error">Impossivel ligar ao servidor remoto</string>
+	
+	<string name="manage_repo_add">Adicionar novo repositório</string>
+	<string name="manage_repo_answ_wrongl">Login errado</string>
+	<string name="manage_repo_answ_cc">Impossivel ligar ao servidor</string>
+	<string name="manage_repo_answ_lr">Necessário login</string>
+	
+	<string name="app_pop_up_no_info">Sem informação no repositório. Procure no Google Market utilizado o botão em baixo.</string>
+	<string name="error_no_market">Não tem o Google Market instalado</string>
+		
+    <string name="settings_cache">A limpar cache...</string>
+    
+    <string name="remote_in_noSD_title">Sem memória</string>
+    <string name="remote_in_noSD">Não tem um SDcard no dispositivo.\nPor favor insira um.</string>
+    <string name="remote_in_noSDspace">Não tem espaço suficiente no SDcard\nPor favor liberte espaço e tente novamente.</string>
+    
+    <string name="error_on_update">Foi impossivel realizar o update no repositórios seguintes:\n</string>
+    
+    <string name="updating_msg">A actualizar a lista de aplicações...</string>
+    <string name="update_repos">Actualização</string>
+    <string name="update_main">A lista de repositórios foi alterada.\nDeseja realizar um update?</string>
+    
+    <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
+    <string name="updating_cfrm">Confirma update dos repositórios?</string>
+    <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add repository or enable the ones you have.</string>
+    
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

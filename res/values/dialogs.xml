@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Please Wait</string>
+	<string name="top_error">Error</string>
+	<string name="top_download">Download</string>
+
+	<string name="fetch_apk">Fetching application</string>
+
+	<string name="aptoide_error">Can\'t connect to the remote server</string>
+	
+	<string name="manage_repo_add">Add new repository</string>
+	<string name="manage_repo_answ_wrongl">Login is wrong</string>
+	<string name="manage_repo_answ_cc">Can\'t connect to server</string>
+	<string name="manage_repo_answ_lr">Login required</string>
+	
+	<string name="app_pop_up_no_info">No info available on server. Search market by pressing the button below for more info.</string>
+	<string name="error_no_market">You don\'t have Google Market installed!</string>
+		
+    <string name="settings_cache">Clearing cache...</string>
+    
+    <string name="remote_in_noSD_title">No memory</string>
+    <string name="remote_in_noSD">You don\'t have a SDcard.\nPlease insert one and try again.</string>
+    <string name="remote_in_noSDspace">You don\'t have enough space on your SDcard to use Aptoide\nPlease free some space and try again.</string>
+    
+    <string name="error_on_update">The update process could not be made on the following repositories:\n</string>
+    
+    <string name="updating_msg">Updating applications list...</string>
+    <string name="update_repos">Update repositories</string>
+    <string name="update_main">The list of repositories in use has been changed.\nDo you wish to update them?</string>
+    
+    <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
+    <string name="updating_cfrm">Confirm Aptoide repositories update?</string>
+    <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add repository or enable the ones you have.</string>
+    
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

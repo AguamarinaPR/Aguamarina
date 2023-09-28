@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  android:tag="bazaar">
+  
+  <ImageView android:id="@+id/bzr"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cropToPadding ="true"
+        android:src="@drawable/logotipo" />
+        
+  <Button
+  		android:id="@+id/baz_src"
+  		android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:gravity="center"
+        android:text="Search on Bazaar"/>
+  
+  
+</LinearLayout>

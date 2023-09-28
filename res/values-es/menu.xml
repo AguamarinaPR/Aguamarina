@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    
+    
+    <string name="menu_update_repo">Actualizar</string>
+    <string name="menu_manage">Administrar Repo</string>
+    <string name="menu_order">Opciones de Pantalla</string>
+    <string name="menu_settings">Opciones</string>
+    <string name="menu_about">Acerca de</string>
+    <string name="menu_search">Buscar</string>
+    
+    
+    <string name="menu_add_repo">Nuevo Repositorio</string>
+    <string name="menu_rem_repo">Borrar Repositorio</string>
+    <string name="menu_edit_repo">Editar Repositorio</string>
+    
+    <string name="btn_yes">Si</string>
+    <string name="btn_no">No</string>
+    <string name="btn_ok">Ok</string>
+    <string name="btn_add">Agregar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_done">Listo</string>
+    <string name="btn_chlog">Registro</string>
+    <string name="btn_search_market">Buscar en el Market</string>
+    
+    
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

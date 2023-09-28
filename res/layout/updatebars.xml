@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+  
+  <TextView
+  	android:id="@+id/repo_count"
+  	android:text="Update repository 2 of 10"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content" 
+  	android:gravity="center_horizontal"/>
+  	
+  <ProgressBar
+  	android:id="@+id/pbar1"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:progressDrawable="@android:drawable/progress_horizontal" 
+    android:indeterminateDrawable="@android:drawable/progress_indeterminate_horizontal"
+  	android:indeterminateOnly="false" />
+  	
+  <TextView
+  	android:id="@+id/icon_count" 
+  	android:paddingTop="10.0sp"
+  	android:text="Fetching icon 13 of ?"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content" 
+  	android:gravity="center_horizontal"/>
+  	
+  <ProgressBar
+  	android:id="@+id/pbar2"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:progressDrawable="@android:drawable/progress_horizontal" 
+    android:indeterminateDrawable="@android:drawable/progress_indeterminate_horizontal"
+  	android:indeterminateOnly="false" />
+
+</LinearLayout>

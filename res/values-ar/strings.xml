@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aptoide</string>
+   
+    <string name="tab_avail">متوفر</string>
+    <string name="tab_inst">مثبت</string>
+    <string name="tab_updt">التحديثات</string>
+    
+    <string name="no_found">البرنامج غير موجود!</string>
+    <string name="no_repo">مخزن البرامج غير موجود!</string>
+ 
+ 	<string name="not_inst">غير مثبت</string>
+    <string name="installed">الإصدار المثبت.:</string>
+    <string name="installed_update">يمكن تحديث .:</string>
+    <string name="srv_version">الإصدار المتوفر:</string>
+    
+    <string name="srch_label">Aptoide</string>
+    <string name="srch_hint">إسم البرنامج</string>
+    
+    <string name="about_txt1">برنامج لتثبيت البرامج على هاتف اندرويد.\n</string>
+    
+    <string name="about_txt11">Version: 2.5.0\n(released under GNU GPL v2 license)\n
+    \nCredits: Roberto Jacinto - Caixa Mágica\n
+	\t\t\tFrancisco "ppelao3k" - Spanish translation\n
+    \t\t\tManaa Alshihe - Arabic translation\n</string>
+
+    
+    <string name="about_site">الموقع:</string>
+    
+    <string name="about_mail">الإتصال:</string>
+    
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

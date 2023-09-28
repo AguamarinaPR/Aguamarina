@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="add_repo_text">URI al repositorio: </string>
+    <string name="add_repo_private">Privado </string>
+    
+    <string name="order_popup_title1">Ordenar aplicaciones por: </string>
+    <string name="order_popup_lst1">Mas reciente primero </string>
+    <string name="order_popup_lst2">Alfabeticamente </string>
+    <string name="order_popup_lst3">Ranking </string>
+    <string name="order_popup_lst4">Numero de descarga </string>
+
+    <string name="order_popup_title2">Mostrar aplicaciones: </string>
+    <string name="order_popup_catg1">Por categoria </string>
+    <string name="order_popup_catg2">Todas las aplicaciones </string>
+    
+    <string name="save_btn">Guardar </string>
+    <string name="clear_cache_btn">Limpiar Cache </string>
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

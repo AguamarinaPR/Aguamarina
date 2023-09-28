@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView android:id="@+id/ScrollView01" 
+                android:layout_width="fill_parent" 
+                android:layout_height="fill_parent" 
+                xmlns:android="http://schemas.android.com/apk/res/android">
+                
+                <LinearLayout
+   					xmlns:android="http://schemas.android.com/apk/res/android"
+    				android:id="@+id/l1"
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:orientation="vertical">
+    				
+    				<TextView android:id="@+id/n1"
+    					android:textSize="16px"
+            			android:textStyle="bold"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"
+            			android:text="@string/up_server"
+            			android:textColor="#FFFFBB"/>
+            			
+            		<TextView android:id="@+id/n11"
+    					android:textSize="16px"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"/>
+
+					<LinearLayout
+   						xmlns:android="http://schemas.android.com/apk/res/android"
+	    				android:id="@+id/l1"
+    					android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+    					android:orientation="horizontal">
+					
+						<TextView
+							android:id="@+id/down_txt"
+    						android:textSize="16px"
+            				android:textStyle="bold"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"
+            				android:text="@string/dwn_n"
+            				android:textColor="#FFFFBB"/>
+            			
+            			<TextView android:id="@+id/down_n"
+    						android:textSize="16px"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"/>
+            			
+            		</LinearLayout>
+            			
+            		<LinearLayout
+   						xmlns:android="http://schemas.android.com/apk/res/android"
+	    				android:id="@+id/l1"
+    					android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+    					android:orientation="horizontal">
+    					
+    					<TextView android:id="@+id/n2"
+    						android:textSize="16px"
+            				android:textStyle="bold"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"
+            				android:text="@string/lstver"
+            				android:textColor="#FFFFBB"/>
+            			
+            			<TextView android:id="@+id/n22"
+    						android:textSize="16px"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"/>
+    				</LinearLayout>
+    				
+    				<LinearLayout
+   						xmlns:android="http://schemas.android.com/apk/res/android"
+	    				android:id="@+id/l1"
+    					android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+    					android:orientation="horizontal">
+    					
+    					<TextView android:id="@+id/n3"
+    						android:textSize="16px"
+            				android:textStyle="bold"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"
+            				android:text="@string/isinst"
+            				android:textColor="#FFFFBB"/>
+            			
+            			<TextView android:id="@+id/n33"
+    						android:textSize="16px"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"/>
+    				</LinearLayout>
+    				
+    				<LinearLayout
+   						xmlns:android="http://schemas.android.com/apk/res/android"
+	    				android:id="@+id/l1"
+    					android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+    					android:orientation="horizontal">
+    					
+    					<TextView android:id="@+id/n4"
+    						android:textSize="16px"
+            				android:textStyle="bold"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"
+            				android:text="@string/instver"
+            				android:textColor="#FFFFBB"/>
+            			
+            			<TextView android:id="@+id/n44"
+    						android:textSize="16px"
+            				android:layout_width="wrap_content"
+            				android:layout_height="wrap_content"/>
+    				</LinearLayout>
+    				
+    				<TextView android:id="@+id/n5"
+    					android:textSize="16px"
+            			android:textStyle="bold"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"
+            			android:text="@string/about_alrt"
+            			android:textColor="#FFFFBB"/>
+            			
+            		<TextView android:id="@+id/n55"
+            			android:textSize="16px"
+            			android:layout_width="wrap_content"
+            			android:layout_height="wrap_content"/>
+    				
+    				
+    			</LinearLayout>    
+</ScrollView>

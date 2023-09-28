@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">إنتظر رجاءا</string>
+	<string name="top_error">خطأ</string>
+	<string name="top_download">تنزيل</string>
+
+	<string name="fetch_apk">تنزل البرنامج</string>
+
+	<string name="aptoide_error">تعذر الإتصال بالموقع</string>
+	
+	<string name="manage_repo_add">إضافة مخزن جديد للبرامج</string>
+	<string name="manage_repo_answ_wrongl">خطأ في تسجيل الدخول</string>
+	<string name="manage_repo_answ_cc">تعذر الإتصال بالموقع</string>
+	<string name="manage_repo_answ_lr">يجب تسجيل الدخول</string>
+	
+	<string name="app_pop_up_no_info">ا يوجد ملف للمعلومات في الموقع.لمزيد من المعلومات إبحث في متجر اندرويد من خلال الضغط على الزر في الأسفل.</string>
+	<string name="error_no_market">أنت لم تثبت متجر اندرويد على الجهاز!</string>
+		
+    <string name="settings_cache">مسح الذاكرة المؤقته...</string>
+    
+    <string name="remote_in_noSD_title">لا توجد بطاقة ذاكرة</string>
+    <string name="remote_in_noSD">لا توجد بطاقة ذاكرة.\nأدخل البطاقة وحاول مرة أخرى.</string>
+    <string name="remote_in_noSDspace">لا توجد لديك مساحة ذاكرة كافية لإستخدام البرنامج\nرجاءا حرر بعضا من مساحة الذاكرة وحاول مرة اخرى</string>
+    
+    <string name="error_on_update">تعذر تحديث مخازن البرامج التالية:\n</string>
+    
+    <string name="updating_msg">تحديث قائمة البرامج...</string>
+    <string name="update_repos">تحديث مخازن البرامج</string>
+    <string name="update_main">قائمة مخازن البرامج المستخدمة قد تغيرت.\nهل ترغب في تحديثها؟</string>
+    
+    <string name="updating_3g">أنته متصل من خلال خدمة البيانات3G.ننصحك بإستخدام إتصال الواي فاي WiFi.\nتجاهل الأمر والتحديث الآن؟</string>
+    <string name="updating_cfrm">التأكيد على تحديث مخازن البرامج؟</string>
+    <string name="updating_norepos">لا يوجد مواقع للمخازن مفعله لديك\nأضف بعض المخازن او فعل الموجودة مسبقا.</string>
+    
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
