@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -134,7 +134,7 @@ public class Aptoide extends Activity {
    		
    		PackageManager mPm = getPackageManager();
    		try {
-			PackageInfo pkginfo = mPm.getPackageInfo("cm.aptoide.pt", 0);
+			PackageInfo pkginfo = mPm.getPackageInfo("com.aguamarina.pr", 0);
 			if(sPref.getInt("version", 0) < pkginfo.versionCode){
 		   		db.UpdateTables();
 		   		prefEdit.putBoolean("mode", true);

@@ -1,4 +1,4 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 public class DownloadNode extends Object{
 	public String repo;

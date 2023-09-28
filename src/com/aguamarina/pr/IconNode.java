@@ -1,4 +1,4 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 public class IconNode extends Object{
 	public String url;

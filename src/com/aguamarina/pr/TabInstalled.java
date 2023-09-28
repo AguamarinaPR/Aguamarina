@@ -1,4 +1,4 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.util.Vector;
 
