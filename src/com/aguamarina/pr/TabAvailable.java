@@ -50,7 +50,6 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		lv = new ListView(this);
 		lv.setOnItemClickListener(this);
-		lv.setFastScrollEnabled(true);
 
 		
 		new Thread(){

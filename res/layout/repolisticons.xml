@@ -19,7 +19,6 @@
             android:textSize="21sp"
             android:textStyle="bold"
             android:singleLine="true"
-            android:ellipsize="marquee"
             android:layout_width="fill_parent"
     		android:layout_height="fill_parent"/>
     		

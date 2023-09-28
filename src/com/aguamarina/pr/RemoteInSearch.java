@@ -142,8 +142,6 @@ public class RemoteInSearch extends ListActivity{
 		
 		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
-		
-		getListView().setFastScrollEnabled(true);
 
 		Intent i = getIntent();
 		query = i.getStringExtra(SearchManager.QUERY);

@@ -24,8 +24,6 @@
             android:layout_alignParentTop="true"
             android:textStyle="bold"
             android:maxLength="18"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit ="marquee_forever"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
             
@@ -35,7 +33,6 @@
             android:textStyle="bold"
             android:textColor="#FFFFAA"
             android:maxLines="1"
-            android:ellipsize="marquee"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
             

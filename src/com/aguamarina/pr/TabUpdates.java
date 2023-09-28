@@ -32,7 +32,6 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 		super.onCreate(savedInstanceState);
 		
 		lv = new ListView(this);
-		lv.setFastScrollEnabled(true);
 		lv.setOnItemClickListener(this);
 		db = new DbHandler(this);
 		//mctx = this;
