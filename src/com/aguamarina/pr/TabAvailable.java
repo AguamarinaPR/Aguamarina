@@ -47,7 +47,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		
 		db = new DbHandler(this);
 		mctx = this;
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		lv = new ListView(this);
 		lv.setOnItemClickListener(this);
 		lv.setFastScrollEnabled(true);
@@ -336,7 +336,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 				public void run() {
 					
 					String apk_id = data.getStringExtra("apkid");
-					Log.d("Aptoide", "....... getting: " + apk_id);
+					Log.d("Aguamarina", "....... getting: " + apk_id);
 					String apk_pat = downloadFile(apk_id);
 					Message msg_al = new Message();
 					if(apk_pat == null){
@@ -349,7 +349,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 						Message msg = new Message();
 						msg.arg1 = 1;
 						download_handler.sendMessage(msg);
-						Log.d("Aptoide","Going to install!");
+						Log.d("Aguamarina","Going to install!");
 						installApk(apk_pat);
 					}
 				}

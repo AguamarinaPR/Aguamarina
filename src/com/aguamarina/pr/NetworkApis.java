@@ -30,7 +30,7 @@ public class NetworkApis {
 		try{
 			DbHandler db = new DbHandler(mctx);
 			
-			SharedPreferences sPref = mctx.getSharedPreferences("aptoide_prefs", Context.MODE_PRIVATE);
+			SharedPreferences sPref = mctx.getSharedPreferences("aguamarina_prefs", Context.MODE_PRIVATE);
 			String myid = sPref.getString("myId", "NoInfo");
 			String myscr = sPref.getInt("scW", 0)+"x"+sPref.getInt("scH", 0);
 						
@@ -55,7 +55,7 @@ public class NetworkApis {
 			
 			
 			HttpGet mHttpGet = new HttpGet(url);
-			mHttpGet.setHeader("User-Agent", "aptoide-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
+			mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
 			mHttpGet.setHeader("Accept-Encoding", "gzip");
 						
 			String[] logins = null; 
@@ -77,7 +77,7 @@ public class NetworkApis {
 				String newurl = azz[0].getValue();
 				mHttpGet = null;
 				mHttpGet = new HttpGet(newurl);
-				mHttpGet.setHeader("User-Agent", "aptoide-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
+				mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
 				mHttpGet.setHeader("Accept-Encoding", "gzip");
 				
 				if(logins != null){
@@ -129,7 +129,7 @@ public class NetworkApis {
 			});
 			
 			HttpGet mHttpGet = new HttpGet(url);
-			//mHttpGet.setHeader("User-Agent", "aptoide-" + mctx.getString(R.string.ver_str)+";fetch_icon");
+			//mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";fetch_icon");
 
 			//String[] logins = null; 
 			//logins = db.getLogin(srv);

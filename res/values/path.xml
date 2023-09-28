@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="icons_path">/sdcard/.aptoide/icons/</string>
-    <string name="base_path">/sdcard/.aptoide/</string>
-    <string name="info_path">/sdcard/.aptoide/remapklst.xml</string>
+    <string name="icons_path">/sdcard/.aguamarina/icons/</string>
+    <string name="base_path">/sdcard/.aguamarina/</string>
+    <string name="info_path">/sdcard/.aguamarina/remapklst.xml</string>
     
 </resources>
 <!--

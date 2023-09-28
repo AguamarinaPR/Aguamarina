@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">Fetching application</string>
 
-	<string name="aptoide_error">Can\'t connect to the remote server</string>
+	<string name="aguamarina_error">Can\'t connect to the remote server</string>
 	
 	<string name="manage_repo_add">Add new repository</string>
 	<string name="manage_repo_answ_wrongl">Login is wrong</string>
@@ -21,7 +21,7 @@
     
     <string name="remote_in_noSD_title">No memory</string>
     <string name="remote_in_noSD">You don\'t have a SDcard.\nPlease insert one and try again.</string>
-    <string name="remote_in_noSDspace">You don\'t have enough space on your SDcard to use Aptoide\nPlease free some space and try again.</string>
+    <string name="remote_in_noSDspace">You don\'t have enough space on your SDcard to use Aguamarina\nPlease free some space and try again.</string>
     
     <string name="error_on_update">The update process could not be made on the following repositories:\n</string>
     
@@ -30,7 +30,7 @@
     <string name="update_main">The list of repositories in use has been changed.\nDo you wish to update them?</string>
     
     <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
-    <string name="updating_cfrm">Confirm Aptoide repositories update?</string>
+    <string name="updating_cfrm">Confirm Aguamarina repositories update?</string>
     <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add repository or enable the ones you have.</string>
     
     

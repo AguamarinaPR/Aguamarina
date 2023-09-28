@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">A fazer download de</string>
 
-	<string name="aptoide_error">Impossivel ligar ao servidor remoto</string>
+	<string name="aguamarina_error">Impossivel ligar ao servidor remoto</string>
 	
 	<string name="manage_repo_add">Adicionar novo repositório</string>
 	<string name="manage_repo_answ_wrongl">Login errado</string>

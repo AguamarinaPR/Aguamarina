@@ -213,7 +213,7 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 			new Thread() {
 				public void run() {
 					String apk_id = data.getStringExtra("apkid");
-					Log.d("Aptoide", ".... u+dating: " + apk_id);
+					Log.d("Aguamarina", ".... u+dating: " + apk_id);
 					String apk_path = downloadFile(apk_id);
 					Message msg_alt = new Message();
 					if(apk_path == null){

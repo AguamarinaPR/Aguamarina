@@ -122,7 +122,7 @@ public class RssHandler extends DefaultHandler{
 		
 		this.is_last = is_last;
 		
-		sPref = mctx.getSharedPreferences("aptoide_prefs", Context.MODE_PRIVATE);
+		sPref = mctx.getSharedPreferences("aguamarina_prefs", Context.MODE_PRIVATE);
 		
 	}
 	
@@ -330,11 +330,11 @@ public class RssHandler extends DefaultHandler{
 		}else if(localName.trim().equals("catg2")){
 			apk_ctg2 = true;
 		}else if(localName.trim().equals("delta")){
-			Log.d("Aptoide","Is a delta...");
+			Log.d("Aguamarina","Is a delta...");
 			isDelta = true;
 			onDelta = true;
 		}else if(localName.trim().equals("del")){
-			Log.d("Aptoide","Is a remove...");
+			Log.d("Aguamarina","Is a remove...");
 			isRemove = true;
 			apks_n--;
 		}else if(localName.trim().equals("appscount")){
@@ -393,14 +393,14 @@ public class RssHandler extends DefaultHandler{
 				IconNode node = null;
 				try{
 					while(true){
-						Log.d("Aptoide","A1 - " + mserver);
+						Log.d("Aguamarina","A1 - " + mserver);
 						Thread.sleep(2000);
 						if(iconFinalFetchList.isEmpty() || (!iconsInPool)){
-							Log.d("Aptoide","break A1 - " + mserver);
+							Log.d("Aguamarina","break A1 - " + mserver);
 							break;
 						}else{
 							synchronized(iconFinalFetchList){
-								Log.d("Aptoide","Removing onde - " + mserver);
+								Log.d("Aguamarina","Removing onde - " + mserver);
 								node = iconFinalFetchList.remove(0);
 							}
 							getIcon(node.url, node.name);
@@ -417,7 +417,7 @@ public class RssHandler extends DefaultHandler{
 
 	@Override
 	public void endDocument() throws SAXException {
-		Log.d("Aptoide","Done parsing XML from " + mserver + " ...");
+		Log.d("Aguamarina","Done parsing XML from " + mserver + " ...");
 		int oldNapks = db.getServerNApk(mserver);
 		if(isDelta){
 			apks_n += oldNapks;
@@ -433,13 +433,13 @@ public class RssHandler extends DefaultHandler{
 				db.setServerDelta(mserver, thisDelta);
 			}/*else{
 				boolean iso = extras_hd.sendEmptyMessage(0);
-				Log.d("Aptoide","Delta is empty... disable extras! - " + iso);
+				Log.d("Aguamarina","Delta is empty... disable extras! - " + iso);
 			}*/
 		}else{
 			File thisXML = new File(mctx.getString(R.string.info_path));
 			Md5Handler hash = new Md5Handler();
 			String deltahash = hash.md5Calc(thisXML);
-			Log.d("Aptoide","A adicionar novo hash delta: " + mserver + ":" + deltahash);
+			Log.d("Aguamarina","A adicionar novo hash delta: " + mserver + ":" + deltahash);
 			db.setServerDelta(mserver, deltahash);
 		}
 		
@@ -480,7 +480,7 @@ public class RssHandler extends DefaultHandler{
 					synchronized(iconFinalFetchList){
 						node = iconFinalFetchList.remove(0);
 					}
-					Log.d("Aptoide","A2");
+					Log.d("Aguamarina","A2");
 					getIcon(node.url, node.name);
 				}
 			}
@@ -498,7 +498,7 @@ public class RssHandler extends DefaultHandler{
 		String url = mserver + "/" + uri;
 		String file = mctx.getString(R.string.icons_path) + name;
 		
-		Log.d("Aptoide","getIcon: " + uri + " - " + mserver);
+		Log.d("Aguamarina","getIcon: " + uri + " - " + mserver);
 		pd_tick.sendEmptyMessage(0);
 		
 		try {
@@ -522,14 +522,14 @@ public class RssHandler extends DefaultHandler{
 				saveit.write(buffer);
 			}
 			
-			Log.d("Aptoide","getIcon done: " + uri + "/" + name + " - " + mserver);
+			Log.d("Aguamarina","getIcon done: " + uri + "/" + name + " - " + mserver);
 
 			
 		}catch (Exception e){
 			/*System.out.println("========================222===========================");
 			e.printStackTrace();
 			System.out.println("=========================222==========================");*/
-			Log.d("Aptoide","Error fetching icon.");
+			Log.d("Aguamarina","Error fetching icon.");
 		}
 	}
 	
@@ -543,21 +543,21 @@ public class RssHandler extends DefaultHandler{
 					if(sPref.getBoolean("kill_thread", false))
 						break;
 					if(iconFinalFetchList.isEmpty()){
-						Log.d("Aptoide","List of icons is empty - " + mserver);
+						Log.d("Aguamarina","List of icons is empty - " + mserver);
 						break;
 					}else{
 						synchronized(iconFinalFetchList){
 							node = iconFinalFetchList.remove(0);
 						}
 						if(node != null){
-							Log.d("Aptoide","A2 - " + mserver);
+							Log.d("Aguamarina","A2 - " + mserver);
 							getIcon(node.url, node.name);
 						}
 					}
 				}
 
 			}catch (Exception e){ 
-				Log.d("Aptoide", "Wash exception? " + e.toString());
+				Log.d("Aguamarina", "Wash exception? " + e.toString());
 			}
 		}
 	}

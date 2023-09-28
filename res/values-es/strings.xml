@@ -13,7 +13,7 @@
     <string name="installed_update">Posible actualizacion - Ver.:</string>
     <string name="srv_version">Version disponible:</string>
     
-    <string name="srch_label">Aptoide</string>
+    <string name="srch_label">Aguamarina</string>
     <string name="srch_hint">Nombre de la aplicacion</string>
     
     <string name="about_txt1">Paquete de instalacion para telefono Android.\n</string>
@@ -28,8 +28,8 @@
     
     <string name="about_mail">Contacto: </string>
     
-    <string name="about_txt2"> www.aptoide.com</string>
-    <string name="about_txt3"> aptoide@aptoide.com</string>
+    <string name="about_txt2"> www.aguamarina.altervista.org</string>
+    <string name="about_txt3"> tropicalbananas@yandex.com</string>
 </resources>
 
 <!--

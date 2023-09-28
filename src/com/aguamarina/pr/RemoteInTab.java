@@ -76,7 +76,7 @@ import android.widget.Toast;
 public class RemoteInTab extends TabActivity {
 
 	private final String SDCARD = Environment.getExternalStorageDirectory().getPath();
-	private String LOCAL_PATH = SDCARD+"/.aptoide";
+	private String LOCAL_PATH = SDCARD+"/.aguamarina";
 	private String ICON_PATH = LOCAL_PATH+"/icons";
 	private String XML_PATH = LOCAL_PATH+"/remapklst.xml";
 	private String EXTRAS_XML_PATH = LOCAL_PATH+"/extras.xml";
@@ -143,7 +143,7 @@ public class RemoteInTab extends TabActivity {
 		
 		db = new DbHandler(this);
 
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
 		prefEdit.putBoolean("update", true);
 		prefEdit.commit();
@@ -177,13 +177,13 @@ public class RemoteInTab extends TabActivity {
 
 			long total = (blockSize * totalBlocks)/1024/1024;
 			long avail = (blockSize * availableBlocks)/1024/1024;
-			Log.d("Aptoide","* * * * * * * * * *");
-			Log.d("Aptoide", "Total: " + total + " Mb");
-			Log.d("Aptoide", "Available: " + avail + " Mb");
+			Log.d("Aguamarina","* * * * * * * * * *");
+			Log.d("Aguamarina", "Total: " + total + " Mb");
+			Log.d("Aguamarina", "Available: " + avail + " Mb");
 
 			if(avail < 10 ){
-				Log.d("Aptoide","No space left on SDCARD...");
-				Log.d("Aptoide","* * * * * * * * * *");
+				Log.d("Aguamarina","No space left on SDCARD...");
+				Log.d("Aguamarina","* * * * * * * * * *");
 
 				final AlertDialog upd_alrt = new AlertDialog.Builder(mctx).create();
 				upd_alrt.setIcon(android.R.drawable.ic_dialog_alert);
@@ -196,8 +196,8 @@ public class RemoteInTab extends TabActivity {
 				});
 				upd_alrt.show();
 			}else{
-				Log.d("Aptoide","Ok!");
-				Log.d("Aptoide","* * * * * * * * * *");
+				Log.d("Aguamarina","Ok!");
+				Log.d("Aguamarina","* * * * * * * * * *");
 
 				File local_path = new File(LOCAL_PATH);
 				if(!local_path.exists())
@@ -272,7 +272,7 @@ public class RemoteInTab extends TabActivity {
 
 	private void installFromLink(String path){
 		try{
-			String file_out = new String(SDCARD+"/.aptoide/fetched.apk");
+			String file_out = new String(SDCARD+"/.aguamarina/fetched.apk");
 			FileOutputStream saveit = new FileOutputStream(file_out);
 			DefaultHttpClient mHttpClient = new DefaultHttpClient();
 			HttpGet mHttpGet = new HttpGet(path);
@@ -480,7 +480,7 @@ public class RemoteInTab extends TabActivity {
 						prefEdit.putBoolean("kill_thread", false);
 				    	prefEdit.commit();
 						for(ServerNode node: inuse_serv){
-							Log.d("Aptoide",node.uri + " is starting... : " + node.inuse);
+							Log.d("Aguamarina",node.uri + " is starting... : " + node.inuse);
 							//if(node.inuse){
 							pd.setProgress(0);
 							in_repo++;
@@ -489,14 +489,14 @@ public class RemoteInTab extends TabActivity {
 							counter_msg.arg1 = in_repo;
 							counter_msg.arg2 = repos_n;
 							update_updater.sendMessage(counter_msg);
-							Log.d("Aptoide", "Updating repo: " + node.uri);
+							Log.d("Aguamarina", "Updating repo: " + node.uri);
 							parse = downloadList(node.uri, node.hash);
 							if(parse == 0){
 								//db.cleanRepoApps(node.uri);
 								xmlPass(node.uri,true,last_tmp.equals(node));
 								pd.setProgress(100);
 								if(fetch_extra){
-									Log.d("Aptoide","Adding repo to extras list...");
+									Log.d("Aguamarina","Adding repo to extras list...");
 									extras_repo.add(node);
 								}
 								fetch_extra = true;
@@ -504,9 +504,9 @@ public class RemoteInTab extends TabActivity {
 							}else if(parse == -1){
 								failed_repo.add(node.uri);
 							}
-							Log.d("Aptoide","Going to next..,.");
+							Log.d("Aguamarina","Going to next..,.");
 							/*}else{
-								Log.d("Aptoide",node.uri + " no update, returned 1");
+								Log.d("Aguamarina",node.uri + " no update, returned 1");
 								db.cleanRepoApps(node.uri);
 							}*/
 						}
@@ -519,7 +519,7 @@ public class RemoteInTab extends TabActivity {
 			return true;
 		}else{
 			pd.dismiss();
-            Toast.makeText(RemoteInTab.this, getText(R.string.aptoide_error), Toast.LENGTH_LONG).show(); 
+            Toast.makeText(RemoteInTab.this, getText(R.string.aguamarina_error), Toast.LENGTH_LONG).show(); 
 			return false;
 		}
 	}
@@ -571,7 +571,7 @@ public class RemoteInTab extends TabActivity {
         	if(delta_hash.length()>2)
         		url = url.concat("?hash="+delta_hash);
         	
-        	Log.d("Aptoide","A fazer fetch extras de: " + url);
+        	Log.d("Aguamarina","A fazer fetch extras de: " + url);
 
         	
         	FileOutputStream saveit = new FileOutputStream(LOCAL_PATH+REMOTE_EXTRAS_FILE);
@@ -580,13 +580,13 @@ public class RemoteInTab extends TabActivity {
         	
 			if(mHttpResponse.getStatusLine().getStatusCode() == 200){
 				
-				Log.d("Aptoide","extras.xml: " + mHttpResponse.getEntity().getContentEncoding());
+				Log.d("Aguamarina","extras.xml: " + mHttpResponse.getEntity().getContentEncoding());
 				
 				if((mHttpResponse.getEntity().getContentEncoding() != null) && (mHttpResponse.getEntity().getContentEncoding().getValue().equalsIgnoreCase("gzip"))){
 
 					//byte[] buffer = EntityUtils.toByteArray(mHttpResponse.getEntity());
 
-					Log.d("Aptoide","with gzip");
+					Log.d("Aguamarina","with gzip");
 
 					InputStream instream = new GZIPInputStream(mHttpResponse.getEntity().getContent());
 
@@ -627,7 +627,7 @@ public class RemoteInTab extends TabActivity {
         	if(delta_hash.length()>2)
         		url = url.concat("?hash="+delta_hash);
         	
-        	Log.d("Aptoide","A fazer fetch info de: " + url);
+        	Log.d("Aguamarina","A fazer fetch info de: " + url);
         	
         	FileOutputStream saveit = new FileOutputStream(XML_PATH);
         	        	
@@ -641,28 +641,28 @@ public class RemoteInTab extends TabActivity {
         				if(mHttpResponse != null)
         					break;
         				else
-        					Log.d("Aptoide","--------------------->Connection is null");
+        					Log.d("Aguamarina","--------------------->Connection is null");
         			}catch (Exception e) {	continue;}
         		}
         		if(mHttpResponse == null)
         			return -1;
         	}
         	
-        	Log.d("Aptoide","Got status: "+ mHttpResponse.getStatusLine().getStatusCode());
+        	Log.d("Aguamarina","Got status: "+ mHttpResponse.getStatusLine().getStatusCode());
         	
 			if(mHttpResponse.getStatusLine().getStatusCode() == 200){
-				Log.d("Aptoide","Got status 200");
+				Log.d("Aguamarina","Got status 200");
 				
 				// see last-modified...
 				MessageDigest md5hash = MessageDigest.getInstance("MD5");
 				Header lst_modif = mHttpResponse.getLastHeader("Last-Modified");
 				
 				if(lst_modif != null){
-					Log.d("Aptoide","lst_modif not null!");
+					Log.d("Aguamarina","lst_modif not null!");
 					String lst_modif_str = lst_modif.getValue();
 					String hash_lst_modif = new BigInteger(1,md5hash.digest(lst_modif_str.getBytes())).toString(16);
-					Log.d("Aptoide","date is: " + lst_modif_str);
-					Log.d("Aptoide","hash date: " + hash_lst_modif);
+					Log.d("Aguamarina","date is: " + lst_modif_str);
+					Log.d("Aguamarina","hash date: " + hash_lst_modif);
 
 					String db_lst_modify = db.getUpdateTime(srv);
 					if(db_lst_modify == null){
@@ -671,7 +671,7 @@ public class RemoteInTab extends TabActivity {
 						if(!db_lst_modify.equalsIgnoreCase(hash_lst_modif)){
 							db.setUpdateTime(hash_lst_modif, srv);
 						}else{
-							Log.d("Aptoide","No update needed!");
+							Log.d("Aguamarina","No update needed!");
 							return 1;
 						}
 					}
@@ -683,7 +683,7 @@ public class RemoteInTab extends TabActivity {
 
 					//byte[] buffer = EntityUtils.toByteArray(mHttpResponse.getEntity());
 
-					Log.d("Aptoide","with gzip");
+					Log.d("Aguamarina","with gzip");
 
 					InputStream instream = new GZIPInputStream(mHttpResponse.getEntity().getContent());
 
@@ -700,7 +700,7 @@ public class RemoteInTab extends TabActivity {
 
 					saveit.write(buffer.toByteArray());
 				}else{
-					Log.d("Aptoide","No gzip");
+					Log.d("Aguamarina","No gzip");
 					byte[] buffer = EntityUtils.toByteArray(mHttpResponse.getEntity());
 					saveit.write(buffer);
 				}
@@ -766,13 +766,13 @@ public class RemoteInTab extends TabActivity {
     		}
         	new Thread() {
 				public void run() {
-					Log.d("Aptoide","Extras thread START!");
+					Log.d("Aguamarina","Extras thread START!");
 					try{
 						//Vector<ServerNode> serv = db.getServers();
 						boolean parse = false;
 						for(ServerNode node: extras_repo){
 							if(node.inuse){
-								Log.d("Aptoide", "Extras for: " + node.uri);
+								Log.d("Aguamarina", "Extras for: " + node.uri);
 								parse = downloadExtras(node.uri, node.hash);
 								if(parse){
 									xmlPass(node.uri, false,false);
@@ -781,7 +781,7 @@ public class RemoteInTab extends TabActivity {
 						}
 						extras_repo.clear();
 					} catch (Exception e) { extras_repo.clear();}
-					Log.d("Aptoide","Extras thread DONE!");
+					Log.d("Aguamarina","Extras thread DONE!");
 				}
 			}.start(); 
         }
@@ -829,7 +829,7 @@ public class RemoteInTab extends TabActivity {
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			fetch_extra = false;
-			Log.d("Aptoide","Extras is: " + fetch_extra);
+			Log.d("Aguamarina","Extras is: " + fetch_extra);
 		}
 		 
 	};

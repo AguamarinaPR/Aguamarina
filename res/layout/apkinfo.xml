@@ -199,7 +199,7 @@
 <!--        			android:cropToPadding ="true"-->
 <!--        			android:scaleType="fitCenter"-->
 <!--        			android:adjustViewBounds="true"-->
-<!--        			android:src = "@drawable/splashaptoide2" />	-->
+<!--        			android:src = "@drawable/splashaguamarina2" />	-->
 <!--        			-->
 <!--        		<ImageView android:id="@+id/screen2"-->
 <!--					android:layout_gravity="right"-->
@@ -208,7 +208,7 @@
 <!--        			android:cropToPadding ="true"-->
 <!--        			android:scaleType="fitCenter"-->
 <!--					android:adjustViewBounds="true"-->
-<!--        			android:src = "@drawable/splashaptoide2" />	-->
+<!--        			android:src = "@drawable/splashaguamarina2" />	-->
 <!--			-->
 <!--			</LinearLayout>-->
 			

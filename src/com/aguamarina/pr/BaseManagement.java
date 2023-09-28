@@ -69,7 +69,7 @@ public class BaseManagement extends Activity {
 	protected static final int INSTALL = 127;
 	protected static final int REMOVE = 128;
 	protected static final int UPDATE = 129;
-	private static final String APK_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aptoide/";
+	private static final String APK_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aguamarina/";
 	
 	
 	private static SimpleAdapter main_catg_adpt = null;
@@ -90,7 +90,7 @@ public class BaseManagement extends Activity {
 		mPm = getPackageManager();
 		db = new DbHandler(this);
 		mctx = this;
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
 		
 		redrawCatgList();
@@ -510,10 +510,10 @@ public class BaseManagement extends Activity {
 			 HttpResponse mHttpResponse = NetworkApis.getHttpResponse(getserv, repo, mctx);
 			 
 			 if(mHttpResponse == null){
-				 Log.d("Aptoide","Problem in network... retry...");	
+				 Log.d("Aguamarina","Problem in network... retry...");	
 				 mHttpResponse = NetworkApis.getHttpResponse(getserv, repo, mctx);
 				 if(mHttpResponse == null){
-					 Log.d("Aptoide","Major network exception... Exiting!");
+					 Log.d("Aguamarina","Major network exception... Exiting!");
 					 return null;
 				 }
 			 }
@@ -530,19 +530,19 @@ public class BaseManagement extends Activity {
 					 saveit.write(data,0,readed);
 					 readed = getit.read(data, 0, 8096);
 				 }
-				 Log.d("Aptoide","Download done!");
+				 Log.d("Aguamarina","Download done!");
 				 saveit.flush();
 				 saveit.close();
 				 getit.close();
 			 }
 			 
-			 Log.d("Aptoide","Download MD5...");
+			 Log.d("Aguamarina","Download MD5...");
 			 File f = new File(path);
 			 Md5Handler hash = new Md5Handler();
 			 if(md5hash == null || md5hash.equalsIgnoreCase(hash.md5Calc(f))){
 				 return path;
 			 }else{
-				 Log.d("Aptoide",md5hash + " VS " + hash.md5Calc(f));
+				 Log.d("Aguamarina",md5hash + " VS " + hash.md5Calc(f));
 				 return "*md5*";
 			 }
 		 } catch(Exception e){
@@ -615,7 +615,7 @@ public class BaseManagement extends Activity {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			//Log.d("Aptoide","Progress: " + pd.getProgress() + " Other: " +  (pd.getMax()*0.96) + " Adding: " + msg.what);
+			//Log.d("Aguamarina","Progress: " + pd.getProgress() + " Other: " +  (pd.getMax()*0.96) + " Adding: " + msg.what);
 			pd.incrementProgressBy(msg.what);
 		}
 	 };
@@ -632,7 +632,7 @@ public class BaseManagement extends Activity {
 				 pd.setCancelable(false);
 				 pd.setCanceledOnTouchOutside(false);
 				 /*int max = (((msg.arg2*106)/100)*1000);
-				 Log.d("Aptoide","Max is: " + max);*/
+				 Log.d("Aguamarina","Max is: " + max);*/
 				 pd.setMax(msg.arg2*1024);
 				 pd.setProgress(0);
 				 pd.show();

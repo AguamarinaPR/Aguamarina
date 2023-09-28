@@ -58,17 +58,17 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 
-public class Aptoide extends Activity { 
+public class Aguamarina extends Activity { 
 	
 
     
 	private static final int OUT = 0;
-    private static final String TMP_SRV_FILE = Environment.getExternalStorageDirectory().getPath() + "/.aptoide/server";
+    private static final String TMP_SRV_FILE = Environment.getExternalStorageDirectory().getPath() + "/.aguamarina/server";
     
     private Vector<String> server_lst = null;
     private Vector<String[]> get_apks = null;
     
-    // Used for Aptoide version update
+    // Used for Aguamarina version update
 	private DbHandler db = null;
 
 	private SharedPreferences sPref;
@@ -85,14 +85,14 @@ public class Aptoide extends Activity {
 		public void handleMessage(Message msg) {
 			switch(msg.what){
 			case OUT:
-				Intent i = new Intent(Aptoide.this, RemoteInTab.class);
+				Intent i = new Intent(Aguamarina.this, RemoteInTab.class);
 				Intent get = getIntent();
 				if(get.getData() != null){
 					String uri = get.getDataString();
-					if(uri.startsWith("aptoiderepo")){
+					if(uri.startsWith("aguamarinarepo")){
 						String repo = uri.substring(14);
 						i.putExtra("newrepo", repo);
-					}else if(uri.startsWith("aptoidexml")){
+					}else if(uri.startsWith("aguamarinaxml")){
 						String repo = uri.substring(13);
 						parseXmlString(repo);
 						i.putExtra("uri", server_lst);
@@ -125,9 +125,9 @@ public class Aptoide extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        Log.d("Aptoide","******* \n Downloads will be made to: " + Environment.getExternalStorageDirectory().getPath() + "\n ********");
+        Log.d("Aguamarina","******* \n Downloads will be made to: " + Environment.getExternalStorageDirectory().getPath() + "\n ********");
 
-        sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+        sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
         
    		db = new DbHandler(this);
@@ -212,7 +212,7 @@ public class Aptoide extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		try{
 			db.clodeDb();
-		}catch (Exception e) {Log.d("Aptoide","Exit error: " + e.toString());	}
+		}catch (Exception e) {Log.d("Aguamarina","Exit error: " + e.toString());	}
 		finally{
 			this.finish();
 		}
@@ -241,7 +241,7 @@ public class Aptoide extends Activity {
 		} catch(Exception e){
 			AlertDialog p = new AlertDialog.Builder(this).create();
 			p.setTitle(getText(R.string.top_error));
-			p.setMessage(getText(R.string.aptoide_error));
+			p.setMessage(getText(R.string.aguamarina_error));
 			p.setButton(getText(R.string.btn_ok), new DialogInterface.OnClickListener() {
 			      public void onClick(DialogInterface dialog, int which) {
 			          return;

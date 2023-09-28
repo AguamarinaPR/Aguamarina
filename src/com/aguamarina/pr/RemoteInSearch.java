@@ -72,7 +72,7 @@ import android.widget.SimpleAdapter.ViewBinder;
 
 public class RemoteInSearch extends ListActivity{
 	
-	private String LOCAL_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aptoide";
+	private String LOCAL_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aguamarina";
 	private String APK_PATH = LOCAL_PATH+"/";
 	
 	private static final int MANAGE_REPO = Menu.FIRST;
@@ -140,7 +140,7 @@ public class RemoteInSearch extends ListActivity{
 		
 		mPm = getPackageManager();
 		
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
 		
 		getListView().setFastScrollEnabled(true);
@@ -516,10 +516,10 @@ public class RemoteInSearch extends ListActivity{
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 			
 			if(mHttpResponse == null){
-				 Log.d("Aptoide","Problem in network... retry...");	
+				 Log.d("Aguamarina","Problem in network... retry...");	
 				 mHttpResponse = mHttpClient.execute(mHttpGet);
 				 if(mHttpResponse == null){
-					 Log.d("Aptoide","Major network exception... Exiting!");
+					 Log.d("Aguamarina","Major network exception... Exiting!");
 					 return null;
 				 }
 			 }
@@ -541,7 +541,7 @@ public class RemoteInSearch extends ListActivity{
 			if(md5hash == null || md5hash.equalsIgnoreCase(hash.md5Calc(f))){
 				return path;
 			}else{
-				Log.d("Aptoide",md5hash + " VS " + hash.md5Calc(f));
+				Log.d("Aguamarina",md5hash + " VS " + hash.md5Calc(f));
 				return "*md5*";
 			}
 		} catch(Exception e){

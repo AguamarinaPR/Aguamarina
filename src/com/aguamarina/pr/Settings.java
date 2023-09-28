@@ -60,7 +60,7 @@ public class Settings extends Activity implements OnCheckedChangeListener, OnCli
 		
 		mctx = this;
 		
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		
 		
 		grp2 = (RadioGroup) findViewById(R.id.groupshow);
@@ -89,8 +89,8 @@ public class Settings extends Activity implements OnCheckedChangeListener, OnCli
 				
 				new Thread() {
 					public void run() {
-						File aptoide_dir = new File(getText(R.string.base_path).toString());
-						for(File fl: aptoide_dir.listFiles()){
+						File aguamarina_dir = new File(getText(R.string.base_path).toString());
+						for(File fl: aguamarina_dir.listFiles()){
 							if(fl.isFile() && fl.getName().toLowerCase().endsWith("apk")){
 								fl.delete();
 							}

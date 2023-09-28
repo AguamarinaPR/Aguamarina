@@ -41,16 +41,16 @@ public class DbHandler {
 		 "Travel, Demo", "Software Libraries", "Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual"};
 	
 	
-	private static final String DATABASE_NAME = "aptoide_db";
+	private static final String DATABASE_NAME = "aguamarina_db";
 	private static final String TABLE_NAME_LOCAL = "local";
-	private static final String TABLE_NAME = "aptoide";
+	private static final String TABLE_NAME = "aguamarina";
 	private static final String TABLE_NAME_URI = "servers";
 	
 	private static final String TABLE_NAME_EXTRA = "extra";
 	
 	private static SQLiteDatabase db = null;
 	
-	private static final String CREATE_TABLE_APTOIDE = "create table if not exists " + TABLE_NAME + " (apkid text, "
+	private static final String CREATE_TABLE_AGUAMARINA = "create table if not exists " + TABLE_NAME + " (apkid text, "
 	            + "name text not null, path text not null, lastver text not null, lastvercode number not null, "
 	            + "server text, md5hash text, size number default 0 not null, primary key(apkid, server));";
 	
@@ -128,7 +128,7 @@ public class DbHandler {
 			db = ctx.openOrCreateDatabase(DATABASE_NAME, 0, null);
 			db.execSQL(CREATE_TABLE_URI);
 			db.execSQL(CREATE_TABLE_EXTRA);
-			db.execSQL(CREATE_TABLE_APTOIDE);
+			db.execSQL(CREATE_TABLE_AGUAMARINA);
 			db.execSQL(CREATE_TABLE_LOCAL);
 		}else if(!db.isOpen()){
 			db = ctx.openOrCreateDatabase(DATABASE_NAME, 0, null);
@@ -150,7 +150,7 @@ public class DbHandler {
 	}
 	
 	/*
-	 * Code for DB update on new version of Aptoide
+	 * Code for DB update on new version of Aguamarina
 	 */
 	public void UpdateTables(){
 		String[] repos = null;
@@ -204,7 +204,7 @@ public class DbHandler {
 			db.execSQL("drop table if exists " + TABLE_NAME_URI);
 			db.execSQL(CREATE_TABLE_URI);
 			db.execSQL(CREATE_TABLE_EXTRA);
-			db.execSQL(CREATE_TABLE_APTOIDE);
+			db.execSQL(CREATE_TABLE_AGUAMARINA);
 			db.execSQL(CREATE_TABLE_LOCAL);
 			
 			/*for(String uri: repos){
@@ -214,7 +214,7 @@ public class DbHandler {
 				db.insert(TABLE_NAME_URI, null, tmp);
 			}*/
 			for(int z = 0; z < repos.length; z++){
-				if(!repos[z].equalsIgnoreCase("http://apps.aptoide.org")){
+				if(!repos[z].equalsIgnoreCase("http://aguamarina.altervista.org/repo")){
 					ContentValues tmp = new ContentValues();
 					tmp.put("uri", repos[z]);
 					tmp.put("inuse", inuser[z]);
@@ -848,7 +848,7 @@ public class DbHandler {
 	}
 	
 	public void updateServerNApk(String repo, int napk){
-		Log.d("Aptoide","Update napks count to: " + napk);		
+		Log.d("Aguamarina","Update napks count to: " + napk);		
 		db.execSQL("update " + TABLE_NAME_URI + " set napk=" + napk + " where uri='" + repo + "'");
 	}
 	
@@ -993,8 +993,8 @@ public class DbHandler {
 						TABLE_NAME + ".apkid = " + TABLE_NAME_EXTRA + ".apkid and server='"+repo+"')";*/
 		//db.rawQuery(query, null).close();
 		int del = db.delete(TABLE_NAME_EXTRA, "exists (select * from "+TABLE_NAME+" where "+TABLE_NAME+".apkid = "+TABLE_NAME_EXTRA+".apkid and server='"+repo+"')", null);
-		Log.d("Aptoide","remved: " + del);
+		Log.d("Aguamarina","remved: " + del);
 		int a = db.delete(TABLE_NAME, "server='"+repo+"'", null);
-		Log.d("Aptoide","Removed: " + a);
+		Log.d("Aguamarina","Removed: " + a);
 	}
 }

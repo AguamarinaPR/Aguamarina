@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.aguamarina.pr"
-      android:versionName="2.5.0" android:versionCode="270">
+      android:versionCode="1" android:versionName="0.0.1">
       <uses-permission android:name="android.permission.INTERNET" />
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application android:label="@string/app_name" android:icon="@drawable/icon">
-        <activity android:name=".Aptoide"
-                  android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".Aguamarina">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,8 +25,8 @@
             	<action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="aptoiderepo" />
-                <data android:scheme="aptoidexml" />
+                <data android:scheme="aguamarinarepo" />
+                <data android:scheme="aguamarinaxml" />
             </intent-filter>
             
             
@@ -68,7 +67,6 @@ android:configChanges="keyboardHidden|orientation" android:theme="@android:style
 </activity>
 <activity android:name="ApkInfo" android:theme="@android:style/Theme.NoTitleBar" />
 </application>
-    <uses-sdk android:minSdkVersion="4" />
 
 </manifest>
 <!--

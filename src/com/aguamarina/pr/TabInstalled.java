@@ -192,7 +192,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 			new Thread() {
 				public void run() {
 					String apk_id = data.getStringExtra("apkid");
-					Log.d("Aptoide", ".... removing: " + apk_id);
+					Log.d("Aguamarina", ".... removing: " + apk_id);
 					removeApk(apk_id);
 				}
 			}.start();
