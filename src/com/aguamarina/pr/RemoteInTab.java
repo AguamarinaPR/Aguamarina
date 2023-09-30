@@ -149,9 +149,9 @@ public class RemoteInTab extends TabActivity {
 		prefEdit.commit();
 
 		myTabHost = getTabHost();
-		myTabHost.addTab(myTabHost.newTabSpec("avail").setIndicator(getText(R.string.tab_avail),getResources().getDrawable(android.R.drawable.ic_menu_add)).setContent(new Intent(this, TabAvailable.class)));  
-		myTabHost.addTab(myTabHost.newTabSpec("inst").setIndicator(getText(R.string.tab_inst),getResources().getDrawable(android.R.drawable.ic_menu_agenda)).setContent(new Intent(this, TabInstalled.class)));
-		myTabHost.addTab(myTabHost.newTabSpec("updt").setIndicator(getText(R.string.tab_updt),getResources().getDrawable(android.R.drawable.ic_menu_info_details)).setContent(new Intent(this, TabUpdates.class)));
+		myTabHost.addTab(myTabHost.newTabSpec("avail").setIndicator(getText(R.string.tab_avail),getResources().getDrawable(android.R.drawable.ic_input_add)).setContent(new Intent(this, TabAvailable.class)));  
+		myTabHost.addTab(myTabHost.newTabSpec("inst").setIndicator(getText(R.string.tab_inst),getResources().getDrawable(android.R.drawable.star_off)).setContent(new Intent(this, TabInstalled.class)));
+		myTabHost.addTab(myTabHost.newTabSpec("updt").setIndicator(getText(R.string.tab_updt),getResources().getDrawable(android.R.drawable.star_on)).setContent(new Intent(this, TabUpdates.class)));
 
 		myTabHost.setPersistentDrawingCache(ViewGroup.PERSISTENT_SCROLLING_CACHE);
 
@@ -212,7 +212,7 @@ public class RemoteInTab extends TabActivity {
 				if (srv_lst.isEmpty()){
 					Intent call = new Intent(this, ManageRepo.class);
 					call.putExtra("empty", true);
-					call.putExtra("uri", "http://apps.bazaarandroid.com");
+					call.putExtra("uri", "http://aguamarina.altervista.org/repo");
 					startActivityForResult(call,NEWREPO_FLAG);
 				}
 

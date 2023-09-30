@@ -30,6 +30,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +47,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.SimpleAdapter.ViewBinder;
 
 public class BaseManagement extends Activity {
-
 	static private PackageManager mPm;
 	static private PackageInfo pkginfo;
 	
@@ -82,7 +83,7 @@ public class BaseManagement extends Activity {
    		 "News & Weather", "Productivity", "Reference", "Shopping", "Social", "Sports", "Themes", "Tools", 
 		 "Travel", "Demo", "Software Libraries", "Other"};
 	private static final String[] game_ctg = {"Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual", "Other"};
-	
+	protected static WakeLock stayAwake = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +96,9 @@ public class BaseManagement extends Activity {
 		prefEdit = sPref.edit();
 		
 		redrawCatgList();
+		
+		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		stayAwake = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotSleep");
 	}
 	
 	private void redrawCatgList(){
@@ -480,6 +484,7 @@ public class BaseManagement extends Activity {
 
 			 if(tmp_serv.size() > 0){
 				 DownloadNode node = new DownloadNode();
+				 stayAwake.acquire();
 				 node = tmp_serv.firstElement();
 				 getserv = node.repo + "/" + node.path;
 				 md5hash = node.md5h;
@@ -547,6 +552,9 @@ public class BaseManagement extends Activity {
 				 return "*md5*";
 			 }
 		 } catch(Exception e){
+			 if(stayAwake.isHeld()){
+				 stayAwake.release();
+			 }
 			 return null;
 		 }
 	 }
