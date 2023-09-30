@@ -536,6 +536,9 @@ public class BaseManagement extends Activity {
 					 saveit.write(data,0,readed);
 					 readed = getit.read(data, 0, 8096);
 				 }
+				 if(stayAwake.isHeld()){
+					 stayAwake.release();
+				 }
 				 Log.d("Aguamarina","Download done!");
 				 saveit.flush();
 				 saveit.close();
