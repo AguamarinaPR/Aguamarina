@@ -68,6 +68,7 @@ android:configChanges="keyboardHidden|orientation" android:theme="@android:style
 <activity android:name="ApkInfo" android:theme="@android:style/Theme.NoTitleBar" />
 </application>
 
+<uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
 </manifest>
 <!--
  * Copyright (C) 2009  Roberto Jacinto
