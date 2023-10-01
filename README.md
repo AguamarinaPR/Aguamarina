@@ -10,3 +10,5 @@ At the moment, the easiest way is to use the [old Aptoide server script for Wind
 If you cannot get either of these running, you can modify this [example info.xml file](/docs/info.xml) with [Aptoide's XML definition](/docs/XML_File_definition.pdf) for reference, then upload the resulting repository's files to a server. (Internet Archive works too since the files are static)
 
 I know that these methods of authoring the files are tedious and inconvenient, so I hope to correct that in the future
+## Disclaimers
+The software is not yet available compiled as it is still being developed. If you choose to compile it yourself, I do not recommend you log into any repositories, this feature is not secure for unsupported devices and will soon be removed.
