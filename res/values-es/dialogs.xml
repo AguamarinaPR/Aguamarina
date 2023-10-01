@@ -14,7 +14,7 @@
 	<string name="manage_repo_answ_cc">No conecta el servidor</string>
 	<string name="manage_repo_answ_lr">Logeo requerido</string>
 	
-	<string name="app_pop_up_no_info">No hay informacion disponible en el servidor. Busca en el Market presionando el boton de mas informacion.</string>
+	<string name="app_pop_up_no_info">No hay informacion disponible en el servidor.</string>
 	<string name="error_no_market">No tienes el Google Market instalado!</string>
 		
     <string name="settings_cache">Limpiando el cache...</string>

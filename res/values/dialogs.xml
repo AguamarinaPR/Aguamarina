@@ -14,7 +14,7 @@
 	<string name="manage_repo_answ_cc">Can\'t connect to server</string>
 	<string name="manage_repo_answ_lr">Login required</string>
 	
-	<string name="app_pop_up_no_info">No info available on server. Search market by pressing the button below for more info.</string>
+	<string name="app_pop_up_no_info">No info available on server.</string>
 	<string name="error_no_market">You don\'t have Google Market installed!</string>
 		
     <string name="settings_cache">Clearing cache...</string>
@@ -31,7 +31,7 @@
     
     <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
     <string name="updating_cfrm">Confirm Aguamarina repositories update?</string>
-    <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add repository or enable the ones you have.</string>
+    <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add a repository or enable the ones you have.</string>
     
     
 </resources>

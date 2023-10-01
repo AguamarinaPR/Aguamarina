@@ -4,11 +4,11 @@ package com.aguamarina.pr;
 import java.io.File;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
+//import android.content.ActivityNotFoundException;
+//import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
+//import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,12 +16,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
+//import android.widget.Toast;
 
 public class ApkInfo extends Activity{
 
 	private Intent apkinfo = null;
-	private Context mctx = null;
+//	private Context mctx = null;
 	
 	private Intent rtrn_intent = null;
 	
@@ -32,7 +32,7 @@ public class ApkInfo extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.apkinfo);
 		
-		mctx = this;
+//		mctx = this;
 		
 		rtrn_intent = new Intent();
 		
@@ -50,7 +50,7 @@ public class ApkInfo extends Activity{
 		String apk_rat_str = apkinfo.getStringExtra("rat");
 		String apk_size_str = apkinfo.getStringExtra("size");
 		
-		Button serch_mrkt = (Button)findViewById(R.id.btn_market);
+		/*Button serch_mrkt = (Button)findViewById(R.id.btn_market);
 		serch_mrkt.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
@@ -63,7 +63,7 @@ public class ApkInfo extends Activity{
 					Toast.makeText(mctx, getText(R.string.error_no_market), Toast.LENGTH_LONG).show();
 				}
 			}
-		});
+		});*/
 		
 		Button action = (Button) findViewById(R.id.btn1);
 		switch (type) {

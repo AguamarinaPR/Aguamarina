@@ -168,7 +168,7 @@ public class DbHandler {
 				secure = new boolean[c.getCount()+1];
 				login_pwd = new String[c.getCount()+1];
 				login_user = new String[c.getCount()+1];
-				repos[i] = "http://apps.bazaarandroid.com";
+				repos[i] = "http://aguamarina.altervista.org/repo";
 				inuser[i] = 1;
 				secure[i] = false;
 

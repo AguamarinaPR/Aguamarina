@@ -14,7 +14,7 @@
 	<string name="manage_repo_answ_cc">تعذر الإتصال بالموقع</string>
 	<string name="manage_repo_answ_lr">يجب تسجيل الدخول</string>
 	
-	<string name="app_pop_up_no_info">ا يوجد ملف للمعلومات في الموقع.لمزيد من المعلومات إبحث في متجر اندرويد من خلال الضغط على الزر في الأسفل.</string>
+	<string name="app_pop_up_no_info">ا يوجد ملف للمعلومات في الموقع</string>
 	<string name="error_no_market">أنت لم تثبت متجر اندرويد على الجهاز!</string>
 		
     <string name="settings_cache">مسح الذاكرة المؤقته...</string>
