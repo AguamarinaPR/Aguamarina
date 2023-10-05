@@ -22,7 +22,6 @@ package com.aguamarina.pr;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,8 +30,6 @@ import java.util.Vector;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
@@ -502,7 +499,7 @@ public class RemoteInSearch extends ListActivity{
 			DefaultHttpClient mHttpClient = new DefaultHttpClient();
 			HttpGet mHttpGet = new HttpGet(getserv);
 
-			String[] logins = null; 
+/*			String[] logins = null; 
 			logins = db.getLogin(repo);
 			if(logins != null){
 				URL mUrl = new URL(getserv);
@@ -510,7 +507,7 @@ public class RemoteInSearch extends ListActivity{
 						new AuthScope(mUrl.getHost(), mUrl.getPort()),
 						new UsernamePasswordCredentials(logins[0], logins[1]));
 			}
-
+*/
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 			
 			if(mHttpResponse == null){

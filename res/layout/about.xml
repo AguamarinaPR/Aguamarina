@@ -57,7 +57,7 @@
     	android:layout_height="fill_parent"
     	android:orientation="horizontal">
 	
-		<TextView android:id="@+id/about2" 
+<!--		<TextView android:id="@+id/about2" 
 			android:text="@string/about_mail"
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
@@ -74,7 +74,7 @@
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
 			android:autoLink="email" 
-			android:textSize="16px" />
+			android:textSize="16px" />-->
 	</LinearLayout>
 	<TextView android:id="@+id/about11"
   		android:text="   "

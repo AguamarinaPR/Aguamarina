@@ -350,7 +350,7 @@ public class RssHandler extends DefaultHandler{
 	@Override
 	public void startDocument() throws SAXException {
 		String[] logins = null; 
-		logins = db.getLogin(mserver);
+//		logins = db.getLogin(mserver);
 		if(logins != null){
 			//requireLogin = true;
 			usern = logins[0];

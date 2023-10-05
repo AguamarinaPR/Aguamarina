@@ -925,7 +925,7 @@ public class DbHandler {
 	}
 	
 	
-	public String[] getLogin(String uri){
+/*	public String[] getLogin(String uri){
 		String[] login = new String[2];
 		Cursor c = null;
 		try{
@@ -943,7 +943,7 @@ public class DbHandler {
 			c.close();
 		}
 		return login;
-	}
+	} */
 	
 	public void addLogin(String user, String pwd, String repo){
 		ContentValues tmp = new ContentValues();

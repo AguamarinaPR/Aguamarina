@@ -29,7 +29,6 @@ public class NetworkApis {
 	
 	public static HttpResponse getHttpResponse(String url, String srv, Context mctx){
 		try{
-			DbHandler db = new DbHandler(mctx);
 			
 			SharedPreferences sPref = mctx.getSharedPreferences("aguamarina_prefs", Context.MODE_PRIVATE);
 			String myid = sPref.getString("myId", "NoInfo");
@@ -59,7 +58,7 @@ public class NetworkApis {
 			mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
 			mHttpGet.setHeader("Accept-Encoding", "gzip");
 						
-			String[] logins = null; 
+/*			String[] logins = null; 
 			logins = db.getLogin(srv);
 			if(logins != null){
 				URL mUrl = new URL(url);
@@ -67,7 +66,7 @@ public class NetworkApis {
 						new AuthScope(mUrl.getHost(), mUrl.getPort()),
 						new UsernamePasswordCredentials(logins[0], logins[1]));
 			}
-
+*/
 			
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 			
@@ -81,13 +80,13 @@ public class NetworkApis {
 				mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
 				mHttpGet.setHeader("Accept-Encoding", "gzip");
 				
-				if(logins != null){
+/*				if(logins != null){
 	    			URL mUrl = new URL(newurl);
 	    			mHttpClient.getCredentialsProvider().setCredentials(
 	                        new AuthScope(mUrl.getHost(), mUrl.getPort()),
 	                        new UsernamePasswordCredentials(logins[0], logins[1]));
 	    		}
-				
+*/				
 				mHttpResponse = null;
 				mHttpResponse = mHttpClient.execute(mHttpGet);
 				

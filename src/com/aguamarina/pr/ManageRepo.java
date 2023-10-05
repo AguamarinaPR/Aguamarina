@@ -68,13 +68,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ManageRepo extends ListActivity{
 	
@@ -298,7 +295,7 @@ public class ManageRepo extends ListActivity{
 			View view = li.inflate(R.layout.addrepo, null);
 			
 			final TextView sec_msg = (TextView) view.findViewById(R.id.sec_msg);
-			final TextView sec_msg2 = (TextView) view.findViewById(R.id.sec_msg2);
+/*			final TextView sec_msg2 = (TextView) view.findViewById(R.id.sec_msg2);
 			
 			final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
 			final EditText sec_pwd = (EditText) view.findViewById(R.id.sec_pwd);
@@ -314,7 +311,7 @@ public class ManageRepo extends ListActivity{
 						sec_pwd.setEnabled(false);
 					}
 				}
-			});
+			});*/
 			
 			
 			Builder p = new AlertDialog.Builder(this).setView(view);
@@ -328,7 +325,7 @@ public class ManageRepo extends ListActivity{
 					EditText uri = (EditText) alrt.findViewById(R.id.edit_uri);
 					String uri_str = uri.getText().toString();
 					sec_msg.setVisibility(View.GONE);
-					sec_msg2.setVisibility(View.GONE);
+/*					sec_msg2.setVisibility(View.GONE);
 					if(sec.isChecked()){
 						String user = sec_user.getText().toString();
 						String pwd = sec_pwd.getText().toString();
@@ -348,23 +345,19 @@ public class ManageRepo extends ListActivity{
 							sec_msg.setVisibility(View.VISIBLE);
 							msg.obj = 1;
 						}
-					}else{
+					}else{*/
 						int result = checkServer(uri_str, null, null);
 						if(result == 200){
 							msg.obj = 0;
 							db.addServer(uri_str);
 							change = true;
 							redraw();
-						}else if (result == 401){
-							sec_msg2.setText(getText(R.string.manage_repo_answ_lr));
-							sec_msg2.setVisibility(View.VISIBLE);
-							msg.obj = 1;
 						}else{
 							sec_msg.setText(getText(R.string.manage_repo_answ_cc));
 							sec_msg.setVisibility(View.VISIBLE);
 							msg.obj = 1;
 						}
-					}
+//					}
 					new_repo.sendMessage(msg);
 				} });
 
@@ -452,7 +445,7 @@ public class ManageRepo extends ListActivity{
 		final EditText uri = (EditText) view.findViewById(R.id.edit_uri);
 		uri.setText(repo);
 		
-		final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
+/*		final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
 		final EditText sec_pwd = (EditText) view.findViewById(R.id.sec_pwd);
 		final CheckBox sec = (CheckBox) view.findViewById(R.id.secure_chk);
 		sec.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -475,7 +468,7 @@ public class ManageRepo extends ListActivity{
 			sec_pwd.setText(logins[1]);
 		}else{
 			sec.setChecked(false);
-		}
+		}*/
 	
 		alrt.setIcon(android.R.drawable.ic_menu_add);
 		alrt.setTitle("Edit repository");
@@ -483,11 +476,7 @@ public class ManageRepo extends ListActivity{
 			public void onClick(DialogInterface dialog, int which) {
 				String new_repo = uri.getText().toString();
 				db.updateServer(repo, new_repo);
-				if(sec.isChecked()){
-					db.addLogin(sec_user.getText().toString(), sec_pwd.getText().toString(), new_repo);
-				}else{
-					db.disableLogin(new_repo);
-				}
+				db.disableLogin(new_repo);
 				change = true;
 				redraw();
 			} });

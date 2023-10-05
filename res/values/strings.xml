@@ -19,20 +19,21 @@
     <string name="srch_label">Aguamarina</string>
     <string name="srch_hint">Name of the application</string>
     
-    <string name="about_txt1">Your package installer to Android phone.\n</string>
+    <string name="about_txt1">Package manager for legacy android\n</string>
     
-    <string name="about_txt11">Version: 2.5.0\n(released under GNU GPL v2 license)\n
-    \nCredits: Roberto Jacinto - Caixa Mágica\n
-    \t\t\tFrancisco "ppelao3k" - Spanish translation\n
-    \t\t\tManaa Alshihe - Arabic translation\n</string>
+    <string name="about_txt11">Version: 1.0.0 (licensed with GPL v2)\n
+    \nCredits: TropicalBananas:\n\tAguamarina
+    \nRoberto Jacinto, Caixa Mágica:\n\tAptoide
+    \nFrancisco "ppelao3k":\n\tSpanish translation
+    \nManaa Alshihe:\n\tArabic translation\n</string>
 
     
-    <string name="about_site">Home: </string>
+    <string name="about_site">Web: </string>
     
     <string name="about_mail">Contact: </string>
     
-    <string name="about_txt2"> www.aguamarina.altervista.org</string>
-    <string name="about_txt3"> tropicalbananas@yandex.com</string>
+    <string name="about_txt2">www.aguamarina.altervista.org</string>
+    <string name="about_txt3">tropicalbananas@yandex.com</string>
 </resources>
 
 <!--

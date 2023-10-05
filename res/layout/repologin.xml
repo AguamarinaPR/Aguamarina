@@ -4,7 +4,7 @@
 	android:layout_height="wrap_content" 
 	android:orientation="vertical" 
 	android:layout_width="fill_parent">
-	
+<!--	
 	<EditText 
 		android:id="@+id/login_user"
 		android:layout_height="wrap_content" 
@@ -16,5 +16,5 @@
 		android:id="@+id/login_pwd" 
 		android:hint="Password" 
 		android:layout_width="fill_parent" 
-		android:layout_marginTop="7dip"/>
+		android:layout_marginTop="7dip"/>-->
 </LinearLayout>
