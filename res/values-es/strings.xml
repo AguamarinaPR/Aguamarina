@@ -18,7 +18,7 @@
     
     <string name="about_txt1">Paquete de instalacion para telefono Android.\n</string>
     
-    <string name="about_txt11">Version: 2.5.0\n(Realizada bajo licencia GNU GPL v2)\n
+    <string name="about_txt11">Version: 1.0.0\n(Realizada bajo licencia GNU GPL v2)\n
     \nCreditos: Roberto Jacinto - Caixa Mágica\n
     \t\t\tFrancisco "ppelao3k" - Spanish translation\n
     \t\t\tManaa Alshihe - Arabic translation\n</string>
@@ -29,7 +29,7 @@
     <string name="about_mail">Contacto: </string>
     
     <string name="about_txt2"> www.aguamarina.altervista.org</string>
-    <string name="about_txt3"> tropicalbananas@yandex.com</string>
+    <string name="about_txt3"> aguamarina@altervista.org</string>
 </resources>
 
 <!--

@@ -69,6 +69,7 @@ android:configChanges="keyboardHidden|orientation" android:theme="@android:style
 </application>
 
 <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+
 </manifest>
 <!--
  * Copyright (C) 2009  Roberto Jacinto
