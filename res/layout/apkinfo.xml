@@ -94,7 +94,7 @@
                  
         		<RatingBar android:id="@+id/rating"
         			style="?android:attr/ratingBarStyleSmall"
-        			android:layout_width="wrap_content"
+        			android:layout_width="0dip"
         			android:layout_height="wrap_content"
         			android:isIndicator="true"
         			android:paddingTop="1.0sp"
