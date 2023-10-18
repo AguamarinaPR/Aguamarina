@@ -81,7 +81,7 @@ public class BaseManagement extends Activity {
 	private static final String[] main_ctg = {"Games", "Applications", "Others"};
 	private static final String[] app_ctg = {"Comics", "Communication", "Entertainment", "Finance", "Health", "Lifestyle", "Multimedia", 
    		 "News & Weather", "Productivity", "Reference", "Shopping", "Social", "Sports", "Themes", "Tools", 
-		 "Travel", "Demo", "Software Libraries", "Mods", "Other"};
+		 "Travel", "Demo", "Software Libraries", "Other"};
 	private static final String[] game_ctg = {"Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual", "Other"};
 	protected static WakeLock stayAwake = null;
 	

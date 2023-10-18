@@ -12,6 +12,7 @@ public class ApkNodeFull extends Object{
 	public float rat;
 	public int down;
 	public String md5hash;
+	public int sdkver;
 	public String catg;
 	public int catg_type;
 	public int size;

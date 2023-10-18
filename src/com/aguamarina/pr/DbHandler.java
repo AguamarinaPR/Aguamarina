@@ -30,7 +30,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.util.Log;
 
 public class DbHandler {
@@ -52,7 +51,7 @@ public class DbHandler {
 	private static SQLiteDatabase db = null;
 	
 	private static final String CREATE_TABLE_AGUAMARINA = "create table if not exists " + TABLE_NAME + " (apkid text, "
-	            + "name text not null, path text not null, lastver text not null, lastvercode number not null, "
+	            + "name text not null, path text not null, lastver text not null, lastvercode number not null, sdkver number not null,"
 	            + "server text, md5hash text, size number default 0 not null, primary key(apkid, server));";
 	
 	private static final String CREATE_TABLE_LOCAL = "create table if not exists " + TABLE_NAME_LOCAL + " (apkid text primary key, "
@@ -236,7 +235,7 @@ public class DbHandler {
 		db.delete(TABLE_NAME_EXTRA, "apkid='"+apkid+"'", null);
 	}
 	
-	public void insertApk(boolean delfirst, String name, String path, String ver, int vercode ,String apkid, String date, Float rat, String serv, String md5hash, int down, String catg, int catg_type, int size){
+	public void insertApk(boolean delfirst, String name, String path, String ver, int vercode ,int sdkver,String apkid, String date, Float rat, String serv, String md5hash, int down, String catg, int catg_type, int size){
 
 		if(delfirst){
 			db.delete(TABLE_NAME, "apkid='"+apkid+"'", null);
@@ -250,7 +249,7 @@ public class DbHandler {
 		tmp.put("lastver", ver);
 		tmp.put("lastvercode", vercode);
 		tmp.put("server", serv);
-		tmp.put("md5hash", md5hash);
+		tmp.put("sdkver", sdkver);
 		tmp.put("size", size);
 		db.insert(TABLE_NAME, null, tmp);
 		tmp.clear();
