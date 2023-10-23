@@ -30,15 +30,14 @@ public class ApkNode extends Object{
 	 * 1 - installed
 	 * 2 - installed need update
 	 */
-	public int sdkver;
 	public float rat;
 	public int down;
 	public String catg;
 	public int catg_ord;
-	
 	//Only used for update 
 	public int vercode;
-	
+	//For filtering incompatible applications
+	public int sdkver;
 	public ApkNode(){
 		
 	}

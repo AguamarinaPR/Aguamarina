@@ -13,6 +13,9 @@
     <string name="order_popup_catg1">Por categoria </string>
     <string name="order_popup_catg2">Todas las aplicaciones </string>
     
+    <string name="title_appfilter">Filtro:</string>
+    <string name="order_popup_hideincomptitle">Ocultar aplicaciones incompatibles </string>
+    
     <string name="save_btn">Guardar </string>
     <string name="clear_cache_btn">Limpiar Cache </string>
     

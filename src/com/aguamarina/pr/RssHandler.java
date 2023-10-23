@@ -57,7 +57,6 @@ public class RssHandler extends DefaultHandler{
 	private boolean apk_vercode = false;
 	private boolean apk_id = false;
 	private boolean apk_icon = false;
-	private boolean apk_sdkver = false;
 	private boolean apk_date = false;
 	private boolean apk_rat = false;
 	private boolean apk_md5hash = false;
@@ -65,6 +64,7 @@ public class RssHandler extends DefaultHandler{
 	private boolean apk_ctg = false;
 	private boolean apk_ctg2 = false;
 	private boolean apk_size = false;
+	private boolean apk_sdkver = false;
 	
 	private DbHandler db = null;
 	
@@ -105,7 +105,6 @@ public class RssHandler extends DefaultHandler{
 		tmp_apk.name = "unknown";
 		tmp_apk.ver = "0.0";
 		tmp_apk.vercode = 0;
-		tmp_apk.sdkver = 0;
 		tmp_apk.rat = 0.0f;
 		tmp_apk.down = -1;
 		tmp_apk.date = "2000-01-01";
@@ -115,6 +114,7 @@ public class RssHandler extends DefaultHandler{
 		tmp_apk.path="";
 		icon_path = "";
 		tmp_apk.size = 0;
+		tmp_apk.sdkver = 0;
 		
 		
 		this.pd_set = pd_set;
@@ -153,12 +153,6 @@ public class RssHandler extends DefaultHandler{
 			}*/
 			icon_path = icon_path.concat(new String(ch).substring(start, start + length));
 			hasIcon = true;
-		}else if (apk_sdkver){
-			try{
-				tmp_apk.sdkver = new Integer(new String(ch).substring(start, start + length));
-			}catch(Exception e){
-				tmp_apk.sdkver = 1;
-			}
 		}else if(apk_date){
 			tmp_apk.date = new String(ch).substring(start, start + length);
 		}else if(apk_rat){
@@ -187,6 +181,12 @@ public class RssHandler extends DefaultHandler{
 			apks_n = new Integer(new String(ch).substring(start, start + length));
 		}else if(apk_size){
 			tmp_apk.size = new Integer(new String(ch).substring(start, start + length));
+		}else if (apk_sdkver){
+			try{
+				tmp_apk.sdkver = new Integer(new String(ch).substring(start, start + length));
+			}catch(Exception e){
+				tmp_apk.sdkver = 0;
+			}
 		}
 	}
 
@@ -225,21 +225,23 @@ public class RssHandler extends DefaultHandler{
 					tmp_apk.name = tmp_apk.apkid;
 
 				ApkNode node = new ApkNode(tmp_apk.apkid, tmp_apk.vercode);
-				if(!listapks.contains(node)){
-					db.insertApk(false,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode, tmp_apk.sdkver,tmp_apk.apkid, tmp_apk.date, tmp_apk.rat, mserver, tmp_apk.md5hash, tmp_apk.down, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
-					//tmp_apk.isnew = false;
-					//updateTable.add(tmp_apk);
-					listapks.add(node);
-				}else{
-					int pos = listapks.indexOf(node);
-					ApkNode list = listapks.get(pos);
-					if(list.vercode < node.vercode){
-						db.insertApk(true,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode, tmp_apk.sdkver,tmp_apk.apkid, tmp_apk.date, tmp_apk.rat, mserver, tmp_apk.md5hash, tmp_apk.down, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
-						//tmp_apk.isnew = true;
-						//updateTable.remove(new ApkNodeFull(list.apkid));
+				if (CompatibilityTest(tmp_apk)){
+					if(!listapks.contains(node)){
+						db.insertApk(false,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, tmp_apk.rat, mserver, tmp_apk.md5hash, tmp_apk.down, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size, tmp_apk.sdkver);
+						//tmp_apk.isnew = false;
 						//updateTable.add(tmp_apk);
-						listapks.remove(pos);
 						listapks.add(node);
+					}else{
+						int pos = listapks.indexOf(node);
+						ApkNode list = listapks.get(pos);
+						if(list.vercode < node.vercode){
+							db.insertApk(true,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, tmp_apk.rat, mserver, tmp_apk.md5hash, tmp_apk.down, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size, tmp_apk.sdkver);
+							//tmp_apk.isnew = true;
+							//updateTable.remove(new ApkNodeFull(list.apkid));
+							//updateTable.add(tmp_apk);
+							listapks.remove(pos);
+							listapks.add(node);
+						}
 					}
 				}
 			}
@@ -253,7 +255,7 @@ public class RssHandler extends DefaultHandler{
 			tmp_apk.name = "Unknown";
 			tmp_apk.ver = "0.0";
 			tmp_apk.vercode = 0;
-			tmp_apk.sdkver = 1;
+			tmp_apk.sdkver = 0;
 			tmp_apk.rat = 0.0f;
 			tmp_apk.date = "2000-01-01";
 			tmp_apk.down = -1;
@@ -272,8 +274,6 @@ public class RssHandler extends DefaultHandler{
 			apk_ver = false;
 		}else if(localName.trim().equals("vercode")){
 			apk_vercode = false;
-		}else if(localName.trim().equals("sdkver")){
-			apk_id = false;
 		}else if(localName.trim().equals("apkid")){
 			apk_id = false;
 		}else if(localName.trim().equals("icon")){
@@ -307,6 +307,8 @@ public class RssHandler extends DefaultHandler{
 			pd_set.sendEmptyMessage(what);
 		}else if(localName.trim().equals("sz")){
 			apk_size = false;
+		}else if(localName.trim().equals("sdkver")){
+			apk_sdkver = false;
 		}
 	}
 
@@ -323,8 +325,6 @@ public class RssHandler extends DefaultHandler{
 		}else if(localName.trim().equals("ver")){
 			apk_ver = true;
 		}else if(localName.trim().equals("vercode")){
-			apk_vercode = true;
-		}else if(localName.trim().equals("sdkver")){
 			apk_vercode = true;
 		}else if(localName.trim().equals("apkid")){
 			apk_id = true;
@@ -354,6 +354,8 @@ public class RssHandler extends DefaultHandler{
 			apkcount = true;
 		}else if(localName.trim().equals("sz")){
 			apk_size = true;
+		}else if(localName.trim().equals("sdkver")){
+			apk_sdkver = true;
 		}
 	}
 	
@@ -575,4 +577,10 @@ public class RssHandler extends DefaultHandler{
 		}
 	}
 
-}
+		private boolean CompatibilityTest(ApkNodeFull tmp_apk) {
+			if(tmp_apk.sdkver>Integer.parseInt(android.os.Build.VERSION.SDK))
+				return false;
+			
+			return true;
+		}
+	}
