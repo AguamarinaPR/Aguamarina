@@ -38,7 +38,7 @@ public class DbHandler {
 
 	private static final String[] CATGS = {"Comics", "Communication", "Entertainment", "Finance", "Health", "Lifestyle", "Multimedia", 
 		 "News & Weather", "Productivity", "Reference", "Shopping", "Social", "Sports", "Themes", "Tools", 
-		 "Travel, Demo", "Software Libraries", "Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual"};
+		 "Travel, Demo", "Software Libraries", "Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual", "Emulators"};
 	
 	
 	private static final String DATABASE_NAME = "aguamarina_db";
@@ -118,7 +118,7 @@ public class DbHandler {
 	 * catg: category for the application:
 	 *  - Comics, Communication, Entertainment, Finance, Health, Lifestyle, Multimedia, 
 	 *  - News & Weather, Productivity, Reference, Shopping, Social, Sports, Themes, Tools, 
-	 *  - Travel, Demo, Software Libraries, Arcade & Action, Brain & Puzzle, Cards & Casino, Casual,
+	 *  - Travel, Demo, Software Libraries, Arcade & Action, Brain & Puzzle, Cards & Casino, Casual, Emulators
 	 *  - Other
 	 */
 
