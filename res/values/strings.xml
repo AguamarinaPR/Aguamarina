@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Aguamarina</string>
-    <string name="ver_str">"1.0.0"</string>
-    <string name="change_log_url">https://github.com/tropicalbananas/Aguamarina</string>
+    <string name="ver_str">"1.0"</string>
+    <string name="change_log_url">http://www.aguamarina.altervista.org/changelog</string>
     
     <string name="tab_avail">Available</string>
     <string name="tab_inst">Installed</string>
@@ -22,10 +22,7 @@
     <string name="about_txt1">Package manager for legacy android\n</string>
     
     <string name="about_txt11">Version: 1.0.0 (licensed with GPL v2)\n
-    \nCredits: TropicalBananas:\n\tAguamarina
-    \nRoberto Jacinto, Caixa Mágica:\n\tAptoide
-    \nFrancisco "ppelao3k":\n\tSpanish translation
-    \nManaa Alshihe:\n\tArabic translation\n</string>
+    \nForked from Aptoide\n</string>
 
     
     <string name="about_site">Web: </string>

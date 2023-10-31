@@ -157,6 +157,30 @@ public class RemoteInTab extends TabActivity {
 
 		netstate = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		
+		if(Integer.parseInt(android.os.Build.VERSION.SDK) == 3){
+			final AlertDialog upd_alrt = new AlertDialog.Builder(mctx).create();
+			upd_alrt.setIcon(R.drawable.legacyandroid);
+			upd_alrt.setTitle(getText(R.string.unsupportedversion));
+			upd_alrt.setMessage(getText(R.string.unsupported_android15));
+			upd_alrt.setButton(getText(R.string.btn_ok), new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			});
+			upd_alrt.show();
+		}else if(Integer.parseInt(android.os.Build.VERSION.SDK) >= 29){
+			final AlertDialog upd_alrt = new AlertDialog.Builder(mctx).create();
+			upd_alrt.setIcon(R.drawable.newandroid);
+			upd_alrt.setTitle(getText(R.string.unsupportedversion));
+			upd_alrt.setMessage(getText(R.string.unsupported_androidnew));
+			upd_alrt.setButton(getText(R.string.btn_ok), new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			});
+			upd_alrt.show();
+		}
+		
 		File sdcard_file = new File(SDCARD);
 		if(!sdcard_file.exists()){
 			final AlertDialog upd_alrt = new AlertDialog.Builder(mctx).create();

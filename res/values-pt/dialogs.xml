@@ -19,6 +19,10 @@
 		
     <string name="settings_cache">A limpar cache...</string>
     
+    <string name="unsupportedversion">Unsupported Android Version</string>
+    <string name="unsupported_android15">We're sorry, but unfortunately there is a bug which causes Aguamarina to crash when scrolling down on Android 1.5/nPlease stay up to date on updates as we are actively working on a solution to the problem.\nTo continue anyways, press the OK button.</string>
+    <string name="unsupported_androidnew">Unfortunately, the Android API version 29 (Android 10) removes the menu button, so not all parts of Aguamarina's User Interface can be accessed.\nTo continue anyways, press the OK button.</string>
+    
     <string name="remote_in_noSD_title">Sem memória</string>
     <string name="remote_in_noSD">Não tem um SDcard no dispositivo.\nPor favor insira um.</string>
     <string name="remote_in_noSDspace">Não tem espaço suficiente no SDcard\nPor favor liberte espaço e tente novamente.</string>

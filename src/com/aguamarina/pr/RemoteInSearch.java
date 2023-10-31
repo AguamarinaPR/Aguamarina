@@ -258,9 +258,6 @@ public class RemoteInSearch extends ListActivity{
 			t5.setText(getText(R.string.app_pop_up_no_info));
 		}
 		
-		TextView t6 = (TextView) view.findViewById(R.id.down_n);
-		t6.setText(tmp_get.get(4));
-		
 		p.setButton2(getText(R.string.btn_ok), new DialogInterface.OnClickListener() {
 		      public void onClick(DialogInterface dialog, int which) {
 		          return;
@@ -291,7 +288,7 @@ public class RemoteInSearch extends ListActivity{
 						}
 					}.start();
 				} });
-			p.setButton3(getText(R.string.btn_search_market), new DialogInterface.OnClickListener() {
+			/*p.setButton3(getText(R.string.btn_search_market), new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					p.dismiss();					
 					Intent intent = new Intent();
@@ -302,7 +299,7 @@ public class RemoteInSearch extends ListActivity{
 					}catch (ActivityNotFoundException e){
 						Toast.makeText(mctx, getText(R.string.error_no_market), Toast.LENGTH_LONG).show();
 					}
-				} });
+				} });*/
 		}else{ 
 			p.setButton(getString(R.string.rem), new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
@@ -336,19 +333,6 @@ public class RemoteInSearch extends ListActivity{
 							}
 						}.start();
 					} });
-			}else{
-				p.setButton3(getText(R.string.btn_search_market), new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						p.dismiss();					
-						Intent intent = new Intent();
-				    	intent.setAction(android.content.Intent.ACTION_VIEW);
-				    	intent.setData(Uri.parse("market://details?id="+apk_lst.get(position).apkid));
-				    	try{
-							startActivity(intent);
-						}catch (ActivityNotFoundException e){
-							Toast.makeText(mctx, getText(R.string.error_no_market), Toast.LENGTH_LONG).show();
-						}
-				} });
 			}
 		}
 		p.show();

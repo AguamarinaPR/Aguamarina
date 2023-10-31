@@ -77,7 +77,6 @@ public class Settings extends Activity implements OnCheckedChangeListener, OnCli
 		else
 			btn2.setChecked(true);
 		
-		
 		Button btn_ok = (Button) findViewById(R.id.btn_save);
 		btn_ok.setOnClickListener(this);
 		
@@ -118,7 +117,6 @@ public class Settings extends Activity implements OnCheckedChangeListener, OnCli
 				mix = true;
 		}
 	}
-	
 
 	public void onClick(View v) {
 		if(catg == true)

@@ -19,10 +19,8 @@
     
     <string name="about_txt1">برنامج لتثبيت البرامج على هاتف اندرويد.\n</string>
     
-    <string name="about_txt11">Version: 1.0.0\n(released under GNU GPL v2 license)\n
-    \nCredits: Roberto Jacinto - Caixa Mágica\n
-	\t\t\tFrancisco "ppelao3k" - Spanish translation\n
-    \t\t\tManaa Alshihe - Arabic translation\n</string>
+    <string name="about_txt11">Version: 1.0\n(released under GNU GPL v2 license)\n
+    \nForked from Aptoide\n</string>
 
     
     <string name="about_site">الموقع:</string>

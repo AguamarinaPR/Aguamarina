@@ -23,12 +23,12 @@
           <RadioButton android:checked="false"
                android:text="@string/order_popup_lst2" 
                android:id="@+id/org_abc" />
-          <RadioButton android:checked="false"
+          <!--<RadioButton android:checked="false"
                android:text="@string/order_popup_lst3" 
                android:id="@+id/org_rat" />
           <RadioButton android:checked="false"
                android:text="@string/order_popup_lst4" 
-               android:id="@+id/org_dwn" />
+               android:id="@+id/org_dwn" />-->
      </RadioGroup> 
      
      <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="#FFFFFFFF" 
@@ -45,7 +45,7 @@
           <RadioButton android:checked="false"
                android:text="@string/order_popup_catg1" 
                android:id="@+id/shw_ct" />
-          <RadioButton android:checked="true"
+          <RadioButton android:checked="false"
                android:text="@string/order_popup_catg2" 
                android:id="@+id/shw_all" />
      </RadioGroup>
@@ -71,3 +71,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!--This file was modified by TropicalBananas in 2023.-->

@@ -14,13 +14,13 @@
           <RadioButton android:checked="false"
                android:text="@string/order_popup_catg1" 
                android:id="@+id/shw_ct" />
-          <RadioButton android:checked="true"
+          <RadioButton android:checked="false"
                android:text="@string/order_popup_catg2" 
                android:id="@+id/shw_all" />
      
 </RadioGroup>
-<TextView android:text="@string/title_appfilter" android:layout_width="wrap_content" android:layout_height="fill_parent" android:textStyle="bold"></TextView>
-<CheckBox android:id="@+id/chkhideincomp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/order_popup_hideincomptitle"></CheckBox>
+<!--<TextView android:text="@string/title_appfilter" android:layout_width="wrap_content" android:layout_height="fill_parent" android:textStyle="bold"></TextView>
+<CheckBox android:id="@+id/chkhideincomp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/order_popup_hideincomptitle"></CheckBox>-->
      
      <LinearLayout 
     android:layout_width="fill_parent"
@@ -65,3 +65,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!--This file was modified by TropicalBananas in 2023.-->

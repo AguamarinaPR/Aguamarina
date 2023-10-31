@@ -30,20 +30,6 @@
     					android:layout_width="fill_parent"
     					android:layout_height="wrap_content"
     					android:orientation="horizontal">
-					
-						<TextView
-							android:id="@+id/down_txt"
-    						android:textSize="0px"
-            				android:textStyle="bold"
-            				android:layout_width="wrap_content"
-            				android:layout_height="wrap_content"
-            				android:text="@string/dwn_n"
-            				android:textColor="#FFFFBB"/>
-            			
-            			<TextView android:id="@+id/down_n"
-    						android:textSize="16px"
-            				android:layout_width="wrap_content"
-            				android:layout_height="wrap_content"/>
             			
             		</LinearLayout>
             			

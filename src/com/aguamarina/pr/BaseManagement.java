@@ -213,17 +213,17 @@ public class BaseManagement extends Activity {
 		// Order
 		final RadioButton ord_rct = (RadioButton) view.findViewById(R.id.org_rct);
 		final RadioButton ord_abc = (RadioButton) view.findViewById(R.id.org_abc);
-		final RadioButton ord_rat = (RadioButton) view.findViewById(R.id.org_rat);
-		final RadioButton ord_dwn = (RadioButton) view.findViewById(R.id.org_dwn);
+/*		final RadioButton ord_rat = (RadioButton) view.findViewById(R.id.org_rat);
+		final RadioButton ord_dwn = (RadioButton) view.findViewById(R.id.org_dwn);*/
 		
 		if(order_lst.equals("abc"))
 			ord_abc.setChecked(true);
 		else if(order_lst.equals("rct"))
 			ord_rct.setChecked(true);
-		else if(order_lst.equals("rat"))
+/*		else if(order_lst.equals("rat"))
 			ord_rat.setChecked(true);
 		else if(order_lst.equals("dwn"))
-			ord_dwn.setChecked(true);
+			ord_dwn.setChecked(true);*/
 		
 		final RadioGroup grp1 = (RadioGroup) view.findViewById(R.id.groupbtn);
 		grp1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -234,12 +234,12 @@ public class BaseManagement extends Activity {
 				}else if(checkedId == ord_abc.getId()){
 					pop_change = true;
 					order_lst = "abc";
-				}else if(checkedId == ord_rat.getId()){
+/*				}else if(checkedId == ord_rat.getId()){
 					pop_change = true;
 					order_lst = "rat";
 				}else if(checkedId == ord_dwn.getId()){
 					pop_change = true;
-					order_lst = "dwn";
+					order_lst = "dwn";*/
 				}
 			}
 		});
@@ -423,7 +423,7 @@ public class BaseManagement extends Activity {
 		 
 	}
 	
-	
+	//TODO This might be where the Android 1.5 problem is
 	 class LstBinder implements ViewBinder
 		{
 			public boolean setViewValue(View view, Object data, String textRepresentation)
