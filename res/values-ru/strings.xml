@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_avail">Доступные</string>
+    <string name="tab_inst">Установленные</string>
+    <string name="tab_updt">Обновления</string>
+    
+    <string name="no_found">Приложения не найдены!</string>
+    <string name="no_repo">Нет репозиториев!</string>
+ 
+    <string name="not_inst">Не установлено</string>
+    <string name="installed">Установлено - версия</string>
+    <string name="installed_update">Доступно обновление - версия</string>
+    <string name="srv_version">Доступная версия:</string>
+    
+    <string name="srch_hint">Название приложения</string>
+    
+    <string name="about_txt1">Каталог приложений для старых версий Android\n</string>
+    
+    <string name="about_txt11">Версия: 1.0.0 (лицензия GPL v2)\n
+    \nФорк Aptoide\n</string>
+
+    <string name="about_site">Сайт: </string>
+    <string name="about_mail">Контакты: </string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<!--This file was modified by TropicalBananas in 2023.-->

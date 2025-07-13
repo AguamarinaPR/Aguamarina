@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="top_please_wait">Пожалуйста, подождите</string>
+    <string name="top_error">Ошибка</string>
+    <string name="top_download">Загрузка</string>
+
+    <string name="fetch_apk">Загрузка приложения</string>
+
+    <string name="aguamarina_error">Не удалось подключиться к серверу</string>
+    
+    <string name="manage_repo_add">Добавить репозиторий</string>
+    <string name="manage_repo_answ_wrongl">Некорректный логин</string>
+    <string name="manage_repo_answ_cc">Ошибка подключения к серверу</string>
+    <string name="manage_repo_answ_lr">Требуется авторизация</string>
+    
+    <string name="app_pop_up_no_info">Информация на сервере отсутствует.</string>
+    <string name="error_no_market">Google Market не установлен!</string>
+        
+    <string name="settings_cache">Очистка кеша...</string>
+    
+    <string name="unsupportedversion">Неподдерживаемая версия Android</string>
+    <string name="unsupported_android15">К сожалению, в Android 1.5 есть ошибка, вызывающая сбой Aguamarina при прокрутке.\nСледите за обновлениями, мы работаем над решением.\nДля продолжения нажмите ОК.</string>
+    <string name="unsupported_androidnew">В Android 10 (API 29) удалена кнопка меню, поэтому часть интерфейса Aguamarina недоступна.\nДля продолжения нажмите ОК.</string>
+    
+    <string name="remote_in_noSD_title">Нет памяти</string>
+    <string name="remote_in_noSD">SD-карта не обнаружена.\nУстановите карту и повторите попытку.</string>
+    <string name="remote_in_noSDspace">Недостаточно места на SD-карте для Aguamarina.\nОсвободите пространство и повторите попытку.</string>
+    
+    <string name="error_on_update">Ошибка обновления следующих репозиториев:\n</string>
+    
+    <string name="updating_msg">Обновление списка приложений...</string>
+    <string name="update_repos">Обновить репозитории</string>
+    <string name="update_main">Список используемых репозиториев изменён.\nОбновить их сейчас?</string>
+    
+    <string name="updating_3g">Используется мобильный интернет (3G). Рекомендуется обновлять через Wi-Fi для стабильности.\nПродолжить?</string>
+    <string name="updating_cfrm">Обновить репозитории?</string>
+    <string name="updating_norepos">Нет активных репозиториев в списке.\nДобавьте репозиторий или включите существующие.</string>
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<!--This file was modified by TropicalBananas in 2023.-->
