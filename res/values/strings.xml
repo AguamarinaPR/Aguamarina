@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Aguamarina</string>
-    <string name="ver_str">"1.0"</string>
-    <string name="change_log_url">http://www.aguamarina.altervista.org/changelog</string>
     
     <string name="tab_avail">Available</string>
     <string name="tab_inst">Installed</string>
@@ -21,7 +19,7 @@
     
     <string name="about_txt1">Package manager for legacy android\n</string>
     
-    <string name="about_txt11">Version: 1.0.0 (licensed with GPL v2)\n
+    <string name="about_txt11">Version: 1.1 (licensed with GPL v2)\n
     \nForked from Aptoide\n</string>
 
     
@@ -51,4 +49,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->
+<!--This file was modified by TropicalBananas Copyright (C) 2023-2025-->

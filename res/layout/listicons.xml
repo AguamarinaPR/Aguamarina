@@ -8,8 +8,8 @@
     
 
     <ImageView android:id="@+id/appicon"
-        android:layout_width="35px"
-        android:layout_height="35px"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
         android:cropToPadding ="true"
         android:scaleType="fitCenter" 
         android:layout_gravity="center_vertical|center_horizontal"/>

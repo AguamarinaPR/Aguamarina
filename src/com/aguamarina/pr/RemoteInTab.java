@@ -149,9 +149,9 @@ public class RemoteInTab extends TabActivity {
 		prefEdit.commit();
 
 		myTabHost = getTabHost();
-		myTabHost.addTab(myTabHost.newTabSpec("avail").setIndicator(getText(R.string.tab_avail),getResources().getDrawable(android.R.drawable.ic_input_add)).setContent(new Intent(this, TabAvailable.class)));  
+		myTabHost.addTab(myTabHost.newTabSpec("avail").setIndicator(getText(R.string.tab_avail),getResources().getDrawable(R.drawable.ic_add)).setContent(new Intent(this, TabAvailable.class)));  
 		myTabHost.addTab(myTabHost.newTabSpec("inst").setIndicator(getText(R.string.tab_inst),getResources().getDrawable(android.R.drawable.star_off)).setContent(new Intent(this, TabInstalled.class)));
-		myTabHost.addTab(myTabHost.newTabSpec("updt").setIndicator(getText(R.string.tab_updt),getResources().getDrawable(android.R.drawable.star_on)).setContent(new Intent(this, TabUpdates.class)));
+		myTabHost.addTab(myTabHost.newTabSpec("updt").setIndicator(getText(R.string.tab_updt),getResources().getDrawable(R.drawable.ic_update)).setContent(new Intent(this, TabUpdates.class)));
 
 		myTabHost.setPersistentDrawingCache(ViewGroup.PERSISTENT_SCROLLING_CACHE);
 
@@ -164,18 +164,18 @@ public class RemoteInTab extends TabActivity {
 			upd_alrt.setMessage(getText(R.string.unsupported_android15));
 			upd_alrt.setButton(getText(R.string.btn_ok), new OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					finish();
+					return;
 				}
 			});
 			upd_alrt.show();
-		}else if(Integer.parseInt(android.os.Build.VERSION.SDK) >= 29){
+		}else if(Integer.parseInt(android.os.Build.VERSION.SDK) >= 26){
 			final AlertDialog upd_alrt = new AlertDialog.Builder(mctx).create();
 			upd_alrt.setIcon(R.drawable.newandroid);
 			upd_alrt.setTitle(getText(R.string.unsupportedversion));
 			upd_alrt.setMessage(getText(R.string.unsupported_androidnew));
 			upd_alrt.setButton(getText(R.string.btn_ok), new OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					finish();
+					return;
 				}
 			});
 			upd_alrt.show();

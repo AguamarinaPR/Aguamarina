@@ -139,6 +139,7 @@ public class Aguamarina extends Activity {
 			if(sPref.getInt("version", 0) < pkginfo.versionCode){
 		   		db.UpdateTables();
 		   		prefEdit.putBoolean("mode", true);
+		   		prefEdit.putBoolean("hideincompcheck", true);
 		   		prefEdit.putInt("version", pkginfo.versionCode);
 		   		prefEdit.commit();
 			}

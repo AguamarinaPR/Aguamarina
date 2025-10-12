@@ -32,6 +32,8 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -39,6 +41,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 public class Settings extends Activity implements OnCheckedChangeListener, OnClickListener{
 	
 	private SharedPreferences sPref;
+	private SharedPreferences.Editor prefEdit;
 	
 	private Intent rtrn = new Intent();
 	
@@ -53,6 +56,8 @@ public class Settings extends Activity implements OnCheckedChangeListener, OnCli
 	private int ctg_id;
 	private int mix_id;
 	
+	private int hidincmp_id;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,7 +66,7 @@ public class Settings extends Activity implements OnCheckedChangeListener, OnCli
 		mctx = this;
 		
 		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
-		
+		prefEdit = sPref.edit();
 		
 		grp2 = (RadioGroup) findViewById(R.id.groupshow);
 		grp2.setOnCheckedChangeListener(this);
@@ -77,6 +82,27 @@ public class Settings extends Activity implements OnCheckedChangeListener, OnCli
 		else
 			btn2.setChecked(true);
 		
+		CheckBox hideIncompatible = (CheckBox) findViewById(R.id.chkhideincomp);
+		hidincmp_id = hideIncompatible.getId();
+		hideIncompatible.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton check, boolean isChecked) {
+				if (check.isChecked()){
+					prefEdit.putBoolean("hideincompcheck", true);
+					prefEdit.commit();
+				}
+				else
+				{
+					prefEdit.putBoolean("hideincompcheck", false);
+					prefEdit.commit();
+				}
+			}
+			
+		});
+		
+		if(sPref.getBoolean("hideincompcheck", true))
+			hideIncompatible.setChecked(true);
+		else
+			hideIncompatible.setChecked(false);
 		Button btn_ok = (Button) findViewById(R.id.btn_save);
 		btn_ok.setOnClickListener(this);
 		

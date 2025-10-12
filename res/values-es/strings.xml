@@ -5,24 +5,24 @@
     <string name="tab_inst">Instalada</string>
     <string name="tab_updt">Actualizaciones</string>
     
-    <string name="no_found">Aplicacion no encontrada!</string>
-    <string name="no_repo">No hay repositorios!</string>
+    <string name="no_found">¡Aplicación no encontrada!</string>
+    <string name="no_repo">¡No hay repositorios!</string>
  
  	<string name="not_inst">No instalada</string>
     <string name="installed">Ver. - Instalada:</string>
-    <string name="installed_update">Posible actualizacion - Ver.:</string>
+    <string name="installed_update">Posible actualización - Ver.:</string>
     <string name="srv_version">Version disponible:</string>
     
     <string name="srch_label">Aguamarina</string>
-    <string name="srch_hint">Nombre de la aplicacion</string>
+    <string name="srch_hint">Nombre de la aplicación</string>
     
-    <string name="about_txt1">Paquete de instalacion para telefono Android.\n</string>
+    <string name="about_txt1">Gestor de paquetes para Android antiguo.\n</string>
     
-    <string name="about_txt11">Version: 1.0\n(licencia GNU GPL v2)\n
+    <string name="about_txt11">Versión: 1.1\n(licencia GNU GPL v2)\n
     \nBasado en Aptoide\n</string>
 
     
-    <string name="about_site">Inicio: </string>
+    <string name="about_site">Sitio: </string>
     
     <string name="about_mail">Contacto: </string>
     
@@ -48,4 +48,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->
+<!--This file was modified by TropicalBananas Copyright (C) 2023-2025-->

@@ -113,7 +113,7 @@ public class ApkInfo extends Activity{
 		if(test_icon.exists() && test_icon.length() > 0){
 			icon.setImageDrawable(new BitmapDrawable(icon_path));
 		}else{
-			icon.setImageResource(android.R.drawable.sym_def_app_icon);
+			icon.setImageResource(R.drawable.loadingicon);
 		}
 		
 		TextView apk_name = (TextView)findViewById(R.id.app_name);

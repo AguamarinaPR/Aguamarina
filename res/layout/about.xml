@@ -9,7 +9,7 @@
   		android:text="@string/about_txt1"
   		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:textSize="16px"
+  		android:textSize="16sp"
   		android:textColor="#ffffff"
   		android:gravity="center_vertical|center_horizontal" />
   		  		
@@ -17,7 +17,7 @@
   		android:text="@string/about_txt11"
   		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:textSize="16px" 
+  		android:textSize="16sp" 
   		android:textColor="#ffffff" />
 
 	<LinearLayout
@@ -30,7 +30,7 @@
   			android:text="@string/about_site"
   			android:layout_width="wrap_content"
   			android:layout_height="wrap_content"
-  			android:textSize="16px" 
+  			android:textSize="16sp" 
   			android:textColor="#ffffff" />
   			
   		<TextView android:id="@+id/not" 
@@ -43,7 +43,7 @@
 			android:layout_width="wrap_content" 
 			android:layout_height="fill_parent"
 			android:autoLink="web" 
-			android:textSize="16px" />
+			android:textSize="16sp" />
 	</LinearLayout>
 	
 	<TextView android:id="@+id/not" 
@@ -57,7 +57,7 @@
     	android:layout_height="fill_parent"
     	android:orientation="horizontal">
 	
-<!--		<TextView android:id="@+id/about2" 
+    <TextView android:id="@+id/about2" 
 			android:text="@string/about_mail"
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
@@ -74,13 +74,13 @@
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
 			android:autoLink="email" 
-			android:textSize="16px" />-->
+			android:textSize="16px" />
 	</LinearLayout>
 	<TextView android:id="@+id/about11"
   		android:text="   "
   		android:layout_width="fill_parent"
   		android:layout_height="fill_parent"
-  		android:textSize="16px" />
+  		android:textSize="16sp" />
 </LinearLayout>
 <!--
  * Copyright (C) 2009  Roberto Jacinto
@@ -100,3 +100,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!--This file was modified by TropicalBananas in 2023.-->

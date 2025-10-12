@@ -113,7 +113,7 @@ public class RemoteInSearch extends ListActivity{
              		new Uri.Builder().build();
     				tmpr.setImageURI(Uri.parse(textRepresentation));
              	}else{
-             		tmpr.setImageResource(android.R.drawable.sym_def_app_icon);
+             		tmpr.setImageResource(R.drawable.loadingicon);
              	}
 			}else{
 				return false;
@@ -239,7 +239,7 @@ public class RemoteInSearch extends ListActivity{
 		if(test_icon.exists() && test_icon.length() > 0){
 			p.setIcon(new BitmapDrawable(tmp_path));
 		}else{
-			p.setIcon(android.R.drawable.sym_def_app_icon);
+			p.setIcon(R.drawable.loadingicon);
 		}
 		p.setTitle(apk_lst.get(position).name);
 		TextView t1 = (TextView) view.findViewById(R.id.n11);
