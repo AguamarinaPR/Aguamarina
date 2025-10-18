@@ -1,4 +1,4 @@
-/*This file was modified by TropicalBananas in 2023.*/
+/*This file was modified by TropicalBananas Copyright (C) 2023-2025*/
 package com.aguamarina.pr;
 
 import java.io.File;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
 import java.util.concurrent.TimeoutException;
 
@@ -84,6 +85,8 @@ public class BaseManagement extends Activity {
 		 "Travel", "Demo", "Software Libraries", "Other"};
 	private static final String[] game_ctg = {"Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual", "Emulators", "Other"};
 	protected static WakeLock stayAwake = null;
+	
+	static protected List<Map<String, Object>> crslMap = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -414,6 +417,20 @@ public class BaseManagement extends Activity {
 						new String[] {"pkg", "name", "name2", "status", "status2", "icon", "rat"}, new int[] {R.id.pkg, R.id.name, R.id.nameup, R.id.isinst, R.id.isupdt, R.id.appicon, R.id.rating});
 
 				updateAdpt.setViewBinder(new LstBinder());
+				
+				// TODO: Remove rating stuff remains, and probably Down.
+				crslMap = new ArrayList<Map<String, Object>>(10);
+				if(availMap.size() <= 10){
+					crslMap = availMap;
+				}else{
+					Random r = new Random();
+					//List<Map<String, Object>> availiMap = availMap;
+					for(int i = 0; i < 10; i++){
+						int rindex = r.nextInt(availMap.size());
+						crslMap.add(availMap.get(rindex));
+						availMap.remove(rindex);
+					}
+				}
 
 				stop_pd.sendEmptyMessage(0);
 

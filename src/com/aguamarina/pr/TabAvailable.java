@@ -1,4 +1,4 @@
-/*This file was modified by TropicalBananas in 2023.*/
+/*This file was modified by TropicalBananas Copyright (C) 2023-2025*/
 package com.aguamarina.pr;
 
 import java.util.Vector;
@@ -13,16 +13,19 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Gallery;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class TabAvailable extends BaseManagement implements OnItemClickListener{
 
@@ -42,6 +45,10 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 	
 	private SimpleAdapter handler_adpt = null;
 	
+	private LinearLayout cll = null;
+	private View CarouselView = null;
+	CarouselAdpt CarouselAdapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,6 +58,14 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		lv = new ListView(this);
 		lv.setOnItemClickListener(this);
+		cll = new LinearLayout(this);
+		cll.setOrientation(LinearLayout.VERTICAL);
+		
+		LayoutInflater li = LayoutInflater.from(this);
+		CarouselView = li.inflate(R.layout.appcarousel, null);
+		CarouselView.setVisibility(8);
+		cll.addView(CarouselView);
+		cll.addView(lv);
 
 		
 		new Thread(){
@@ -145,6 +160,13 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 			
 		}.start();
 	}
+	public void showCarousel() {
+		if (sPref.getBoolean("mode", false) && crslMap.size() > 0) {
+			CarouselView.setVisibility(0);
+		} else {
+			CarouselView.setVisibility(8);
+		}
+	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -152,21 +174,24 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 	        switch (deep) {
 			case 1:
 				lv.setAdapter(getRootCtg());
-				setContentView(lv);
+				setContentView(cll);
 				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				deep = 0;
+				showCarousel();
 				break;
 			case 2:
 				lv.setAdapter(getAppCtg());
-				setContentView(lv);
+				setContentView(cll);
 				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				deep = 1;
+				CarouselView.setVisibility(8);
 				break;
 			case 3:
 				lv.setAdapter(getGamesCtg());
-				setContentView(lv);
+				setContentView(cll);
 				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 				deep = 1;
+				CarouselView.setVisibility(8);
 				break;
 			}
 			
@@ -175,6 +200,106 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		return super.onKeyDown(keyCode, event);
 	}
 
+	public void openApkInfo(String pkg_id) {
+		Intent apkinfo = new Intent(this,ApkInfo.class);
+		apkinfo.putExtra("name", db.getName(pkg_id));
+		apkinfo.putExtra("icon", this.getString(R.string.icons_path)+pkg_id);
+		apkinfo.putExtra("apk_id", pkg_id);
+		
+		String tmpi = db.getDescript(pkg_id);
+		if(!(tmpi == null)){
+			apkinfo.putExtra("about",tmpi);
+		}else{
+			apkinfo.putExtra("about",getText(R.string.app_pop_up_no_info));
+		}
+		
+
+		Vector<String> tmp_get = db.getApk(pkg_id);
+		apkinfo.putExtra("server", tmp_get.firstElement());
+		apkinfo.putExtra("version", tmp_get.get(1));
+		apkinfo.putExtra("dwn", tmp_get.get(4));
+		apkinfo.putExtra("rat", tmp_get.get(5));
+		apkinfo.putExtra("size", tmp_get.get(6));
+		apkinfo.putExtra("type", 0);
+		
+		startActivityForResult(apkinfo,30);
+		/*
+		Vector<String> tmp_get = db.getApk(pkg_id);
+		String tmp_path = this.getString(R.string.icons_path)+pkg_id;
+		File test_icon = new File(tmp_path);
+
+		LayoutInflater li = LayoutInflater.from(this);
+		View view = li.inflate(R.layout.alertscroll, null);
+		Builder alrt = new AlertDialog.Builder(this).setView(view);
+		final AlertDialog p = alrt.create();
+		if(test_icon.exists() && test_icon.length() > 0){
+			p.setIcon(new BitmapDrawable(tmp_path));
+		}else{
+			p.setIcon(android.R.drawable.sym_def_app_icon);
+		}
+		p.setTitle(db.getName(pkg_id));
+		TextView t1 = (TextView) view.findViewById(R.id.n11);
+		t1.setText(tmp_get.firstElement());
+		TextView t2 = (TextView) view.findViewById(R.id.n22);
+		t2.setText(tmp_get.get(1));
+		TextView t3 = (TextView) view.findViewById(R.id.n33);
+		t3.setText(tmp_get.get(2));
+		TextView t4 = (TextView) view.findViewById(R.id.n44);
+		t4.setText(tmp_get.get(3));
+		TextView t5 = (TextView) view.findViewById(R.id.n55);
+		String tmpi = db.getDescript(pkg_id);
+		if(!(tmpi == null)){
+			t5.setText(tmpi);
+		}else{
+			t5.setText(getText(R.string.app_pop_up_no_info));
+		}
+		
+		TextView t6 = (TextView) view.findViewById(R.id.down_n);
+		t6.setText(tmp_get.get(4));
+
+
+		p.setButton2(getText(R.string.btn_ok), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				return;
+			} });
+
+		p.setButton(getString(R.string.install), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				p.dismiss();					
+				new Thread() {
+					public void run() {
+						String apk_path = downloadFile(pkg_id);
+						Message msg_alt = new Message();
+						if(apk_path == null){
+							msg_alt.arg1= 1;
+							download_error_handler.sendMessage(msg_alt);
+						}else if(apk_path.equals("*md5*")){
+							msg_alt.arg1 = 0;
+							download_error_handler.sendMessage(msg_alt);
+						}else{
+							Message msg = new Message();
+							msg.arg1 = 1;
+							download_handler.sendMessage(msg);
+							installApk(apk_path);
+						}
+					}
+				}.start(); 	
+			} });
+		p.setButton3(getText(R.string.btn_search_market), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				p.dismiss();					
+				Intent intent = new Intent();
+				intent.setAction(android.content.Intent.ACTION_VIEW);
+				intent.setData(Uri.parse("market://details?id="+pkg_id));
+				try{
+					startActivity(intent);
+				}catch (ActivityNotFoundException e){
+					Toast.makeText(mctx, getText(R.string.error_no_market), Toast.LENGTH_LONG).show();
+				}
+			} });
+
+		p.show();*/
+	}
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 
@@ -186,31 +311,34 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 			shown_now = null;
 			Toast.makeText(mctx, "Applications", Toast.LENGTH_SHORT).show();
 			lv.setAdapter(getAppCtg());
-			setContentView(lv);
+			setContentView(cll);
 			lv.setSelection(pos-1);
 			deep = 1;
+			CarouselView.setVisibility(8);
 		}else if(pkg_id.equals("Games")){
 			shown_now = null;
 			Toast.makeText(mctx, "Games", Toast.LENGTH_SHORT).show();
 			lv.setAdapter(getGamesCtg());
-			setContentView(lv);
+			setContentView(cll);
 			lv.setSelection(pos-1);
 			deep = 1;
+			CarouselView.setVisibility(8);
 		}else if(pkg_id.equals("Others")){
 			shown_now = null;
 			main_shown_now = 2;
 			Toast.makeText(mctx, "Others", Toast.LENGTH_SHORT).show();
 			lv.setAdapter(getGivenCatg(null, 2));
-			setContentView(lv);
+			setContentView(cll);
 			lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 			lv.setSelection(pos-1);
 			deep = 1;
+			CarouselView.setVisibility(8);
 		}else if(pkg_id.equals("apps")){
 			shown_now = ((TextView)((LinearLayout)arg1).findViewById(R.id.name)).getText().toString();
 			main_shown_now = 1;
 			Toast.makeText(mctx, "Applications - " + ((TextView)((LinearLayout)arg1).findViewById(R.id.name)).getText().toString(), Toast.LENGTH_SHORT).show();
 			lv.setAdapter(getGivenCatg(((TextView)((LinearLayout)arg1).findViewById(R.id.name)).getText().toString(),1));
-			setContentView(lv);
+			setContentView(cll);
 			lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 			lv.setSelection(pos-1);
 			deep = 2;
@@ -219,110 +347,12 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 			main_shown_now = 0;
 			Toast.makeText(mctx, "Games - " + ((TextView)((LinearLayout)arg1).findViewById(R.id.name)).getText().toString(), Toast.LENGTH_SHORT).show();
 			lv.setAdapter(getGivenCatg(((TextView)((LinearLayout)arg1).findViewById(R.id.name)).getText().toString(),0));
-			setContentView(lv);
+			setContentView(cll);
 			lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 			lv.setSelection(pos-1);
 			deep = 3;
 		}else{
-
-			Intent apkinfo = new Intent(this,ApkInfo.class);
-			apkinfo.putExtra("name", db.getName(pkg_id));
-			apkinfo.putExtra("icon", this.getString(R.string.icons_path)+pkg_id);
-			apkinfo.putExtra("apk_id", pkg_id);
-			
-			String tmpi = db.getDescript(pkg_id);
-			if(!(tmpi == null)){
-				apkinfo.putExtra("about",tmpi);
-			}else{
-				apkinfo.putExtra("about",getText(R.string.app_pop_up_no_info));
-			}
-			
-
-			Vector<String> tmp_get = db.getApk(pkg_id);
-			apkinfo.putExtra("server", tmp_get.firstElement());
-			apkinfo.putExtra("version", tmp_get.get(1));
-			apkinfo.putExtra("dwn", tmp_get.get(4));
-			apkinfo.putExtra("rat", tmp_get.get(5));
-			apkinfo.putExtra("size", tmp_get.get(6));
-			apkinfo.putExtra("type", 0);
-			
-			startActivityForResult(apkinfo,30);
-			/*
-			Vector<String> tmp_get = db.getApk(pkg_id);
-			String tmp_path = this.getString(R.string.icons_path)+pkg_id;
-			File test_icon = new File(tmp_path);
-
-			LayoutInflater li = LayoutInflater.from(this);
-			View view = li.inflate(R.layout.alertscroll, null);
-			Builder alrt = new AlertDialog.Builder(this).setView(view);
-			final AlertDialog p = alrt.create();
-			if(test_icon.exists() && test_icon.length() > 0){
-				p.setIcon(new BitmapDrawable(tmp_path));
-			}else{
-				p.setIcon(android.R.drawable.sym_def_app_icon);
-			}
-			p.setTitle(db.getName(pkg_id));
-			TextView t1 = (TextView) view.findViewById(R.id.n11);
-			t1.setText(tmp_get.firstElement());
-			TextView t2 = (TextView) view.findViewById(R.id.n22);
-			t2.setText(tmp_get.get(1));
-			TextView t3 = (TextView) view.findViewById(R.id.n33);
-			t3.setText(tmp_get.get(2));
-			TextView t4 = (TextView) view.findViewById(R.id.n44);
-			t4.setText(tmp_get.get(3));
-			TextView t5 = (TextView) view.findViewById(R.id.n55);
-			String tmpi = db.getDescript(pkg_id);
-			if(!(tmpi == null)){
-				t5.setText(tmpi);
-			}else{
-				t5.setText(getText(R.string.app_pop_up_no_info));
-			}
-			
-			TextView t6 = (TextView) view.findViewById(R.id.down_n);
-			t6.setText(tmp_get.get(4));
-
-
-			p.setButton2(getText(R.string.btn_ok), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					return;
-				} });
-
-			p.setButton(getString(R.string.install), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					p.dismiss();					
-					new Thread() {
-						public void run() {
-							String apk_path = downloadFile(pkg_id);
-							Message msg_alt = new Message();
-							if(apk_path == null){
-								msg_alt.arg1= 1;
-								download_error_handler.sendMessage(msg_alt);
-							}else if(apk_path.equals("*md5*")){
-								msg_alt.arg1 = 0;
-								download_error_handler.sendMessage(msg_alt);
-							}else{
-								Message msg = new Message();
-								msg.arg1 = 1;
-								download_handler.sendMessage(msg);
-								installApk(apk_path);
-							}
-						}
-					}.start(); 	
-				} });
-			p.setButton3(getText(R.string.btn_search_market), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					p.dismiss();					
-					Intent intent = new Intent();
-					intent.setAction(android.content.Intent.ACTION_VIEW);
-					intent.setData(Uri.parse("market://details?id="+pkg_id));
-					try{
-						startActivity(intent);
-					}catch (ActivityNotFoundException e){
-						Toast.makeText(mctx, getText(R.string.error_no_market), Toast.LENGTH_LONG).show();
-					}
-				} });
-
-			p.show();*/
+			openApkInfo(pkg_id);
 		}
 	}
 	
@@ -357,7 +387,33 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		}
 	}
 
+	public void initCarousel() {
+		//TODO: There's probably something to do here
+		CarouselAdapter = new CarouselAdpt(TabAvailable.this, crslMap);
+		final TextView CrslNam = (TextView) findViewById(R.id.NameText);
+		final TextView CrslVer = (TextView) findViewById(R.id.VersionText);
+		Gallery CrslGal = (Gallery) findViewById(R.id.App_Carousel);
+		CrslGal.setAdapter(CarouselAdapter);
+		CrslGal.setOnItemSelectedListener(new OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+				CrslNam.setText(crslMap.get(position).get("name").toString());
+				CrslVer.setText(crslMap.get(position).get("status").toString());
+				CrslNam.setVisibility(0);
+				CrslVer.setVisibility(0);
+			}
 
+			public void onNothingSelected(AdapterView<?> arg0) {
+				CrslNam.setVisibility(4);
+				CrslVer.setVisibility(4);
+			}
+		});
+		CrslGal.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+				final String pkg_id = crslMap.get(position).get("pkg").toString();
+				openApkInfo(pkg_id);
+	    	}
+	    });
+	}
 
 	protected Handler displayRefresh = new Handler(){
 
@@ -368,7 +424,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 				handler_adpt = availAdpt;
 			}
 			lv.setAdapter(handler_adpt);
-			setContentView(lv);
+			setContentView(cll);
 			lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 			lv.setSelection(pos-1);
 		}
@@ -391,7 +447,8 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			lv.setAdapter(getAvailable(null,-1));
-			setContentView(lv);
+			setContentView(cll);
+			showCarousel();
 		}
 		 
 	 };
@@ -404,11 +461,14 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 				super.handleMessage(msg);
 				if(sPref.getBoolean("changeavail", false)){
 					lv.setAdapter(getAvailable(shown_now,main_shown_now));
-					setContentView(lv);
+					setContentView(cll);
 					lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 					lv.setSelection(pos-1);
 					prefEdit.remove("changeavail");
 					prefEdit.commit();
+					//TODO: Check if this is a good place to put such
+					initCarousel();
+					showCarousel();
 				}
 			}
 			
