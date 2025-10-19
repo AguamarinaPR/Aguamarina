@@ -388,7 +388,6 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 	}
 
 	public void initCarousel() {
-		//TODO: There's probably something to do here
 		CarouselAdapter = new CarouselAdpt(TabAvailable.this, crslMap);
 		final TextView CrslNam = (TextView) findViewById(R.id.NameText);
 		final TextView CrslVer = (TextView) findViewById(R.id.VersionText);
@@ -466,7 +465,6 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 					lv.setSelection(pos-1);
 					prefEdit.remove("changeavail");
 					prefEdit.commit();
-					//TODO: Check if this is a good place to put such
 					initCarousel();
 					showCarousel();
 				}

@@ -1,7 +1,7 @@
 ## Aguamarina features modified aptoide code.
 
 ## LICENSE FOR AGUAMARINA
-> Copyright (C) 2023 TropicalBananas
+> Copyright (C) 2023 TropicalBananas and contributors
 > 
 > This program is free software; you can redistribute it and/or modify
 > it under the terms of the GNU General Public License as published by

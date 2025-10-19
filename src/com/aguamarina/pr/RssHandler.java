@@ -576,7 +576,7 @@ public class RssHandler extends DefaultHandler{
 			}
 		}
 	}
-//TODO: Add option to disable compatibility filter
+
 		private boolean CompatibilityTest(ApkNodeFull tmp_apk) {
 			if(!sPref.getBoolean("hideincompcheck", true)){
 				return true;
