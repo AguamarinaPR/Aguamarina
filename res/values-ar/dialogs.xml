@@ -20,7 +20,6 @@
     <string name="settings_cache">مسح الذاكرة المؤقته...</string>
     
     <string name="unsupportedversion">Unsupported Android Version</string>
-    <string name="unsupported_android15">We\'re sorry\, but unfortunately there is a bug which causes Aguamarina to crash when scrolling down on Android 1.5\nPlease stay up to date on updates as we are actively working on a solution to the problem.\nTo continue anyways\, press the OK button.</string>
     <string name="unsupported_androidnew">Unfortunately, the Android API version 26 (Android 8) prevents installation of APKs from apps targeting older SDKs, so not all parts of Aguamarina\'s Interface can be accessed.\nTo continue anyways, press the OK button.</string>
     
     <string name="remote_in_noSD_title">لا توجد بطاقة ذاكرة</string>

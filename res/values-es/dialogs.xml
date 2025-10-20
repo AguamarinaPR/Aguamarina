@@ -20,7 +20,6 @@
     <string name="settings_cache">Limpiando el cache...</string>
     
     <string name="unsupportedversion">Versión de Android no compatible</string>
-    <string name="unsupported_android15">Al momento hay un bug en aguamarina que causa un crash al desplazar la lista hacia abajo.\nMantenga la aplicación actualizada mientras encontramos una solución.\nPara continuar,  Pulse al botón de Ok.</string>
     <string name="unsupported_androidnew">La versión de API de Android 26 (Android 8) elimina la opción de instalar APKs desde aplicaciones con APIs antiguos, causando que no se pueda instalar aplicaciones usando Aguamarina.\nPara continuar,  Pulse al botón de Ok.</string>
     
     <string name="remote_in_noSD_title">No hay memoria</string>
