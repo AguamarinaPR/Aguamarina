@@ -442,7 +442,6 @@ public class BaseManagement extends Activity {
 		 
 	}
 	
-	//TODO This might be where the Android 1.5 problem is
 	 class LstBinder implements ViewBinder
 		{
 			public boolean setViewValue(View view, Object data, String textRepresentation)
