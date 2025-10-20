@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="up_server">Серверы: </string>
+    <string name="lstver">Версия сервера: </string>
+    <string name="dwn_n">Загрузок: </string>
+    <string name="isinst">Установлено: </string>
+    <string name="instver">Установленная версия: </string>
+    <string name="install">Установить </string>
+    <string name="about_alrt">О программе: </string>
+    <string name="rem">Удалить </string>
+    <string name="update">Обновить</string>
+    
+    <string name="update_alrt">Доступны обновления для некоторых приложений.\nПоказать их?</string>
+    <string name="repo_alrt">Список используемых репозиториев изменён.\nОбновить их сейчас?</string>
+    
+    <string name="title_repo_alrt">Внимание</string>
+    <string name="myrepo_alrt">У вас пока нет репозиториев.\nРекомендуем добавить наш.\nДобавить наш репозиторий?\n(Другие репозитории можно найти в Интернете)\n\n</string>
+    <string name="newrepo_alrt">Добавить этот репозиторий в список?\n\n</string>
+    
+    <string name="error_download_alrt">Ошибка подключения или повреждённый APK-файл!</string>
+    <string name="download_alrt">Загрузка приложения:\n </string>
+     
+    <string name="md5_error">Ошибка проверки хеша MD5!\nОбновите приложение перед повторной попыткой.</string>
+    <string name="network_error">Ошибка при получении приложения.\nПовторите попытку.</string>
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

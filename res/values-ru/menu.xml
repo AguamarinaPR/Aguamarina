@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="menu_update_repo">Обновить</string>
+    <string name="menu_manage">Репозитории</string>
+    <string name="menu_order">Отображение</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_about">О программе</string>
+    <string name="menu_search">Поиск</string>
+    
+    <string name="menu_add_repo">Новый репозиторий</string>
+    <string name="menu_rem_repo">Удалить репозиторий</string>
+    <string name="menu_edit_repo">Изменить репозиторий</string>
+    
+    <string name="btn_yes">Да</string>
+    <string name="btn_no">Нет</string>
+    <string name="btn_ok">ОК</string>
+    <string name="btn_add">Добавить</string>
+    <string name="btn_cancel">Отмена</string>
+    <string name="btn_done">Готово</string>
+    <string name="btn_chlog">Изменения</string>
+    <string name="btn_search_market">Поиск в Market</string>
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
