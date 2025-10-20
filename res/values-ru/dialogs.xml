@@ -20,8 +20,7 @@
     <string name="settings_cache">Очистка кеша...</string>
     
     <string name="unsupportedversion">Неподдерживаемая версия Android</string>
-    <string name="unsupported_android15">К сожалению, в Android 1.5 есть ошибка, вызывающая сбой Aguamarina при прокрутке.\nСледите за обновлениями, мы работаем над решением.\nДля продолжения нажмите ОК.</string>
-    <string name="unsupported_androidnew">В Android 10 (API 29) удалена кнопка меню, поэтому часть интерфейса Aguamarina недоступна.\nДля продолжения нажмите ОК.</string>
+    <string name="unsupported_androidnew">Unfortunately, the Android API version 26 (Android 8) prevents installation of APKs from apps targeting older SDKs, so not all parts of Aguamarina\'s Interface can be accessed.\nTo continue anyways, press the OK button.</string>
     
     <string name="remote_in_noSD_title">Нет памяти</string>
     <string name="remote_in_noSD">SD-карта не обнаружена.\nУстановите карту и повторите попытку.</string>
