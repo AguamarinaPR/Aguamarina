@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.http.HttpResponse;
@@ -78,6 +79,7 @@ public class BaseManagement extends Activity {
 	private static SimpleAdapter main_catg_adpt = null;
 	private static SimpleAdapter app_catg_adpt = null;
 	private static SimpleAdapter game_catg_adpt = null;
+	protected static Map<View, String> app_id = new WeakHashMap<View, String>();
 	
 	private static final String[] main_ctg = {"Games", "Applications", "Others"};
 	private static final String[] app_ctg = {"Comics", "Communication", "Entertainment", "Finance", "Health", "Lifestyle", "Multimedia", 
@@ -462,7 +464,10 @@ public class BaseManagement extends Activity {
 	             	}
 				}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.LinearLayout")){
 					LinearLayout tmpr = (LinearLayout)view;
-					tmpr.setTag(textRepresentation);
+					// Using setTag like this is not compatible with Android 1.5
+					//tmpr.setTag(textRepresentation);
+					app_id.put(tmpr, textRepresentation);
+					
 				}else{
 					return false;
 				}
@@ -479,7 +484,9 @@ public class BaseManagement extends Activity {
 					tmpr.setText(textRepresentation);
 				}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.LinearLayout")){
 					LinearLayout tmpr = (LinearLayout)view;
-					tmpr.setTag(textRepresentation);
+					// Using setTag like this is not compatible with Android 1.5
+					//tmpr.setTag(textRepresentation);
+					app_id.put(tmpr, textRepresentation);
 				}else{
 					return false;
 				}

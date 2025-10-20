@@ -305,7 +305,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 
 		pos = arg2;
 		
-		final String pkg_id = ((LinearLayout)arg1).getTag().toString();
+		final String pkg_id = app_id.get(arg1).toString();
 
 		if(pkg_id.equals("Applications")){
 			shown_now = null;

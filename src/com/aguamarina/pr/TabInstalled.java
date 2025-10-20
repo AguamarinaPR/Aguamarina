@@ -96,7 +96,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 	}
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		final String pkg_id = ((LinearLayout)arg1).getTag().toString();
+		final String pkg_id = app_id.get(arg1).toString();
 
 		pos = arg2;
 

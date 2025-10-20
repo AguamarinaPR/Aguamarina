@@ -16,10 +16,9 @@ public final class R {
         public static final int ic_add=0x7f020002;
         public static final int ic_update=0x7f020003;
         public static final int icon=0x7f020004;
-        public static final int legacyandroid=0x7f020005;
-        public static final int loadingicon=0x7f020006;
-        public static final int newandroid=0x7f020007;
-        public static final int splashaguamarina2=0x7f020008;
+        public static final int loadingicon=0x7f020005;
+        public static final int newandroid=0x7f020006;
+        public static final int splashaguamarina2=0x7f020007;
     }
     public static final class id {
         public static final int App_Carousel=0x7f06001e;
