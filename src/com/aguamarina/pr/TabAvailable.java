@@ -38,7 +38,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 	
 	private int pos = -1;
 	
-	private int deep = 0;
+	//private int deep = 0;
 		
 	private String shown_now = null;
 	private int main_shown_now = -1;
@@ -161,7 +161,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		}.start();
 	}
 	public void showCarousel() {
-		if (sPref.getBoolean("mode", false) && crslMap.size() > 0) {
+		if (sPref.getBoolean("mode", false) && deep == 0 && crslMap.size() > 0) {
 			CarouselView.setVisibility(0);
 		} else {
 			CarouselView.setVisibility(8);
@@ -176,21 +176,21 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 				lv.setAdapter(getRootCtg());
 				setContentView(cll);
 				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-				deep = 0;
+				//deep = 0;
 				showCarousel();
 				break;
 			case 2:
 				lv.setAdapter(getAppCtg());
 				setContentView(cll);
 				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-				deep = 1;
+				//deep = 1;
 				CarouselView.setVisibility(8);
 				break;
 			case 3:
 				lv.setAdapter(getGamesCtg());
 				setContentView(cll);
 				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-				deep = 1;
+				//deep = 1;
 				CarouselView.setVisibility(8);
 				break;
 			}
@@ -313,7 +313,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 			lv.setAdapter(getAppCtg());
 			setContentView(cll);
 			lv.setSelection(pos-1);
-			deep = 1;
+			//deep = 1;
 			CarouselView.setVisibility(8);
 		}else if(pkg_id.equals("Games")){
 			shown_now = null;
@@ -321,7 +321,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 			lv.setAdapter(getGamesCtg());
 			setContentView(cll);
 			lv.setSelection(pos-1);
-			deep = 1;
+			//deep = 1;
 			CarouselView.setVisibility(8);
 		}else if(pkg_id.equals("Others")){
 			shown_now = null;

@@ -89,6 +89,7 @@ public class BaseManagement extends Activity {
 	protected static WakeLock stayAwake = null;
 	
 	static protected List<Map<String, Object>> crslMap = null;
+	static protected int deep = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -587,23 +588,32 @@ public class BaseManagement extends Activity {
 	 
 	 
 	 protected SimpleAdapter getRootCtg(){
+		 deep = 0;
 		 main_catg_adpt.setViewBinder(new SimpeLstBinder());
 		 return main_catg_adpt;
 	 }
 	 
 	 protected SimpleAdapter getAppCtg(){
+		 deep = 1;
 		 app_catg_adpt.setViewBinder(new SimpeLstBinder());
 		 return app_catg_adpt;
 	 }
 	 
 	 protected SimpleAdapter getGamesCtg(){
+		 deep = 1;
 		 game_catg_adpt.setViewBinder(new SimpeLstBinder());
 		 return game_catg_adpt;
 	 }
 	 
 	 protected SimpleAdapter getAvailable(String show_now, int main_show_now){
+		 deep = 0;
 		 if(sPref.getBoolean("mode", false)){
 			 if(!(show_now == null) || main_show_now == 2){
+				 if(main_show_now == 2){
+					 deep = 1;
+				 }else{
+					 deep = 2;
+				 }
 				 return getGivenCatg(show_now, main_show_now);
 			 }
         	 main_catg_adpt.setViewBinder(new SimpeLstBinder());
