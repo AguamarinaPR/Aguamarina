@@ -114,8 +114,7 @@ public class ManageRepo extends ListActivity{
 			AlertDialog alrt = new AlertDialog.Builder(this).create();
 			alrt.setTitle(getString(R.string.title_repo_alrt));
 			alrt.setIcon(android.R.drawable.ic_dialog_alert);
-			alrt.setMessage(getString(R.string.myrepo_alrt) +
-					uri);
+			alrt.setMessage(getString(R.string.myrepo_alrt) + uri + getString(R.string.altrepo_alrt));
 			alrt.setButton(getText(R.string.btn_yes), new DialogInterface.OnClickListener() {
 			      public void onClick(DialogInterface dialog, int which) {
 			    	  db.addServer(uri);

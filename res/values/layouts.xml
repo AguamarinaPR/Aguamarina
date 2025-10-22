@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="add_repo_text">URI to repository: </string>
+    <string name="add_repo_text">Aguamarina is not responsible for the contents of any 3rd party repos, add them at your own discretion.\n\nURI to repository: </string>
     <string name="add_repo_private">Private </string>
     
     <string name="order_popup_title1">Align application list by: </string>

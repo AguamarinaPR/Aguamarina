@@ -14,7 +14,8 @@
     <string name="repo_alrt">The list of repositories in use has been changed.\nDo you wish to update them?</string>
     
     <string name="title_repo_alrt">Attention</string>
-    <string name="myrepo_alrt">It looks like you don\'t have any added repository.\nWe suggest you use ours.\nDo you want to add our repository?\n(You can search for more repositories online)\n\n</string>
+    <string name="myrepo_alrt">It looks like you don\'t have any added repository.\nDo you want to add our repository?\n\n</string>
+    <string name="altrepo_alrt">\n\n(You can search for other repositories online, but we are not responsible for the contents of any 3rd party repositories.)\n</string>
     <string name="newrepo_alrt">Do you want to add this repository to your list?\n\n</string>
     
     <string name="error_download_alrt">Could not connect to server or apk file is corrupt!</string>
