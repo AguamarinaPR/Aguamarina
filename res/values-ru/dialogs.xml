@@ -20,7 +20,7 @@
     <string name="settings_cache">Очистка кеша...</string>
     
     <string name="unsupportedversion">Неподдерживаемая версия Android</string>
-    <string name="unsupported_androidnew">Unfortunately, the Android API version 26 (Android 8) prevents installation of APKs from apps targeting older SDKs, so not all parts of Aguamarina\'s Interface can be accessed.\nTo continue anyways, press the OK button.</string>
+    <string name="unsupported_androidnew">Unfortunately, the Android API version 26 (Android 8) prevents installation of APKs from apps targeting older SDKs, making it so that applications cannot be installed from Aguamarina.\nTo continue anyways, press the OK button.</string>
     
     <string name="remote_in_noSD_title">Нет памяти</string>
     <string name="remote_in_noSD">SD-карта не обнаружена.\nУстановите карту и повторите попытку.</string>

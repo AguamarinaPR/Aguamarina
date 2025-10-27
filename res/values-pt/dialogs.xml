@@ -19,8 +19,8 @@
 		
     <string name="settings_cache">A limpar cache...</string>
     
-    <string name="unsupportedversion">Unsupported Android Version</string>
-    <string name="unsupported_androidnew">Unfortunately, the Android API version 26 (Android 8) prevents installation of APKs from apps targeting older SDKs, so not all parts of Aguamarina\'s Interface can be accessed.\nTo continue anyways, press the OK button.</string>
+    <string name="unsupportedversion">Versão de Android não suportada</string>
+    <string name="unsupported_androidnew">Infelizmente, a versão 26 da API de Android (Android 8) impede a instalação de ficheiros APK usando aplicações criadas para SDKs mais antigos, pelo que nem todas as funcionalidades de Aguamarina podem ser acedidas.\nPara continuar mesmo assim, prima o botão OK.</string>
     
     <string name="remote_in_noSD_title">Sem memória</string>
     <string name="remote_in_noSD">Não tem um SDcard no dispositivo.\nPor favor insira um.</string>
