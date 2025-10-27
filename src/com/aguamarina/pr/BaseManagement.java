@@ -32,11 +32,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -86,7 +85,6 @@ public class BaseManagement extends Activity {
    		 "News & Weather", "Productivity", "Reference", "Shopping", "Social", "Sports", "Themes", "Tools", 
 		 "Travel", "Demo", "Software Libraries", "Other"};
 	private static final String[] game_ctg = {"Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual", "Emulators", "Other"};
-	protected static WakeLock stayAwake = null;
 	
 	static protected List<Map<String, Object>> crslMap = null;
 	static protected int deep = 0;
@@ -102,9 +100,6 @@ public class BaseManagement extends Activity {
 		prefEdit = sPref.edit();
 		
 		redrawCatgList();
-		
-		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		stayAwake = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotSleep");
 	}
 	
 	private void redrawCatgList(){
@@ -508,7 +503,6 @@ public class BaseManagement extends Activity {
 
 			 if(tmp_serv.size() > 0){
 				 DownloadNode node = new DownloadNode();
-				 stayAwake.acquire();
 				 node = tmp_serv.firstElement();
 				 getserv = node.repo + "/" + node.path;
 				 md5hash = node.md5h;
@@ -560,9 +554,6 @@ public class BaseManagement extends Activity {
 					 saveit.write(data,0,readed);
 					 readed = getit.read(data, 0, 8096);
 				 }
-				 if(stayAwake.isHeld()){
-					 stayAwake.release();
-				 }
 				 Log.d("Aguamarina","Download done!");
 				 saveit.flush();
 				 saveit.close();
@@ -579,9 +570,6 @@ public class BaseManagement extends Activity {
 				 return "*md5*";
 			 }
 		 } catch(Exception e){
-			 if(stayAwake.isHeld()){
-				 stayAwake.release();
-			 }
 			 return null;
 		 }
 	 }
@@ -680,6 +668,7 @@ public class BaseManagement extends Activity {
 				 Log.d("Aguamarina","Max is: " + max);*/
 				 pd.setMax(msg.arg2*1024);
 				 pd.setProgress(0);
+				 pd.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 				 pd.show();
 			 }else{
 				 pd.dismiss();
