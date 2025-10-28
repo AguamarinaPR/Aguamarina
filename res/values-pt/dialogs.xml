@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">A fazer download de</string>
 
-	<string name="aptoide_error">Impossivel ligar ao servidor remoto</string>
+	<string name="aguamarina_error">Impossivel ligar ao servidor remoto</string>
 	
 	<string name="manage_repo_add">Adicionar novo repositório</string>
 	<string name="manage_repo_answ_wrongl">Login errado</string>
@@ -50,7 +50,7 @@
     <string name="dialog_no">Não</string>
     
     <string name="update_self_title">Actualização disponível</string>
-    <string name="update_self_msg">Está disponível uma nova versão do Aptoide,\npretende actualizar?</string>
+    <string name="update_self_msg">Está disponível uma nova versão do Aguamarina,\npretende actualizar?</string>
     
 </resources>
 

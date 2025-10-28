@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">正在获取程序</string>
 
-	<string name="aptoide_error">远程服务连接失败</string>
+	<string name="aguamarina_error">远程服务连接失败</string>
 	
 	<string name="manage_repo_add">添加新的仓库</string>
 	<string name="manage_repo_answ_wrongl">登录失败</string>
@@ -30,7 +30,7 @@
     <string name="update_main">正在使用的仓库列表已更改.\n希望更新这些仓库吗?</string>
     
     <string name="updating_3g">当前使用的是3G网路. 建议使用WiFi连接进行更新.\n继续更新?</string>
-    <string name="updating_cfrm">请确认更新Aptoide仓库?</string>
+    <string name="updating_cfrm">请确认更新Aguamarina仓库?</string>
     <string name="updating_norepos">未启用任何仓库.\n请添加仓库或者启用已有的仓库.</string>
     
     

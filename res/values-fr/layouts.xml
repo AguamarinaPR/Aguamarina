@@ -15,12 +15,12 @@
 
     <string name="order_popup_title">Options d\'affichage </string>
 
-    <string name="settings_title_bar">Réglages d\'Aptoide</string>
+    <string name="settings_title_bar">Réglages d\'Aguamarina</string>
     
     <string name="save_btn">Sauvegarder </string>
     <string name="clear_cache_title">Cache</string>
     <string name="clear_cache_btn">Effacer le cache </string>
-    <string name="clear_cache_msg">DANGER&#160;: cela effacera toutes les icônes mises en cache par Aptoide </string>
+    <string name="clear_cache_msg">DANGER&#160;: cela effacera toutes les icônes mises en cache par Aguamarina </string>
     
     <string name="clear_dwn_title">Téléchargements</string>
     <string name="clear_dwn_btn">Télécharger les icônes</string>

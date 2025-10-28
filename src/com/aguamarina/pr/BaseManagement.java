@@ -1,4 +1,4 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -70,7 +70,7 @@ public class BaseManagement extends Activity {
 	protected static final int INSTALL = 127;
 	protected static final int REMOVE = 128;
 	protected static final int UPDATE = 129;
-	protected static final String LOCAL_APK_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aptoide/";
+	protected static final String LOCAL_APK_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aguamarina/";
 	
 	
 	private static SimpleAdapter main_catg_adpt = null;
@@ -95,7 +95,7 @@ public class BaseManagement extends Activity {
 	        // cast its IBinder to a concrete class and directly access it.
 	        downloadQueueService = ((DownloadQueueService.DownloadQueueBinder)serviceBinder).getService();
 
-	        Log.d("Aptoide-BaseManagement", "DownloadQueueService bound to a Tab");
+	        Log.d("Aguamarina-BaseManagement", "DownloadQueueService bound to a Tab");
 	    }
 	    
 	    public void onServiceDisconnected(ComponentName className) {
@@ -105,7 +105,7 @@ public class BaseManagement extends Activity {
 	        // see this happen.
 	        downloadQueueService = null;
 	        
-	        Log.d("Aptoide-BaseManagement","DownloadQueueService unbound from a Tab");
+	        Log.d("Aguamarina-BaseManagement","DownloadQueueService unbound from a Tab");
 	    }
 
 	};	
@@ -120,7 +120,7 @@ public class BaseManagement extends Activity {
 		mPm = getPackageManager();
 		db = new DbHandler(this);
 		mctx = this;
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
 		order_lst = sPref.getString("order_lst", "abc");
 		redrawCatgList();
@@ -287,7 +287,7 @@ public class BaseManagement extends Activity {
 			prefEdit.remove("update");
 			prefEdit.commit();
 			/*if(sPref.contains("order_lst")){
-				Log.d("Aptoide","************************** This 1 ********************************");
+				Log.d("Aguamarina","************************** This 1 ********************************");
 				order_lst = sPref.getString("order_lst", "abc");
 				prefEdit.remove("order_lst");
 				prefEdit.commit();
@@ -296,7 +296,7 @@ public class BaseManagement extends Activity {
 			redrawCatgList();
 			
 		}/*else if(sPref.contains("order_lst")){
-			Log.d("Aptoide","*********************** This 2 ******************************");
+			Log.d("Aguamarina","*********************** This 2 ******************************");
 			order_lst = sPref.getString("order_lst", "abc");
 			prefEdit.remove("order_lst");
 			prefEdit.commit();
@@ -320,7 +320,7 @@ public class BaseManagement extends Activity {
 		try {
 			pkginfo = mPm.getPackageArchiveInfo(apk_path, 0);
 			if(pkginfo == null){
-				// Ficheiro está corrupto, temos de verificar!
+				// Ficheiro estï¿½ corrupto, temos de verificar!
 			}else{
 				Intent intent = new Intent();
 				intent.setAction(android.content.Intent.ACTION_VIEW);
@@ -329,7 +329,7 @@ public class BaseManagement extends Activity {
 				prefEdit.putString("pkg", pkginfo.packageName);
 				prefEdit.commit();
 				startActivityForResult(intent,INSTALL);
-				Log.d("Aptoide-BaseManagement", "Installing Apk: "+apk_path);
+				Log.d("Aguamarina-BaseManagement", "Installing Apk: "+apk_path);
 			}
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.failed_install), Toast.LENGTH_LONG);
@@ -348,7 +348,7 @@ public class BaseManagement extends Activity {
     		prefEdit.putString("ver", ver);
 	    	prefEdit.commit();
 	    	startActivityForResult(intent,UPDATE);
-			Log.d("Aptoide-BaseManagement", "Updating Apk: "+apk_path);
+			Log.d("Aguamarina-BaseManagement", "Updating Apk: "+apk_path);
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.failed_update), Toast.LENGTH_LONG);
 		}
@@ -400,7 +400,7 @@ public class BaseManagement extends Activity {
 
 	protected void redraw(){
 		
-		Log.d("Aptoide","======================= I REDRAW");
+		Log.d("Aguamarina","======================= I REDRAW");
 		prefEdit.putBoolean("redrawis", true);
 		prefEdit.commit();
 
@@ -520,10 +520,10 @@ public class BaseManagement extends Activity {
 
 					updateAdpt.setViewBinder(new LstBinder());
 				
-					//Log.d("Aptoide", e.getMessage()+"");
+					//Log.d("Aguamarina", e.getMessage()+"");
 				}finally{
 					
-					Log.d("Aptoide","======================= I REDRAW SAY KILL");
+					Log.d("Aguamarina","======================= I REDRAW SAY KILL");
 					stop_pd.sendEmptyMessage(0);
 					
 				}
@@ -616,7 +616,7 @@ public class BaseManagement extends Activity {
 			logins = db.getLogin(downloadNode.getRepo());
 //			downloadNode.getRemotePath()
 			downloadNode.setLogins(logins);
-			Log.d("Aptoide-BaseManagement","queueing download: "+packageName +" "+downloadNode.getSize());	
+			Log.d("Aguamarina-BaseManagement","queueing download: "+packageName +" "+downloadNode.getSize());	
 
 			downloadQueueService.startDownload(downloadNode);
 
@@ -690,7 +690,7 @@ public class BaseManagement extends Activity {
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			while(pd.isShowing()){
-				Log.d("Aptoide","======================= I KILL");
+				Log.d("Aguamarina","======================= I KILL");
 				pd.dismiss();
 			}
 			prefEdit.putBoolean("changeavail", true);

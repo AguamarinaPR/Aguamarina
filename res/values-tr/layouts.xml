@@ -14,12 +14,12 @@
     
     <string name="order_popup_title">Görünüm Seçenekleri </string>
     
-    <string name="settings_title_bar">Aptoide ayarları</string>
+    <string name="settings_title_bar">Aguamarina ayarları</string>
     
     <string name="save_btn">Kayıt </string>
     <string name="clear_cache_title">Ara bellek</string>
     <string name="clear_cache_btn">Ara belleği temizle </string>
-    <string name="clear_cache_msg">UYARI: bu Aptoide\'in ara belleğe aldığı tüm ikonları siler </string>
+    <string name="clear_cache_msg">UYARI: bu Aguamarina\'in ara belleğe aldığı tüm ikonları siler </string>
     
     <string name="clear_dwn_title">İndirmeler</string>
     <string name="clear_dwn_btn">İkonları indir</string>

@@ -1,12 +1,12 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
 
-import cm.aptoide.pt.multiversion.VersionApk;
-import cm.aptoide.pt.utils.EnumOptionsMenu;
+import com.aguamarina.pr.multiversion.VersionApk;
+import com.aguamarina.pr.utils.EnumOptionsMenu;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -45,8 +45,8 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 		
 		@Override
 		public void onReceive(Context context, Intent intent) {
-				Log.d("Aptoide-TabUpdates", "Tab Updates, broadcast received.");
-				if ( intent.getAction().equals("pt.caixamagica.aptoide.UPDATE_APK_ACTION")) {
+				Log.d("Aguamarina-TabUpdates", "Tab Updates, broadcast received.");
+				if ( intent.getAction().equals("pr.fleurdelis.aguamarina.UPDATE_APK_ACTION")) {
 					updateApk(intent.getStringExtra("localPath"), intent.getStringExtra("packageName"), intent.getStringExtra("version"));
 				}
 		}
@@ -64,7 +64,7 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 		if(!TabUpdates.isRegister){
 			TabUpdates.isRegister = true;
 			updateApkListener = new UpdateApkListener();
-			registerReceiver(updateApkListener, new IntentFilter("pt.caixamagica.aptoide.UPDATE_APK_ACTION"));
+			registerReceiver(updateApkListener, new IntentFilter("pr.fleurdelis.aguamarina.UPDATE_APK_ACTION"));
 		}
 		//mctx = this;
 	}
@@ -82,7 +82,7 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		EnumOptionsMenu menuEntry = EnumOptionsMenu.reverseOrdinal(item.getItemId());
-		Log.d("Aptoide-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
+		Log.d("Aguamarina-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
 		switch (menuEntry) {
 		case UPDATE_ALL:
 			updateAll();
@@ -123,7 +123,7 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 //            unregisterReceiver(updateApkListener);
 //            updateApkListenerIsRegistered = false;
 //        }
-//		Log.d("Aptoide-TabUpdates", "updateApkListenerIsUnregistered");
+//		Log.d("Aguamarina-TabUpdates", "updateApkListenerIsUnregistered");
 //		
 //		super.onPause();
 //	}
@@ -134,10 +134,10 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 		super.onResume();
 		
 //		if (!updateApkListenerIsRegistered) {
-//            registerReceiver(updateApkListener, new IntentFilter("pt.caixamagica.aptoide.UPDATE_APK_ACTION"));
+//            registerReceiver(updateApkListener, new IntentFilter("pr.fleurdelis.aguamarina.UPDATE_APK_ACTION"));
 //            updateApkListenerIsRegistered = true;
 //        }
-//		Log.d("Aptoide-TabUpdates", "updateApkListenerIsRegistered");
+//		Log.d("Aguamarina-TabUpdates", "updateApkListenerIsRegistered");
 
 		
 		new Thread(){
@@ -290,7 +290,7 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 			//new Thread() {
 				//public void run() {
 					String apk_id = data.getStringExtra("apkid");
-					Log.d("Aptoide", ".... updating: " + apk_id);
+					Log.d("Aguamarina", ".... updating: " + apk_id);
 					queueDownload(apk_id,data.getStringExtra("version"), true);
 					/*String apk_path = downloadFile(apk_id);
 					Message msg_alt = new Message();
@@ -352,7 +352,7 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 	
 	/*Changed by Rafael*/
 	public void updateAll(){
-		Log.d("Aptoide-TabUpdates", "Starting download of all possible updates");
+		Log.d("Aguamarina-TabUpdates", "Starting download of all possible updates");
 		
 		for(ApkNode node: apk_lst){
 			

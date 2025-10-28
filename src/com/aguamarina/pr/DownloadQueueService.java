@@ -1,5 +1,5 @@
 /*
- * DownloadQueueService		auxilliary service to Aptoide, that centralizes all download processes
+ * DownloadQueueService		auxilliary service to Aguamarina, that centralizes all download processes
  * Copyright (C) 20011  Duarte Silveira
  * duarte.silveira@caixamagica.pt
  *
@@ -19,7 +19,7 @@
 */
 
 
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -77,7 +77,7 @@ public class DownloadQueueService extends Service {
     
 	@Override
 	public IBinder onBind(Intent intent) {
-		Log.d("Aptoide-DowloadQueueService", "Bound");
+		Log.d("Aguamarina-DowloadQueueService", "Bound");
 		return binder;
 	}
 
@@ -90,13 +90,13 @@ public class DownloadQueueService extends Service {
 		
 		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		keepScreenOn = powerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "Full Power");
-		Log.d("Aptoide-DowloadQueueService", "Created");
+		Log.d("Aguamarina-DowloadQueueService", "Created");
 	}
 
 	@Override
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
-		Log.d("Aptoide-DowloadQueueService", "Started");
+		Log.d("Aguamarina-DowloadQueueService", "Started");
 	}
 
 	
@@ -119,7 +119,7 @@ public class DownloadQueueService extends Service {
 		}else{
 			notification.put("loginRequired", "false");
 		}
-		Log.d("Aptoide-DowloadQueueService", "download Started");
+		Log.d("Aguamarina-DowloadQueueService", "download Started");
 		notifications.put(downloadNode.getPackageName().hashCode(), notification);
 		setNotification(downloadNode.getPackageName().hashCode(), 0);
 		downloadFile(downloadNode.getPackageName().hashCode());
@@ -145,7 +145,7 @@ public class DownloadQueueService extends Service {
 		contentView.setImageViewResource(R.id.download_notification_icon, R.drawable.ic_notification);
 		StringBuilder textApp = new StringBuilder(getString(R.string.download_alrt)+" "+appName);
 		if(version!=null){
-			Log.d("Aptoide", "External download taking place. Unable to retrive version.");
+			Log.d("Aguamarina", "External download taking place. Unable to retrive version.");
 			textApp.append(" v."+version);
 		}
 		contentView.setTextViewText(R.id.download_notification_name, textApp.toString());
@@ -153,9 +153,9 @@ public class DownloadQueueService extends Service {
 		contentView.setProgressBar(R.id.download_notification_progress_bar, size*KBYTES_TO_BYTES, progress, false);	
 		
     	Intent onClick = new Intent();
-		onClick.setClassName("cm.aptoide.pt", "cm.aptoide.pt");
+		onClick.setClassName("com.aguamarina.pr", "com.aguamarina.pr");
 		onClick.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
-		onClick.setAction("cm.aptoide.pt.FROM_NOTIFICATION");
+		onClick.setAction("com.aguamarina.pr.FROM_NOTIFICATION");
     	
     	// The PendingIntent to launch our activity if the user selects this notification
     	PendingIntent onClickAction = PendingIntent.getActivity(context, 0, onClick, 0);
@@ -175,7 +175,7 @@ public class DownloadQueueService extends Service {
     	// We use the position because it is a unique number.  We use it later to cancel.
     	notificationManager.notify(apkidHash, notification); 
     	
-//		Log.d("Aptoide-DownloadQueueService", "Notification Set");
+//		Log.d("Aguamarina-DownloadQueueService", "Notification Set");
     }
 	
 	private void setFinishedNotification(int apkidHash, String localPath) {
@@ -190,8 +190,8 @@ public class DownloadQueueService extends Service {
 		contentView.setTextViewText(R.id.download_notification_name, getString(R.string.finished_download_message)+" "+appName+" v."+version);
 		contentView.setProgressBar(R.id.download_notification_progress_bar, size*KBYTES_TO_BYTES, size*KBYTES_TO_BYTES, false);	
 		
-		Intent onClick = new Intent("pt.caixamagica.aptoide.INSTALL_APK", Uri.parse("apk:"+packageName));
-		onClick.setClassName("cm.aptoide.pt", "cm.aptoide.pt.RemoteInTab");
+		Intent onClick = new Intent("pr.fleurdelis.aguamarina.INSTALL_APK", Uri.parse("apk:"+packageName));
+		onClick.setClassName("com.aguamarina.pr", "com.aguamarina.pr.RemoteInTab");
 		onClick.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
     	onClick.putExtra("localPath", localPath);
     	onClick.putExtra("packageName", packageName);
@@ -199,7 +199,7 @@ public class DownloadQueueService extends Service {
     	onClick.putExtra("isUpdate", Boolean.parseBoolean(notifications.get(packageName.hashCode()).get("isUpdate")));
     	/*Changed by Rafael Campos*/
     	onClick.putExtra("version", version);
-		 Log.d("Aptoide-DownloadQueuService","finished notification apkidHash: "+apkidHash +" localPath: "+localPath);	
+		 Log.d("Aguamarina-DownloadQueuService","finished notification apkidHash: "+apkidHash +" localPath: "+localPath);	
     	
     	// The PendingIntent to launch our activity if the user selects this notification
     	PendingIntent onClickAction = PendingIntent.getActivity(context, 0, onClick, 0);
@@ -219,7 +219,7 @@ public class DownloadQueueService extends Service {
     	// We use the position because it is a unique number.  We use it later to cancel.
     	notificationManager.notify(apkidHash, notification); 
     	
-//		Log.d("Aptoide-DownloadQueueService", "Notification Set");
+//		Log.d("Aguamarina-DownloadQueueService", "Notification Set");
 		
 	}
 	
@@ -262,7 +262,7 @@ public class DownloadQueueService extends Service {
 					String md5sum = notifications.get(threadApkidHash).get("md5sum");
 					
 					String localPath = notifications.get(threadApkidHash).get("localPath");
-					 Log.d("Aptoide-DownloadQueuService","thread apkidHash: "+threadApkidHash +" localPath: "+localPath);	
+					 Log.d("Aguamarina-DownloadQueuService","thread apkidHash: "+threadApkidHash +" localPath: "+localPath);	
 					
 					
 					Message downloadArguments = new Message();
@@ -289,10 +289,10 @@ public class DownloadQueueService extends Service {
 						HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 						
 						if(mHttpResponse == null){
-							 Log.d("Aptoide","Problem in network... retry...");	
+							 Log.d("Aguamarina","Problem in network... retry...");	
 							 mHttpResponse = mHttpClient.execute(mHttpGet);
 							 if(mHttpResponse == null){
-								 Log.d("Aptoide","Major network exception... Exiting!");
+								 Log.d("Aguamarina","Major network exception... Exiting!");
 								 /*msg_al.arg1= 1;
 								 download_error_handler.sendMessage(msg_al);*/
 								 throw new TimeoutException();
@@ -328,7 +328,7 @@ public class DownloadQueueService extends Service {
 								saveit.write(data,0,red);
 								red = getit.read(data, 0, 8096);
 							}
-							Log.d("Aptoide","Download done! apkidHash: "+threadApkidHash +" localPath: "+localPath);
+							Log.d("Aguamarina","Download done! apkidHash: "+threadApkidHash +" localPath: "+localPath);
 							saveit.flush();
 							saveit.close();
 							getit.close();
@@ -346,7 +346,7 @@ public class DownloadQueueService extends Service {
 							downloadArguments.obj = localPath;
 							downloadHandler.sendMessage(downloadArguments);
 						}else{
-							Log.d("Aptoide",md5sum + " VS " + hash.md5Calc(f));
+							Log.d("Aguamarina",md5sum + " VS " + hash.md5Calc(f));
 							downloadArguments.arg1 = 0;
 							downloadArguments.arg2 = threadApkidHash;
 							downloadErrorHandler.sendMessage(downloadArguments);
@@ -392,8 +392,8 @@ public class DownloadQueueService extends Service {
 			 	
 			 int apkidHash = progressArguments.arg1;
 			 int intermediateProgress = progressArguments.arg2;
-			 //Log.d("Aptoide","Progress: " + pd.getProgress() + " Other: " +  (pd.getMax()*0.96) + " Adding: " + msg.what);
-			 Log.d("Aptoide-downloadQueue", "apkidHash: "+apkidHash+" current progress - "+notifications.get(apkidHash).get("intProgress") + "  additional - "+ intermediateProgress);
+			 //Log.d("Aguamarina","Progress: " + pd.getProgress() + " Other: " +  (pd.getMax()*0.96) + " Adding: " + msg.what);
+			 Log.d("Aguamarina-downloadQueue", "apkidHash: "+apkidHash+" current progress - "+notifications.get(apkidHash).get("intProgress") + "  additional - "+ intermediateProgress);
 			 int progress = Integer.parseInt(notifications.get(apkidHash).get("intProgress"))+intermediateProgress;
 			 notifications.get(apkidHash).put("intProgress", Integer.toString(progress));
 			 setNotification(apkidHash, progress);

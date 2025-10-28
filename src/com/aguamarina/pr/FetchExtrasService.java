@@ -1,4 +1,4 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,7 +32,7 @@ import android.util.Log;
 public class FetchExtrasService extends Service{
 
 	private final String SDCARD = Environment.getExternalStorageDirectory().getPath();
-	private String LOCAL_PATH = SDCARD+"/.aptoide";
+	private String LOCAL_PATH = SDCARD+"/.aguamarina";
 	private String REMOTE_EXTRAS_FILE = "/extras.xml";
 	private String EXTRAS_XML_PATH = LOCAL_PATH+"/extras.xml";
 	
@@ -69,7 +69,7 @@ public class FetchExtrasService extends Service{
 		if(workingPool.getState() == State.NEW){
 			parsedList = (ArrayList<ServerNode>) intent_info.getSerializable("lstex");
 			workingPool.start();
-			Log.d("Aptoide","........................Extras service starting....");
+			Log.d("Aguamarina","........................Extras service starting....");
 		}
 	}
 
@@ -82,7 +82,7 @@ public class FetchExtrasService extends Service{
 			try{
 				for(ServerNode node: parsedList){
 					if(node.inuse){
-						Log.d("Aptoide", "-------------------------Extras for: " + node.uri);
+						Log.d("Aguamarina", "-------------------------Extras for: " + node.uri);
 						try{
 							if(downloadExtras(node.uri, node.hash)){
 								xmlPass(node.uri);
@@ -101,7 +101,7 @@ public class FetchExtrasService extends Service{
 						}catch(Exception e ) {}
 					}
 				}
-				Log.d("Aptoide","......................Extras service STOPING....");
+				Log.d("Aguamarina","......................Extras service STOPING....");
 				stopSelf();
 			}catch (Exception e){ 	}
 		}
@@ -144,7 +144,7 @@ public class FetchExtrasService extends Service{
         	if(delta_hash.length()>2)
         		url = url.concat("?hash="+delta_hash);
         	
-        	Log.d("Aptoide","A fazer fetch extras de: " + url);
+        	Log.d("Aguamarina","A fazer fetch extras de: " + url);
 
         	
         	FileOutputStream saveit = new FileOutputStream(LOCAL_PATH+REMOTE_EXTRAS_FILE);
@@ -153,18 +153,18 @@ public class FetchExtrasService extends Service{
         	
 			if(mHttpResponse.getStatusLine().getStatusCode() == 200){
 				
-				Log.d("Aptoide","extras.xml: " + mHttpResponse.getEntity().getContentEncoding());
+				Log.d("Aguamarina","extras.xml: " + mHttpResponse.getEntity().getContentEncoding());
 //@dsilveira #531 +20lines fix OutOfMemory crash				
 				InputStream instream = null;
 				
 				if((mHttpResponse.getEntity().getContentEncoding() != null) && (mHttpResponse.getEntity().getContentEncoding().getValue().equalsIgnoreCase("gzip"))){
 
-					Log.d("Aptoide","with gzip");
+					Log.d("Aguamarina","with gzip");
 					instream = new GZIPInputStream(mHttpResponse.getEntity().getContent());
 					
 				}else{
 
-					Log.d("Aptoide","No gzip");
+					Log.d("Aguamarina","No gzip");
 					instream = mHttpResponse.getEntity().getContent();
 					
 				}

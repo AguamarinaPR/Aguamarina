@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.File;
 
@@ -70,7 +70,7 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 	        // cast its IBinder to a concrete class and directly access it.
 	        downloadQueueService = ((DownloadQueueService.DownloadQueueBinder)serviceBinder).getService();
 
-	        Log.d("Aptoide-Settings", "DownloadQueueService bound to Settings");
+	        Log.d("Aguamarina-Settings", "DownloadQueueService bound to Settings");
 	        
 	        downloadQueueService.dismissAllNotifications();
 	    }
@@ -82,7 +82,7 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 	        // see this happen.
 	        downloadQueueService = null;
 	        
-	        Log.d("Aptoide-Settings","DownloadQueueService unbound from Settings");
+	        Log.d("Aguamarina-Settings","DownloadQueueService unbound from Settings");
 	    }
 
 	};	
@@ -99,12 +99,12 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 		lst_pref_icns = (ListPreference) findPreference("icdown");
 		
 		sPref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-		sPrefFull = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPrefFull = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEditFull = sPrefFull.edit();
 
 		/*String pref_str = sPref.getString("icdown", "error");
 		
-		Log.d("Aptoide","I got what?: " + pref_str);
+		Log.d("Aguamarina","I got what?: " + pref_str);
 		if(pref_str.equalsIgnoreCase("error")){
 			prefEdit = sPref.edit();
 			prefEdit.putString("icdown", sPrefFull.getString("icdown", "g3w"));
@@ -112,8 +112,8 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 		}*/
 		
 		
-		Log.d("Aptoide","The preference is: " + sPref.getString("icdown", "error"));
-		Log.d("Aptoide","The preference is: " + sPrefFull.getString("icdown", "error"));
+		Log.d("Aguamarina","The preference is: " + sPref.getString("icdown", "error"));
+		Log.d("Aguamarina","The preference is: " + sPrefFull.getString("icdown", "error"));
 		
 		lst_pref_icns = (ListPreference) findPreference("icdown");
 		
@@ -124,7 +124,7 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 				
 				final AlertDialog alrt = new AlertDialog.Builder(mctx).create();
 				alrt.setTitle("Caution");
-				alrt.setMessage("Do you wish to empty Aptoide cache?");
+				alrt.setMessage("Do you wish to empty Aguamarina cache?");
 				alrt.setButton("yes", new OnClickListener() {
 	
 					public void onClick(DialogInterface dialog, int which) {
@@ -132,13 +132,13 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 						alrt.dismiss();
 
 						boolean isSrvAlive = false;
-						Log.d("Aptoide","... WHAT!!!!!");
+						Log.d("Aguamarina","... WHAT!!!!!");
 						ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
 						for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-							Log.d("Aptoide","... " + service.service.getClassName());
-							if ("cm.aptoide.pt.FetchIconsService".equals(service.service.getClassName())) {
+							Log.d("Aguamarina","... " + service.service.getClassName());
+							if ("com.aguamarina.pr.FetchIconsService".equals(service.service.getClassName())) {
 								isSrvAlive = true;
-								Log.d("Aptoide","ALALALALALALAL");
+								Log.d("Aguamarina","ALALALALALALAL");
 								break;
 							}
 						}
@@ -146,7 +146,7 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 						if(isSrvAlive){
 							final AlertDialog alrt2 = new AlertDialog.Builder(mctx).create();
 							alrt2.setTitle("Error");
-							alrt2.setMessage("Aptoide icon service is still running.\nPlease try again latter.");
+							alrt2.setMessage("Aguamarina icon service is still running.\nPlease try again latter.");
 							alrt2.setButton("Ok", new OnClickListener() {
 								
 								public void onClick(DialogInterface dialog, int which) {
@@ -162,8 +162,8 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 							new Thread() {
 								public void run() {
 									try{
-										File aptoide_dir = new File(getText(R.string.base_path).toString());
-										for(File fl: aptoide_dir.listFiles()){
+										File aguamarina_dir = new File(getText(R.string.base_path).toString());
+										for(File fl: aguamarina_dir.listFiles()){
 											if(fl.isFile() && fl.getName().toLowerCase().endsWith("apk")){
 												fl.delete();
 											}

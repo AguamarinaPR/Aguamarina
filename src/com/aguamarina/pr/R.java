@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 public final class R {
     public static final class array {
@@ -22,7 +22,7 @@ public final class R {
         public static final int icon=0x7f020004;
         public static final int logotipo=0x7f020005;
         public static final int no_screen=0x7f020006;
-        public static final int splashaptoide2=0x7f020007;
+        public static final int splashaguamarina2=0x7f020007;
     }
     public static final class id {
         public static final int ScrollView01=0x7f07000c;
@@ -149,7 +149,7 @@ public final class R {
         public static final int add_repo_text=0x7f05003f;
         public static final int app_name=0x7f050069;
         public static final int app_pop_up_no_info=0x7f050024;
-        public static final int aptoide_error=0x7f05001f;
+        public static final int aguamarina_error=0x7f05001f;
         public static final int auto_updating=0x7f050052;
         public static final int base_path=0x7f050067;
         public static final int btn_add=0x7f050061;
@@ -285,7 +285,7 @@ public final class R {
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute<th>Summary</tr>
-           <tr><th><code>{@link #galleryScreens_android_galleryItemBackground cm.aptoide.pt:android_galleryItemBackground}</code><td></tr>
+           <tr><th><code>{@link #galleryScreens_android_galleryItemBackground com.aguamarina.pr:android_galleryItemBackground}</code><td></tr>
            </table>
            @see #galleryScreens_android_galleryItemBackground
          */
@@ -293,7 +293,7 @@ public final class R {
             0x0101004c
         };
         /**
-          <p>This symbol is the offset where the {@link cm.aptoide.pt.R.attr#android_galleryItemBackground}
+          <p>This symbol is the offset where the {@link com.aguamarina.pr.R.attr#android_galleryItemBackground}
           attribute's value can be found in the {@link #galleryScreens} array.
           @attr name android:android_galleryItemBackground
         */

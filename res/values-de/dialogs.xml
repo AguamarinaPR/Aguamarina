@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">Rufe Anwendungen ab</string>
 
-	<string name="aptoide_error">Keine Verbindung zum Remote Server</string>
+	<string name="aguamarina_error">Keine Verbindung zum Remote Server</string>
 	
 	<string name="manage_repo_add">Quelle hinzufügen</string>
 	<string name="manage_repo_answ_wrongl">Falscher Login</string>
@@ -21,7 +21,7 @@
     
     <string name="remote_in_noSD_title">Kein Speicher</string>
     <string name="remote_in_noSD">Sie haben keine SD-Karte.\nBitte legen Sie eine ein und versuchen es erneut.</string>
-    <string name="remote_in_noSDspace">Nicht genug freier SPeicher auf SD-Karte für Aptoide verfügbar.\nBitte geben Sie etwas Speicher frei und versuchen es erneut.</string>
+    <string name="remote_in_noSDspace">Nicht genug freier SPeicher auf SD-Karte für Aguamarina verfügbar.\nBitte geben Sie etwas Speicher frei und versuchen es erneut.</string>
     
     <string name="error_on_update">Die folgenden Quellen konnten nicht aktualisiert werden:\n</string>
     
@@ -30,7 +30,7 @@
     <string name="update_main">Die Liste der verfügbaren Quellen hat sich geändert.\nMöchten Sie sie aktualisieren?</string>
     
     <string name="updating_3g">Sie sind via 3G verdunden. Es wird empfohlen die Aktualisierung über WiFi durchzuführen.\nUpdate dennoch durchführen?</string>
-    <string name="updating_cfrm">Aptoide Quellen-Update bestätigen?</string>
+    <string name="updating_cfrm">Aguamarina Quellen-Update bestätigen?</string>
     <string name="updating_norepos">Es befinden sich keine aktiven Quellen in Ihrer Liste.\nBitte fügen Sie Quellen hinzu oder aktivieren Sie eine vorhandene.</string>
     
     <string name="repo_ctx">Optionen</string>

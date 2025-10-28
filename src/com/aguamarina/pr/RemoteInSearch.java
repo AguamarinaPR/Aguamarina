@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.TimeoutException;
 
-import cm.aptoide.pt.multiversion.VersionApk;
-import cm.aptoide.pt.utils.EnumOptionsMenu;
+import com.aguamarina.pr.multiversion.VersionApk;
+import com.aguamarina.pr.utils.EnumOptionsMenu;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.SearchManager;
@@ -65,7 +65,7 @@ public class RemoteInSearch extends ListActivity{
 	private ListView lv = null;
 	private int pos = -1;
 	
-	private static final String LOCAL_APK_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aptoide/";
+	private static final String LOCAL_APK_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aguamarina/";
 	
 	static protected SharedPreferences sPref;
 	static protected SharedPreferences.Editor prefEdit;
@@ -96,7 +96,7 @@ public class RemoteInSearch extends ListActivity{
 	        // cast its IBinder to a concrete class and directly access it.
 	        downloadQueueService = ((DownloadQueueService.DownloadQueueBinder)serviceBinder).getService();
 
-	        Log.d("Aptoide-RemoteInSearch", "DownloadQueueService bound to RemoteInSearch");
+	        Log.d("Aguamarina-RemoteInSearch", "DownloadQueueService bound to RemoteInSearch");
 	    }
 	    
 	    public void onServiceDisconnected(ComponentName className) {
@@ -106,7 +106,7 @@ public class RemoteInSearch extends ListActivity{
 	        // see this happen.
 	        downloadQueueService = null;
 	        
-	        Log.d("Aptoide-RemoteInSearch","DownloadQueueService unbound from RemoteInSearch");
+	        Log.d("Aguamarina-RemoteInSearch","DownloadQueueService unbound from RemoteInSearch");
 	    }
 
 	};
@@ -150,7 +150,7 @@ public class RemoteInSearch extends ListActivity{
 		
 		mPm = getPackageManager();
 		
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
 		
 		lv = getListView();
@@ -206,7 +206,7 @@ public class RemoteInSearch extends ListActivity{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		EnumOptionsMenu menuEntry = EnumOptionsMenu.reverseOrdinal(item.getItemId());
-		Log.d("Aptoide-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
+		Log.d("Aguamarina-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
 		switch (menuEntry) {
 		case MANAGE_REPO:
 			Intent i = new Intent(this, ManageRepo.class);
@@ -310,18 +310,18 @@ public class RemoteInSearch extends ListActivity{
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		Log.d("Aptoide", "Position is: " + (pos-1));
+		Log.d("Aguamarina", "Position is: " + (pos-1));
 		if(requestCode == 30){
 			if(data != null){
 				String apkid = data.getStringExtra("apkid");
 				int pos = data.getIntExtra("position", -1);
 				if(pos > -1){
 					if(data.getBooleanExtra("in", false)){
-						Log.d("Aptoide","This: " + apkid + " - " + pos + " - Install");
+						Log.d("Aguamarina","This: " + apkid + " - " + pos + " - Install");
 						queueDownload(pos, data.getStringExtra("version"));
 						
 					}else if(data.getBooleanExtra("rm", false)){
-						Log.d("Aptoide","This: " + apkid + " - " + pos + " - Remove");
+						Log.d("Aguamarina","This: " + apkid + " - " + pos + " - Remove");
 						removeApk(apkid, pos);
 					}
 				}

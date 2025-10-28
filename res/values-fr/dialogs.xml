@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">Obtention de l\'application</string>
 
-	<string name="aptoide_error">Impossible de se connecter au serveur distant</string>
+	<string name="aguamarina_error">Impossible de se connecter au serveur distant</string>
 	
 	<string name="manage_repo_add">Ajout de nouveaux dépôts</string>
 	<string name="manage_repo_answ_wrongl">Identification incorrecte</string>
@@ -21,7 +21,7 @@
     
     <string name="remote_in_noSD_title">Pas de mémoire</string>
     <string name="remote_in_noSD">Vous n\'avez pas de carte SD.\nVeuillez en mettre une et réessayez&#160;!</string>
-    <string name="remote_in_noSDspace">Vous n\'avez pas assez d\'espace sur votre carte SD pour utiliser Aptoide\nLibérez de l\'espace et réessayez&#160;!</string>
+    <string name="remote_in_noSDspace">Vous n\'avez pas assez d\'espace sur votre carte SD pour utiliser Aguamarina\nLibérez de l\'espace et réessayez&#160;!</string>
     
     <string name="error_on_update">La mise à jour n\'a pas pu être faite pour les dépôts suivants&#160;:\n</string>
     
@@ -30,7 +30,7 @@
     <string name="update_main">La liste des dépôts a été modifiée.\nVoulez-vous la mettre à jour&#160;?</string>
     
     <string name="updating_3g">Vous êtes connecté en 3G. Il est recommandé de faire la mise à jour en wifi.\nContinuer tout de même&#160;?</string>
-    <string name="updating_cfrm">Confirmer la mise à jour des dépôts Aptoide&#160;?</string>
+    <string name="updating_cfrm">Confirmer la mise à jour des dépôts Aguamarina&#160;?</string>
     <string name="updating_norepos">Il n\'y a pas de dépôts dans votre liste.\nVeuillez ajouter des dépôts ou les activer.</string>
 
     <string name="repo_ctx">Options</string>

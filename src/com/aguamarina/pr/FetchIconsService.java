@@ -1,4 +1,4 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -43,7 +43,7 @@ public class FetchIconsService extends Service{
 		workingPool.setPriority(Process.THREAD_PRIORITY_BACKGROUND);
 		//workingPool.start();
 		
-		Log.d("Aptoide","......................... onCreate FetchIcons Service");
+		Log.d("Aguamarina","......................... onCreate FetchIcons Service");
 	}
 	
 
@@ -59,7 +59,7 @@ public class FetchIconsService extends Service{
 		if(workingPool.getState() == State.NEW){
 			workingPool.start();
 		}
-		Log.d("Aptoide","......................... onStart FetchIcons Service go!");
+		Log.d("Aguamarina","......................... onStart FetchIcons Service go!");
 	}
 
 	
@@ -71,7 +71,7 @@ public class FetchIconsService extends Service{
 		if(workingPool.isAlive()){
 			alive = false;
 		}
-		Log.d("Aptoide","......................... onDestroy FetchIcons Service");
+		Log.d("Aguamarina","......................... onDestroy FetchIcons Service");
 	}
 
 	
@@ -83,15 +83,15 @@ public class FetchIconsService extends Service{
 				int chk = 10;
 				while(chk > 0){
 					chk--;
-					Log.d("Aptoide","Count in: " + chk);
+					Log.d("Aguamarina","Count in: " + chk);
 					while((parsedList.size() > 0) && alive){
 						chk = 10;
-						Log.d("Aptoide","We are fetching icons...");
+						Log.d("Aguamarina","We are fetching icons...");
 						FetchIcons(parsedList.remove(0));
 					}
 					Thread.sleep(2000);
 				}
-				Log.d("Aptoide","Bye bye...");
+				Log.d("Aguamarina","Bye bye...");
 				stopSelf();
 			}catch (Exception e){ 	}
 		}
@@ -120,7 +120,7 @@ public class FetchIconsService extends Service{
 						getIcon(node.url, node.name, server, user, pswd);
 				}
 			}catch (Exception e){ 
-				Log.d("Aptoide", "Wash exception? " + e.toString());
+				Log.d("Aguamarina", "Wash exception? " + e.toString());
 			}
 		}
 	}*/
@@ -134,21 +134,21 @@ public class FetchIconsService extends Service{
 		try{
 			for(IconNode node : lst){
 				if(!alive){
-					Log.d("Aptoide-FetchIconService","not alive");
+					Log.d("Aguamarina-FetchIconService","not alive");
 					break;
 				}
-				Log.d("Aptoide","On icon: " + node.name);
+				Log.d("Aguamarina","On icon: " + node.name);
 				String test_file = mctx.getString(R.string.icons_path) + node.name;
 				
 				File exists = new File(test_file);
 				if(!exists.exists()){
 					getIcon(node.url, node.name, server, user, pswd);
 				}else{
-					Log.d("Aptoide","FILE EXISTS: " + node.name);
+					Log.d("Aguamarina","FILE EXISTS: " + node.name);
 				}
 			}
 		}catch (Exception e){ 
-			Log.d("Aptoide", "Wash exception? " + e.toString());
+			Log.d("Aguamarina", "Wash exception? " + e.toString());
 		}
 	}
 	
@@ -171,11 +171,11 @@ public class FetchIconsService extends Service{
 				saveit.write(buffer);
 			}
 			
-			Log.d("Aptoide","getIcon done: " + uri + "/" + name + " - " + mserver);
+			Log.d("Aguamarina","getIcon done: " + uri + "/" + name + " - " + mserver);
 
 			
 		}catch (Exception e){
-			Log.d("Aptoide","Error fetching icon.");
+			Log.d("Aguamarina","Error fetching icon.");
 		}
 	}
 	

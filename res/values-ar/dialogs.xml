@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">تنزل البرنامج</string>
 
-	<string name="aptoide_error">تعذر الإتصال بالموقع</string>
+	<string name="aguamarina_error">تعذر الإتصال بالموقع</string>
 	
 	<string name="manage_repo_add">إضافة مخزن جديد للبرامج</string>
 	<string name="manage_repo_answ_wrongl">خطأ في تسجيل الدخول</string>

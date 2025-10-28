@@ -1,4 +1,4 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.File;
 import java.io.InputStream;
@@ -11,8 +11,8 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cm.aptoide.pt.multiversion.MultiversionSpinnerAdapter;
-import cm.aptoide.pt.multiversion.VersionApk;
+import com.aguamarina.pr.multiversion.MultiversionSpinnerAdapter;
+import com.aguamarina.pr.multiversion.VersionApk;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -236,15 +236,15 @@ public class ApkInfo extends Activity{
 					String ws_repo = apk_repo_str.substring(7).split("[\\.]")[0];
 					String fetch_imgs = WS_img+ws_repo+"/"+apk_id+"/"+apk_ver_str.trim()+"/json";
 
-					Log.d("Aptoide",apk_repo_str + " vs " + ws_repo);
-					Log.d("Aptoide","Get img from: " + fetch_imgs);
+					Log.d("Aguamarina",apk_repo_str + " vs " + ws_repo);
+					Log.d("Aguamarina","Get img from: " + fetch_imgs);
 					
 					HttpResponse response_ws = NetworkApis.imgWsGet(fetch_imgs);
 					if(response_ws != null && response_ws.getStatusLine().getStatusCode() == 200){
 						String json_str = null;
 						json_str = EntityUtils.toString(response_ws.getEntity());
 						response_ws.getEntity().consumeContent();
-						Log.d("Aptoide","Resp: " + json_str);
+						Log.d("Aguamarina","Resp: " + json_str);
 						JSONObject json_resp = new JSONObject(json_str);
 						
 						JSONArray img_url = json_resp.getJSONArray("listing");
@@ -252,7 +252,7 @@ public class ApkInfo extends Activity{
 							imageDrwb = new Drawable[img_url.length()];
 						for(int i = 0; i< img_url.length(); i++){
 							String a = (String)img_url.get(i);
-							Log.d("Aptoide","* " + a);
+							Log.d("Aguamarina","* " + a);
 							HttpResponse pic = NetworkApis.imgWsGet(a);
 							InputStream pic_st = pic.getEntity().getContent();
 							Drawable pic_drw = Drawable.createFromStream(pic_st, "src");
@@ -399,7 +399,7 @@ public class ApkInfo extends Activity{
 	};*/
 
 	public void screenshotClick(View v){
-		//Log.d("Aptoide","This view.....");
+		//Log.d("Aguamarina","This view.....");
 		final Dialog dialog = new Dialog(mctx);
 
 		dialog.setContentView(R.layout.screenshoot);

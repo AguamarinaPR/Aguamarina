@@ -1,8 +1,8 @@
-package cm.aptoide.pt.multiversion;
+package com.aguamarina.pr.multiversion;
 
 import java.util.List;
 
-import cm.aptoide.pt.R;
+import com.aguamarina.pr.R;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package cm.aptoide.pt.utils;
+package com.aguamarina.pr.utils;
 
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.impl.client.DefaultHttpClient;

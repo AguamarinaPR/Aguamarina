@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">Uygulama indiriliyor</string>
 
-	<string name="aptoide_error">Sunucuya bağlanılamadı</string>
+	<string name="aguamarina_error">Sunucuya bağlanılamadı</string>
 	
 	<string name="manage_repo_add">Yeni depo ekle</string>
 	<string name="manage_repo_answ_wrongl">Kullanıcı ismi hatalı</string>
@@ -21,7 +21,7 @@
     
     <string name="remote_in_noSD_title">Bellek mevcut değil</string>
     <string name="remote_in_noSD">SD kartınız yok.\nBir kart takıp tekrar deneyiniz.</string>
-    <string name="remote_in_noSDspace">SD kartınızda Aptoide\'i kullanmak için yeterli alan yok\nYeterli boş alan yaratıp tekrar deneyiniz.</string>
+    <string name="remote_in_noSDspace">SD kartınızda Aguamarina\'i kullanmak için yeterli alan yok\nYeterli boş alan yaratıp tekrar deneyiniz.</string>
     
     <string name="error_on_update">Güncelleme şu depolar için yapılamadı:\n</string>
     
@@ -30,7 +30,7 @@
     <string name="update_main">Kullanılan depoların listesi değişti.\nGüncellemek ister misiniz?</string>
     
     <string name="updating_3g">3G vasıtasıyla çevrim içindesiniz. WiFi bağlantısını kullanarak güncelleme yapmanız önerilir.\nBuna rağmen güncelleme yapılsın mı?</string>
-    <string name="updating_cfrm">Aptoide depolarının güncellenmesini teyit ediyor musunuz?</string>
+    <string name="updating_cfrm">Aguamarina depolarının güncellenmesini teyit ediyor musunuz?</string>
     <string name="updating_norepos">Listenizde etkin bir depo yok.\nLütfen bir depo ekleyin ya da mevcut bir depoyu etkinleştirin.</string>
     
     <string name="repo_ctx">Seçenekler</string>

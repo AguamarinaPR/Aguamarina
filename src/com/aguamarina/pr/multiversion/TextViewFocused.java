@@ -1,4 +1,4 @@
-package cm.aptoide.pt.multiversion;
+package com.aguamarina.pr.multiversion;
 
 import android.content.Context;
 import android.graphics.Rect;

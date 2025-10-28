@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.IOException;
 import java.net.URI;
@@ -174,34 +174,34 @@ public class ManageRepo extends ListActivity{
 	
 	private boolean serverContainsRepo(Vector<String> serverList, String repo){
 		if(serverList.contains(repo)){
-			Log.d("Aptoide-ManageRepo", "Repo already exists");
+			Log.d("Aguamarina-ManageRepo", "Repo already exists");
 			return true;
 		}else{
 			for (String existingRepo : serverList) {
 				if(repo.length()== (existingRepo.length()-1)){
 					if(repo.equals(existingRepo.substring(0, existingRepo.length()-1))){
-						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without final forward slash");
+						Log.d("Aguamarina-ManageRepo", "Repo equal to existant one but without final forward slash");
 						return true;
 					}
 				}else if(repo.length()== (existingRepo.length()-8)){ 
 					if(repo.equals(existingRepo.substring(7, existingRepo.length()-1))){
-						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without initial http:// and the final forward slash");
+						Log.d("Aguamarina-ManageRepo", "Repo equal to existant one but without initial http:// and the final forward slash");
 						return true;
 					}
 				}else{
 					repo = repo+".bazaarandroid.com/";
 					if(repo.equals(existingRepo.substring(7, existingRepo.length()))){
-						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without initial http:// and without .bazaarandroid.com extension");
+						Log.d("Aguamarina-ManageRepo", "Repo equal to existant one but without initial http:// and without .bazaarandroid.com extension");
 						return true;
 					}
 					if(repo.equals(existingRepo.substring(7, existingRepo.length()-1))){
-						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without initial http:// , without .bazaarandroid.com extension, and the final forward slash");
+						Log.d("Aguamarina-ManageRepo", "Repo equal to existant one but without initial http:// , without .bazaarandroid.com extension, and the final forward slash");
 						return true;
 					}
 				}
 			}
 		}
-		Log.d("Aptoide-ManageRepo", "Repo is new");
+		Log.d("Aguamarina-ManageRepo", "Repo is new");
 		return false;
 	}
 	
@@ -249,12 +249,12 @@ public class ManageRepo extends ListActivity{
 				server_lst.get(position).inuse = true;
 				server_to_reset_count.add(node);
 				pic.setImageResource(R.drawable.btn_check_on);
-				Log.d("Aptoide", "check on");
+				Log.d("Aguamarina", "check on");
 			}else{
 				server_lst.get(position).inuse = false;
 				server_to_reset_count.remove(node);
 				pic.setImageResource(R.drawable.btn_check_off);
-				Log.d("Aptoide", "check off");
+				Log.d("Aguamarina", "check off");
 			}
 
 			db.changeServerStatus(node);
@@ -371,11 +371,11 @@ public class ManageRepo extends ListActivity{
 					
 					if(uri_str.charAt(uri_str.length()-1)!='/'){
 						uri_str = uri_str+'/';
-						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 					}
 					if(!uri_str.startsWith("http://")){
 						uri_str = "http://"+uri_str;
-						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 					}
 					sec_msg.setVisibility(View.GONE);
 					sec_msg2.setVisibility(View.GONE);
@@ -391,7 +391,7 @@ public class ManageRepo extends ListActivity{
 					returnStatus result = checkServerConnection(uri_str, user, pwd);
 					switch (result) {
 					case OK:
-						Log.d("Aptoide-ManageRepo", "return ok");
+						Log.d("Aguamarina-ManageRepo", "return ok");
 						msg.obj = 0;
 						db.addServer(uri_str);
 						if(user != null && pwd != null){
@@ -402,7 +402,7 @@ public class ManageRepo extends ListActivity{
 						break;
 					
 					case LOGIN_REQUIRED:
-						Log.d("Aptoide-ManageRepo", "return login_required");
+						Log.d("Aguamarina-ManageRepo", "return login_required");
 						sec_msg2.setText(getText(R.string.manage_repo_answ_lr));
 						sec_msg2.setVisibility(View.VISIBLE);
 						msg.obj = 1;
@@ -410,23 +410,23 @@ public class ManageRepo extends ListActivity{
 						break;
 						
 					case BAD_LOGIN:
-						Log.d("Aptoide-ManageRepo", "return bad_login");
+						Log.d("Aguamarina-ManageRepo", "return bad_login");
 						sec_msg2.setText(getText(R.string.manage_repo_answ_wrongl));
 						sec_msg2.setVisibility(View.VISIBLE);
 						msg.obj = 1;
 						break;
 						
 					case FAIL:
-						Log.d("Aptoide-ManageRepo", "return fail");
+						Log.d("Aguamarina-ManageRepo", "return fail");
 						uri_str = uri_str.substring(0, uri_str.length()-1)+".bazaarandroid.com/";
-						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 						msg.obj = 1;
 						break;
 
 					default:
-						Log.d("Aptoide-ManageRepo", "return exception");
+						Log.d("Aguamarina-ManageRepo", "return exception");
 						uri_str = uri_str.substring(0, uri_str.length()-1)+".bazaarandroid.com/";
-						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 						msg.obj = 1;
 						break;
 					}
@@ -434,7 +434,7 @@ public class ManageRepo extends ListActivity{
 						returnStatus result2 = checkServerConnection(uri_str, user, pwd);
 						switch (result2) {
 						case OK:
-							Log.d("Aptoide-ManageRepo", "return ok");
+							Log.d("Aguamarina-ManageRepo", "return ok");
 							msg.obj = 0;
 							db.addServer(uri_str);
 							if(user != null && pwd != null){
@@ -445,7 +445,7 @@ public class ManageRepo extends ListActivity{
 							break;
 						
 						case LOGIN_REQUIRED:
-							Log.d("Aptoide-ManageRepo", "return login_required");
+							Log.d("Aguamarina-ManageRepo", "return login_required");
 							sec_msg2.setText(getText(R.string.manage_repo_answ_lr));
 							sec_msg2.setVisibility(View.VISIBLE);
 							msg.obj = 1;
@@ -453,14 +453,14 @@ public class ManageRepo extends ListActivity{
 							break;
 							
 						case BAD_LOGIN:
-							Log.d("Aptoide-ManageRepo", "return bad_login");
+							Log.d("Aguamarina-ManageRepo", "return bad_login");
 							sec_msg2.setText(getText(R.string.manage_repo_answ_wrongl));
 							sec_msg2.setVisibility(View.VISIBLE);
 							msg.obj = 1;	
 							break;
 							
 						case FAIL:
-							Log.d("Aptoide-ManageRepo", "return fail");
+							Log.d("Aguamarina-ManageRepo", "return fail");
 							sec_msg.setText(getText(R.string.manage_repo_answ_cc));
 							sec_msg.setVisibility(View.VISIBLE);
 							msg.obj = 1;
@@ -468,7 +468,7 @@ public class ManageRepo extends ListActivity{
 							break;
 
 						default:
-							Log.d("Aptoide-ManageRepo", "return exception");
+							Log.d("Aguamarina-ManageRepo", "return exception");
 							msg.obj = 1;	
 							break;
 						}

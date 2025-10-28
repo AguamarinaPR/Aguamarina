@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ver_str">"2.5.2"</string>
-    <string name="change_log_url">http://aptoide.com/changelog_2_5_2.html</string>
+    <string name="ver_str">"2.0"</string>
+    <string name="change_log_url">http://aguamarina.altervista.org/changelog</string>
 </resources>
 
 <!--

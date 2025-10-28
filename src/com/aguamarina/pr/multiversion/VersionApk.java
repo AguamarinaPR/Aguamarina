@@ -1,4 +1,4 @@
-package cm.aptoide.pt.multiversion;
+package com.aguamarina.pr.multiversion;
 
 import java.util.ArrayList;
 import java.util.Iterator;

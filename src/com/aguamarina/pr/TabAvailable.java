@@ -1,11 +1,11 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.util.ArrayList;
 import java.util.Vector;
 
 
-import cm.aptoide.pt.multiversion.VersionApk;
-import cm.aptoide.pt.utils.EnumOptionsMenu;
+import com.aguamarina.pr.multiversion.VersionApk;
+import com.aguamarina.pr.utils.EnumOptionsMenu;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -55,7 +55,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		
 		db = new DbHandler(this);
 		mctx = this;
-		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		lv = new ListView(this);
 		lv.setOnItemClickListener(this);
 
@@ -92,11 +92,11 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		EnumOptionsMenu menuEntry = EnumOptionsMenu.reverseOrdinal(item.getItemId());
-		Log.d("Aptoide-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
+		Log.d("Aguamarina-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
 		switch (menuEntry) {
 		case UPDATE_REPO:
-			Intent remoteUpdate = new Intent("pt.caixamagica.aptoide.UPDATE_REPOS");
-			remoteUpdate.setClassName("cm.aptoide.pt", "cm.aptoide.pt.RemoteInTab");
+			Intent remoteUpdate = new Intent("pr.fleurdelis.aguamarina.UPDATE_REPOS");
+			remoteUpdate.setClassName("com.aguamarina.pr", "com.aguamarina.pr.RemoteInTab");
 			startActivity(remoteUpdate);
 			return true;
 		case DISPLAY_OPTIONS:
@@ -285,7 +285,7 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == 30 && data != null && data.hasExtra("apkid") && data.hasExtra("version")){
 			String apk_id = data.getStringExtra("apkid");
-			Log.d("Aptoide", "....... getting: " + apk_id);
+			Log.d("Aguamarina", "....... getting: " + apk_id);
 			queueDownload(apk_id, data.getStringExtra("version"), false);
 		}
 	}

@@ -16,7 +16,7 @@
     <string name="installed_update">Possivel update - Ver.:</string>
     <string name="srv_version">Versão diponível</string>
     
-    <string name="srch_label">Aptoide</string>
+    <string name="srch_label">Aguamarina</string>
     <string name="srch_hint">Nome da aplicação</string>
     
     <string name="about_txt1">Instalador de pacotes para Android.\n</string>
@@ -25,8 +25,8 @@
     
     <string name="about_mail">Contactos: </string>
     
-    <string name="about_txt2"> www.aptoide.com</string>
-    <string name="about_txt3"> aptoide@aptoide.com</string>
+    <string name="about_txt2"> aguamarina.altervista.org</string>
+    <string name="about_txt3"> aguamarina@altervista.org</string>
 </resources>
 
 <!--

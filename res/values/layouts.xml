@@ -15,12 +15,12 @@
     
     <string name="order_popup_title">Display Options </string>
     
-    <string name="settings_title_bar">Aptoide settings</string>
+    <string name="settings_title_bar">Aguamarina settings</string>
     
     <string name="save_btn">Save </string>
     <string name="clear_cache_title">Cache</string>
     <string name="clear_cache_btn">Clear cache </string>
-    <string name="clear_cache_msg">Warning: removes all icons Aptoide has cached, as well as all pending installs and updates. Don\'t do this if you have ongoing downloads!</string>
+    <string name="clear_cache_msg">Warning: removes all icons Aguamarina has cached, as well as all pending installs and updates. Don\'t do this if you have ongoing downloads!</string>
     
     <string name="clear_dwn_title">Downloads</string>
     <string name="clear_dwn_btn">Download icons</string>

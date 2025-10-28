@@ -7,7 +7,7 @@
 
 	<string name="fetch_apk">Pobieranie aplikacji</string>
 
-	<string name="aptoide_error">Brak połączenia z serwerem</string>
+	<string name="aguamarina_error">Brak połączenia z serwerem</string>
 	
 	<string name="manage_repo_add">Dodaj nowe repozytorium</string>
 	<string name="manage_repo_answ_wrongl">Login jest błędny</string>
@@ -21,7 +21,7 @@
     
     <string name="remote_in_noSD_title">Brak pamięci</string>
     <string name="remote_in_noSD">Nie masz karty SD.\nWłóż kartę i spróbuj jeszcze raz.</string>
-    <string name="remote_in_noSDspace">Masz zbyt mało miejsca na swojej karcie SD aby użyć Aptoide\nZwolnij trochę miejsca i spróbuj jeszcze raz.</string>
+    <string name="remote_in_noSDspace">Masz zbyt mało miejsca na swojej karcie SD aby użyć Aguamarina\nZwolnij trochę miejsca i spróbuj jeszcze raz.</string>
     
     <string name="error_on_update">Uaktualnienie nie może być przeprowadzone na nastepujących repozytoriach:\n</string>
     
@@ -30,7 +30,7 @@
     <string name="update_main">Zmieniła sie lista aktualnych repozytoriów.\nCzy chesz ją uaktualnić?</string>
     
     <string name="updating_3g">Jesteś połaczony przez 3G. Znacznie lepiej (a na pewno taniej) byłoby przez WiFi.\nKontynuować mimo wszytko?</string>
-    <string name="updating_cfrm">Potwierdzasz uaktualnienie repozytoriów Aptoide?</string>
+    <string name="updating_cfrm">Potwierdzasz uaktualnienie repozytoriów Aguamarina?</string>
     <string name="updating_norepos">Brak aktywnych repozytoriów na liście.\nDodaj repozytorium lub uaktywnij istniejące.</string>
     
     <string name="repo_ctx">Opcje</string>

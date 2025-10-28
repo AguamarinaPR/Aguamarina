@@ -1,9 +1,9 @@
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.util.ArrayList;
 import java.util.Vector;
 
-import cm.aptoide.pt.multiversion.VersionApk;
+import com.aguamarina.pr.multiversion.VersionApk;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -41,8 +41,8 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 		
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			Log.d("Aptoide-TabInstalled", "Tab Installed, broadcast received.");
-			if (intent.getAction().equals("pt.caixamagica.aptoide.INSTALL_APK_ACTION")) {
+			Log.d("Aguamarina-TabInstalled", "Tab Installed, broadcast received.");
+			if (intent.getAction().equals("pr.fleurdelis.aguamarina.INSTALL_APK_ACTION")) {
 				installApk(intent.getStringExtra("localPath"), intent.getStringExtra("version"));
 			}
 		}
@@ -58,7 +58,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 		db = new DbHandler(this);
 		
 		installApkListener = new InstallApkListener();
-		registerReceiver(installApkListener, new IntentFilter("pt.caixamagica.aptoide.INSTALL_APK_ACTION"));
+		registerReceiver(installApkListener, new IntentFilter("pr.fleurdelis.aguamarina.INSTALL_APK_ACTION"));
 		//mctx = this;
 	}
 	
@@ -72,7 +72,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 //	@Override
 //	public boolean onOptionsItemSelected(MenuItem item) {
 //		EnumOptionsMenu menuEntry = EnumOptionsMenu.reverseOrdinal(item.getItemId());
-//		Log.d("Aptoide-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
+//		Log.d("Aguamarina-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
 //		switch (menuEntry) {
 //		case DISPLAY_OPTIONS:
 //			/*if(resumeMe()){
@@ -108,7 +108,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 //            unregisterReceiver(installApkListener);
 //            installApkListenerIsRegistered = false;
 //        }
-//		Log.d("Aptoide-TabInstalled", "installApkListenerIsUnregistered");
+//		Log.d("Aguamarina-TabInstalled", "installApkListenerIsUnregistered");
 //		
 //		super.onPause();
 //	}
@@ -116,13 +116,13 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Log.d("Aptoide-TabInstalled", "onResume");
+		Log.d("Aguamarina-TabInstalled", "onResume");
 		
 //		if (!installApkListenerIsRegistered) {
-//            registerReceiver(installApkListener, new IntentFilter("pt.caixamagica.aptoide.INSTALL_APK_ACTION"));
+//            registerReceiver(installApkListener, new IntentFilter("pr.fleurdelis.aguamarina.INSTALL_APK_ACTION"));
 //            installApkListenerIsRegistered = true;
 //        }
-//		Log.d("Aptoide-TabInstalled", "installApkListenerIsRegistered");
+//		Log.d("Aguamarina-TabInstalled", "installApkListenerIsRegistered");
 
 		
 		new Thread(){
@@ -259,13 +259,13 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 				new Thread() {
 					public void run() {
 						String apk_id = data.getStringExtra("apkid");
-						Log.d("Aptoide", ".... removing: " + apk_id);
+						Log.d("Aguamarina", ".... removing: " + apk_id);
 						removeApk(apk_id);
 					}
 				}.start();
 			} else if(data.getBooleanExtra("install", false) && data.hasExtra("version")){
 					String apk_id = data.getStringExtra("apkid");
-					Log.d("Aptoide", "....... getting: " + apk_id);
+					Log.d("Aguamarina", "....... getting: " + apk_id);
 					queueDownload(apk_id, data.getStringExtra("version"), true);
 			}
 		}

@@ -1,5 +1,5 @@
 /*
- * EnumOptionsMenu		typeSafes Scattered menu options in Aptoide
+ * EnumOptionsMenu		typeSafes Scattered menu options in Aguamarina
  * Copyright (C) 20011  Duarte Silveira
  * duarte.silveira@caixamagica.pt
  *
@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package cm.aptoide.pt.utils;
+package com.aguamarina.pr.utils;
 
 public enum EnumOptionsMenu {
 	UPDATE_ALL,

@@ -14,12 +14,12 @@
     
     <string name="order_popup_title">Opcije ekrana </string>
     
-    <string name="settings_title_bar">Aptoide opcije </string>
+    <string name="settings_title_bar">Aguamarina opcije </string>
     
     <string name="save_btn">Memorisati </string>
     <string name="clear_cache_title">Cache</string>
     <string name="clear_cache_btn">Ocistiti cache </string>
-    <string name="clear_cache_msg">OPASNOST: uklanja sve ikone koje je Aptoide memorisao </string>
+    <string name="clear_cache_msg">OPASNOST: uklanja sve ikone koje je Aguamarina memorisao </string>
     
     <string name="clear_dwn_title">Preuzimanja</string>
     <string name="clear_dwn_btn">Preuzimanje ikona</string>

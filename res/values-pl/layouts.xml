@@ -14,12 +14,12 @@
     
     <string name="order_popup_title">Pokaż Opcje </string>
     
-    <string name="settings_title_bar">Ustawienia Aptoide</string>
+    <string name="settings_title_bar">Ustawienia Aguamarina</string>
     
     <string name="save_btn">Zapisz </string>
     <string name="clear_cache_title">Cache</string>
     <string name="clear_cache_btn">Wyczyść cache </string>
-    <string name="clear_cache_msg">UWAGA: zostaną usunięte wszystkie ikony zapamiętane przez Aptoide </string>
+    <string name="clear_cache_msg">UWAGA: zostaną usunięte wszystkie ikony zapamiętane przez Aguamarina </string>
     
     <string name="clear_dwn_title">Pobrania</string>
     <string name="clear_dwn_btn">Pobierz ikony</string>

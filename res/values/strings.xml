@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Aptoide</string>
+    <string name="app_name">Aguamarina</string>
     
     <string name="tab_avail">Available</string>
     <string name="tab_inst">Installed</string>
@@ -17,7 +17,7 @@
     <string name="installed_update">Update possible - Ver.:</string>
     <string name="srv_version">Available version:</string>
     
-    <string name="srch_label">Aptoide</string>
+    <string name="srch_label">Aguamarina</string>
     <string name="srch_hint">Name of the application</string>
     
     <string name="about_txt1">Your package installer to Android phone.\n</string>
@@ -26,8 +26,8 @@
     
     <string name="about_mail">Contact: </string>
     
-    <string name="about_txt2"> www.aptoide.com</string>
-    <string name="about_txt3"> aptoide@aptoide.com</string>
+    <string name="about_txt2"> aguamarina.altervista.org</string>
+    <string name="about_txt3"> aguamarina@altervista.org</string>
     <string name="multi_ver_prompt">Select an app version</string>
     <string name="version">Version</string>
     <string name="size">Size</string>

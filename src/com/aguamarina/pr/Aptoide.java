@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package cm.aptoide.pt;
+package com.aguamarina.pr;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -81,13 +81,13 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
-public class Aptoide extends Activity { 
+public class Aguamarina extends Activity { 
 	
 
     
 	private static final int LOAD_TABS = 0;
 	private static final int UPDATE_SELF = 99;
-    private static final String TMP_MYAPP_FILE = Environment.getExternalStorageDirectory().getPath() + "/.aptoide/server";
+    private static final String TMP_MYAPP_FILE = Environment.getExternalStorageDirectory().getPath() + "/.aguamarina/server";
 	
 	private WakeLock keepScreenOn;
 	private Intent DownloadQueueServiceIntent;
@@ -95,7 +95,7 @@ public class Aptoide extends Activity {
     private Vector<String> server_lst = null;
     private Vector<String[]> get_apps = null;
     
-    // Used for Aptoide version update
+    // Used for Aguamarina version update
 	private DbHandler db = null;
 
 	private SharedPreferences sPref;
@@ -120,7 +120,7 @@ public class Aptoide extends Activity {
 
 	        downloadQueueService.setCurrentContext(mctx);
 	        
-	        Log.d("Aptoide", "DownloadQueueService bound to Aptoide");
+	        Log.d("Aguamarina", "DownloadQueueService bound to Aguamarina");
 	    }
 	    
 	    public void onServiceDisconnected(ComponentName className) {
@@ -130,7 +130,7 @@ public class Aptoide extends Activity {
 	        // see this happen.
 	        downloadQueueService = null;
 	        
-	        Log.d("Aptoide","DownloadQueueService unbound from Aptoide");
+	        Log.d("Aguamarina","DownloadQueueService unbound from Aguamarina");
 	    }
 
 	};	
@@ -146,16 +146,16 @@ public class Aptoide extends Activity {
 		public void handleMessage(Message msg) {
 			switch(msg.what){
 			case LOAD_TABS:
-				Intent i = new Intent(Aptoide.this, RemoteInTab.class);
+				Intent i = new Intent(Aguamarina.this, RemoteInTab.class);
 				Intent get = getIntent();
 				if(get.getData() != null){
 					String uri = get.getDataString();
-					if(uri.startsWith("aptoiderepo")){
-						Log.d("Aptoide-startHandler", "aptoiderepo-scheme");
+					if(uri.startsWith("aguamarinarepo")){
+						Log.d("Aguamarina-startHandler", "aguamarinarepo-scheme");
 						String repo = uri.substring(14);
 						i.putExtra("newrepo", repo);
-					}else if(uri.startsWith("aptoidexml")){
-						Log.d("Aptoide-startHandler", "aptoidexml-scheme");
+					}else if(uri.startsWith("aguamarinaxml")){
+						Log.d("Aguamarina-startHandler", "aguamarinaxml-scheme");
 						String repo = uri.substring(13);
 						parseXmlString(repo);
 						i.putExtra("repos", server_lst);
@@ -166,7 +166,7 @@ public class Aptoide extends Activity {
 						}
 						//i.putExtra("linkxml", repo);
 					}else{
-						Log.d("Aptoide-startHandler", "receiving a myapp file");
+						Log.d("Aguamarina-startHandler", "receiving a myapp file");
 						downloadMyappFile(uri);
 						try {
 							parseMyappFile(TMP_MYAPP_FILE);
@@ -203,11 +203,11 @@ public class Aptoide extends Activity {
 
     	mctx.bindService(new Intent(mctx, DownloadQueueService.class), serviceConnection, Context.BIND_AUTO_CREATE);
     	
-//@dsilveira  #534 +10lines Check if Aptoide is already running to avoid wasting time and showing the splash
+//@dsilveira  #534 +10lines Check if Aguamarina is already running to avoid wasting time and showing the splash
     	ActivityManager activityManager = (ActivityManager)mctx.getSystemService(Context.ACTIVITY_SERVICE);
     	List<RunningTaskInfo> running = activityManager.getRunningTasks(Integer.MAX_VALUE);
     	for (RunningTaskInfo runningTask : running) {
-			if(runningTask.baseActivity.getClassName().equals("cm.aptoide.pt.RemoteInTab")){	//RemoteInTab is the real Aptoide Activity
+			if(runningTask.baseActivity.getClassName().equals("com.aguamarina.pr.RemoteInTab")){	//RemoteInTab is the real Aguamarina Activity
 				Message msg = new Message();
 	            msg.what = LOAD_TABS;
 	            startHandler.sendMessage(msg);
@@ -215,22 +215,22 @@ public class Aptoide extends Activity {
 			}
 		}
 			
-        Log.d("Aptoide","******* \n Downloads will be made to: " + Environment.getExternalStorageDirectory().getPath() + "\n ********");
+        Log.d("Aguamarina","******* \n Downloads will be made to: " + Environment.getExternalStorageDirectory().getPath() + "\n ********");
 
-        sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
+        sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
         
    		
    		PackageManager mPm = getPackageManager();
    		try {
-			pkginfo = mPm.getPackageInfo("cm.aptoide.pt", 0);
+			pkginfo = mPm.getPackageInfo("com.aguamarina.pr", 0);
    		} catch (NameNotFoundException e) {	}
    		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
    		/*try{
 			if( pkginfo.versionCode < Integer.parseInt( getXmlElement("versionCode") ) ){
-				Log.d("Aptoide-VersionCode", "Using version "+pkginfo.versionCode+", suggest update!");
+				Log.d("Aguamarina-VersionCode", "Using version "+pkginfo.versionCode+", suggest update!");
 				requestUpdateSelf();
 			}else{
 				proceed();
@@ -334,7 +334,7 @@ public class Aptoide extends Activity {
 				super.onActivityResult(requestCode, resultCode, data);
 				try{
 					db.clodeDb();
-				}catch (Exception e) {Log.d("Aptoide","Exit error: " + e.toString());	}
+				}catch (Exception e) {Log.d("Aguamarina","Exit error: " + e.toString());	}
 				finally{
 					this.finish();
 				}
@@ -370,7 +370,7 @@ public class Aptoide extends Activity {
 		} catch(Exception e){
 			AlertDialog p = new AlertDialog.Builder(this).create();
 			p.setTitle(getText(R.string.top_error));
-			p.setMessage(getText(R.string.aptoide_error));
+			p.setMessage(getText(R.string.aguamarina_error));
 			p.setButton(getText(R.string.btn_ok), new DialogInterface.OnClickListener() {
 			      public void onClick(DialogInterface dialog, int which) {
 			          return;
@@ -440,8 +440,8 @@ public class Aptoide extends Activity {
         NodeList items = dom.getElementsByTagName(name);
         for(int i=0;i<items.getLength();){
         	Node item = items.item(i);
-        	Log.d("Aptoide-XmlElement Name", item.getNodeName());
-        	Log.d("Aptoide-XmlElement Value", item.getFirstChild().getNodeValue().trim());
+        	Log.d("Aguamarina-XmlElement Name", item.getNodeName());
+        	Log.d("Aguamarina-XmlElement Value", item.getFirstChild().getNodeValue().trim());
         	return item.getFirstChild().getNodeValue().trim();
         }
         return "0";
@@ -476,7 +476,7 @@ public class Aptoide extends Activity {
 	}*/
 	
 	/*private class DownloadSelfUpdate extends AsyncTask<Void, Void, Void>{
-		private final ProgressDialog dialog = new ProgressDialog(Aptoide.this);
+		private final ProgressDialog dialog = new ProgressDialog(Aguamarina.this);
 	
 		String latestVersionUri;
 		String referenceMd5;
@@ -488,7 +488,7 @@ public class Aptoide extends Activity {
 				referenceMd5 = getXmlElement("md5");
 			}catch (Exception e) {
 				e.printStackTrace();
-				Log.d("Aptoide-Auto-Update", "Update connection failed!  Keeping current version.");
+				Log.d("Aguamarina-Auto-Update", "Update connection failed!  Keeping current version.");
 			}
 		}
 		
@@ -521,10 +521,10 @@ public class Aptoide extends Activity {
 				HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 				
 				if(mHttpResponse == null){
-					 Log.d("Aptoide","Problem in network... retry...");	
+					 Log.d("Aguamarina","Problem in network... retry...");	
 					 mHttpResponse = mHttpClient.execute(mHttpGet);
 					 if(mHttpResponse == null){
-						 Log.d("Aptoide","Major network exception... Exiting!");
+						 Log.d("Aguamarina","Major network exception... Exiting!");
 						 //msg_al.arg1= 1;
 						 //download_error_handler.sendMessage(msg_al);
 						 throw new TimeoutException();
@@ -543,7 +543,7 @@ public class Aptoide extends Activity {
 						saveit.write(data,0,bytesRead);
 						bytesRead = getit.read(data, 0, 8096);
 					}
-					Log.d("Aptoide","Download done!");
+					Log.d("Aguamarina","Download done!");
 					saveit.flush();
 					saveit.close();
 					getit.close();
@@ -552,7 +552,7 @@ public class Aptoide extends Activity {
 //						download_error_handler.sendMessage(msg_al);
 				e.printStackTrace();
 				Toast.makeText(mctx, mctx.getString(R.string.network_auto_update_error), Toast.LENGTH_LONG);
-				Log.d("Aptoide-Auto-Update", "Update connection failed!  Keeping current version.");
+				Log.d("Aguamarina-Auto-Update", "Update connection failed!  Keeping current version.");
 			}
 			return null;
 		}
@@ -576,7 +576,7 @@ public class Aptoide extends Activity {
 						doUpdateSelf();
 				    	
 					}else{
-						Log.d("Aptoide",referenceMd5 + " VS " + hash.md5Calc(apk));
+						Log.d("Aguamarina",referenceMd5 + " VS " + hash.md5Calc(apk));
 		//				msg_al.arg1 = 0;
 		//						download_error_handler.sendMessage(msg_al);
 						throw new Exception(referenceMd5 + " VS " + hash.md5Calc(apk));
@@ -584,7 +584,7 @@ public class Aptoide extends Activity {
 				}catch (Exception e) {
 					e.printStackTrace();
 					Toast.makeText(mctx, mctx.getString(R.string.md5_auto_update_error), Toast.LENGTH_LONG);
-					Log.d("Aptoide-Auto-Update", "Update package checksum failed!  Keeping current version.");
+					Log.d("Aguamarina-Auto-Update", "Update package checksum failed!  Keeping current version.");
 					if (this.dialog.isShowing()) {
 						this.dialog.dismiss();
 					}
