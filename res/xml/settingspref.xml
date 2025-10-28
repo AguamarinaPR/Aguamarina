@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:title="@string/settings_title_bar">
+  
+  
+  <PreferenceCategory
+        android:title="@string/clear_dwn_title">
+        <ListPreference
+            android:title="@string/clear_dwn_btn"
+            android:summary="@string/clear_dwn_msg"
+            android:key="icdown"
+            android:defaultValue="g3w"
+            android:entries="@array/dwnif"
+            android:entryValues="@array/dwnifv" />
+    </PreferenceCategory>
+            
+  
+  <PreferenceCategory
+        android:title="@string/clear_cache_title">
+  		
+  	 <Preference
+     	android:title="@string/clear_cache_btn"
+        android:summary="@string/clear_cache_msg"
+        android:key="clearcache" />
+ 
+  </PreferenceCategory>
+  
+  
+</PreferenceScreen>

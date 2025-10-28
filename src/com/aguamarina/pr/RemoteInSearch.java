@@ -16,12 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-/*This file was modified by TropicalBananas in 2023.*/
-package com.aguamarina.pr;
+
+package cm.aptoide.pt;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,52 +27,45 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
+import cm.aptoide.pt.multiversion.VersionApk;
+import cm.aptoide.pt.utils.EnumOptionsMenu;
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.app.AlertDialog.Builder;
-import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.SimpleAdapter.ViewBinder;
 
 public class RemoteInSearch extends ListActivity{
 	
-	private String LOCAL_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aguamarina";
-	private String APK_PATH = LOCAL_PATH+"/";
+	private ListView lv = null;
+	private int pos = -1;
 	
-	private static final int MANAGE_REPO = Menu.FIRST;
-	private static final int CHANGE_FILTER = 2;
-	private static final int SEARCH_MENU = 3;
-	private static final int SETTINGS = 4;
-	private static final int ABOUT = 5;
+	private static final String LOCAL_APK_PATH = Environment.getExternalStorageDirectory().getPath()+"/.aptoide/";
 	
 	static protected SharedPreferences sPref;
 	static protected SharedPreferences.Editor prefEdit;
@@ -85,15 +76,41 @@ public class RemoteInSearch extends ListActivity{
 	private PackageManager mPm;
 	private PackageInfo pkginfo;
 
-	private static final int SETTINGS_FLAG = 0;
-	
-	private ProgressDialog pd;
+//	private static final int SETTINGS_FLAG = 0;
 	
 	private Context mctx = this; 
 
 	private String query;
 	
 	private String order_lst = "abc";
+	
+	private View baz_search = null;
+	
+	private DownloadQueueService downloadQueueService;
+	private ServiceConnection serviceConnection = new ServiceConnection() {
+	    public void onServiceConnected(ComponentName className, IBinder serviceBinder) {
+	        // This is called when the connection with the service has been
+	        // established, giving us the service object we can use to
+	        // interact with the service.  Because we have bound to a explicit
+	        // service that we know is running in our own process, we can
+	        // cast its IBinder to a concrete class and directly access it.
+	        downloadQueueService = ((DownloadQueueService.DownloadQueueBinder)serviceBinder).getService();
+
+	        Log.d("Aptoide-RemoteInSearch", "DownloadQueueService bound to RemoteInSearch");
+	    }
+	    
+	    public void onServiceDisconnected(ComponentName className) {
+	        // This is called when the connection with the service has been
+	        // unexpectedly disconnected -- that is, its process crashed.
+	        // Because it is running in our same process, we should never
+	        // see this happen.
+	        downloadQueueService = null;
+	        
+	        Log.d("Aptoide-RemoteInSearch","DownloadQueueService unbound from RemoteInSearch");
+	    }
+
+	};
+	
 	
 	class LstBinder implements ViewBinder
 	{
@@ -113,7 +130,7 @@ public class RemoteInSearch extends ListActivity{
              		new Uri.Builder().build();
     				tmpr.setImageURI(Uri.parse(textRepresentation));
              	}else{
-             		tmpr.setImageResource(R.drawable.loadingicon);
+             		tmpr.setImageResource(android.R.drawable.sym_def_app_icon);
              	}
 			}else{
 				return false;
@@ -133,23 +150,30 @@ public class RemoteInSearch extends ListActivity{
 		
 		mPm = getPackageManager();
 		
-		sPref = getSharedPreferences("aguamarina_prefs", MODE_PRIVATE);
+		sPref = getSharedPreferences("aptoide_prefs", MODE_PRIVATE);
 		prefEdit = sPref.edit();
+		
+		lv = getListView();
+		lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
 		Intent i = getIntent();
 		query = i.getStringExtra(SearchManager.QUERY);
 		
-		query = query.replaceAll("[\\%27]|[\\']|[\\-\\-]|[\\%23]|[#]", " ");
+//@dsilveira #529 search doens't handle hiphens well		
+		query = query.replaceAll("[\\%27]|[\\']|[\\-]{2}|[\\%23]|[#]", " ");
 		
 		apk_lst = db.getSearch(query,order_lst);
+		
+		bindService(new Intent(getApplicationContext(), DownloadQueueService.class), serviceConnection, Context.BIND_AUTO_CREATE);
 	}
 		
 	@Override
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		query = intent.getStringExtra(SearchManager.QUERY);
-		
-		query = query.replaceAll("[\\%27]|[\\']|[\\-\\-]|[\\%23]|[#]", " ");
+
+//@dsilveira #529 search doens't handle hiphens well	
+		query = query.replaceAll("[\\%27]|[\\']|[\\-]{2}|[\\%23]|[#]", " ");
 		
 		apk_lst = db.getSearch(query,order_lst);
 	}
@@ -158,21 +182,22 @@ public class RemoteInSearch extends ListActivity{
 	protected void onResume() {
 		super.onResume();
 		redraw();
+		lv.setSelection(pos-1);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
 		super.onCreateOptionsMenu(menu);
-		menu.add(Menu.NONE, MANAGE_REPO, 1, R.string.menu_manage)
+		menu.add(Menu.NONE, EnumOptionsMenu.MANAGE_REPO.ordinal(), EnumOptionsMenu.MANAGE_REPO.ordinal(), R.string.menu_manage)
 			.setIcon(android.R.drawable.ic_menu_agenda);
-		menu.add(Menu.NONE, CHANGE_FILTER, 2, R.string.menu_order)
+		menu.add(Menu.NONE, EnumOptionsMenu.CHANGE_ORDER.ordinal(), EnumOptionsMenu.CHANGE_ORDER.ordinal(), R.string.menu_order)
 		.setIcon(android.R.drawable.ic_menu_sort_by_size);
-		menu.add(Menu.NONE, SEARCH_MENU,3,R.string.menu_search)
+		menu.add(Menu.NONE, EnumOptionsMenu.SEARCH_MENU.ordinal(), EnumOptionsMenu.SEARCH_MENU.ordinal(), R.string.menu_search)
 			.setIcon(android.R.drawable.ic_menu_search);
-		menu.add(Menu.NONE, SETTINGS, 4, R.string.menu_settings)
-			.setIcon(android.R.drawable.ic_menu_preferences);
-		menu.add(Menu.NONE, ABOUT,5,R.string.menu_about)
+//		menu.add(Menu.NONE, EnumOptionsMenu.SETTINGS.ordinal(), EnumOptionsMenu.SETTINGS.ordinal(), R.string.menu_settings)
+//			.setIcon(android.R.drawable.ic_menu_preferences);
+		menu.add(Menu.NONE, EnumOptionsMenu.ABOUT.ordinal(), EnumOptionsMenu.ABOUT.ordinal(), R.string.menu_about)
 			.setIcon(android.R.drawable.ic_menu_help);
 		return true;
 	}
@@ -180,8 +205,9 @@ public class RemoteInSearch extends ListActivity{
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		switch (item.getItemId()) {
+		EnumOptionsMenu menuEntry = EnumOptionsMenu.reverseOrdinal(item.getItemId());
+		Log.d("Aptoide-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
+		switch (menuEntry) {
 		case MANAGE_REPO:
 			Intent i = new Intent(this, ManageRepo.class);
 			startActivity(i);
@@ -192,6 +218,8 @@ public class RemoteInSearch extends ListActivity{
 		case ABOUT:
 			LayoutInflater li = LayoutInflater.from(this);
 			View view = li.inflate(R.layout.about, null);
+			TextView info = (TextView)view.findViewById(R.id.about11);
+			info.setText(mctx.getString(R.string.about_txt11, mctx.getString(R.string.ver_str)));
 			Builder p = new AlertDialog.Builder(this).setView(view);
 			final AlertDialog alrt = p.create();
 			alrt.setIcon(R.drawable.icon);
@@ -204,12 +232,12 @@ public class RemoteInSearch extends ListActivity{
 			});
 			alrt.show();
 			return true;
-		case SETTINGS:
-			Intent s = new Intent(RemoteInSearch.this, Settings.class);
-			s.putExtra("order", order_lst);
-			startActivityForResult(s,SETTINGS_FLAG);
-			return true;
-		case CHANGE_FILTER:
+//		case SETTINGS:
+//			Intent s = new Intent(mctx, Settings.class);
+//			s.putExtra("order", order_lst);
+//			startActivityForResult(s,SETTINGS_FLAG);
+//			return true;
+		case CHANGE_ORDER:
 			if(order_lst.equalsIgnoreCase("abc"))
 				order_lst = "iu";
 			else if(order_lst.equalsIgnoreCase("iu"))
@@ -227,115 +255,47 @@ public class RemoteInSearch extends ListActivity{
 		
 		super.onListItemClick(l, v, position, id);
 		
-		Vector<String> tmp_get = db.getApk(apk_lst.get(position).apkid);
+		pos = position;
+		
+		String apkid = apk_lst.get(position).apkid;
+		String name = apk_lst.get(position).name;
+		Vector<String> tmp_get = db.getApk(apkid);
 
-		String tmp_path = this.getString(R.string.icons_path)+apk_lst.get(position).apkid;
-		File test_icon = new File(tmp_path);
+		String tmp_path = this.getString(R.string.icons_path)+apkid;
 		
-		LayoutInflater li = LayoutInflater.from(this);
-		View view = li.inflate(R.layout.alertscroll, null);
-		Builder alrt = new AlertDialog.Builder(this).setView(view);
-		final AlertDialog p = alrt.create();
-		if(test_icon.exists() && test_icon.length() > 0){
-			p.setIcon(new BitmapDrawable(tmp_path));
-		}else{
-			p.setIcon(R.drawable.loadingicon);
-		}
-		p.setTitle(apk_lst.get(position).name);
-		TextView t1 = (TextView) view.findViewById(R.id.n11);
-		t1.setText(tmp_get.firstElement());
-		TextView t2 = (TextView) view.findViewById(R.id.n22);
-		t2.setText(tmp_get.get(1));
-		TextView t3 = (TextView) view.findViewById(R.id.n33);
-		t3.setText(tmp_get.get(2));
-		TextView t4 = (TextView) view.findViewById(R.id.n44);
-		t4.setText(tmp_get.get(3));
-		TextView t5 = (TextView) view.findViewById(R.id.n55);
-		String tmpi = db.getDescript(apk_lst.get(position).apkid);
+		Intent apkinfo = new Intent(mctx, ApkInfo.class);
+		apkinfo.putExtra("position", position);
+		apkinfo.putExtra("icon", tmp_path);
+		apkinfo.putExtra("apk_id", apkid);
+		apkinfo.putExtra("name", name);
+		
+		String tmpi = db.getDescript(apkid);
 		if(!(tmpi == null)){
-			t5.setText(tmpi);
+			apkinfo.putExtra("about",tmpi);
 		}else{
-			t5.setText(getText(R.string.app_pop_up_no_info));
+			apkinfo.putExtra("about",getText(R.string.app_pop_up_no_info));
 		}
 		
-		p.setButton2(getText(R.string.btn_ok), new DialogInterface.OnClickListener() {
-		      public void onClick(DialogInterface dialog, int which) {
-		          return;
-		        } });
-		if(tmp_get.get(2).equalsIgnoreCase("\tno\n")){
-			p.setButton(getString(R.string.install), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					p.dismiss();
-					new Thread() {
-						public void run() {
-							String apk_pkg = downloadFile(position);
-							Message msg_alt = new Message();
-							if(apk_pkg == null){
-								Message msg = new Message();
-								msg.arg1 = 1;
-								download_handler.sendMessage(msg);
-								msg_alt.arg1 = 1;
-								download_error_handler.sendMessage(msg_alt);
-							}else if(apk_pkg.equals("*md5*")){
-								Message msg = new Message();
-								msg.arg1 = 1;
-								download_handler.sendMessage(msg);
-								msg_alt.arg1 = 0;
-								download_error_handler.sendMessage(msg_alt);
-							}else{
-								installApk(apk_pkg, position);
-							}
-						}
-					}.start();
-				} });
-			/*p.setButton3(getText(R.string.btn_search_market), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					p.dismiss();					
-					Intent intent = new Intent();
-			    	intent.setAction(android.content.Intent.ACTION_VIEW);
-			    	intent.setData(Uri.parse("market://details?id="+apk_lst.get(position).apkid));
-			    	try{
-						startActivity(intent);
-					}catch (ActivityNotFoundException e){
-						Toast.makeText(mctx, getText(R.string.error_no_market), Toast.LENGTH_LONG).show();
-					}
-				} });*/
-		}else{ 
-			p.setButton(getString(R.string.rem), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					String apk_pkg = apk_lst.get(position).apkid;
-					removeApk(apk_pkg, position);
-				} });
-			if(apk_lst.get(position).status == 2){
-				p.setButton3(getString(R.string.update), new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						p.dismiss();
-						new Thread() {
-							public void run() {
-								String apk_pkg = downloadFile(position);
-								Message msg_alt = new Message();
-								if(apk_pkg == null){
-									//Toast.makeText(RemoteInSearch.this, "Could not connect to server!", Toast.LENGTH_LONG).show();
-									Message msg = new Message();
-									msg.arg1 = 1;
-									download_handler.sendMessage(msg);
-									msg_alt.arg1 = 1;
-									download_error_handler.sendMessage(msg_alt);
-								}else if(apk_pkg.equals("*md5*")){
-									Message msg = new Message();
-									msg.arg1 = 1;
-									download_handler.sendMessage(msg);
-									msg_alt.arg1 = 0;
-									download_error_handler.sendMessage(msg_alt);
-								}else{
-									installApk(apk_pkg, position);
-								}
-							}
-						}.start();
-					} });
-			}
+		apkinfo.putExtra("server", tmp_get.firstElement());
+		apkinfo.putExtra("rat", tmp_get.get(5));
+		apkinfo.putExtra("type", apk_lst.get(position).status == 0?0:1);
+		
+		ArrayList<VersionApk> versions = db.getOldApks(apkid);
+		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(7)),apkid,Integer.parseInt(tmp_get.get(6)), Integer.parseInt(tmp_get.get(4)));
+		versions.add(versionApkPassed);
+		
+		try {
+			PackageManager mPm = getApplicationContext().getPackageManager();
+			PackageInfo pkginfo = mPm.getPackageInfo(apkid, 0);
+			apkinfo.putExtra("instversion", new VersionApk(pkginfo.versionName,pkginfo.versionCode,apkid,-1,-1));
+		} catch (NameNotFoundException e) {
+			//Not installed... do nothing
 		}
-		p.show();
+		
+		apkinfo.putParcelableArrayListExtra("versions", versions);
+		
+		startActivityForResult(apkinfo,30);
+		
 	}
 	
 	private void removeApk(String apk_pkg, int position){
@@ -347,43 +307,51 @@ public class RemoteInSearch extends ListActivity{
 	    startActivityForResult(intent,position); 
 	}
 	
-	private void installApk(String apk_pkg, int position){
-		pkginfo = mPm.getPackageArchiveInfo(apk_pkg, 0); //variavel global usada no retorno da instalacao
-		Intent intent = new Intent();
-    	intent.setAction(android.content.Intent.ACTION_VIEW);
-    	intent.setDataAndType(Uri.parse("file://" + apk_pkg), "application/vnd.android.package-archive");
-    	
-    	Message msg = new Message();
-		msg.arg1 = 1;
-		download_handler.sendMessage(msg);
-    	
-    	startActivityForResult(intent,position);
-	}
-	
-
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		mPm = getPackageManager();
-		if(data != null && data.hasExtra("settings")){
-			if(data.hasExtra("align"))
-				order_lst = data.getStringExtra("align");
-			redraw();
-		}else{
-			List<PackageInfo> getapks = mPm.getInstalledPackages(0);
-			for(PackageInfo node: getapks){
-				if(node.packageName.equalsIgnoreCase(pkginfo.packageName)){
-					db.insertInstalled(apk_lst.get(requestCode).apkid);
-					prefEdit.putBoolean("search_updt", true);
-					prefEdit.commit();
-					redraw();
-					return;
+		Log.d("Aptoide", "Position is: " + (pos-1));
+		if(requestCode == 30){
+			if(data != null){
+				String apkid = data.getStringExtra("apkid");
+				int pos = data.getIntExtra("position", -1);
+				if(pos > -1){
+					if(data.getBooleanExtra("in", false)){
+						Log.d("Aptoide","This: " + apkid + " - " + pos + " - Install");
+						queueDownload(pos, data.getStringExtra("version"));
+						
+					}else if(data.getBooleanExtra("rm", false)){
+						Log.d("Aptoide","This: " + apkid + " - " + pos + " - Remove");
+						removeApk(apkid, pos);
+					}
 				}
 			}
-			db.removeInstalled(apk_lst.get(requestCode).apkid);
-			prefEdit.putBoolean("search_updt", true);
-			prefEdit.commit();
-			redraw();
+		}else{
+
+			mPm = getPackageManager();
+			if(data != null && data.hasExtra("settings")){
+				if(data.hasExtra("align"))
+					order_lst = data.getStringExtra("align");
+				redraw();
+				lv.setSelection(pos-1);
+			}else{
+				List<PackageInfo> getapks = mPm.getInstalledPackages(0);
+				for(PackageInfo node: getapks){
+					if(node.packageName.equalsIgnoreCase(pkginfo.packageName)){
+						db.insertInstalled(apk_lst.get(requestCode).apkid, apk_lst.get(requestCode).ver);
+						prefEdit.putBoolean("search_updt", true);
+						prefEdit.commit();
+						redraw();
+						lv.setSelection(pos-1);
+						return;
+					}
+				}
+				db.removeInstalled(apk_lst.get(requestCode).apkid);
+				prefEdit.putBoolean("search_updt", true);
+				prefEdit.commit();
+				redraw();
+				lv.setSelection(pos-1);
+			}
 		}
 	}
 
@@ -419,115 +387,68 @@ public class RemoteInSearch extends ListActivity{
         		new String[] {"name", "name2", "status", "status2", "icon", "rat"}, new int[] {R.id.name, R.id.nameup,  R.id.isinst, R.id.isupdt, R.id.appicon, R.id.rating});
         show_out.setViewBinder(new RemoteInSearch.LstBinder());
         
+        if(baz_search != null)
+        	getListView().removeFooterView(baz_search);
+        
+        baz_search = View.inflate(this, R.layout.bzzsrch, null);
+        
+        Button search_baz = (Button) baz_search.findViewById(R.id.baz_src);
+        search_baz.setText("Search '" + query + "' on Bazaar");
+        search_baz.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				String url = "http://m.bazaarandroid.com/searchview.php?search="+query;
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(url));
+				startActivity(i);
+			}
+		});
+        
+        getListView().addFooterView(baz_search);
+        
         setListAdapter(show_out);
 
 	}
 
-	private String downloadFile(int position){
-		Vector<DownloadNode> tmp_serv = new Vector<DownloadNode>();
-		String getserv = new String();
-		String md5hash = null;
-		String repo = null;
-
+	private void queueDownload(int position, String version){
+		
+		Vector<DownloadNode> tmp_serv = new Vector<DownloadNode>();	
+		
 		try{
-			tmp_serv = db.getPathHash(apk_lst.get(position).apkid);
-
-			if(tmp_serv.size() > 0){
-				DownloadNode node = tmp_serv.get(0);
-				getserv = node.repo + "/" + node.path;
-				md5hash = node.md5h;
-				repo = node.repo;
-			}
-
-			if(getserv.length() == 0)
+		
+			String packageName = apk_lst.get(position).apkid;
+			String appName = apk_lst.get(position).name;
+			
+			tmp_serv = db.getPathHash(packageName, version);
+			
+			String localPath = new String(LOCAL_APK_PATH+apk_lst.get(position).apkid+".apk");
+			
+			//if(tmp_serv.size() > 0){
+			DownloadNode downloadNode = tmp_serv.firstElement();
+			downloadNode.setPackageName(packageName);
+			downloadNode.setAppName(appName);
+			downloadNode.setLocalPath(localPath);
+			String remotePath = downloadNode.getRemotePath();
+			
+			//}
+	
+			if(remotePath.length() == 0)
 				throw new TimeoutException();
-
-			Message msg = new Message();
-			msg.arg1 = 0;
-			msg.obj = new String(getserv);
-			download_handler.sendMessage(msg);
-
-			String path = new String(APK_PATH+apk_lst.get(position).apkid+".apk");
 			
-			// If file exists, removes it...
-			 File f_chk = new File(path);
-			 if(f_chk.exists()){
-				 f_chk.delete();
-			 }
-			 f_chk = null;
-			
-			FileOutputStream saveit = new FileOutputStream(path);
-			DefaultHttpClient mHttpClient = new DefaultHttpClient();
-			HttpGet mHttpGet = new HttpGet(getserv);
+//			String[] logins = null; 
+//			logins = db.getLogin(downloadNode.getRepo());
+					
+			downloadQueueService.startDownload(downloadNode);
+	
+		} catch(Exception e){	}
+	}
 
-/*			String[] logins = null; 
-			logins = db.getLogin(repo);
-			if(logins != null){
-				URL mUrl = new URL(getserv);
-				mHttpClient.getCredentialsProvider().setCredentials(
-						new AuthScope(mUrl.getHost(), mUrl.getPort()),
-						new UsernamePasswordCredentials(logins[0], logins[1]));
-			}
-*/
-			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
-			
-			if(mHttpResponse == null){
-				 Log.d("Aguamarina","Problem in network... retry...");	
-				 mHttpResponse = mHttpClient.execute(mHttpGet);
-				 if(mHttpResponse == null){
-					 Log.d("Aguamarina","Major network exception... Exiting!");
-					 return null;
-				 }
-			 }
-			
-			if(mHttpResponse.getStatusLine().getStatusCode() == 401){
-				return null;
-			}else{
-				InputStream getit = mHttpResponse.getEntity().getContent();
-				byte data[] = new byte[8096];
-				int readed;
-				while((readed = getit.read(data, 0, 8096)) != -1) {
-					 saveit.write(data,0,readed);
-				 }
-			}
-
-
-			File f = new File(path);
-			Md5Handler hash = new Md5Handler();
-			if(md5hash == null || md5hash.equalsIgnoreCase(hash.md5Calc(f))){
-				return path;
-			}else{
-				Log.d("Aguamarina",md5hash + " VS " + hash.md5Calc(f));
-				return "*md5*";
-			}
-		} catch(Exception e){
-			return null;
+	@Override
+	protected void onDestroy() {
+		if(downloadQueueService != null){
+			unbindService(serviceConnection);	
 		}
+		super.onDestroy();
 	}
 	
-	/*
-	 * UI Handlers
-	 * 
-	 */
-	private Handler download_handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-        	if(msg.arg1 == 0){
-        		pd = ProgressDialog.show(mctx, "Download", getString(R.string.download_alrt) + msg.obj.toString(), true);
-        	}else{
-        		pd.dismiss();
-        	}
-        }
-	};
-	
-	private Handler download_error_handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-        	if(msg.arg1 == 1){
-        		Toast.makeText(mctx, "Ocorreu uma excepção no download do ficheiro!", Toast.LENGTH_LONG).show();
-        	}else{
-        		Toast.makeText(mctx, "O hash md5 do download não é igual ao da BD!", Toast.LENGTH_LONG).show();
-        	}
-        }
-	};
 }

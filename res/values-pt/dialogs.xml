@@ -7,20 +7,17 @@
 
 	<string name="fetch_apk">A fazer download de</string>
 
-	<string name="aguamarina_error">Impossivel ligar ao servidor remoto</string>
+	<string name="aptoide_error">Impossivel ligar ao servidor remoto</string>
 	
 	<string name="manage_repo_add">Adicionar novo repositório</string>
 	<string name="manage_repo_answ_wrongl">Login errado</string>
 	<string name="manage_repo_answ_cc">Impossivel ligar ao servidor</string>
 	<string name="manage_repo_answ_lr">Necessário login</string>
 	
-	<string name="app_pop_up_no_info">Sem informação no repositório.</string>
+	<string name="app_pop_up_no_info">Sem informação no repositório. Procure no Google Market utilizado o botão em baixo.</string>
 	<string name="error_no_market">Não tem o Google Market instalado</string>
 		
     <string name="settings_cache">A limpar cache...</string>
-    
-    <string name="unsupportedversion">Versão de Android não suportada</string>
-    <string name="unsupported_androidnew">Infelizmente, a versão 26 da API de Android (Android 8) impede a instalação de ficheiros APK usando aplicações criadas para SDKs mais antigos, pelo que nem todas as funcionalidades de Aguamarina podem ser acedidas.\nPara continuar mesmo assim, prima o botão OK.</string>
     
     <string name="remote_in_noSD_title">Sem memória</string>
     <string name="remote_in_noSD">Não tem um SDcard no dispositivo.\nPor favor insira um.</string>
@@ -32,10 +29,28 @@
     <string name="update_repos">Actualização</string>
     <string name="update_main">A lista de repositórios foi alterada.\nDeseja realizar um update?</string>
     
-    <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
+    <string name="updating_3g">Encontra-se ligado por 3G. É aconselhável que realize o update ligado por WiFi.\nProsseguir mesmo assim?</string>
     <string name="updating_cfrm">Confirma update dos repositórios?</string>
-    <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add repository or enable the ones you have.</string>
+    <string name="updating_norepos">Não exite nenhum repositório activo.\nPor favor adicione um repositório ou active os existentes.</string>
     
+    <string name="repo_ctx">Opções</string>
+    <string name="repo_ctx_edt">Editar</string>
+    <string name="repo_ctx_del">Apagar</string>
+    
+    <string name="repo_del">Apagar repositório</string>
+    <string name="repo_del_msg">Deseja apagar o repositório </string>
+    <string name="repo_del_msg2">Escolha o repositório a apagar</string>
+    <string name="repo_edt_msg1">Escolha o repositório a editar</string>
+    <string name="repo_edt_msg2">Editar o repositório</string>
+    
+    <string name="update_done_msg1">Lista de aplicações actualizada com sucesso.</string>
+    <string name="update_process">A actualizar repositório %1$d de %2$d</string>
+    
+    <string name="dialog_yes">Sim</string>
+    <string name="dialog_no">Não</string>
+    
+    <string name="update_self_title">Actualização disponível</string>
+    <string name="update_self_msg">Está disponível uma nova versão do Aptoide,\npretende actualizar?</string>
     
 </resources>
 
@@ -57,4 +72,3 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->

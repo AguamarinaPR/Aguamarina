@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+	
+	<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+04	    android:orientation="vertical"
+05	    android:layout_width="fill_parent"
+06	    android:layout_height="fill_parent" >
+07	    <LinearLayout
+08	        android:orientation="horizontal"
+09	        android:layout_width="fill_parent"
+10	        android:layout_height="200px" >
+11	     <TextView
+12	        android:layout_width="wrap_content"
+13	    android:layout_height="100px"
+14	    android:layout_gravity="center"
+15	        android:text="@string/hello" /> 
+16	    </LinearLayout>
+17	</LinearLayout>-->
+	
+	 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:stretchColumns="0">
+		<TableRow>
+			
+			<TextView 
+					android:id="@+id/versionspinnermultiversion"
+					android:textColor="#000000"
+					android:layout_width="wrap_content" 
+					android:layout_height="fill_parent"
+					android:textSize="20dip"
+					android:layout_gravity="center_vertical"
+					/>
+	      	 
+      	 </TableRow>
+      	 	
+      	 <TableRow>
+      	 
+      			<TextView 
+					android:id="@+id/infoMultiversion" 
+					android:textSize="12sp"
+					android:textColor="#000000"
+					android:layout_width="wrap_content" 
+					android:layout_height="fill_parent"
+					/>
+	      	 	
+      	 </TableRow>
+      	 	
+      	 
+
+      	 
+      </TableLayout>
+       
+<!-- 
+@author rafael
+-->
+<!--
+ <RadioGroup
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:layout_gravity="center_vertical">
+	 	<RadioButton android:id="@+id/rbspinnermultiversion"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text=""
+		android:textColor="#000000"
+		android:enabled="false"
+					/>
+ </RadioGroup> 
+  -->

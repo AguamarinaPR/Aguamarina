@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="add_repo_text">URL du dépôt&#160;: </string>
+    <string name="add_repo_private">Privé </string>
+
+    <string name="order_popup_title1">Classer les applications selon&#160;: </string>
+    <string name="order_popup_lst1">Plus récent en premier </string>
+    <string name="order_popup_lst2">Alphabétiquement </string>
+    <string name="order_popup_lst3">Appréciation </string>
+    <string name="order_popup_lst4">Nombre de téléchargements </string>
+
+    <string name="order_popup_title2">Montrer les applications&#160;: </string>
+    <string name="order_popup_catg1">Par catégorie </string>
+    <string name="order_popup_catg2">Toutes les applications </string>
+
+    <string name="order_popup_title">Options d\'affichage </string>
+
+    <string name="settings_title_bar">Réglages d\'Aptoide</string>
+    
+    <string name="save_btn">Sauvegarder </string>
+    <string name="clear_cache_title">Cache</string>
+    <string name="clear_cache_btn">Effacer le cache </string>
+    <string name="clear_cache_msg">DANGER&#160;: cela effacera toutes les icônes mises en cache par Aptoide </string>
+    
+    <string name="clear_dwn_title">Téléchargements</string>
+    <string name="clear_dwn_btn">Télécharger les icônes</string>
+    <string name="clear_dwn_msg">Télécharger les régles des icônes </string>
+    
+    <string-array name="dwnif">
+        <item>3G et Wifi</item>
+        <item>Wifi seulement</item>
+        <item>Ne jamais télécharger</item>
+    </string-array>
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

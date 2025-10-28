@@ -1,10 +1,20 @@
-/*This file was modified by TropicalBananas in 2023.*/
-package com.aguamarina.pr;
+package cm.aptoide.pt;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 
-import android.app.AlertDialog;
+
+import cm.aptoide.pt.multiversion.VersionApk;
+import cm.aptoide.pt.utils.EnumOptionsMenu;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +37,22 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 	//private Context mctx = null;
 	
 	private int pos = -1;
+	
+	private UpdateApkListener updateApkListener = null;
+	private static boolean isRegister = false;
+
+	protected class UpdateApkListener extends BroadcastReceiver {
+		
+		@Override
+		public void onReceive(Context context, Intent intent) {
+				Log.d("Aptoide-TabUpdates", "Tab Updates, broadcast received.");
+				if ( intent.getAction().equals("pt.caixamagica.aptoide.UPDATE_APK_ACTION")) {
+					updateApk(intent.getStringExtra("localPath"), intent.getStringExtra("packageName"), intent.getStringExtra("version"));
+				}
+		}
+	}
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,51 +61,84 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 		lv = new ListView(this);
 		lv.setOnItemClickListener(this);
 		db = new DbHandler(this);
+		if(!TabUpdates.isRegister){
+			TabUpdates.isRegister = true;
+			updateApkListener = new UpdateApkListener();
+			registerReceiver(updateApkListener, new IntentFilter("pt.caixamagica.aptoide.UPDATE_APK_ACTION"));
+		}
 		//mctx = this;
 	}
 	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(Menu.NONE, 3, 3, R.string.menu_order)
-		.setIcon(android.R.drawable.ic_menu_sort_by_size);
+		menu.add(Menu.NONE, EnumOptionsMenu.UPDATE_ALL.ordinal(), EnumOptionsMenu.UPDATE_ALL.ordinal(), R.string.menu_update_all)
+			.setIcon(R.drawable.ic_menu_refresh);
+//		menu.add(Menu.NONE, EnumOptionsMenu.DISPLAY_OPTIONS.ordinal(), EnumOptionsMenu.DISPLAY_OPTIONS.ordinal(), R.string.menu_order)
+//			.setIcon(android.R.drawable.ic_menu_sort_by_size);
 		return super.onCreateOptionsMenu(menu);
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case 3:
-			/*if(true){
-				lv.setAdapter(updateAdpt);
-				setContentView(lv);
-				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-				lv.setSelection(pos-1);
-			}*/
-			
-			final AlertDialog p = resumeMe();
-			p.show();
-			
-			new Thread(){
-				@Override
-				public void run() {
-					super.run();
-					while(p.isShowing()){
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {	}
-					}
-					displayRefresh.sendEmptyMessage(0);
-				}
-			}.start();
-				
+		EnumOptionsMenu menuEntry = EnumOptionsMenu.reverseOrdinal(item.getItemId());
+		Log.d("Aptoide-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
+		switch (menuEntry) {
+		case UPDATE_ALL:
+			updateAll();
+			break;
+//		case DISPLAY_OPTIONS:
+//			/*if(true){
+//				lv.setAdapter(updateAdpt);
+//				setContentView(lv);
+//				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+//				lv.setSelection(pos-1);
+//			}*/
+//			
+//			final AlertDialog p = resumeMe();
+//			p.show();
+//			
+//			new Thread(){
+//				@Override
+//				public void run() {
+//					super.run();
+//					while(p.isShowing()){
+//						try {
+//							Thread.sleep(1000);
+//						} catch (InterruptedException e) {	}
+//					}
+//					displayRefresh.sendEmptyMessage(0);
+//				}
+//			}.start();
+//				
 		}
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
+	
+//	@Override
+//	protected void onPause() {
+//		if (!updateApkListenerIsRegistered) {
+//            unregisterReceiver(updateApkListener);
+//            updateApkListenerIsRegistered = false;
+//        }
+//		Log.d("Aptoide-TabUpdates", "updateApkListenerIsUnregistered");
+//		
+//		super.onPause();
+//	}
+
+
 	@Override
 	protected void onResume() {
 		super.onResume();
+		
+//		if (!updateApkListenerIsRegistered) {
+//            registerReceiver(updateApkListener, new IntentFilter("pt.caixamagica.aptoide.UPDATE_APK_ACTION"));
+//            updateApkListenerIsRegistered = true;
+//        }
+//		Log.d("Aptoide-TabUpdates", "updateApkListenerIsRegistered");
+
 		
 		new Thread(){
 			@Override
@@ -97,7 +156,7 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 	}
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		final String pkg_id = app_id.get(arg1).toString();
+		final String pkg_id = ((LinearLayout)arg1).getTag().toString();
 
 		pos = arg2;
 		
@@ -116,11 +175,29 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 
 		Vector<String> tmp_get = db.getApk(pkg_id);
 		apkinfo.putExtra("server", tmp_get.firstElement());
-		apkinfo.putExtra("version", tmp_get.get(1));
-		apkinfo.putExtra("dwn", tmp_get.get(4));
 		apkinfo.putExtra("rat", tmp_get.get(5));
-		apkinfo.putExtra("size", tmp_get.get(6));
 		apkinfo.putExtra("type", 2);
+		
+		ArrayList<VersionApk> versions = db.getOldApks(pkg_id);
+		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(7)),pkg_id,Integer.parseInt(tmp_get.get(6)), Integer.parseInt(tmp_get.get(4)));
+		versions.add(versionApkPassed);
+		
+		try {
+			PackageManager mPm = getApplicationContext().getPackageManager();
+			PackageInfo pkginfo = mPm.getPackageInfo(pkg_id, 0);
+			VersionApk versionInstApk = new VersionApk(pkginfo.versionName,pkginfo.versionCode, pkg_id,-1,-1);
+			apkinfo.putExtra("instversion", versionInstApk);
+			Iterator<VersionApk> iteratorVersion = versions.iterator();
+			while(iteratorVersion.hasNext()){
+				if(iteratorVersion.next().compareTo(versionInstApk)<=0){
+					iteratorVersion.remove();
+				}
+			}
+		} catch (NameNotFoundException e) {
+			//Not installed... do nothing
+		}
+		
+		apkinfo.putParcelableArrayListExtra("versions", versions);
 		
 		startActivityForResult(apkinfo,30);
 		
@@ -209,12 +286,13 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 	protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		if(requestCode == 30 && data != null && data.hasExtra("apkid")){
-			new Thread() {
-				public void run() {
+		if(requestCode == 30 && data != null && data.hasExtra("apkid") && data.hasExtra("version")){
+			//new Thread() {
+				//public void run() {
 					String apk_id = data.getStringExtra("apkid");
-					Log.d("Aguamarina", ".... u+dating: " + apk_id);
-					String apk_path = downloadFile(apk_id);
+					Log.d("Aptoide", ".... updating: " + apk_id);
+					queueDownload(apk_id,data.getStringExtra("version"), true);
+					/*String apk_path = downloadFile(apk_id);
 					Message msg_alt = new Message();
 					if(apk_path == null){
 						msg_alt.arg1 = 1;
@@ -227,13 +305,13 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 						msg.arg1 = 1;
 						download_handler.sendMessage(msg);
 						updateApk(apk_path, apk_id);
-					}
-				}
-			}.start();
+					}*/
+				//}
+			//}.start();
 		}
 	}
-
-
+	
+	
 
 	protected Handler displayRefresh = new Handler(){
 
@@ -270,6 +348,18 @@ public class TabUpdates extends BaseManagement implements OnItemClickListener{
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-	}	
-
+	}
+	
+	/*Changed by Rafael*/
+	public void updateAll(){
+		Log.d("Aptoide-TabUpdates", "Starting download of all possible updates");
+		
+		for(ApkNode node: apk_lst){
+			
+			if(node.status == 2){
+				queueDownload(node.apkid, node.verUpdate, true);
+			}
+		}
+	}
+	
 }

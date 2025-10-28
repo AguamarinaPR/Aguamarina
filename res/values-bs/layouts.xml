@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="add_repo_text">URL do repozitorija: </string>
+    <string name="add_repo_private">Privatno </string>
+    
+    <string name="order_popup_lst1">Najnovije prvo </string>
+    <string name="order_popup_lst2">Po abecedi </string>
+    <string name="order_popup_lst3">Ocjena </string>
+    <string name="order_popup_lst4">Broj preuzimanja </string>
+
+    <string name="order_popup_title2">Pokazi aplikacije: </string>
+    <string name="order_popup_catg1">Po kategoriji </string>
+    <string name="order_popup_catg2">Sve aplikacije</string>
+    
+    <string name="order_popup_title">Opcije ekrana </string>
+    
+    <string name="settings_title_bar">Aptoide opcije </string>
+    
+    <string name="save_btn">Memorisati </string>
+    <string name="clear_cache_title">Cache</string>
+    <string name="clear_cache_btn">Ocistiti cache </string>
+    <string name="clear_cache_msg">OPASNOST: uklanja sve ikone koje je Aptoide memorisao </string>
+    
+    <string name="clear_dwn_title">Preuzimanja</string>
+    <string name="clear_dwn_btn">Preuzimanje ikona</string>
+    <string name="clear_dwn_msg">Preuzimanje ikona za pravila</string>
+    
+    <string-array name="dwnif">
+        <item>3G i Wifi</item>
+        <item>Samo Wifi</item>
+        <item>Nikada ne preuzimaj</item>
+    </string-array>
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Ovaj program je besplatan software; mozete ga redistributirati i/ili
+ * modificirati ga pod GNU General Public License
+ * Kao sto je objavljeno od strane Free Software Foundation; ili verzija 2
+ * od Licence, ili (vasa opcija) bilo koju kasniju verziju.
+ *
+ * Ovaj program je napravljen u nadi da ce biti koristan,
+ * ali BEZ IKAKVE GARANCIJE; cak bez jamstva koje se podrazumijeva
+ * PRODAJE ILI PRIKLADNOSTI ZA ODREDJENU NAMJENU.  Pogledajte
+ * GNU General Public License za vise detalja.
+ * 
+ * Trebali ste primiti kopiju GNU General Public License
+ * uz ovaj program; ako ne, pisite na Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

@@ -8,8 +8,8 @@
     
 
     <ImageView android:id="@+id/appicon"
-        android:layout_width="35sp"
-        android:layout_height="35sp"
+        android:layout_width="35px"
+        android:layout_height="35px"
         android:cropToPadding ="true"
         android:scaleType="fitCenter" 
         android:layout_gravity="center_vertical|center_horizontal"/>
@@ -38,12 +38,27 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
             
-        <TextView android:id="@+id/isinst"
-            android:textSize="12sp"
-            android:layout_below="@id/name" 
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
-            
+        <!-- <LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal">--> 
+		    
+	        <TextView android:id="@+id/isinst"
+	            android:textSize="12sp"
+	            android:layout_below="@id/name" 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"/>
+	        
+	        <TextView android:id="@+id/isDowngradeAvailable"
+	            android:textSize="12sp"
+	            android:layout_below="@id/name" 
+	            android:layout_toRightOf="@id/isinst"
+	            android:layout_width="wrap_content"
+	            android:textColor="#8B7355"
+	            android:layout_height="wrap_content"/>
+	            
+        <!-- </LinearLayout>-->
+           
 		<TextView android:id="@+id/isupdt"
             android:textSize="12sp"
             android:layout_below="@id/name" 
@@ -64,14 +79,14 @@
             	android:layout_height="wrap_content"
             	/>
             
-<!--        	<RatingBar android:id="@+id/rating"
+        	<RatingBar android:id="@+id/rating"
         		style="?android:attr/ratingBarStyleSmall"
         		android:layout_below="@id/dwn"
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
         		android:isIndicator="true"
         		android:numStars="5"
-        		/>-->
+        		/>
         		
 	    </RelativeLayout>
             
@@ -98,4 +113,3 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->

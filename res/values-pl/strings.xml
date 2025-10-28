@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aptoide</string>
+    
+    <string name="tab_avail">Dostępne</string>
+    <string name="tab_inst">Zainstalowane</string>
+    <string name="tab_updt">Uaktualnienia</string>
+    
+    <string name="repo_app">Aplikacje:</string>
+    <string name="repo_noinfo">Brak informacji</string>
+    
+    <string name="no_found">Nie znaleziono aplikacji!</string>
+    <string name="no_repo">Bak repozytoriów!</string>
+ 
+ 	<string name="not_inst">Nie zainstalowane</string>
+    <string name="installed">Zainstalowane - Ver.:</string>
+    <string name="installed_update">Dostępne uaktualnienie - Ver.:</string>
+    <string name="srv_version">Dostępna wersja:</string>
+    
+    <string name="srch_label">Aptoide</string>
+    <string name="srch_hint">Nazwa aplikacji</string>
+    
+    <string name="about_txt1">Twój instalator aplikacji do telefonu Android.\n</string>
+
+    <string name="about_site">Strona domowa: </string>
+    
+    <string name="about_mail">Kontakt: </string>
+    
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

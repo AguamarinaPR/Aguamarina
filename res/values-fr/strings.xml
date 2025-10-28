@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aptoide</string>
+
+    <string name="tab_avail">Disponibles</string>
+    <string name="tab_inst">Installées</string>
+    <string name="tab_updt">Mises à jour</string>
+    
+    <string name="repo_app">Applications&#160;:</string>
+    <string name="repo_noinfo">Aucune information</string>
+
+    <string name="no_found">Aucune application trouvée&#160;!</string>
+    <string name="no_repo">Il n\'y a aucun dépôt&#160;!</string>
+ 
+ 	<string name="not_inst">Non installée</string>
+    <string name="installed">Installée - Ver.:</string>
+    <string name="installed_update">MàJ possible - Ver.:</string>
+    <string name="srv_version">Version disponible&#160;:</string>
+    
+    <string name="srch_label">Aptoide</string>
+    <string name="srch_hint">Nom de l\'application</string>
+    
+    <string name="about_txt1">Votre installeur de paquetages pour téléphones Android.\n</string>
+
+    <string name="about_site">Site&#160;: </string>
+    
+    <string name="about_mail">Contact&#160;: </string>
+    
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Proszę czekać</string>
+	<string name="top_error">Błąd</string>
+	<string name="top_download">Pobieranie</string>
+
+	<string name="fetch_apk">Pobieranie aplikacji</string>
+
+	<string name="aptoide_error">Brak połączenia z serwerem</string>
+	
+	<string name="manage_repo_add">Dodaj nowe repozytorium</string>
+	<string name="manage_repo_answ_wrongl">Login jest błędny</string>
+	<string name="manage_repo_answ_cc">Brak połączenia z serwerem</string>
+	<string name="manage_repo_answ_lr">Wymagany jest Login</string>
+	
+	<string name="app_pop_up_no_info">Brak informacji na serwerze. Wyszukaj informację w markecie poprzez naciśnięcie przycisku poniżej.</string>
+	<string name="error_no_market">Nie masz zainstalowanego Google Market!</string>
+		
+    <string name="settings_cache">Czyszczenie cache...</string>
+    
+    <string name="remote_in_noSD_title">Brak pamięci</string>
+    <string name="remote_in_noSD">Nie masz karty SD.\nWłóż kartę i spróbuj jeszcze raz.</string>
+    <string name="remote_in_noSDspace">Masz zbyt mało miejsca na swojej karcie SD aby użyć Aptoide\nZwolnij trochę miejsca i spróbuj jeszcze raz.</string>
+    
+    <string name="error_on_update">Uaktualnienie nie może być przeprowadzone na nastepujących repozytoriach:\n</string>
+    
+    <string name="updating_msg">Uaktualnianie listy aplikacji...</string>
+    <string name="update_repos">Uaktualnianie repozytoriów</string>
+    <string name="update_main">Zmieniła sie lista aktualnych repozytoriów.\nCzy chesz ją uaktualnić?</string>
+    
+    <string name="updating_3g">Jesteś połaczony przez 3G. Znacznie lepiej (a na pewno taniej) byłoby przez WiFi.\nKontynuować mimo wszytko?</string>
+    <string name="updating_cfrm">Potwierdzasz uaktualnienie repozytoriów Aptoide?</string>
+    <string name="updating_norepos">Brak aktywnych repozytoriów na liście.\nDodaj repozytorium lub uaktywnij istniejące.</string>
+    
+    <string name="repo_ctx">Opcje</string>
+    <string name="repo_ctx_edt">Edytuj</string>
+    <string name="repo_ctx_del">Usuń</string>
+    
+    <string name="repo_del">Usuń Repozytorium</string>
+    <string name="repo_del_msg">Usunąć repozytorium? </string>
+    <string name="repo_del_msg2">Wybierz repozytorium do usunięcia</string>
+    <string name="repo_edt_msg1">Wybierz repozytorium do edycji</string>
+    <string name="repo_edt_msg2">Edytuj repozytorium</string>
+
+    <string name="update_done_msg1">Repozytoria zostały uaktualnione.</string>
+    <string name="update_process">Uaktualnianie %1$d z %2$d repozytoriów</string>
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

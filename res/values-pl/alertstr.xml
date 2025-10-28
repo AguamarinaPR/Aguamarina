@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="up_server">Serwery: </string>
+    <string name="lstver">Wersje serwerów: </string>
+    <string name="dwn_n">Ilość pobrań: </string>
+    <string name="isinst">Zainstalowano: </string>
+    <string name="instver">Zainstalowana wersja: </string>
+    <string name="install">Instaluj </string>
+    <string name="about_alrt">O...: </string>
+    <string name="rem">Odinstaluj </string>
+    <string name="update">Uaktualnij</string>
+    
+    <string name="update_alrt">Dostepne są uaktualnienia dla niektórych zainstalowanych aplikacji.\nCzy chcesz je zobaczyć?</string>
+    <string name="repo_alrt">Zmieniła się lista aktualnych repozytoriów.\nCzy chesz ją uaktualnić?</string>
+    
+    <string name="title_repo_alrt">Uwaga</string>
+    <string name="myrepo_alrt">Wydaje się, że nie masz na swojej liście żadnego repozytorium.\nZalecamy użycie naszego.\nCzy chcesz dodać nasze repozytorium?\n(Możesz wyszukać więcej repozytoriów online)\n\n</string>
+    <string name="newrepo_alrt">Czy chcesz dodać to repozytorium do swojej listy?\n\n</string>
+    
+    <string name="error_download_alrt">Nie można połaczyć się z serwerem lub plik apk jest uszkodzony!</string>
+    <string name="download_alrt">Pobieranie aplikacji z:\n </string>
+     
+    <string name="md5_error">Nie powiodła się kontrola md5 pobieranej aplikacji!\nUaktualnij swój system aplikacji przed ponowna próbą.</string>
+    <string name="network_error">Pojawił się błąd podczas pobierania aplikacji.\nSpróbuj jeszcze raz.</string>
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aptoide</string>
+    
+    <string name="tab_avail">Verfügbar</string>
+    <string name="tab_inst">Installiert</string>
+    <string name="tab_updt">Updates</string>
+    
+    <string name="repo_app">Anwendungen:</string>
+    <string name="repo_noinfo">Keine Information</string>
+    
+    <string name="no_found">Keine Anwendung gefunden!</string>
+    <string name="no_repo">Keine Quellen!</string>
+ 
+ 	<string name="not_inst">Nicht installiert</string>
+    <string name="installed">Installiert - Ver.:</string>
+    <string name="installed_update">Aktualisierung möglich - Ver.:</string>
+    <string name="srv_version">Verfügbare Version:</string>
+    
+    <string name="srch_label">Aptoide</string>
+    <string name="srch_hint">Name der Anwendung</string>
+    
+    <string name="about_txt1">Ihr Package Installer für Android Telefone.\n</string>
+
+    <string name="about_site">Home: </string>
+    
+    <string name="about_mail">Kontakt: </string>
+    
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Dieses Programm ist freie Software. Sie können es unter den
+ * Bedingungen der GNU General Public License, wie von der
+ * Free Software Foundation veröffentlicht, weitergeben und/oder
+ * modifizieren, entweder gemäß Version 3 der Lizenz oder
+ * (nach Ihrer Option) jeder späteren Version.
+
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung,
+ * daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE,
+ * sogar ohne die implizite Garantie der MARKTREIFE oder der
+ * VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in
+ * der GNU General Public License.
+
+* Sie sollten ein Exemplar der GNU General Public License zusammen 
+* mit diesem Programm erhalten haben. Falls nicht, siehe  http://www.gnu.org/licenses/.
+-->

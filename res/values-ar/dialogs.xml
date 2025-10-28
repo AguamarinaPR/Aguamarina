@@ -7,20 +7,17 @@
 
 	<string name="fetch_apk">تنزل البرنامج</string>
 
-	<string name="aguamarina_error">تعذر الإتصال بالموقع</string>
+	<string name="aptoide_error">تعذر الإتصال بالموقع</string>
 	
 	<string name="manage_repo_add">إضافة مخزن جديد للبرامج</string>
 	<string name="manage_repo_answ_wrongl">خطأ في تسجيل الدخول</string>
 	<string name="manage_repo_answ_cc">تعذر الإتصال بالموقع</string>
 	<string name="manage_repo_answ_lr">يجب تسجيل الدخول</string>
 	
-	<string name="app_pop_up_no_info">ا يوجد ملف للمعلومات في الموقع</string>
+	<string name="app_pop_up_no_info">ا يوجد ملف للمعلومات في الموقع.لمزيد من المعلومات إبحث في متجر اندرويد من خلال الضغط على الزر في الأسفل.</string>
 	<string name="error_no_market">أنت لم تثبت متجر اندرويد على الجهاز!</string>
 		
     <string name="settings_cache">مسح الذاكرة المؤقته...</string>
-    
-    <string name="unsupportedversion">Unsupported Android Version</string>
-    <string name="unsupported_androidnew">Unfortunately, the Android API version 26 (Android 8) prevents installation of APKs from apps targeting older SDKs, making it so that applications cannot be installed from Aguamarina.\nTo continue anyways, press the OK button.</string>
     
     <string name="remote_in_noSD_title">لا توجد بطاقة ذاكرة</string>
     <string name="remote_in_noSD">لا توجد بطاقة ذاكرة.\nأدخل البطاقة وحاول مرة أخرى.</string>
@@ -57,4 +54,3 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->

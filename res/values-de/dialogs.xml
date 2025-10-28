@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Bitte warten</string>
+	<string name="top_error">Fehler</string>
+	<string name="top_download">Download</string>
+
+	<string name="fetch_apk">Rufe Anwendungen ab</string>
+
+	<string name="aptoide_error">Keine Verbindung zum Remote Server</string>
+	
+	<string name="manage_repo_add">Quelle hinzufügen</string>
+	<string name="manage_repo_answ_wrongl">Falscher Login</string>
+	<string name="manage_repo_answ_cc">Keine Verbindung zum Server</string>
+	<string name="manage_repo_answ_lr">Login benötigt</string>
+	
+	<string name="app_pop_up_no_info">Keine Informationen zum Server verfügbar. Suchen Sie im Market indem Sie den folgenden Button betätigen.</string>
+	<string name="error_no_market">Google Market ist nicht installiert!</string>
+		
+    <string name="settings_cache">Lösche Zwischenspeicher...</string>
+    
+    <string name="remote_in_noSD_title">Kein Speicher</string>
+    <string name="remote_in_noSD">Sie haben keine SD-Karte.\nBitte legen Sie eine ein und versuchen es erneut.</string>
+    <string name="remote_in_noSDspace">Nicht genug freier SPeicher auf SD-Karte für Aptoide verfügbar.\nBitte geben Sie etwas Speicher frei und versuchen es erneut.</string>
+    
+    <string name="error_on_update">Die folgenden Quellen konnten nicht aktualisiert werden:\n</string>
+    
+    <string name="updating_msg">Aktualisiere Liste der Anwendungen...</string>
+    <string name="update_repos">Aktualisiere Quellen</string>
+    <string name="update_main">Die Liste der verfügbaren Quellen hat sich geändert.\nMöchten Sie sie aktualisieren?</string>
+    
+    <string name="updating_3g">Sie sind via 3G verdunden. Es wird empfohlen die Aktualisierung über WiFi durchzuführen.\nUpdate dennoch durchführen?</string>
+    <string name="updating_cfrm">Aptoide Quellen-Update bestätigen?</string>
+    <string name="updating_norepos">Es befinden sich keine aktiven Quellen in Ihrer Liste.\nBitte fügen Sie Quellen hinzu oder aktivieren Sie eine vorhandene.</string>
+    
+    <string name="repo_ctx">Optionen</string>
+    <string name="repo_ctx_edt">Bearbeiten</string>
+    <string name="repo_ctx_del">Entfernen</string>
+    
+    <string name="repo_del">Quelle entfernen</string>
+    <string name="repo_del_msg">Möchten Sie die Quelle entfernen?</string>
+    <string name="repo_del_msg2">Wählen Sie eine Quelle zum entfernen</string>
+    <string name="repo_edt_msg1">Wählen Sie eine Quelle zum bearbeiten</string>
+    <string name="repo_edt_msg2">Quelle bearbeiten</string>
+
+    <string name="update_done_msg1">Quellen erfogreich aktualisiert.</string>
+    <string name="update_process">Aktualisiere Quelle %1$d von %2$d</string>
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Dieses Programm ist freie Software. Sie können es unter den
+ * Bedingungen der GNU General Public License, wie von der
+ * Free Software Foundation veröffentlicht, weitergeben und/oder
+ * modifizieren, entweder gemäß Version 3 der Lizenz oder
+ * (nach Ihrer Option) jeder späteren Version.
+
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung,
+ * daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE,
+ * sogar ohne die implizite Garantie der MARKTREIFE oder der
+ * VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in
+ * der GNU General Public License.
+
+* Sie sollten ein Exemplar der GNU General Public License zusammen 
+* mit diesem Programm erhalten haben. Falls nicht, siehe  http://www.gnu.org/licenses/.
+-->

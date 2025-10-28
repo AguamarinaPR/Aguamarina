@@ -16,13 +16,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-/*This file was modified by TropicalBananas in 2023.*/
-package com.aguamarina.pr;
 
-import java.io.File;
-import java.io.FileReader;
+package cm.aptoide.pt;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,10 +27,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -48,9 +41,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HttpContext;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -61,6 +51,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -68,10 +59,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ManageRepo extends ListActivity{
 	
@@ -98,6 +93,8 @@ public class ManageRepo extends ListActivity{
 	
 	private AlertDialog alrt = null;
 	
+	private enum returnStatus {OK, LOGIN_REQUIRED, BAD_LOGIN, FAIL, EXCEPTION};
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +111,8 @@ public class ManageRepo extends ListActivity{
 			AlertDialog alrt = new AlertDialog.Builder(this).create();
 			alrt.setTitle(getString(R.string.title_repo_alrt));
 			alrt.setIcon(android.R.drawable.ic_dialog_alert);
-			alrt.setMessage(getString(R.string.myrepo_alrt) + uri + getString(R.string.altrepo_alrt));
+			alrt.setMessage(getString(R.string.myrepo_alrt) +
+					uri);
 			alrt.setButton(getText(R.string.btn_yes), new DialogInterface.OnClickListener() {
 			      public void onClick(DialogInterface dialog, int which) {
 			    	  db.addServer(uri);
@@ -133,7 +131,7 @@ public class ManageRepo extends ListActivity{
 			Vector<String> exist_server = db.getServersName();
 			ArrayList<String> new_serv_lst = (ArrayList<String>) i.getSerializableExtra("uri");
 			for(final String srv: new_serv_lst){
-				if(exist_server.contains(srv))
+				if(serverContainsRepo(exist_server,srv))
 					continue;
 				AlertDialog alrt = new AlertDialog.Builder(this).create();
 				alrt.setTitle(getString(R.string.title_repo_alrt));
@@ -154,6 +152,7 @@ public class ManageRepo extends ListActivity{
 			}
 		}else if(i.hasExtra("newrepo")){
 			final String repo = i.getStringExtra("newrepo");
+			
 			AlertDialog alrt = new AlertDialog.Builder(this).create();
 			alrt.setTitle(getString(R.string.title_repo_alrt));
 			alrt.setIcon(android.R.drawable.ic_dialog_alert);
@@ -171,6 +170,39 @@ public class ManageRepo extends ListActivity{
 			      }});
 			alrt.show();
 		}
+	}
+	
+	private boolean serverContainsRepo(Vector<String> serverList, String repo){
+		if(serverList.contains(repo)){
+			Log.d("Aptoide-ManageRepo", "Repo already exists");
+			return true;
+		}else{
+			for (String existingRepo : serverList) {
+				if(repo.length()== (existingRepo.length()-1)){
+					if(repo.equals(existingRepo.substring(0, existingRepo.length()-1))){
+						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without final forward slash");
+						return true;
+					}
+				}else if(repo.length()== (existingRepo.length()-8)){ 
+					if(repo.equals(existingRepo.substring(7, existingRepo.length()-1))){
+						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without initial http:// and the final forward slash");
+						return true;
+					}
+				}else{
+					repo = repo+".bazaarandroid.com/";
+					if(repo.equals(existingRepo.substring(7, existingRepo.length()))){
+						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without initial http:// and without .bazaarandroid.com extension");
+						return true;
+					}
+					if(repo.equals(existingRepo.substring(7, existingRepo.length()-1))){
+						Log.d("Aptoide-ManageRepo", "Repo equal to existant one but without initial http:// , without .bazaarandroid.com extension, and the final forward slash");
+						return true;
+					}
+				}
+			}
+		}
+		Log.d("Aptoide-ManageRepo", "Repo is new");
+		return false;
 	}
 	
 	@Override
@@ -194,9 +226,9 @@ public class ManageRepo extends ListActivity{
         		server_line.put("inuse", R.drawable.btn_check_off);
         	}
         	if(node.napk >= 0)
-        		server_line.put("napk", "Applications: " + node.napk);
+        		server_line.put("napk", getString(R.string.repo_app) + " " + node.napk);
         	else
-        		server_line.put("napk", "No information");
+        		server_line.put("napk", getString(R.string.repo_noinfo));
         	result.add(server_line);
         }
         SimpleAdapter show_out = new SimpleAdapter(this, result, R.layout.repolisticons, 
@@ -209,14 +241,26 @@ public class ManageRepo extends ListActivity{
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		String node = server_lst.get(position).uri;
-		if(!v.isSelected())
-			server_to_reset_count.add(node);
-		else
-			server_to_reset_count.remove(node);
-		db.changeServerStatus(node);
-		change = true;
-		redraw();
+		try{
+			String node = server_lst.get(position).uri;
+			ImageView pic = (ImageView)v.findViewById(R.id.img);
+
+			if(!server_lst.get(position).inuse){
+				server_lst.get(position).inuse = true;
+				server_to_reset_count.add(node);
+				pic.setImageResource(R.drawable.btn_check_on);
+				Log.d("Aptoide", "check on");
+			}else{
+				server_lst.get(position).inuse = false;
+				server_to_reset_count.remove(node);
+				pic.setImageResource(R.drawable.btn_check_off);
+				Log.d("Aptoide", "check off");
+			}
+
+			db.changeServerStatus(node);
+			change = true;
+		}catch (Exception e) {}
+		//redraw();
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -237,9 +281,9 @@ public class ManageRepo extends ListActivity{
 		
 		super.onCreateContextMenu(menu, v, menuInfo);
 		
-		menu.setHeaderTitle("Options");  
-		menu.add(0, EDIT_REPO_POP, 0, "Edit");  
-		menu.add(0, REM_REPO_POP, 0, "Remove"); 
+		menu.setHeaderTitle(getString(R.string.repo_ctx));  
+		menu.add(0, EDIT_REPO_POP, 0, getString(R.string.repo_ctx_edt));  
+		menu.add(0, REM_REPO_POP, 0, getString(R.string.repo_ctx_del)); 
 	}
 
 	@Override
@@ -255,17 +299,17 @@ public class ManageRepo extends ListActivity{
 
 		case REM_REPO_POP:
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("Remove Repository");
+			builder.setTitle(getString(R.string.repo_del));
 			builder.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-			builder.setMessage("Do you want to remove repository " + repo_selected + " ?");
-			builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			builder.setMessage(getString(R.string.repo_del_msg) + " " + repo_selected + " ?");
+			builder.setPositiveButton(getString(R.string.btn_yes), new DialogInterface.OnClickListener() {
                 		public void onClick(DialogInterface dialog, int	whichButton) {
                 			db.removeServer(repo_selected);
                 			change = true;
                 			redraw();
                 		}
             });
-			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			builder.setNegativeButton(getString(R.string.btn_no), new DialogInterface.OnClickListener() {
                 		public void onClick(DialogInterface dialog, int whichButton) {
                 			return;
                 		}
@@ -294,7 +338,7 @@ public class ManageRepo extends ListActivity{
 			View view = li.inflate(R.layout.addrepo, null);
 			
 			final TextView sec_msg = (TextView) view.findViewById(R.id.sec_msg);
-/*			final TextView sec_msg2 = (TextView) view.findViewById(R.id.sec_msg2);
+			final TextView sec_msg2 = (TextView) view.findViewById(R.id.sec_msg2);
 			
 			final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
 			final EditText sec_pwd = (EditText) view.findViewById(R.id.sec_pwd);
@@ -310,7 +354,7 @@ public class ManageRepo extends ListActivity{
 						sec_pwd.setEnabled(false);
 					}
 				}
-			});*/
+			});
 			
 			
 			Builder p = new AlertDialog.Builder(this).setView(view);
@@ -319,44 +363,116 @@ public class ManageRepo extends ListActivity{
 			alrt.setTitle(getText(R.string.manage_repo_add));
 
 			alrt.setButton(getText(R.string.btn_add), new DialogInterface.OnClickListener() {
+				
 				public void onClick(DialogInterface dialog, int which) {
 					Message msg = new Message();
 					EditText uri = (EditText) alrt.findViewById(R.id.edit_uri);
 					String uri_str = uri.getText().toString();
+					
+					if(uri_str.charAt(uri_str.length()-1)!='/'){
+						uri_str = uri_str+'/';
+						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+					}
+					if(!uri_str.startsWith("http://")){
+						uri_str = "http://"+uri_str;
+						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+					}
 					sec_msg.setVisibility(View.GONE);
-/*					sec_msg2.setVisibility(View.GONE);
+					sec_msg2.setVisibility(View.GONE);
+					
+					String user = null;
+					String pwd = null;
+					
 					if(sec.isChecked()){
-						String user = sec_user.getText().toString();
-						String pwd = sec_pwd.getText().toString();
-						int result = checkServer(uri_str, user, pwd);
-						if(result == 200){
+						user = sec_user.getText().toString();
+						pwd = sec_pwd.getText().toString();
+					}
+					
+					returnStatus result = checkServerConnection(uri_str, user, pwd);
+					switch (result) {
+					case OK:
+						Log.d("Aptoide-ManageRepo", "return ok");
+						msg.obj = 0;
+						db.addServer(uri_str);
+						if(user != null && pwd != null){
+							db.addLogin(user, pwd, uri_str);	
+						}
+						change = true;
+						redraw();
+						break;
+					
+					case LOGIN_REQUIRED:
+						Log.d("Aptoide-ManageRepo", "return login_required");
+						sec_msg2.setText(getText(R.string.manage_repo_answ_lr));
+						sec_msg2.setVisibility(View.VISIBLE);
+						msg.obj = 1;
+						
+						break;
+						
+					case BAD_LOGIN:
+						Log.d("Aptoide-ManageRepo", "return bad_login");
+						sec_msg2.setText(getText(R.string.manage_repo_answ_wrongl));
+						sec_msg2.setVisibility(View.VISIBLE);
+						msg.obj = 1;
+						break;
+						
+					case FAIL:
+						Log.d("Aptoide-ManageRepo", "return fail");
+						uri_str = uri_str.substring(0, uri_str.length()-1)+".bazaarandroid.com/";
+						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+						msg.obj = 1;
+						break;
+
+					default:
+						Log.d("Aptoide-ManageRepo", "return exception");
+						uri_str = uri_str.substring(0, uri_str.length()-1)+".bazaarandroid.com/";
+						Log.d("Aptoide-ManageRepo", "repo uri: "+uri_str);
+						msg.obj = 1;
+						break;
+					}
+					if(result.equals(returnStatus.FAIL) || result.equals(returnStatus.EXCEPTION)){
+						returnStatus result2 = checkServerConnection(uri_str, user, pwd);
+						switch (result2) {
+						case OK:
+							Log.d("Aptoide-ManageRepo", "return ok");
 							msg.obj = 0;
 							db.addServer(uri_str);
-							db.addLogin(user, pwd, uri_str);
+							if(user != null && pwd != null){
+								db.addLogin(user, pwd, uri_str);	
+							}
 							change = true;
 							redraw();
-						}else if (result == 401){
+							break;
+						
+						case LOGIN_REQUIRED:
+							Log.d("Aptoide-ManageRepo", "return login_required");
+							sec_msg2.setText(getText(R.string.manage_repo_answ_lr));
+							sec_msg2.setVisibility(View.VISIBLE);
+							msg.obj = 1;
+							
+							break;
+							
+						case BAD_LOGIN:
+							Log.d("Aptoide-ManageRepo", "return bad_login");
 							sec_msg2.setText(getText(R.string.manage_repo_answ_wrongl));
 							sec_msg2.setVisibility(View.VISIBLE);
-							msg.obj = 1;			
-						}else{
+							msg.obj = 1;	
+							break;
+							
+						case FAIL:
+							Log.d("Aptoide-ManageRepo", "return fail");
 							sec_msg.setText(getText(R.string.manage_repo_answ_cc));
 							sec_msg.setVisibility(View.VISIBLE);
 							msg.obj = 1;
+								
+							break;
+
+						default:
+							Log.d("Aptoide-ManageRepo", "return exception");
+							msg.obj = 1;	
+							break;
 						}
-					}else{*/
-						int result = checkServer(uri_str, null, null);
-						if(result == 200){
-							msg.obj = 0;
-							db.addServer(uri_str);
-							change = true;
-							redraw();
-						}else{
-							sec_msg.setText(getText(R.string.manage_repo_answ_cc));
-							sec_msg.setVisibility(View.VISIBLE);
-							msg.obj = 1;
-						}
-//					}
+					}				
 					new_repo.sendMessage(msg);
 				} });
 
@@ -375,7 +491,7 @@ public class ManageRepo extends ListActivity{
 			}
 			
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("Chose repository to remove");
+			builder.setTitle(getString(R.string.repo_del_msg2));
 			builder.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
 			builder.setMultiChoiceItems(b, null, new DialogInterface.OnMultiChoiceClickListener() {
                 		public void onClick(DialogInterface dialog,int whichButton, boolean isChecked) {
@@ -386,14 +502,14 @@ public class ManageRepo extends ListActivity{
                 		        }
                 		 }
              }); 
-			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			builder.setPositiveButton(getString(R.string.btn_ok), new DialogInterface.OnClickListener() {
                 		public void onClick(DialogInterface dialog, int	whichButton) {
                 			db.removeServer(rem_lst);
                 			change = true;
                 			redraw();
                 		}
             });
-			builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			builder.setNegativeButton(getString(R.string.btn_cancel), new DialogInterface.OnClickListener() {
                 		public void onClick(DialogInterface dialog, int whichButton) {
                 			return;
                 		}
@@ -409,21 +525,21 @@ public class ManageRepo extends ListActivity{
 			}
 			
 			AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-			builder2.setTitle("Chose repository to edit");
+			builder2.setTitle(getString(R.string.repo_edt_msg1));
 			builder2.setIcon(android.R.drawable.ic_menu_edit);
 			builder2.setSingleChoiceItems(b2, -1, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 						updt_repo = server_lst.get(which).uri;
 				}
 			}); 
-			builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			builder2.setPositiveButton(getString(R.string.btn_ok), new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int	whichButton) {
 					alert2.dismiss();
 					editRepo(updt_repo);
 					return;
 				}
 			});
-			builder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			builder2.setNegativeButton(getString(R.string.btn_cancel), new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
 					return;
 				}
@@ -444,7 +560,7 @@ public class ManageRepo extends ListActivity{
 		final EditText uri = (EditText) view.findViewById(R.id.edit_uri);
 		uri.setText(repo);
 		
-/*		final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
+		final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
 		final EditText sec_pwd = (EditText) view.findViewById(R.id.sec_pwd);
 		final CheckBox sec = (CheckBox) view.findViewById(R.id.secure_chk);
 		sec.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -467,15 +583,19 @@ public class ManageRepo extends ListActivity{
 			sec_pwd.setText(logins[1]);
 		}else{
 			sec.setChecked(false);
-		}*/
+		}
 	
 		alrt.setIcon(android.R.drawable.ic_menu_add);
-		alrt.setTitle("Edit repository");
+		alrt.setTitle(getString(R.string.repo_edt_msg2));
 		alrt.setButton(getText(R.string.btn_done), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				String new_repo = uri.getText().toString();
 				db.updateServer(repo, new_repo);
-				db.disableLogin(new_repo);
+				if(sec.isChecked()){
+					db.addLogin(sec_user.getText().toString(), sec_pwd.getText().toString(), new_repo);
+				}else{
+					db.disableLogin(new_repo);
+				}
 				change = true;
 				redraw();
 			} });
@@ -500,7 +620,7 @@ public class ManageRepo extends ListActivity{
 		}
 	}
 	
-	private Vector<String> getRemoteServLst(String file){
+	/*private Vector<String> getRemoteServLst(String file){
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		Vector<String> out = new Vector<String>();
 	    try {
@@ -523,15 +643,21 @@ public class ManageRepo extends ListActivity{
 			e.printStackTrace();
 		}
 	    return out;
-	}
+	}*/
 	
-	private int checkServer(String uri, String user, String pwd){
+
+	
+	private returnStatus checkServerConnection(String uri, String user, String pwd){
+		
+		int result;
 		
 		HttpParams httpParameters = new BasicHttpParams();
 		HttpConnectionParams.setConnectionTimeout(httpParameters, 10000);
 		HttpConnectionParams.setSoTimeout(httpParameters, 10000);
-		
+		           
 		DefaultHttpClient mHttpClient = new DefaultHttpClient(httpParameters);
+		
+//		DefaultHttpClient mHttpClient = Threading.getThreadSafeHttpClient();
 		
 		mHttpClient.setRedirectHandler(new RedirectHandler() {
 			public boolean isRedirectRequested(HttpResponse response,
@@ -574,10 +700,19 @@ public class ManageRepo extends ListActivity{
 				mHttpResponse = mHttpClient.execute(mHttpGet);
 			}
 
-			return mHttpResponse.getStatusLine().getStatusCode();
-		} catch (ClientProtocolException e) { return -1;} 
-		catch (IOException e) { return -1;}
-		catch (IllegalArgumentException e) { return -1;}
+			result = mHttpResponse.getStatusLine().getStatusCode();
+			
+			if(result == 200){
+				return returnStatus.OK;
+			}else if (result == 401){
+				return returnStatus.BAD_LOGIN;
+			}else{
+				return returnStatus.FAIL;
+			}
+		} catch (ClientProtocolException e) { return returnStatus.EXCEPTION;} 
+		catch (IOException e) { return returnStatus.EXCEPTION;}
+		catch (IllegalArgumentException e) { return returnStatus.EXCEPTION;}
+		catch (Exception e) {return returnStatus.EXCEPTION;	}
 	}
 	
 	

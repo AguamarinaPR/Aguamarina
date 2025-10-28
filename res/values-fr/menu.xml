@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    
+    
+    <string name="menu_update_repo">Mise à jour</string>
+    <string name="menu_manage">Gérer les dépôts</string>
+    <string name="menu_order">Options d\'affichage</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="menu_about">À propos</string>
+    <string name="menu_search">Rechercher</string>
+    
+    
+    <string name="menu_add_repo">Nouveau dépôt</string>
+    <string name="menu_rem_repo">Enlever le dépôt</string>
+    <string name="menu_edit_repo">Éditer le dépôt</string>
+    
+    <string name="btn_yes">Oui</string>
+    <string name="btn_no">Non</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_add">Ajouter</string>
+    <string name="btn_cancel">Annuler</string>
+    <string name="btn_done">Terminé</string>
+    <string name="btn_chlog">Journal des modifications</string>
+    <string name="btn_search_market">Rechercher sur Market</string>
+    
+    
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

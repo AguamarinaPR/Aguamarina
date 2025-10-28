@@ -16,10 +16,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-/*This file was modified by TropicalBananas in 2023.*/
-package com.aguamarina.pr;
 
-public class ServerNode extends Object{
+package cm.aptoide.pt;
+
+import java.io.Serializable;
+
+public class ServerNode extends Object implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String uri;
 	public boolean inuse;
 	public int napk;

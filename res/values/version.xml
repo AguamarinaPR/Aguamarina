@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ver_str">"1.1"</string>
-    <string name="change_log_url">http://www.aguamarina.altervista.org/changelog</string>
+    <string name="ver_str">"2.5.2"</string>
+    <string name="change_log_url">http://aptoide.com/changelog_2_5_2.html</string>
 </resources>
 
 <!--
@@ -22,4 +22,3 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas Copyright (C) 2023-2025-->

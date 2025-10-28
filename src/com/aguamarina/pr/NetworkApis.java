@@ -1,5 +1,4 @@
-/*This file was modified by TropicalBananas in 2023.*/
-package com.aguamarina.pr;
+package cm.aptoide.pt;
 
 import java.net.URI;
 import java.net.URL;
@@ -29,8 +28,9 @@ public class NetworkApis {
 	
 	public static HttpResponse getHttpResponse(String url, String srv, Context mctx){
 		try{
+			DbHandler db = new DbHandler(mctx);
 			
-			SharedPreferences sPref = mctx.getSharedPreferences("aguamarina_prefs", Context.MODE_PRIVATE);
+			SharedPreferences sPref = mctx.getSharedPreferences("aptoide_prefs", Context.MODE_PRIVATE);
 			String myid = sPref.getString("myId", "NoInfo");
 			String myscr = sPref.getInt("scW", 0)+"x"+sPref.getInt("scH", 0);
 						
@@ -55,10 +55,10 @@ public class NetworkApis {
 			
 			
 			HttpGet mHttpGet = new HttpGet(url);
-			mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
+			mHttpGet.setHeader("User-Agent", "aptoide-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
 			mHttpGet.setHeader("Accept-Encoding", "gzip");
 						
-/*			String[] logins = null; 
+			String[] logins = null; 
 			logins = db.getLogin(srv);
 			if(logins != null){
 				URL mUrl = new URL(url);
@@ -66,7 +66,7 @@ public class NetworkApis {
 						new AuthScope(mUrl.getHost(), mUrl.getPort()),
 						new UsernamePasswordCredentials(logins[0], logins[1]));
 			}
-*/
+
 			
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 			
@@ -77,16 +77,16 @@ public class NetworkApis {
 				String newurl = azz[0].getValue();
 				mHttpGet = null;
 				mHttpGet = new HttpGet(newurl);
-				mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
+				mHttpGet.setHeader("User-Agent", "aptoide-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
 				mHttpGet.setHeader("Accept-Encoding", "gzip");
 				
-/*				if(logins != null){
+				if(logins != null){
 	    			URL mUrl = new URL(newurl);
 	    			mHttpClient.getCredentialsProvider().setCredentials(
 	                        new AuthScope(mUrl.getHost(), mUrl.getPort()),
 	                        new UsernamePasswordCredentials(logins[0], logins[1]));
 	    		}
-*/				
+				
 				mHttpResponse = null;
 				mHttpResponse = mHttpClient.execute(mHttpGet);
 				
@@ -129,7 +129,7 @@ public class NetworkApis {
 			});
 			
 			HttpGet mHttpGet = new HttpGet(url);
-			//mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";fetch_icon");
+			//mHttpGet.setHeader("User-Agent", "aptoide-" + mctx.getString(R.string.ver_str)+";fetch_icon");
 
 			//String[] logins = null; 
 			//logins = db.getLogin(srv);
@@ -236,6 +236,64 @@ public class NetworkApis {
 		}catch (Exception e) {return null;	}
 		
 	}
+	
+	
+	
+	public static HttpResponse imgWsGet(String url){
+		try{
+						
+			HttpParams httpParameters = new BasicHttpParams();
+			HttpConnectionParams.setConnectionTimeout(httpParameters, 12000);
+			HttpConnectionParams.setSoTimeout(httpParameters, 12000);
+			
+			DefaultHttpClient mHttpClient = new DefaultHttpClient(httpParameters);
+			mHttpClient.setRedirectHandler(new RedirectHandler() {
+
+				public boolean isRedirectRequested(HttpResponse response,
+						HttpContext context) {
+					return false;
+				}
+				
+
+				public URI getLocationURI(HttpResponse response, HttpContext context)
+				throws ProtocolException {
+					return null;
+				}
+			});
+			
+			
+			HttpGet mHttpGet = new HttpGet(url);
+
+			
+			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
+			
+			return mHttpResponse;
+		}catch(Exception e){
+			System.out.println("=============================================");
+			e.printStackTrace();
+			System.out.println("=============================================");
+			return null;
+		}
+	
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

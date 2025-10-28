@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    
+    
+    <string name="menu_update_repo">Azuriraj</string>
+    <string name="menu_manage">Upravljaj repo</string>
+    <string name="menu_order">Opcije ekrana</string>
+    <string name="menu_settings">Opcije</string>
+    <string name="menu_about">O Aplikaciji</string>
+    <string name="menu_search">Trazi</string>
+    
+    
+    <string name="menu_add_repo">Novi repozitorij</string>
+    <string name="menu_rem_repo">Ukloni repozitorij</string>
+    <string name="menu_edit_repo">Uredi repozitorij</string>
+    
+    <string name="btn_yes">Da</string>
+    <string name="btn_no">Ne</string>
+    <string name="btn_ok">U redu</string>
+    <string name="btn_add">Dodaj</string>
+    <string name="btn_cancel">Ukini</string>
+    <string name="btn_done">Zavrseno</string>
+    <string name="btn_chlog">Changelog</string>
+    <string name="btn_search_market">Pretrazi Market</string>
+    
+    
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Ovaj program je besplatan software; mozete ga redistributirati i/ili
+ * modificirati ga pod GNU General Public License
+ * Kao sto je objavljeno od strane Free Software Foundation; ili verzija 2
+ * od Licence, ili (vasa opcija) bilo koju kasniju verziju.
+ *
+ * Ovaj program je napravljen u nadi da ce biti koristan,
+ * ali BEZ IKAKVE GARANCIJE; cak bez jamstva koje se podrazumijeva
+ * PRODAJE ILI PRIKLADNOSTI ZA ODREDJENU NAMJENU.  Pogledajte
+ * GNU General Public License za vise detalja.
+ * 
+ * Trebali ste primiti kopiju GNU General Public License
+ * uz ovaj program; ako ne, pisite na Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

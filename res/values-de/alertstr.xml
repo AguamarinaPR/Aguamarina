@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="up_server">Servers: </string>
+    <string name="lstver">Server version: </string>
+    <string name="dwn_n">Anzahl der Downloads: </string>
+    <string name="isinst">Installiert: </string>
+    <string name="instver">Installierte Version: </string>
+    <string name="install">Installieren </string>
+    <string name="about_alrt">Über: </string>
+    <string name="rem">Deinstallieren </string>
+    <string name="update">Update</string>
+    
+    <string name="update_alrt">Es sind Updates für installierte Anwendungen verfügbar.\nMöchten Sie sie sehen?</string>
+    <string name="repo_alrt">Die Liste der verfügbaren Quellen hat sich geändert.\nMöchten Sie sie aktualieren?</string>
+    
+    <string name="title_repo_alrt">Achtung</string>
+	<string name="myrepo_alrt">Sie haben der Liste keine Quellen hinzugefügt.\nWir empfehlen die Benutzung unserer Quelle.\nMöchten Sie unsere Quelle hinzufügen?\n(Sie können online nach weiteren Quellen suchen)\n\n</string>
+    <string name="newrepo_alrt">Möchten Sie diese Quelle Ihrer Liste hinzufügen?\n\n</string>
+    
+    <string name="error_download_alrt">Keine Verbindung zum Server möglich oder die APK-Datei ist beschädigt!</string>
+    <string name="download_alrt">Lade Anwendungen von:\n </string>
+     
+	<string name="md5_error">Die MD5 Prüfung der geladenen Anwendung ist fehlgeschlagen!\nBitte aktualisieren Sie Ihr Anwendungs-System und versuchen Sie es erneut.</string>
+    <string name="network_error">Fehler beim Abrufen der Anwendung.\nBitte versuchen Sie es erneut.</string>
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Dieses Programm ist freie Software. Sie können es unter den
+ * Bedingungen der GNU General Public License, wie von der
+ * Free Software Foundation veröffentlicht, weitergeben und/oder
+ * modifizieren, entweder gemäß Version 3 der Lizenz oder
+ * (nach Ihrer Option) jeder späteren Version.
+
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung,
+ * daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE,
+ * sogar ohne die implizite Garantie der MARKTREIFE oder der
+ * VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in
+ * der GNU General Public License.
+
+* Sie sollten ein Exemplar der GNU General Public License zusammen 
+* mit diesem Programm erhalten haben. Falls nicht, siehe  http://www.gnu.org/licenses/.
+-->

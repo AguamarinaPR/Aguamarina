@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aptoide</string>
+    
+    <string name="tab_avail">Mevcut</string>
+    <string name="tab_inst">Kurulu</string>
+    <string name="tab_updt">Güncellemeler</string>
+    
+    <string name="repo_app">Uygulamalar:</string>
+    <string name="repo_noinfo">Tanımlama bulunamadı</string>
+    
+    <string name="no_found">Hiçbir uygulama bulunamadı!</string>
+    <string name="no_repo">Hiçbir depo bulunamadı!</string>
+ 
+ 	<string name="not_inst">Kurulu değil</string>
+    <string name="installed">Kurulu - Sürüm:</string>
+    <string name="installed_update">Güncelleme mevcut - Sürüm:</string>
+    <string name="srv_version">İndirilebilir sürüm:</string>
+    
+    <string name="srch_label">Aptoide</string>
+    <string name="srch_hint">Uygulamanın adı</string>
+    
+    <string name="about_txt1">Android cihazınıza paket yükleyicisi.\n</string>
+
+    <string name="about_site">Resmi site: </string>
+    
+    <string name="about_mail">İletişim: </string>
+    
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

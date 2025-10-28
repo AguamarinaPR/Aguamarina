@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Molimo sacekajte</string>
+	<string name="top_error">Greska</string>
+	<string name="top_download">Skidanje</string>
+
+	<string name="fetch_apk">Dobivanje aplikacije</string>
+
+	<string name="aptoide_error">Nemoze se spojiti sa glavnim serverom.</string>
+	
+	<string name="manage_repo_add">Dodavanje novog repozitorija</string>
+	<string name="manage_repo_answ_wrongl">Login je pogresan</string>
+	<string name="manage_repo_answ_cc">Nemoze se spojiti sa serverom</string>
+	<string name="manage_repo_answ_lr">Login potreban</string>
+	
+	<string name="app_pop_up_no_info">Nema informacija dostupnih o serveru. Pretrazite market tako sto ce te pritsnuti dugme ispod.</string>
+	<string name="error_no_market">Nemate Google Market instaliran!</string>
+		
+    <string name="settings_cache">Ciscenje cache...</string>
+    
+    <string name="remote_in_noSD_title">Nema memorije</string>
+    <string name="remote_in_noSD">Nemate SDkarticu.\nUbacite jednu, i pokusajte ponovo..</string>
+    <string name="remote_in_noSDspace">Nemate dovoljno mjesta na SDkartici za Aptoide\nOslobodite mjesta, i pokusajte ponovo.</string>
+    
+    <string name="error_on_update">Proces azuriranja nije mogao biti ispunjen na sljedecim repozitorijima:\n</string>
+    
+    <string name="updating_msg">Azuriranje liste aplikacija...</string>
+    <string name="update_repos">Azuriranje repozitorija</string>
+    <string name="update_main">Lista repozitorija u upotrebi je promjenjena.\nZelite li je azurirati?</string>
+    
+    <string name="updating_3g">Spojeni ste na 3g. Predlazemo da se spojite na wifi konekciju.\nSvejedno azuriraj?</string>
+    <string name="updating_cfrm">Potvrdi azuriranje Aptoide repozitorija?</string>
+    <string name="updating_norepos">Nema ukljucenih repozitorija u listi.\nDodajte repozitorije, ili ukljucite vec dodane.</string>
+    
+    <string name="repo_ctx">Opcije</string>
+    <string name="repo_ctx_edt">Uredi</string>
+    <string name="repo_ctx_del">Ukloni</string>
+    
+    <string name="repo_del">Ukloni repozitorij</string>
+    <string name="repo_del_msg">Zelite li ukloniti repozitorij </string>
+    <string name="repo_del_msg2">Izaberite repozitorij za ukloniti</string>
+    <string name="repo_edt_msg1">Izaberite repozitorij za urediti</string>
+    <string name="repo_edt_msg2">Uredi repozitorij</string>
+
+    <string name="update_done_msg1">Repozitoriji azurirani uspješno.</string>
+    <string name="update_process">Azuriranje repozitorija %1$d od %2$d</string>
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Ovaj program je besplatan software; mozete ga redistributirati i/ili
+ * modificirati ga pod GNU General Public License
+ * Kao sto je objavljeno od strane Free Software Foundation; ili verzija 2
+ * od Licence, ili (vasa opcija) bilo koju kasniju verziju.
+ *
+ * Ovaj program je napravljen u nadi da ce biti koristan,
+ * ali BEZ IKAKVE GARANCIJE; cak bez jamstva koje se podrazumijeva
+ * PRODAJE ILI PRIKLADNOSTI ZA ODREDJENU NAMJENU.  Pogledajte
+ * GNU General Public License za vise detalja.
+ * 
+ * Trebali ste primiti kopiju GNU General Public License
+ * uz ovaj program; ako ne, pisite na Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

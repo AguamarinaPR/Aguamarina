@@ -7,35 +7,50 @@
 
 	<string name="fetch_apk">Fetching application</string>
 
-	<string name="aguamarina_error">Can\'t connect to the remote server</string>
+	<string name="aptoide_error">Can\'t connect to the remote server</string>
 	
 	<string name="manage_repo_add">Add new repository</string>
 	<string name="manage_repo_answ_wrongl">Login is wrong</string>
 	<string name="manage_repo_answ_cc">Can\'t connect to server</string>
 	<string name="manage_repo_answ_lr">Login required</string>
 	
-	<string name="app_pop_up_no_info">No info available on server.</string>
+	<string name="app_pop_up_no_info">No info available on server. Search market by pressing the button below for more info.</string>
 	<string name="error_no_market">You don\'t have Google Market installed!</string>
 		
     <string name="settings_cache">Clearing cache...</string>
     
-    <string name="unsupportedversion">Unsupported Android Version</string>
-    <string name="unsupported_androidnew">Unfortunately, the Android API version 26 (Android 8) prevents installation of APKs from apps targeting older SDKs, making it so that applications cannot be installed from Aguamarina.\nTo continue anyways, press the OK button.</string>
-    
     <string name="remote_in_noSD_title">No memory</string>
-    <string name="remote_in_noSD">You don\'t have a SDcard.\nPlease insert one and try again.</string>
-    <string name="remote_in_noSDspace">You don\'t have enough space on your SDcard to use Aguamarina\nPlease free some space and try again.</string>
+    <string name="remote_in_noSD">You don\'t have an SDcard.\nPlease insert one and try again.</string>
+    <string name="remote_in_noSDspace">You don\'t have enough space on your SDcard to use Aptoide\nPlease free up some space and try again.</string>
     
-    <string name="error_on_update">The update process could not be made on the following repositories:\n</string>
+    <string name="error_on_update">The update process could not be completed on the following repositories:\n</string>
     
     <string name="updating_msg">Updating applications list...</string>
     <string name="update_repos">Update repositories</string>
     <string name="update_main">The list of repositories in use has been changed.\nDo you wish to update them?</string>
     
-    <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
-    <string name="updating_cfrm">Confirm Aguamarina repositories update?</string>
-    <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add a repository or enable the ones you have.</string>
+    <string name="updating_3g">You are connected through 3G. It is advised to update with a WiFi connection.\nUpdate anyway?</string>
+    <string name="updating_cfrm">Confirm Aptoide repositories update?</string>
+    <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add a repository or enable at least one that you already have.</string>
     
+    <string name="repo_ctx">Options</string>
+    <string name="repo_ctx_edt">Edit</string>
+    <string name="repo_ctx_del">Remove</string>
+    
+    <string name="repo_del">Remove Repository</string>
+    <string name="repo_del_msg">Do you want to remove repository </string>
+    <string name="repo_del_msg2">Choose repository to remove</string>
+    <string name="repo_edt_msg1">Choose repository to edit</string>
+    <string name="repo_edt_msg2">Edit repository</string>
+
+    <string name="update_done_msg1">Repositories updated successfully.</string>
+    <string name="update_process">Updating repository %1$d of %2$d</string>
+    
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    
+    <string name="update_self_title">Update available</string>
+    <string name="update_self_msg">There is a new version of aptoide available,\ndo you wish to update?</string>
     
 </resources>
 
@@ -57,4 +72,3 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->

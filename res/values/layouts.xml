@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="add_repo_text">Aguamarina is not responsible for the contents of any 3rd party repos, add them at your own discretion.\n\nURI to repository: </string>
+    <string name="add_repo_text">URI to repository: </string>
     <string name="add_repo_private">Private </string>
     
-    <string name="order_popup_title1">Align application list by: </string>
+    <string name="order_popup_title1">Order applications by: </string>
     <string name="order_popup_lst1">Most recent first </string>
     <string name="order_popup_lst2">Alphabetically </string>
     <string name="order_popup_lst3">Rating </string>
@@ -12,14 +12,27 @@
     <string name="order_popup_title2">Show applications: </string>
     <string name="order_popup_catg1">By category </string>
     <string name="order_popup_catg2">All applications </string>
-
-    <string name="title_appfilter">Filter:</string>
-    <string name="order_popup_hideincomptitle">Hide incompatible apps </string>
     
     <string name="order_popup_title">Display Options </string>
     
+    <string name="settings_title_bar">Aptoide settings</string>
+    
     <string name="save_btn">Save </string>
-    <string name="clear_cache_btn">Clear Cache </string>
+    <string name="clear_cache_title">Cache</string>
+    <string name="clear_cache_btn">Clear cache </string>
+    <string name="clear_cache_msg">Warning: removes all icons Aptoide has cached, as well as all pending installs and updates. Don\'t do this if you have ongoing downloads!</string>
+    
+    <string name="clear_dwn_title">Downloads</string>
+    <string name="clear_dwn_btn">Download icons</string>
+    <string name="clear_dwn_msg">Download icon rules </string>
+    
+    <string name="auto_updating">Please wait while processing update download...</string>
+    
+    <string-array name="dwnif">
+        <item>3G and Wifi</item>
+        <item>Wifi only</item>
+        <item>Never download</item>
+    </string-array>
     
     
 </resources>

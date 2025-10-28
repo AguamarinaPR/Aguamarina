@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Per favore aspetta</string>
+	<string name="top_error">Errore</string>
+	<string name="top_download">Download</string>
+
+	<string name="fetch_apk">Scaricando applicazione</string>
+
+	<string name="aptoide_error">Non posso connettermi al server remoto</string>
+	
+	<string name="manage_repo_add">Aggiungi nuovo repository</string>
+	<string name="manage_repo_answ_wrongl">Login sbagliato!</string>
+	<string name="manage_repo_answ_cc">Non posso connettermi al server</string>
+	<string name="manage_repo_answ_lr">Login richiesto</string>
+	
+	<string name="app_pop_up_no_info">Nessun\'informazione disponibile sul server. Cerca nel market schiacciando il bottono sotto per maggiori informazioni.</string>
+	<string name="error_no_market">NON hai Google Market installato!</string>
+		
+    <string name="settings_cache">Svuotando cache...</string>
+    
+    <string name="remote_in_noSD_title">Nessuna memoria</string>
+    <string name="remote_in_noSD">NON hai la SDcard.\nPer favore inseriscine una e riprova.</string>
+    <string name="remote_in_noSDspace">NON hai abbastanza spazio sulla SDcard per usare Aptoide\nPer favore libera dello spazio e riprova.</string>
+    
+    <string name="error_on_update">L\'update non può essere fatto sui seguenti repository:\n</string>
+    
+    <string name="updating_msg">Sto facendo l\'update della lista applicazioni...</string>
+    <string name="update_repos">Update dei repositoriy</string>
+    <string name="update_main">La lista dei repo in uso è cambiata.\nVuoi fare un update?</string>
+    
+    <string name="updating_3g">Sei connesso con il 3G. Si consiglia di eseguire un update con la connessione WiFi.\nFare lo stesso un update?</string>
+    <string name="updating_cfrm">Confermi l\'update dei repository di Aptoide?</string>
+    <string name="updating_norepos">Non ci sono repository attivati nella tua lista.\nPer favore aggiungi un repo o attiva quelli che hai.</string>
+    
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

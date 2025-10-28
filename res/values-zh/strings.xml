@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   
+    <string name="tab_avail">有效的</string>
+    <string name="tab_inst">已安装</string>
+    <string name="tab_updt">版本</string>
+    
+    <string name="no_found">未找到任何程序!</string>
+    <string name="no_repo">未添加任何仓库!</string>
+ 
+ 	<string name="not_inst">未安装</string>
+    <string name="installed">已安装 - 版本:</string>
+    <string name="installed_update">可更新 - 版本:</string>
+    <string name="srv_version">有效的版本:</string>
+    
+    <string name="srch_label">Aptoide</string>
+    <string name="srch_hint">程序名称</string>
+    
+    <string name="about_txt1">你的Android手机安装包.\n</string>
+    
+    <string name="about_site">主页: </string>
+    
+    <string name="about_mail">联系: </string>
+    
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

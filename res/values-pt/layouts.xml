@@ -13,13 +13,24 @@
     <string name="order_popup_catg1">Por categoria </string>
     <string name="order_popup_catg2">Todas as aplicações </string>
     
-    <string name="title_appfilter">Filter:</string>
-    <string name="order_popup_hideincomptitle">Hide incompatible apps </string>
-    
     <string name="order_popup_title">Opções de Exibição </string>
     
+    <string name="settings_title_bar">Definições do Aptoide</string>
+    
     <string name="save_btn">Guardar </string>
+    <string name="clear_cache_title">Cache</string>
     <string name="clear_cache_btn">Limpar Cache </string>
+    <string name="clear_cache_msg">ATENÇÃO: remove todos os icons guardados </string>
+    
+    <string name="clear_dwn_title">Downloads</string>
+    <string name="clear_dwn_btn">Download de icons</string>
+    <string name="clear_dwn_msg">Regras para download dos icons </string>
+    
+    <string-array name="dwnif">
+        <item>3G e Wifi</item>
+        <item>Apenas Wifi</item>
+        <item>Nunca fazer</item>
+    </string-array>
     
     
 </resources>

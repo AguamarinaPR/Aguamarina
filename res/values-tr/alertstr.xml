@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="up_server">Sunucular: </string>
+    <string name="lstver">Sunucu sürümü: </string>
+    <string name="dwn_n">İndirme sayısı: </string>
+    <string name="isinst">Kurulu: </string>
+    <string name="instver">Kurulu sürüm: </string>
+    <string name="install">Kur </string>
+    <string name="about_alrt">Hakkında: </string>
+    <string name="rem">Kaldır </string>
+    <string name="update">Güncelle</string>
+    
+    <string name="update_alrt">Kurulu uygulamaların bazıları için güncellemeler bulunmaktadır.\nBu güncellemeleri görmek ister misiniz?</string>
+    <string name="repo_alrt">Kullanılan depoların listesi değişti.\nGüncellemek ister misiniz?</string>
+    
+    <string name="title_repo_alrt">Dikkatinize</string>
+    <string name="myrepo_alrt">Hiçbir depo eklememişsiniz gibi görünüyor.\nBizim depomuzu eklemenizi öneririz.\nBizim depomuzu eklemek ister misiniz?\n(Çevrimiçinde ilave depolar arayabilirsiniz)\n\n</string>
+    <string name="newrepo_alrt">Bu depoyu listenize eklemek ister misiniz?\n\n</string>
+    
+    <string name="error_download_alrt">Sunucuya bağlanılamadı ya da apk dosyası bozuk!</string>
+    <string name="download_alrt">Uygulama buradan indiriliyor:\n </string>
+     
+    <string name="md5_error">İndirilen uygulamanın md5 karma değeri doğrulanamadı!\nUygulama sisteminizi güncelleyip yeniden deneyiniz.</string>
+    <string name="network_error">Uygulama indirilirken bir hata oluştu.\nTekrar deneyiniz.</string>
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

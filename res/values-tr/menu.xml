@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    
+    
+    <string name="menu_update_repo">Güncelle</string>
+    <string name="menu_manage">Depoyu Yönet</string>
+    <string name="menu_order">Görünüm Ayarları</string>
+    <string name="menu_settings">Ayarlar</string>
+    <string name="menu_about">Hakkında</string>
+    <string name="menu_search">Arama</string>
+    
+    
+    <string name="menu_add_repo">Yeni Depo</string>
+    <string name="menu_rem_repo">Depoyu Kaldır</string>
+    <string name="menu_edit_repo">Depoyu Düzenle</string>
+    
+    <string name="btn_yes">Evet</string>
+    <string name="btn_no">Hayır</string>
+    <string name="btn_ok">Tamam</string>
+    <string name="btn_add">Ekle</string>
+    <string name="btn_cancel">Vazgeç</string>
+    <string name="btn_done">Tamam</string>
+    <string name="btn_chlog">Değişiklikler</string>
+    <string name="btn_search_market">Markette Ara</string>
+    
+    
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

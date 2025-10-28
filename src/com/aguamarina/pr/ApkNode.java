@@ -17,27 +17,29 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-package com.aguamarina.pr;
+package cm.aptoide.pt;
 
 public class ApkNode extends Object{
 	public String name;
 	public String apkid;
 	public String ver;
+	public String verUpdate;
 	public int status;
 	/*
 	 * status
 	 * 0 - not installed
 	 * 1 - installed
 	 * 2 - installed need update
+	 * 
 	 */
 	public float rat;
 	public int down;
 	public String catg;
 	public int catg_ord;
+	
 	//Only used for update 
 	public int vercode;
-	//For filtering incompatible applications
-	public int sdkver;
+	
 	public ApkNode(){
 		
 	}

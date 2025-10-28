@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="up_server">服务器: </string>
+    <string name="lstver">服务器版本: </string>
+    <string name="dwn_n">下载数量: </string>
+    <string name="isinst">已下载: </string>
+    <string name="instver">已下载版本: </string>
+    <string name="install">安装 </string>
+    <string name="about_alrt">关于: </string>
+    <string name="rem">卸载 </string>
+    <string name="update">更新 </string>
+    
+    <string name="update_alrt">已安装的程序中有新的更新.\n你需要查看吗?</string>
+    <string name="repo_alrt">仓库列表已发生更改.\n需要更新吗?</string>
+    
+    <string name="title_repo_alrt">注意</string>
+    <string name="myrepo_alrt">未添加任何仓库.\n我们建议你使用我们的仓库.\n你需要添加这些仓库吗?\n(你也可以通过网络搜索其他仓库)\n\n</string>
+    <string name="newrepo_alrt">需要添加这个仓库到仓库列表吗?\n\n</string>
+    
+    <string name="error_download_alrt">不能正常连接至服务器或者apk文件是无效的!</string>
+    <string name="download_alrt">正在获得应用程序从:\n </string>
+     
+    <string name="md5_error">下载的应该程序md5校验失败\n在重试之前请更新你的应用程序系统.</string>
+    <string name="network_error">在获取应用程序时发生了错误.\n请重试.</string>
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Patientez, SVP</string>
+	<string name="top_error">Erreur</string>
+	<string name="top_download">Téléchargement</string>
+
+	<string name="fetch_apk">Obtention de l\'application</string>
+
+	<string name="aptoide_error">Impossible de se connecter au serveur distant</string>
+	
+	<string name="manage_repo_add">Ajout de nouveaux dépôts</string>
+	<string name="manage_repo_answ_wrongl">Identification incorrecte</string>
+	<string name="manage_repo_answ_cc">Impossible de se connecter au serveur</string>
+	<string name="manage_repo_answ_lr">Identification requise</string>
+	
+	<string name="app_pop_up_no_info">Pas d\'info sur le serveur. Recherchez sur le market pour plus d\'info.</string>
+	<string name="error_no_market">Google Market n\'est pas installé&#160;!</string>
+		
+    <string name="settings_cache">Vidange du cache...</string>
+    
+    <string name="remote_in_noSD_title">Pas de mémoire</string>
+    <string name="remote_in_noSD">Vous n\'avez pas de carte SD.\nVeuillez en mettre une et réessayez&#160;!</string>
+    <string name="remote_in_noSDspace">Vous n\'avez pas assez d\'espace sur votre carte SD pour utiliser Aptoide\nLibérez de l\'espace et réessayez&#160;!</string>
+    
+    <string name="error_on_update">La mise à jour n\'a pas pu être faite pour les dépôts suivants&#160;:\n</string>
+    
+    <string name="updating_msg">Mise à jour de la liste d\'applications...</string>
+    <string name="update_repos">Mise à jour des dépôts</string>
+    <string name="update_main">La liste des dépôts a été modifiée.\nVoulez-vous la mettre à jour&#160;?</string>
+    
+    <string name="updating_3g">Vous êtes connecté en 3G. Il est recommandé de faire la mise à jour en wifi.\nContinuer tout de même&#160;?</string>
+    <string name="updating_cfrm">Confirmer la mise à jour des dépôts Aptoide&#160;?</string>
+    <string name="updating_norepos">Il n\'y a pas de dépôts dans votre liste.\nVeuillez ajouter des dépôts ou les activer.</string>
+
+    <string name="repo_ctx">Options</string>
+    <string name="repo_ctx_edt">Édition</string>
+    <string name="repo_ctx_del">Enlever</string>
+    
+    <string name="repo_del">Enlever le dépôt</string>
+    <string name="repo_del_msg">Voulez-vous enlever le dépôt </string>
+    <string name="repo_del_msg2">Sélectionner le dépôt à enlever</string>
+    <string name="repo_edt_msg1">Sélectionner le dépôt à éditer</string>
+    <string name="repo_edt_msg2">Éditer le dépôt</string>
+
+    <string name="update_done_msg1">Les dépôts ont été mis à jour avec succès.</string>
+    <string name="update_process">Mise à jour du dépôt %1$d sur %2$d</string>    
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

@@ -1,17 +1,21 @@
-/*This file was modified by TropicalBananas in 2023.*/
-package com.aguamarina.pr;
+package cm.aptoide.pt;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
-import android.app.AlertDialog;
+import cm.aptoide.pt.multiversion.VersionApk;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -20,65 +24,106 @@ import android.widget.AdapterView.OnItemClickListener;
 
 
 public class TabInstalled extends BaseManagement implements OnItemClickListener{
-
+	
 	private ListView lv = null;
+	
+    private InstallApkListener installApkListener = null;
+//    private Boolean installApkListenerIsRegistered = false;
+
 	
 	private DbHandler db = null;
 	//private Context mctx = null;
 	
 	private int pos = -1;
 	
+
+	protected class InstallApkListener extends BroadcastReceiver {
+		
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			Log.d("Aptoide-TabInstalled", "Tab Installed, broadcast received.");
+			if (intent.getAction().equals("pt.caixamagica.aptoide.INSTALL_APK_ACTION")) {
+				installApk(intent.getStringExtra("localPath"), intent.getStringExtra("version"));
+			}
+		}
+	}
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		lv = new ListView(this);
 		lv.setOnItemClickListener(this);
 		db = new DbHandler(this);
+		
+		installApkListener = new InstallApkListener();
+		registerReceiver(installApkListener, new IntentFilter("pt.caixamagica.aptoide.INSTALL_APK_ACTION"));
 		//mctx = this;
 	}
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(Menu.NONE, 3, 3, R.string.menu_order)
-		.setIcon(android.R.drawable.ic_menu_sort_by_size);
-		return super.onCreateOptionsMenu(menu);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		menu.add(Menu.NONE, EnumOptionsMenu.DISPLAY_OPTIONS.ordinal(), EnumOptionsMenu.DISPLAY_OPTIONS.ordinal(), R.string.menu_order)
+//			.setIcon(android.R.drawable.ic_menu_sort_by_size);
+//		return super.onCreateOptionsMenu(menu);
+//	}
+//	
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		EnumOptionsMenu menuEntry = EnumOptionsMenu.reverseOrdinal(item.getItemId());
+//		Log.d("Aptoide-OptionsMenu", "menuOption: "+menuEntry+" itemid: "+item.getItemId());
+//		switch (menuEntry) {
+//		case DISPLAY_OPTIONS:
+//			/*if(resumeMe()){
+//				lv.setAdapter(instAdpt);
+//				setContentView(lv);
+//				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+//				lv.setSelection(pos-1);
+//			}*/
+//			
+//			final AlertDialog p = resumeMe();
+//			p.show();
+//			
+//			new Thread(){
+//				@Override
+//				public void run() {
+//					super.run();
+//					while(p.isShowing()){
+//						try {
+//							Thread.sleep(1000);
+//						} catch (InterruptedException e) {	}
+//					}
+//					displayRefresh.sendEmptyMessage(0);
+//				}
+//			}.start();
+//				
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case 3:
-			/*if(resumeMe()){
-				lv.setAdapter(instAdpt);
-				setContentView(lv);
-				lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-				lv.setSelection(pos-1);
-			}*/
-			
-			final AlertDialog p = resumeMe();
-			p.show();
-			
-			new Thread(){
-				@Override
-				public void run() {
-					super.run();
-					while(p.isShowing()){
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {	}
-					}
-					displayRefresh.sendEmptyMessage(0);
-				}
-			}.start();
-				
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
+//	@Override
+//	protected void onPause() {
+//		if (!installApkListenerIsRegistered) {
+//            unregisterReceiver(installApkListener);
+//            installApkListenerIsRegistered = false;
+//        }
+//		Log.d("Aptoide-TabInstalled", "installApkListenerIsUnregistered");
+//		
+//		super.onPause();
+//	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
+		Log.d("Aptoide-TabInstalled", "onResume");
+		
+//		if (!installApkListenerIsRegistered) {
+//            registerReceiver(installApkListener, new IntentFilter("pt.caixamagica.aptoide.INSTALL_APK_ACTION"));
+//            installApkListenerIsRegistered = true;
+//        }
+//		Log.d("Aptoide-TabInstalled", "installApkListenerIsRegistered");
+
 		
 		new Thread(){
 			@Override
@@ -96,7 +141,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 	}
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		final String pkg_id = app_id.get(arg1).toString();
+		final String pkg_id = ((LinearLayout)arg1).getTag().toString();
 
 		pos = arg2;
 
@@ -107,7 +152,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 		
 		String tmpi = db.getDescript(pkg_id);
 		if(!(tmpi == null)){
-			apkinfo.putExtra("about",tmpi);
+			apkinfo.putExtra("about", tmpi);
 		}else{
 			apkinfo.putExtra("about",getText(R.string.app_pop_up_no_info));
 		}
@@ -115,12 +160,33 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 
 		Vector<String> tmp_get = db.getApk(pkg_id);
 		apkinfo.putExtra("server", tmp_get.firstElement());
-		apkinfo.putExtra("version", tmp_get.get(1));
-		apkinfo.putExtra("dwn", tmp_get.get(4));
 		apkinfo.putExtra("rat", tmp_get.get(5));
-		apkinfo.putExtra("size", tmp_get.get(6));
 		apkinfo.putExtra("type", 1);
 		
+		ArrayList<VersionApk> versions = db.getOldApks(pkg_id);
+		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(7)),pkg_id,Integer.parseInt(tmp_get.get(6)), Integer.parseInt(tmp_get.get(4)));
+		versions.add(versionApkPassed);
+		
+		
+		
+		try {
+			PackageManager mPm = getApplicationContext().getPackageManager();
+			PackageInfo pkginfo = mPm.getPackageInfo(pkg_id, 0);
+			VersionApk versionInstApk = new VersionApk(pkginfo.versionName,pkginfo.versionCode,pkg_id,-1,-1);
+			apkinfo.putExtra("instversion", versionInstApk);
+//			Iterator<VersionApk> iteratorVersion = versions.iterator();
+//			while(iteratorVersion.hasNext()){
+//				if(iteratorVersion.next().compareTo(versionInstApk)>0){
+//					iteratorVersion.remove();
+//				}
+//			}
+		} catch (NameNotFoundException e) {
+			//Not installed... do nothing, not going to happen hear
+		}
+		
+		
+		
+		apkinfo.putParcelableArrayListExtra("versions", versions);
 		startActivityForResult(apkinfo,30);
 		
 		/*
@@ -189,13 +255,19 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 	protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == 30 && data != null && data.hasExtra("apkid")){
-			new Thread() {
-				public void run() {
+			if(data.getBooleanExtra("rm", false)){
+				new Thread() {
+					public void run() {
+						String apk_id = data.getStringExtra("apkid");
+						Log.d("Aptoide", ".... removing: " + apk_id);
+						removeApk(apk_id);
+					}
+				}.start();
+			} else if(data.getBooleanExtra("install", false) && data.hasExtra("version")){
 					String apk_id = data.getStringExtra("apkid");
-					Log.d("Aguamarina", ".... removing: " + apk_id);
-					removeApk(apk_id);
-				}
-			}.start();
+					Log.d("Aptoide", "....... getting: " + apk_id);
+					queueDownload(apk_id, data.getStringExtra("version"), true);
+			}
 		}
 	}
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="add_repo_text">Quellen-URI: </string>
+    <string name="add_repo_private">Privat </string>
+    
+    <string name="order_popup_lst1">Aktuellste zuerst </string>
+    <string name="order_popup_lst2">Alphabetisch </string>
+    <string name="order_popup_lst3">Bewertung </string>
+    <string name="order_popup_lst4">Anzahl Downloads </string>
+
+    <string name="order_popup_title2">Zeige Anwendungen: </string>
+    <string name="order_popup_catg1">Nach Kategorie </string>
+    <string name="order_popup_catg2">Alle Andwendungen </string>
+    
+    <string name="order_popup_title">Anzeigeoptionen </string>
+    
+    <string name="settings_title_bar">Aptoide Einstellungen</string>
+    
+    <string name="save_btn">Speichern </string>
+    <string name="clear_cache_title">Zwischenspeicher</string>
+    <string name="clear_cache_btn">Zwischenspeicher löschen </string>
+    <string name="clear_cache_msg">Achtung: entfernt alle zwischengespeicherten Icons. </string>
+    
+    <string name="clear_dwn_title">Downloads</string>
+    <string name="clear_dwn_btn">Download Icons</string>
+    <string name="clear_dwn_msg">Download Icon Richtlinien </string>
+    
+    <string-array name="dwnif">
+        <item>3G und Wifi</item>
+        <item>nur Wifi</item>
+        <item>Nie Herunterladen</item>
+    </string-array>
+    
+    
+</resources>
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Dieses Programm ist freie Software. Sie können es unter den
+ * Bedingungen der GNU General Public License, wie von der
+ * Free Software Foundation veröffentlicht, weitergeben und/oder
+ * modifizieren, entweder gemäß Version 3 der Lizenz oder
+ * (nach Ihrer Option) jeder späteren Version.
+
+ * Die Veröffentlichung dieses Programms erfolgt in der Hoffnung,
+ * daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE,
+ * sogar ohne die implizite Garantie der MARKTREIFE oder der
+ * VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in
+ * der GNU General Public License.
+
+* Sie sollten ein Exemplar der GNU General Public License zusammen 
+* mit diesem Programm erhalten haben. Falls nicht, siehe  http://www.gnu.org/licenses/.
+-->

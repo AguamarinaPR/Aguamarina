@@ -17,8 +17,7 @@
         android:layout_width="wrap_content"
         android:ems="20"
         android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:text="http://"/>
+        android:singleLine="true"/>
         
         
         <TextView
@@ -31,7 +30,7 @@
         android:visibility="gone"
         android:layout_height="wrap_content"/>
         
-<!--	<View
+	<View
 	android:layout_marginTop="10dip"
 	android:layout_marginBottom="10dip"
 	android:layout_marginLeft="25dip"
@@ -78,7 +77,7 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:enabled="false"/>  
-        -->
+        
         
 </LinearLayout>
 <!--
@@ -99,4 +98,3 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="top_please_wait">Bekleyiniz</string>
+	<string name="top_error">Hata</string>
+	<string name="top_download">İndir</string>
+
+	<string name="fetch_apk">Uygulama indiriliyor</string>
+
+	<string name="aptoide_error">Sunucuya bağlanılamadı</string>
+	
+	<string name="manage_repo_add">Yeni depo ekle</string>
+	<string name="manage_repo_answ_wrongl">Kullanıcı ismi hatalı</string>
+	<string name="manage_repo_answ_cc">Sunucuya bağlanılamadı</string>
+	<string name="manage_repo_answ_lr">Kullanıcı ismi gerekiyor</string>
+	
+	<string name="app_pop_up_no_info">Sunucuda hiçbir tanımlama yok. Daha fazla bilgi için aşağıdaki butona dokunup markette arama yapın.</string>
+	<string name="error_no_market">Google Market kurulu değil!</string>
+		
+    <string name="settings_cache">Arabellek temizleniyor...</string>
+    
+    <string name="remote_in_noSD_title">Bellek mevcut değil</string>
+    <string name="remote_in_noSD">SD kartınız yok.\nBir kart takıp tekrar deneyiniz.</string>
+    <string name="remote_in_noSDspace">SD kartınızda Aptoide\'i kullanmak için yeterli alan yok\nYeterli boş alan yaratıp tekrar deneyiniz.</string>
+    
+    <string name="error_on_update">Güncelleme şu depolar için yapılamadı:\n</string>
+    
+    <string name="updating_msg">Uygulama listesi güncelleniyor...</string>
+    <string name="update_repos">Depoları güncelle</string>
+    <string name="update_main">Kullanılan depoların listesi değişti.\nGüncellemek ister misiniz?</string>
+    
+    <string name="updating_3g">3G vasıtasıyla çevrim içindesiniz. WiFi bağlantısını kullanarak güncelleme yapmanız önerilir.\nBuna rağmen güncelleme yapılsın mı?</string>
+    <string name="updating_cfrm">Aptoide depolarının güncellenmesini teyit ediyor musunuz?</string>
+    <string name="updating_norepos">Listenizde etkin bir depo yok.\nLütfen bir depo ekleyin ya da mevcut bir depoyu etkinleştirin.</string>
+    
+    <string name="repo_ctx">Seçenekler</string>
+    <string name="repo_ctx_edt">Düzenle</string>
+    <string name="repo_ctx_del">Kaldır</string>
+    
+    <string name="repo_del">Depoyu kaldır</string>
+    <string name="repo_del_msg">Depoyu kaldırmak istediğinizden emin misiniz </string>
+    <string name="repo_del_msg2">Kaldırılacak depoyu seç</string>
+    <string name="repo_edt_msg1">Düzenlenecek depoyu seç</string>
+    <string name="repo_edt_msg2">Depoyu düzenle</string>
+
+    <string name="update_done_msg1">Depolar başarılı bir şekilde güncellendi.</string>
+    <string name="update_process"> Toplam %2$d depodan %1$d sayılı depo güncelleniyor</string>
+    
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

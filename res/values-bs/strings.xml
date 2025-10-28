@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aptoide</string>
+    
+    <string name="tab_avail">Dostupno</string>
+    <string name="tab_inst">Instalirano</string>
+    <string name="tab_updt">Azuriranja</string>
+    
+    <string name="repo_app">Aplikacije:</string>
+    <string name="repo_noinfo">Nema informacija</string>
+    
+    <string name="no_found">Nema nadjenih aplikacija!</string>
+    <string name="no_repo">Nema repozitorija!</string>
+ 
+ 	<string name="not_inst">Nije instalirano</string>
+    <string name="installed">Instalirano - Ver.:</string>
+    <string name="installed_update">Moguce azuriranje - Ver.:</string>
+    <string name="srv_version">Dostupne verzije:</string>
+    
+    <string name="srch_label">Aptoide</string>
+    <string name="srch_hint">Ime aplikacije</string>
+    
+    <string name="about_txt1">Vas paket za instaliranje na vas uredjaj.\n</string>
+    
+    <string name="about_site">Home: </string>
+    
+    <string name="about_mail">Contact: </string>
+    
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+</resources>
+
+<!--
+ * Copyright (C) 2009  Roberto Jacinto
+ * roberto.jacinto@caixamagica.pt
+ *
+ * Ovaj program je besplatan software; mozete ga redistributirati i/ili
+ * modificirati ga pod GNU General Public License
+ * Kao sto je objavljeno od strane Free Software Foundation; ili verzija 2
+ * od Licence, ili (vasa opcija) bilo koju kasniju verziju.
+ *
+ * Ovaj program je napravljen u nadi da ce biti koristan,
+ * ali BEZ IKAKVE GARANCIJE; cak bez jamstva koje se podrazumijeva
+ * PRODAJE ILI PRIKLADNOSTI ZA ODREDJENU NAMJENU.  Pogledajte
+ * GNU General Public License za vise detalja.
+ * 
+ * Trebali ste primiti kopiju GNU General Public License
+ * uz ovaj program; ako ne, pisite na Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->

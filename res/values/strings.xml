@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Aguamarina</string>
+    <string name="app_name">Aptoide</string>
     
     <string name="tab_avail">Available</string>
     <string name="tab_inst">Installed</string>
     <string name="tab_updt">Updates</string>
+    
+    <string name="repo_app">Applications:</string>
+    <string name="repo_noinfo">No information</string>
     
     <string name="no_found">No application found!</string>
     <string name="no_repo">There are no repositories!</string>
@@ -14,21 +17,29 @@
     <string name="installed_update">Update possible - Ver.:</string>
     <string name="srv_version">Available version:</string>
     
-    <string name="srch_label">Aguamarina</string>
+    <string name="srch_label">Aptoide</string>
     <string name="srch_hint">Name of the application</string>
     
-    <string name="about_txt1">Package manager for legacy android\n</string>
-    
-    <string name="about_txt11">Version: 1.1 (licensed with GPL v2)\n
-    \nForked from Aptoide\n</string>
-
-    
-    <string name="about_site">Web: </string>
+    <string name="about_txt1">Your package installer to Android phone.\n</string>
+        
+    <string name="about_site">Home: </string>
     
     <string name="about_mail">Contact: </string>
     
-    <string name="about_txt2">www.aguamarina.altervista.org</string>
-    <string name="about_txt3">aguamarina@altervista.org</string>
+    <string name="about_txt2"> www.aptoide.com</string>
+    <string name="about_txt3"> aptoide@aptoide.com</string>
+    <string name="multi_ver_prompt">Select an app version</string>
+    <string name="version">Version</string>
+    <string name="size">Size</string>
+    <string name="reinstall">Reinstall</string>
+    <string name="version_inst">Version installed</string>
+    <string name="installed_downgrade">Downgrade possible.</string>
+    <string name="unabletoexecutecheknet">Unable to execute. Check internet status.</string>
+    <string name="unabletoexecute">Unable to execute</string>
+    <string name="downgrade_available">downgrade available</string>
+    <!--<string name="moving_to">Moving to</string>
+    <string name="recognized">Recognized</string> Check if this stuff is removable
+   <string name="not_recognized">Not recognized</string>-->
 </resources>
 
 <!--
@@ -49,4 +60,3 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas Copyright (C) 2023-2025-->

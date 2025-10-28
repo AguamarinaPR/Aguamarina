@@ -10,19 +10,27 @@
     <string name="rem">Uninstall </string>
     <string name="update">Update</string>
     
-    <string name="update_alrt">There updates available for some installed applications.\nDo you wish to see them?</string>
+    <string name="update_alrt">There are updates available for some installed applications.\nDo you wish to see them?</string>
     <string name="repo_alrt">The list of repositories in use has been changed.\nDo you wish to update them?</string>
     
     <string name="title_repo_alrt">Attention</string>
-    <string name="myrepo_alrt">It looks like you don\'t have any added repository.\nDo you want to add our repository?\n\n</string>
-    <string name="altrepo_alrt">\n\n(You can search for other repositories online, but we are not responsible for the contents of any 3rd party repositories.)\n</string>
+    <string name="myrepo_alrt">It looks like you don\'t have any added repository.\nWe suggest you use ours.\nDo you want to add our repository?\n(You can search for more repositories online)\n\n</string>
     <string name="newrepo_alrt">Do you want to add this repository to your list?\n\n</string>
     
     <string name="error_download_alrt">Could not connect to server or apk file is corrupt!</string>
-    <string name="download_alrt">Getting aplication from:\n </string>
+    <string name="download_alrt">Getting application:\n </string>
+    <string name="finished_download_alrt">Ready to install:\n </string>
+    <string name="finished_download_message">Click to install application:\n </string>
      
-    <string name="md5_error">The downloaded application md5 check failed!\nPlease update your application system before retry.</string>
+    <string name="md5_error">The downloaded application md5 check failed!\nPlease update your repositories before retrying.</string>
+    <string name="md5_auto_update_error">Update package checksum failed!  Keeping current version.</string>
+    <string name="network_auto_update_error">Update connection failed!  Keeping current version.</string>
     <string name="network_error">There has been an error while fetching the application.\nPlease try again.</string>
+    
+    <string name="failed_update">Application update has failed!</string>
+    <string name="failed_install">Application install has failed!</string>
+    <string name="downgrade">Downgrade</string>
+    <string name="uninstall">Uninstall</string>
     
 </resources>
 <!--
