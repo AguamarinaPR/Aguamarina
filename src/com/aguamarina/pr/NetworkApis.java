@@ -1,3 +1,5 @@
+/* Copyright (C) 2023-2025 TropicalBananas */
+
 package com.aguamarina.pr;
 
 import java.net.URI;

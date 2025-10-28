@@ -1,3 +1,5 @@
+/* Copyright (C) 2023-2025 TropicalBananas */
+
 package com.aguamarina.pr;
 
 public class ApkNodeFull extends Object{
