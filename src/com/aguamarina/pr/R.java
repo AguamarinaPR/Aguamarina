@@ -147,9 +147,9 @@ public final class R {
         public static final int about_txt3=0x7f05007b;
         public static final int add_repo_private=0x7f050040;
         public static final int add_repo_text=0x7f05003f;
+        public static final int aguamarina_error=0x7f05001f;
         public static final int app_name=0x7f050069;
         public static final int app_pop_up_no_info=0x7f050024;
-        public static final int aguamarina_error=0x7f05001f;
         public static final int auto_updating=0x7f050052;
         public static final int base_path=0x7f050067;
         public static final int btn_add=0x7f050061;
