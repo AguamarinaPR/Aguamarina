@@ -203,7 +203,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 		if(test_icon.exists() && test_icon.length() > 0){
 			p.setIcon(new BitmapDrawable(tmp_path));
 		}else{
-			p.setIcon(android.R.drawable.sym_def_app_icon);
+			p.setIcon(R.drawable.loadingicon);
 		}
 		p.setTitle(db.getName(pkg_id));
 		TextView t1 = (TextView) view.findViewById(R.id.n11);

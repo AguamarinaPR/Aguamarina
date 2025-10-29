@@ -131,7 +131,7 @@ public class RemoteInSearch extends ListActivity{
              		new Uri.Builder().build();
     				tmpr.setImageURI(Uri.parse(textRepresentation));
              	}else{
-             		tmpr.setImageResource(android.R.drawable.sym_def_app_icon);
+             		tmpr.setImageResource(R.drawable.loadingicon);
              	}
 			}else{
 				return false;
