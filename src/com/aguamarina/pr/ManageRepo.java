@@ -183,7 +183,7 @@ public class ManageRepo extends ListActivity{
 						Log.d("Aguamarina-ManageRepo", "Repo equal to existant one but without initial http:// and the final forward slash");
 						return true;
 					}
-				}else{
+				/*}else{
 					repo = repo+".bazaarandroid.com/";
 					if(repo.equals(existingRepo.substring(7, existingRepo.length()))){
 						Log.d("Aguamarina-ManageRepo", "Repo equal to existant one but without initial http:// and without .bazaarandroid.com extension");
@@ -192,7 +192,7 @@ public class ManageRepo extends ListActivity{
 					if(repo.equals(existingRepo.substring(7, existingRepo.length()-1))){
 						Log.d("Aguamarina-ManageRepo", "Repo equal to existant one but without initial http:// , without .bazaarandroid.com extension, and the final forward slash");
 						return true;
-					}
+					}*/
 				}
 			}
 		}
@@ -420,7 +420,6 @@ public class ManageRepo extends ListActivity{
 
 					default:
 						Log.d("Aguamarina-ManageRepo", "return exception");
-						uri_str = uri_str.substring(0, uri_str.length()-1)+".bazaarandroid.com/";
 						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 						msg.obj = 1;
 						returnStatus result2 = checkServerConnection(uri_str);
