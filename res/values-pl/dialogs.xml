@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">Brak połączenia z serwerem</string>
 	
 	<string name="manage_repo_add">Dodaj nowe repozytorium</string>
-	<string name="manage_repo_answ_wrongl">Login jest błędny</string>
 	<string name="manage_repo_answ_cc">Brak połączenia z serwerem</string>
-	<string name="manage_repo_answ_lr">Wymagany jest Login</string>
 	
 	<string name="app_pop_up_no_info">Brak informacji na serwerze. Wyszukaj informację w markecie poprzez naciśnięcie przycisku poniżej.</string>
 	<string name="error_no_market">Nie masz zainstalowanego Google Market!</string>

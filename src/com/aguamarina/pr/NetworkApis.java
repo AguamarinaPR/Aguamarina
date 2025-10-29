@@ -3,14 +3,11 @@
 package com.aguamarina.pr;
 
 import java.net.URI;
-import java.net.URL;
 
 import org.apache.http.ConnectionReuseStrategy;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.ProtocolException;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.RedirectHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ConnectionKeepAliveStrategy;
@@ -33,7 +30,7 @@ public class NetworkApis {
 			DbHandler db = new DbHandler(mctx);
 			
 			SharedPreferences sPref = mctx.getSharedPreferences("aguamarina_prefs", Context.MODE_PRIVATE);
-			String myid = sPref.getString("myId", "NoInfo");
+			String myub = sPref.getString("myUB", "NoInfo");
 			String myscr = sPref.getInt("scW", 0)+"x"+sPref.getInt("scH", 0);
 						
 			HttpParams httpParameters = new BasicHttpParams();
@@ -57,18 +54,8 @@ public class NetworkApis {
 			
 			
 			HttpGet mHttpGet = new HttpGet(url);
-			mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
+			mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myub);
 			mHttpGet.setHeader("Accept-Encoding", "gzip");
-						
-			String[] logins = null; 
-			logins = db.getLogin(srv);
-			if(logins != null){
-				URL mUrl = new URL(url);
-				mHttpClient.getCredentialsProvider().setCredentials(
-						new AuthScope(mUrl.getHost(), mUrl.getPort()),
-						new UsernamePasswordCredentials(logins[0], logins[1]));
-			}
-
 			
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 			
@@ -79,15 +66,8 @@ public class NetworkApis {
 				String newurl = azz[0].getValue();
 				mHttpGet = null;
 				mHttpGet = new HttpGet(newurl);
-				mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
+				mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myub);
 				mHttpGet.setHeader("Accept-Encoding", "gzip");
-				
-				if(logins != null){
-	    			URL mUrl = new URL(newurl);
-	    			mHttpClient.getCredentialsProvider().setCredentials(
-	                        new AuthScope(mUrl.getHost(), mUrl.getPort()),
-	                        new UsernamePasswordCredentials(logins[0], logins[1]));
-	    		}
 				
 				mHttpResponse = null;
 				mHttpResponse = mHttpClient.execute(mHttpGet);
@@ -108,7 +88,7 @@ public class NetworkApis {
 	}
 	
 	
-	public static HttpResponse getHttpResponse(String url, String usr, String pwd, Context mctx){
+	public static HttpResponse getHttpResponse(String url, Context mctx){
 		try{
 			//DbHandler db = new DbHandler(mctx);
 
@@ -133,15 +113,6 @@ public class NetworkApis {
 			HttpGet mHttpGet = new HttpGet(url);
 			//mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";fetch_icon");
 
-			//String[] logins = null; 
-			//logins = db.getLogin(srv);
-			if(usr != null || pwd != null){
-				URL mUrl = new URL(url);
-				mHttpClient.getCredentialsProvider().setCredentials(
-						new AuthScope(mUrl.getHost(), mUrl.getPort()),
-						new UsernamePasswordCredentials(usr, pwd));
-			}
-
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 			
 			
@@ -151,13 +122,6 @@ public class NetworkApis {
 				String newurl = azz[0].getValue();
 				mHttpGet = null;
 				mHttpGet = new HttpGet(newurl);
-				
-				if(usr != null || pwd != null){
-	    			URL mUrl = new URL(newurl);
-	    			mHttpClient.getCredentialsProvider().setCredentials(
-	                        new AuthScope(mUrl.getHost(), mUrl.getPort()),
-	                        new UsernamePasswordCredentials(usr, pwd));
-	    		}
 				
 				mHttpResponse = null;
 				mHttpResponse = mHttpClient.execute(mHttpGet);
@@ -169,7 +133,7 @@ public class NetworkApis {
 		
 	}
 	
-	public static DefaultHttpClient createItOpen(String url, String usr, String pwd){
+	public static DefaultHttpClient createItOpen(String url){
 		try{
 		HttpParams httpParameters = new BasicHttpParams();
 		HttpConnectionParams.setConnectionTimeout(httpParameters, 12000);
@@ -188,13 +152,6 @@ public class NetworkApis {
 				return null;
 			}
 		});
-		
-		if(usr != null || pwd != null){
-			URL mUrl = new URL(url);
-			mHttpClient.getCredentialsProvider().setCredentials(
-					new AuthScope(mUrl.getHost(), mUrl.getPort()),
-					new UsernamePasswordCredentials(usr, pwd));
-		}
 		
 		mHttpClient.setKeepAliveStrategy(new ConnectionKeepAliveStrategy() {
 			

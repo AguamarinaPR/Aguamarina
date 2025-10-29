@@ -22,7 +22,6 @@ package com.aguamarina.pr;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,8 +31,6 @@ import java.util.Vector;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.ProtocolException;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.RedirectHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -60,14 +57,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ManageRepo extends ListActivity{
 	
@@ -94,7 +88,7 @@ public class ManageRepo extends ListActivity{
 	
 	private AlertDialog alrt = null;
 	
-	private enum returnStatus {OK, LOGIN_REQUIRED, BAD_LOGIN, FAIL, EXCEPTION};
+	private enum returnStatus {OK, EXCEPTION};
 	
 
 	@Override
@@ -339,8 +333,7 @@ public class ManageRepo extends ListActivity{
 			View view = li.inflate(R.layout.addrepo, null);
 			
 			final TextView sec_msg = (TextView) view.findViewById(R.id.sec_msg);
-			final TextView sec_msg2 = (TextView) view.findViewById(R.id.sec_msg2);
-			
+			/*
 			final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
 			final EditText sec_pwd = (EditText) view.findViewById(R.id.sec_pwd);
 			
@@ -356,7 +349,7 @@ public class ManageRepo extends ListActivity{
 					}
 				}
 			});
-			
+			*/
 			
 			Builder p = new AlertDialog.Builder(this).setView(view);
 			alrt = p.create();
@@ -379,8 +372,8 @@ public class ManageRepo extends ListActivity{
 						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 					}
 					sec_msg.setVisibility(View.GONE);
-					sec_msg2.setVisibility(View.GONE);
 					
+					/*
 					String user = null;
 					String pwd = null;
 					
@@ -388,20 +381,20 @@ public class ManageRepo extends ListActivity{
 						user = sec_user.getText().toString();
 						pwd = sec_pwd.getText().toString();
 					}
-					
-					returnStatus result = checkServerConnection(uri_str, user, pwd);
+					*/
+					returnStatus result = checkServerConnection(uri_str);
 					switch (result) {
 					case OK:
 						Log.d("Aguamarina-ManageRepo", "return ok");
 						msg.obj = 0;
 						db.addServer(uri_str);
-						if(user != null && pwd != null){
+						/*if(user != null && pwd != null){
 							db.addLogin(user, pwd, uri_str);	
-						}
+						}*/
 						change = true;
 						redraw();
 						break;
-					
+					/*
 					case LOGIN_REQUIRED:
 						Log.d("Aguamarina-ManageRepo", "return login_required");
 						sec_msg2.setText(getText(R.string.manage_repo_answ_lr));
@@ -423,28 +416,26 @@ public class ManageRepo extends ListActivity{
 						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 						msg.obj = 1;
 						break;
+					*/
 
 					default:
 						Log.d("Aguamarina-ManageRepo", "return exception");
 						uri_str = uri_str.substring(0, uri_str.length()-1)+".bazaarandroid.com/";
 						Log.d("Aguamarina-ManageRepo", "repo uri: "+uri_str);
 						msg.obj = 1;
-						break;
-					}
-					if(result.equals(returnStatus.FAIL) || result.equals(returnStatus.EXCEPTION)){
-						returnStatus result2 = checkServerConnection(uri_str, user, pwd);
+						returnStatus result2 = checkServerConnection(uri_str);
 						switch (result2) {
 						case OK:
 							Log.d("Aguamarina-ManageRepo", "return ok");
 							msg.obj = 0;
 							db.addServer(uri_str);
-							if(user != null && pwd != null){
+							/*if(user != null && pwd != null){
 								db.addLogin(user, pwd, uri_str);	
-							}
+							}*/
 							change = true;
 							redraw();
 							break;
-						
+						/*
 						case LOGIN_REQUIRED:
 							Log.d("Aguamarina-ManageRepo", "return login_required");
 							sec_msg2.setText(getText(R.string.manage_repo_answ_lr));
@@ -467,14 +458,17 @@ public class ManageRepo extends ListActivity{
 							msg.obj = 1;
 								
 							break;
-
+						*/
 						default:
-							Log.d("Aguamarina-ManageRepo", "return exception");
+							Log.d("Aguamarina-ManageRepo", "return exception or fail");
+							sec_msg.setText(getText(R.string.manage_repo_answ_cc));
+							sec_msg.setVisibility(View.VISIBLE);
 							msg.obj = 1;	
 							break;
 						}
-					}				
-					new_repo.sendMessage(msg);
+						new_repo.sendMessage(msg);
+						break;
+					}
 				} });
 
 			alrt.setButton2(getText(R.string.btn_cancel), new DialogInterface.OnClickListener() {
@@ -560,31 +554,6 @@ public class ManageRepo extends ListActivity{
 		final AlertDialog alrt = p.create();
 		final EditText uri = (EditText) view.findViewById(R.id.edit_uri);
 		uri.setText(repo);
-		
-		final EditText sec_user = (EditText) view.findViewById(R.id.sec_user);
-		final EditText sec_pwd = (EditText) view.findViewById(R.id.sec_pwd);
-		final CheckBox sec = (CheckBox) view.findViewById(R.id.secure_chk);
-		sec.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					sec_user.setEnabled(true);
-					sec_pwd.setEnabled(true);
-				}else{
-					sec_user.setEnabled(false);
-					sec_pwd.setEnabled(false);
-				}
-			}
-		});
-		
-		String[] logins = null; 
-		logins = db.getLogin(repo);
-		if(logins != null){
-			sec.setChecked(true);
-			sec_user.setText(logins[0]);																																																				 
-			sec_pwd.setText(logins[1]);
-		}else{
-			sec.setChecked(false);
-		}
 	
 		alrt.setIcon(android.R.drawable.ic_menu_add);
 		alrt.setTitle(getString(R.string.repo_edt_msg2));
@@ -592,11 +561,11 @@ public class ManageRepo extends ListActivity{
 			public void onClick(DialogInterface dialog, int which) {
 				String new_repo = uri.getText().toString();
 				db.updateServer(repo, new_repo);
-				if(sec.isChecked()){
+				/*if(sec.isChecked()){
 					db.addLogin(sec_user.getText().toString(), sec_pwd.getText().toString(), new_repo);
 				}else{
 					db.disableLogin(new_repo);
-				}
+				}*/
 				change = true;
 				redraw();
 			} });
@@ -648,7 +617,7 @@ public class ManageRepo extends ListActivity{
 	
 
 	
-	private returnStatus checkServerConnection(String uri, String user, String pwd){
+	private returnStatus checkServerConnection(String uri){
 		
 		int result;
 		
@@ -674,12 +643,12 @@ public class ManageRepo extends ListActivity{
 		
         HttpGet mHttpGet = new HttpGet(uri+"/info.xml");
         try {
-        	if(user != null && pwd != null){
+        	/*if(user != null && pwd != null){
         		URL mUrl = new URL(uri);
         		mHttpClient.getCredentialsProvider().setCredentials(
         				new AuthScope(mUrl.getHost(), mUrl.getPort()),
         				new UsernamePasswordCredentials(user, pwd));
-        	}
+        	}*/
         	
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 			
@@ -689,14 +658,14 @@ public class ManageRepo extends ListActivity{
 
 				mHttpGet = null;
 				mHttpGet = new HttpGet(newurl);
-				
+				/*
 				if(user != null && pwd != null){
 	        		URL mUrl = new URL(newurl);
 	        		mHttpClient.getCredentialsProvider().setCredentials(
 	        				new AuthScope(mUrl.getHost(), mUrl.getPort()),
 	        				new UsernamePasswordCredentials(user, pwd));
 	        	}
-				
+				*/
 				mHttpResponse = null;
 				mHttpResponse = mHttpClient.execute(mHttpGet);
 			}
@@ -705,10 +674,8 @@ public class ManageRepo extends ListActivity{
 			
 			if(result == 200){
 				return returnStatus.OK;
-			}else if (result == 401){
-				return returnStatus.BAD_LOGIN;
 			}else{
-				return returnStatus.FAIL;
+				return returnStatus.EXCEPTION;
 			}
 		} catch (ClientProtocolException e) { return returnStatus.EXCEPTION;} 
 		catch (IOException e) { return returnStatus.EXCEPTION;}

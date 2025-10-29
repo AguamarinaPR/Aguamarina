@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">Sunucuya bağlanılamadı</string>
 	
 	<string name="manage_repo_add">Yeni depo ekle</string>
-	<string name="manage_repo_answ_wrongl">Kullanıcı ismi hatalı</string>
 	<string name="manage_repo_answ_cc">Sunucuya bağlanılamadı</string>
-	<string name="manage_repo_answ_lr">Kullanıcı ismi gerekiyor</string>
 	
 	<string name="app_pop_up_no_info">Sunucuda hiçbir tanımlama yok. Daha fazla bilgi için aşağıdaki butona dokunup markette arama yapın.</string>
 	<string name="error_no_market">Google Market kurulu değil!</string>

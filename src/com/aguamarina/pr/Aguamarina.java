@@ -253,9 +253,10 @@ public class Aguamarina extends Activity {
 	   		prefEdit.commit();
 		}
 		
-		if(sPref.getString("myId", null) == null){
-			String rand_id = UUID.randomUUID().toString();
-			prefEdit.putString("myId", rand_id);
+    	// UB is short for "Unique Badge", which is just the term I'll be using for UUIDs.
+		if(sPref.getString("myUB", null) == null){
+			String rand_ub = UUID.randomUUID().toString();
+			prefEdit.putString("myUB", rand_ub);
 			prefEdit.commit();
 		}
 		

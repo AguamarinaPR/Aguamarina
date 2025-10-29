@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">远程服务连接失败</string>
 	
 	<string name="manage_repo_add">添加新的仓库</string>
-	<string name="manage_repo_answ_wrongl">登录失败</string>
 	<string name="manage_repo_answ_cc">无法连接服务器</string>
-	<string name="manage_repo_answ_lr">请登录</string>
 	
 	<string name="app_pop_up_no_info">未找到任何相关信息. 请点击下面的按钮在Market上查看更多信息.</string>
 	<string name="error_no_market">未安装Google Market!</string>

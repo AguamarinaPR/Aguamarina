@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">No puede conectar al servidror remoto</string>
 	
 	<string name="manage_repo_add">Agregar nuevo repositorio</string>
-	<string name="manage_repo_answ_wrongl">Logeo incorrecto</string>
 	<string name="manage_repo_answ_cc">No conecta el servidor</string>
-	<string name="manage_repo_answ_lr">Logeo requerido</string>
 	
 	<string name="app_pop_up_no_info">No hay informacion disponible en el servidor. Busca en el Market presionando el boton de mas informacion.</string>
 	<string name="error_no_market">No tienes el Google Market instalado!</string>

@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">Keine Verbindung zum Remote Server</string>
 	
 	<string name="manage_repo_add">Quelle hinzufügen</string>
-	<string name="manage_repo_answ_wrongl">Falscher Login</string>
 	<string name="manage_repo_answ_cc">Keine Verbindung zum Server</string>
-	<string name="manage_repo_answ_lr">Login benötigt</string>
 	
 	<string name="app_pop_up_no_info">Keine Informationen zum Server verfügbar. Suchen Sie im Market indem Sie den folgenden Button betätigen.</string>
 	<string name="error_no_market">Google Market ist nicht installiert!</string>

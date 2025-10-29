@@ -81,11 +81,6 @@ public class RssHandler extends DefaultHandler{
 	//private Vector<IconNode> iconFinalFetchList = new Vector<IconNode>();
 	//private boolean iconsInPool = true;
 	//private boolean requireLogin = false;
-	
-	
-	private String usern = null;
-	private String passwd = null;
-	
 	//private String basepath=null;
 	
 	private Handler pd_set = null;
@@ -369,13 +364,6 @@ public class RssHandler extends DefaultHandler{
 	
 	@Override
 	public void startDocument() throws SAXException {
-		String[] logins = null; 
-		logins = db.getLogin(mserver);
-		if(logins != null){
-			//requireLogin = true;
-			usern = logins[0];
-			passwd = logins[1];
-		}
 		
 		//mHttpClient = NetworkApis.createItOpen(mserver, usern, passwd);
 		//mHttpClient2 = NetworkApis.createItOpen(mserver, usern, passwd);
@@ -476,7 +464,7 @@ public class RssHandler extends DefaultHandler{
 			serv.putExtra("icons", newList);
 //			serv.putExtra("icons", iconsLst);
 			serv.putExtra("srv", mserver);
-			serv.putExtra("login", new String[] {usern, passwd});
+//			serv.putExtra("login", new String[] {usern, passwd});
 			mctx.startService(serv);
 		}
 				

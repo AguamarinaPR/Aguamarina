@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">Impossible de se connecter au serveur distant</string>
 	
 	<string name="manage_repo_add">Ajout de nouveaux dépôts</string>
-	<string name="manage_repo_answ_wrongl">Identification incorrecte</string>
 	<string name="manage_repo_answ_cc">Impossible de se connecter au serveur</string>
-	<string name="manage_repo_answ_lr">Identification requise</string>
 	
 	<string name="app_pop_up_no_info">Pas d\'info sur le serveur. Recherchez sur le market pour plus d\'info.</string>
 	<string name="error_no_market">Google Market n\'est pas installé&#160;!</string>

@@ -24,13 +24,12 @@ package com.aguamarina.pr;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.net.URL;
+//import java.net.URL;
 import java.util.HashMap;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
+//import org.apache.http.auth.AuthScope;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
@@ -112,6 +111,7 @@ public class DownloadQueueService extends Service {
 		notification.put("version", downloadNode.version);
 		notification.put("localPath", downloadNode.getLocalPath());
 		notification.put("isUpdate", Boolean.toString(downloadNode.isUpdate()));
+		/*
 		if(downloadNode.isRepoPrivate()){
 			notification.put("loginRequired", "true");
 			notification.put("username", downloadNode.getLogins()[0]);
@@ -119,6 +119,7 @@ public class DownloadQueueService extends Service {
 		}else{
 			notification.put("loginRequired", "false");
 		}
+		*/
 		Log.d("Aguamarina-DowloadQueueService", "download Started");
 		notifications.put(downloadNode.getPackageName().hashCode(), notification);
 		setNotification(downloadNode.getPackageName().hashCode(), 0);
@@ -278,14 +279,6 @@ public class DownloadQueueService extends Service {
 						FileOutputStream saveit = new FileOutputStream(localPath);
 						DefaultHttpClient mHttpClient = new DefaultHttpClient();
 						HttpGet mHttpGet = new HttpGet(remotePath);
-						
-						if(Boolean.parseBoolean(notifications.get(threadApkidHash).get("loginRequired"))){
-							URL mUrl = new URL(remotePath);
-							mHttpClient.getCredentialsProvider().setCredentials(
-									new AuthScope(mUrl.getHost(), mUrl.getPort()),
-									new UsernamePasswordCredentials(notifications.get(threadApkidHash).get("username"), notifications.get(threadApkidHash).get("password") ));
-						}
-
 						HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
 						
 						if(mHttpResponse == null){

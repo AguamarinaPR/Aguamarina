@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">Nemoze se spojiti sa glavnim serverom.</string>
 	
 	<string name="manage_repo_add">Dodavanje novog repozitorija</string>
-	<string name="manage_repo_answ_wrongl">Login je pogresan</string>
 	<string name="manage_repo_answ_cc">Nemoze se spojiti sa serverom</string>
-	<string name="manage_repo_answ_lr">Login potreban</string>
 	
 	<string name="app_pop_up_no_info">Nema informacija dostupnih o serveru. Pretrazite market tako sto ce te pritsnuti dugme ispod.</string>
 	<string name="error_no_market">Nemate Google Market instaliran!</string>

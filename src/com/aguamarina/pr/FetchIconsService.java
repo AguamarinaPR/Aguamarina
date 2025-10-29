@@ -53,7 +53,7 @@ public class FetchIconsService extends Service{
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
 		Bundle intent_info = intent.getExtras();
-		ServiceIcon tmp = new ServiceIcon(intent_info.getString("srv"), intent_info.getStringArray("login"), (ArrayList<IconNode>)intent_info.getSerializable("icons"));
+		ServiceIcon tmp = new ServiceIcon(intent_info.getString("srv"), (ArrayList<IconNode>)intent_info.getSerializable("icons"));
 		parsedList.add(tmp);
 		/*if(!workingPool.isAlive())
 			workingPool.start();*/
@@ -129,8 +129,6 @@ public class FetchIconsService extends Service{
 	
 	private void FetchIcons(ServiceIcon fetch) {
 		String server = fetch.mserver;
-		String user = fetch.usern;
-		String pswd = fetch.passwd;
 		List<IconNode> lst = fetch.iconsLst;
 		
 		try{
@@ -144,7 +142,7 @@ public class FetchIconsService extends Service{
 				
 				File exists = new File(test_file);
 				if(!exists.exists()){
-					getIcon(node.url, node.name, server, user, pswd);
+					getIcon(node.url, node.name, server);
 				}else{
 					Log.d("Aguamarina","FILE EXISTS: " + node.name);
 				}
@@ -154,7 +152,7 @@ public class FetchIconsService extends Service{
 		}
 	}
 	
-	private void getIcon(String uri, String name, String mserver, String usern, String passwd){
+	private void getIcon(String uri, String name, String mserver){
 		String url = mserver + "/" + uri;
 		String file = mctx.getString(R.string.icons_path) + name;
 		
@@ -162,7 +160,7 @@ public class FetchIconsService extends Service{
 		try {
 			FileOutputStream saveit = new FileOutputStream(file);
 			
-			HttpResponse mHttpResponse = NetworkApis.getHttpResponse(url, usern, passwd, mctx);
+			HttpResponse mHttpResponse = NetworkApis.getHttpResponse(url, mctx);
 			
 			if(mHttpResponse.getStatusLine().getStatusCode() == 401){
 				return;
@@ -184,14 +182,10 @@ public class FetchIconsService extends Service{
 	private class ServiceIcon extends Object{
 		
 		public String mserver;
-		public String usern;
-		public String passwd;
 		public List<IconNode> iconsLst;
 		
-		public ServiceIcon(String srv, String[] login, ArrayList<IconNode> lst){
+		public ServiceIcon(String srv, ArrayList<IconNode> lst){
 			this.mserver = srv;
-			this.usern = login[0];
-			this.passwd = login[1];
 			this.iconsLst = lst;
 		}
 	}

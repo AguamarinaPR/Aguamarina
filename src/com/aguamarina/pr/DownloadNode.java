@@ -11,8 +11,6 @@ public class DownloadNode extends Object{
 	private String localPath;
 	private String appName;
 	private String packageName;
-	private String[] logins;
-	private boolean isRepoPrivate;
 	private boolean isUpdate;
 
 	
@@ -22,7 +20,6 @@ public class DownloadNode extends Object{
 		this.remotePath = remotePath;
 		this.md5sum = md5sum;
 		this.size = size;
-		this.isRepoPrivate = false;
 		this.isUpdate = false;
 	}
 
@@ -34,7 +31,6 @@ public class DownloadNode extends Object{
 		this.size = size;
 		this.localPath = localPath;
 		this.packageName = packageName;
-		this.isRepoPrivate = false;
 		this.isUpdate = false;
 	}
 
@@ -79,6 +75,7 @@ public class DownloadNode extends Object{
 		this.packageName = apkName;
 	}
 
+	/*
 	public String[] getLogins() {
 		return logins;
 	}
@@ -93,6 +90,7 @@ public class DownloadNode extends Object{
 	public boolean isRepoPrivate(){
 		return isRepoPrivate;
 	}
+	*/
 
 	public boolean isUpdate() {
 		return isUpdate;

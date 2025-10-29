@@ -10,9 +10,7 @@
 	<string name="aguamarina_error">Non posso connettermi al server remoto</string>
 	
 	<string name="manage_repo_add">Aggiungi nuovo repository</string>
-	<string name="manage_repo_answ_wrongl">Login sbagliato!</string>
 	<string name="manage_repo_answ_cc">Non posso connettermi al server</string>
-	<string name="manage_repo_answ_lr">Login richiesto</string>
 	
 	<string name="app_pop_up_no_info">Nessun\'informazione disponibile sul server. Cerca nel market schiacciando il bottono sotto per maggiori informazioni.</string>
 	<string name="error_no_market">NON hai Google Market installato!</string>

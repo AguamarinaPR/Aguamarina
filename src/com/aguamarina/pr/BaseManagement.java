@@ -614,10 +614,10 @@ public class BaseManagement extends Activity {
 			if(remotePath.length() == 0)
 				throw new TimeoutException();
 
-			String[] logins = null; 
-			logins = db.getLogin(downloadNode.getRepo());
+//			String[] logins = null; 
+//			logins = db.getLogin(downloadNode.getRepo());
 //			downloadNode.getRemotePath()
-			downloadNode.setLogins(logins);
+//			downloadNode.setLogins(logins);
 			Log.d("Aguamarina-BaseManagement","queueing download: "+packageName +" "+downloadNode.getSize());	
 
 			downloadQueueService.startDownload(downloadNode);
