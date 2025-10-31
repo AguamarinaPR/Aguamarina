@@ -12,7 +12,7 @@
 	<string name="manage_repo_add">Dodavanje novog repozitorija</string>
 	<string name="manage_repo_answ_cc">Nemoze se spojiti sa serverom</string>
 	
-	<string name="app_pop_up_no_info">Nema informacija dostupnih o serveru. Pretrazite market tako sto ce te pritsnuti dugme ispod.</string>
+	<string name="app_pop_up_no_info">Nema informacija dostupnih o serveru.</string>
 	<string name="error_no_market">Nemate Google Market instaliran!</string>
 		
     <string name="settings_cache">Ciscenje cache...</string>

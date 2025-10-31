@@ -12,7 +12,7 @@
 	<string name="manage_repo_add">Yeni depo ekle</string>
 	<string name="manage_repo_answ_cc">Sunucuya bağlanılamadı</string>
 	
-	<string name="app_pop_up_no_info">Sunucuda hiçbir tanımlama yok. Daha fazla bilgi için aşağıdaki butona dokunup markette arama yapın.</string>
+	<string name="app_pop_up_no_info">Sunucuda hiçbir tanımlama yok.</string>
 	<string name="error_no_market">Google Market kurulu değil!</string>
 		
     <string name="settings_cache">Arabellek temizleniyor...</string>

@@ -120,8 +120,8 @@ public class ApkInfo extends Activity{
 		apk_repo_str = apkinfo.getStringExtra("server");
 		String apk_rat_str = apkinfo.getStringExtra("rat");
 		
-		
-		Button serch_mrkt = (Button)findViewById(R.id.btn_market);
+		// TODO: Add upcoming feature here and in res/layout/apkinfo.xml
+		/*Button serch_mrkt = (Button)findViewById(R.id.btn_market);
 		serch_mrkt.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
@@ -134,8 +134,8 @@ public class ApkInfo extends Activity{
 					Toast.makeText(mctx, getText(R.string.error_no_market), Toast.LENGTH_LONG).show();
 				}
 			}
-		});
-		final Button action = (Button) findViewById(R.id.btn1);
+		});*/
+		final Button action = ((Button)findViewById(R.id.btn1));
 //		switch (type) {
 //		case 0:
 //			action.setText(getString(R.string.install));
@@ -149,6 +149,7 @@ public class ApkInfo extends Activity{
 //			action.setText(getString(R.string.update));
 //			break;
 //		}
+		final Button uninstall = ((Button)findViewById(R.id.btnUninstall));
 		
 		spinnerMulti = ((Spinner)findViewById(R.id.spinnerMultiVersion));
 		
@@ -301,7 +302,6 @@ public class ApkInfo extends Activity{
 			
 		} else if(type==1){
 			
-			Button uninstall = (Button)findViewById(R.id.btnUninstall);
 			uninstall.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, uninstall.getLayoutParams().height, 0.5f));
 			uninstall.setOnClickListener(new OnClickListener(){
 
@@ -362,13 +362,14 @@ public class ApkInfo extends Activity{
 			}else{
 				//Otherwise
 				spinnerMulti.setVisibility(View.GONE);
-				((Button)findViewById(R.id.btn1)).setVisibility(View.GONE);
+				action.setVisibility(View.GONE);
 				//((Button)findViewById(R.id.btn1)).setText(type);
 			}
 			
 		} else if(type==0){
 			
 			//If we are in tab available
+			uninstall.setVisibility(View.GONE);
 			spinnerMulti.setOnItemSelectedListener(new OnItemSelectedListener(){
 				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 					apk_ver_str_raw = ((VersionApk)spinnerMultiAdapter.getItem(position)).getVersion();

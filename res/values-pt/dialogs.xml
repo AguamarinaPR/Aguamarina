@@ -12,7 +12,7 @@
 	<string name="manage_repo_add">Adicionar novo repositório</string>
 	<string name="manage_repo_answ_cc">Impossivel ligar ao servidor</string>
 	
-	<string name="app_pop_up_no_info">Sem informação no repositório. Procure no Google Market utilizado o botão em baixo.</string>
+	<string name="app_pop_up_no_info">Sem informação no repositório.</string>
 	<string name="error_no_market">Não tem o Google Market instalado</string>
 		
     <string name="settings_cache">A limpar cache...</string>

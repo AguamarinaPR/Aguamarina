@@ -365,7 +365,7 @@
 	       			
 	       					android:textColor="#000000"
 	       			 		/>
-     			
+     			<!--
 						<Button
 	      		 			android:id="@+id/btn_market"
 	    		   			android:layout_weight=".50"  
@@ -378,7 +378,7 @@
             		
             		
 	       					android:textColor="#000000"	
-            				/>
+            				/>-->
            			 </LinearLayout>
     	</RelativeLayout>
         
