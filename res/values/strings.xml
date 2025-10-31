@@ -20,14 +20,14 @@
     <string name="srch_label">Aguamarina</string>
     <string name="srch_hint">Name of the application</string>
     
-    <string name="about_txt1">Your package installer to Android phone.\n</string>
+    <string name="about_txt1">Package manager for legacy android\n</string>
         
-    <string name="about_site">Home: </string>
+    <string name="about_site">Web: </string>
     
     <string name="about_mail">Contact: </string>
     
-    <string name="about_txt2"> aguamarina.altervista.org</string>
-    <string name="about_txt3"> aguamarina@altervista.org</string>
+    <string name="about_txt2">aguamarina.altervista.org</string>
+    <string name="about_txt3">aguamarina@altervista.org</string>
     <string name="multi_ver_prompt">Select an app version</string>
     <string name="version">Version</string>
     <string name="size">Size</string>
