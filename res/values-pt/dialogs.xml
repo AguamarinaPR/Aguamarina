@@ -3,9 +3,9 @@
 
 	<string name="top_please_wait">Aguarde</string>
 	<string name="top_error">Erro</string>
-	<string name="top_download">Download</string>
+	<string name="top_download">Descarga</string>
 
-	<string name="fetch_apk">A fazer download de</string>
+	<string name="fetch_apk">Descarregando aplicaçao</string>
 
 	<string name="aguamarina_error">Impossivel ligar ao servidor remoto</string>
 	
@@ -30,10 +30,10 @@
     
     <string name="updating_msg">A actualizar a lista de aplicações...</string>
     <string name="update_repos">Actualização</string>
-    <string name="update_main">A lista de repositórios foi alterada.\nDeseja realizar um update?</string>
+    <string name="update_main">A lista de repositórios foi alterada.\nDeseja actualizá-la?</string>
     
     <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
-    <string name="updating_cfrm">Confirma update dos repositórios?</string>
+    <string name="updating_cfrm">Queres actualizar os repositórios?</string>
     <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add repository or enable the ones you have.</string>
     
     
@@ -57,4 +57,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->
+<!--This file was modified by TropicalBananas Copyright (C) 2023-2025.-->

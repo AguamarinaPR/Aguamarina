@@ -33,7 +33,7 @@
     <string name="update_main">The list of repositories in use has been changed.\nDo you wish to update them?</string>
     
     <string name="updating_3g">You are connected by 3G. It is advised to update with WiFi connection.\nUpdate anyway?</string>
-    <string name="updating_cfrm">Confirm Aguamarina repositories update?</string>
+    <string name="updating_cfrm">Do you want to update the repositories?</string>
     <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add a repository or enable the ones you have.</string>
     
     
@@ -57,4 +57,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<!--This file was modified by TropicalBananas in 2023.-->
+<!--This file was modified by TropicalBananas Copyright (C) 2023-2025.-->

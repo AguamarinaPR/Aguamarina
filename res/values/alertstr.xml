@@ -14,14 +14,14 @@
     <string name="repo_alrt">The list of repositories in use has been changed.\nDo you wish to update them?</string>
     
     <string name="title_repo_alrt">Attention</string>
-    <string name="myrepo_alrt">It looks like you don\'t have any added repository.\nDo you want to add our repository?\n\n</string>
+    <string name="myrepo_alrt">It looks like you haven\'t added any repository.\nDo you want to add our repository?\n\n</string>
     <string name="altrepo_alrt">\n\n(You can search for other repositories online, but we are not responsible for the contents of any 3rd party repositories.)\n</string>
     <string name="newrepo_alrt">Do you want to add this repository to your list?\n\n</string>
     
     <string name="error_download_alrt">Could not connect to server or apk file is corrupt!</string>
     <string name="download_alrt">Getting aplication from:\n </string>
      
-    <string name="md5_error">The downloaded application md5 check failed!\nPlease update your application system before retry.</string>
+    <string name="md5_error">The downloaded application MD5 check failed!\nPlease update your application system before retry.</string>
     <string name="network_error">There has been an error while fetching the application.\nPlease try again.</string>
     
 </resources>
@@ -43,3 +43,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!--This file was modified by TropicalBananas Copyright (C) 2023-2025.-->

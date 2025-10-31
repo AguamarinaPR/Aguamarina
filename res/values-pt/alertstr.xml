@@ -14,15 +14,16 @@
     <string name="repo_alrt">A lista de repositórios foi alterada.\nDeseja realizar um update?</string>
     
     <string name="title_repo_alrt">Atenção</string>
-    <string name="myrepo_alrt">Não tem nenhum repositório.\nSugerimos que use o nosso.\nDeseja adicioná-lo?\n(Pode procurar mais repositórios online)\n\n</string>
+    <string name="myrepo_alrt">Não tem nenhum repositório.\nDeseja adicionar o nosso?\n\n</string>
+    <string name="altrepo_alrt">\n\n(Pode procurar repositórios de terceiros online, mas não somos responsáveis por eles.)\n\n</string>
     <string name="newrepo_alrt">Deseja adicionar este repositório à sua lista?\n\n</string>
     
     <string name="error_download_alrt">Impossivel ligar ao servidor ou o pacote está corrupto!</string>
     <string name="download_alrt">A fazer download de:\n </string>
     
     
-    <string name="md5_error">O hash md5 do download não é igual ao da base de dados.\nPor favor faça update antes de voltar a tentar.</string>
-    <string name="network_error">Ocorreu uma excepção no download do ficheiro.\nTente novamente.</string>
+    <string name="md5_error">O hash MD5 da descarga não é igual ao da base de dados.\nPor favor faça update antes de voltar a tentar.</string>
+    <string name="network_error">Ocorreu uma excepção na descarga do ficheiro.\nTente novamente.</string>
     
     
 </resources>
@@ -44,3 +45,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!--This file was modified by TropicalBananas Copyright (C) 2023-2025.-->

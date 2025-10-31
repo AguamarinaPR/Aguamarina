@@ -20,7 +20,7 @@
     <string name="settings_cache">Limpiando el cache...</string>
     
     <string name="unsupportedversion">Versión de Android no compatible</string>
-    <string name="unsupported_androidnew">La versión de API de Android 26 (Android 8) elimina la opción de instalar APKs desde aplicaciones con APIs antiguos, causando que no se pueda instalar aplicaciones usando Aguamarina.\nPara continuar,  Pulse al botón de Ok.</string>
+    <string name="unsupported_androidnew">La versión de API de Android 26 (Android 8) elimina la opción de instalar APKs desde aplicaciones con APIs antiguos, causando que no se pueda instalar aplicaciones usando Aguamarina.\nPara continuar, Pulse al botón de Ok.</string>
     
     <string name="remote_in_noSD_title">No hay memoria</string>
     <string name="remote_in_noSD">No tienes una SDcard.\nPor favor inserta una e intenta nuevamente.</string>
@@ -30,10 +30,10 @@
     
     <string name="updating_msg">Actiualizando la lista de aplicaciones...</string>
     <string name="update_repos">Actualiza los repositorios</string>
-    <string name="update_main">La lista de repositorios en uso ha cambiado.\nDeseas actualizarlos?</string>
+    <string name="update_main">La lista de repositorios en uso ha cambiado.\nDeseas actualizarla?</string>
     
-    <string name="updating_3g">Estas conectado via 3G. Aviso para actualizar la coneccion WiFi.\nActualizas igualmente?</string>
-    <string name="updating_cfrm">Confirmar actualizacion de repositorios Aguamarina?</string>
+    <string name="updating_3g">Estás conectado por 3G. Es mejor actualizar por conección WiFi.\n¿Quieres actualizar de todos modos?</string>
+    <string name="updating_cfrm">¿Quieres actualizar los repositorios?</string>
     <string name="updating_norepos">No existen reposirorios habilitados en tu lista.\nPor favor agrega un repositorio o habilita alguno</string>
     
     

@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="up_server">Servidores: </string>
-    <string name="lstver">Version del servidor: </string>
+    <string name="lstver">Versión del servidor: </string>
     <string name="dwn_n">Numero de descargas: </string>
     <string name="isinst">Instalada: </string>
-    <string name="instver">Version instalada: </string>
+    <string name="instver">Versión instalada: </string>
     <string name="install">Instalar </string>
     <string name="about_alrt">Acerca de: </string>
     <string name="rem">Desinstalar </string>
     <string name="update">Actualizar </string>
     
-    <string name="update_alrt">Existen actualizaciones disponibles para algunas aplicaciones.\nDeseas verlas? </string>
-    <string name="repo_alrt">La lista de repositorios en uso ha sido cambiada.\nDeseas actualizarlas? </string>
+    <string name="update_alrt">Existen actualizaciones disponibles para algunas aplicaciones.\n¿Deseas verlas? </string>
+    <string name="repo_alrt">La lista de repositorios en uso ha cambiado.\n¿Deseas actualizarla? </string>
     
     <string name="title_repo_alrt">Atencion </string>
-    <string name="myrepo_alrt">Parece que no tienes agregado ningun repositorio.\nTe sugerimos usar los nuestros.\nDeseas agregar nuestro repositorio?\n(Puedes buscar mas repositorios en linea)\n\n</string>
-    <string name="newrepo_alrt">Deseas agregar este repositorio a tu lista?\n\n</string>
+    <string name="myrepo_alrt">Parece que no has agregado ningún repositorio.\n¿Deseas agregar el nuestro?\n\n</string>
+    <string name="altrepo_alrt">\n\n(Puedes encontrar repositorios de terceros en la web, pero no somos responsables por lo que contengan.)\n</string>
+    <string name="newrepo_alrt">¿Deseas agregar este repositorio a tu lista?\n\n</string>
     
-    <string name="error_download_alrt">No conecta el servidor o el archivo APK esta corrupto!</string>
-    <string name="download_alrt">Obteniendo la aplicacion desde:\n </string>
+    <string name="error_download_alrt">¡No se pudo conectar al servidor o el archivo APK está dañado!</string>
+    <string name="download_alrt">Obteniendo la aplicación desde:\n </string>
      
-    <string name="md5_error">El chequeo md5 ha fallado!\nPor favor actualiza tu aplicacion antes de continuar.</string>
-    <string name="network_error">Hubo un error obteniendo la aplicacion.\nPor favor trata nuevamente.</string>
+    <string name="md5_error">La comprobación MD5 ha fallado.\nPor favor actualiza tu aplicación antes de continuar.</string>
+    <string name="network_error">Hubo un error obteniendo la aplicación.\nPor favor intenta nuevamente.</string>
     
 </resources>
 <!--
@@ -42,3 +43,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!--This file was modified by TropicalBananas Copyright (C) 2023-2025.-->
