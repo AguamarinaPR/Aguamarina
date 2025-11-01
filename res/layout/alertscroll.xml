@@ -23,29 +23,6 @@
     					android:textSize="16px"
             			android:layout_width="wrap_content"
             			android:layout_height="wrap_content"/>
-
-					<LinearLayout
-   						xmlns:android="http://schemas.android.com/apk/res/android"
-	    				android:id="@+id/l1"
-    					android:layout_width="fill_parent"
-    					android:layout_height="wrap_content"
-    					android:orientation="horizontal">
-					
-						<TextView
-							android:id="@+id/down_txt"
-    						android:textSize="16px"
-            				android:textStyle="bold"
-            				android:layout_width="wrap_content"
-            				android:layout_height="wrap_content"
-            				android:text="@string/dwn_n"
-            				android:textColor="#FFFFBB"/>
-            			
-            			<TextView android:id="@+id/down_n"
-    						android:textSize="16px"
-            				android:layout_width="wrap_content"
-            				android:layout_height="wrap_content"/>
-            			
-            		</LinearLayout>
             			
             		<LinearLayout
    						xmlns:android="http://schemas.android.com/apk/res/android"

@@ -56,7 +56,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.SimpleAdapter.ViewBinder;
@@ -116,10 +115,10 @@ public class RemoteInSearch extends ListActivity{
 
 		public boolean setViewValue(View view, Object data, String textRepresentation)
 		{
-			if(view.getClass().toString().equalsIgnoreCase("class android.widget.RatingBar")){
-				RatingBar tmpr = (RatingBar)view;
-				tmpr.setRating(new Float(textRepresentation));
-			}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.TextView")){
+//			if(view.getClass().toString().equalsIgnoreCase("class android.widget.RatingBar")){
+//				RatingBar tmpr = (RatingBar)view;
+//				tmpr.setRating(new Float(textRepresentation));
+			if(view.getClass().toString().equalsIgnoreCase("class android.widget.TextView")){
 				TextView tmpr = (TextView)view;
 				tmpr.setText(textRepresentation);
 			}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.ImageView")){
@@ -276,17 +275,17 @@ public class RemoteInSearch extends ListActivity{
 		}
 		
 		apkinfo.putExtra("server", tmp_get.firstElement());
-		apkinfo.putExtra("rat", tmp_get.get(5));
+//		apkinfo.putExtra("rat", tmp_get.get(5));
 		apkinfo.putExtra("type", apk_lst.get(position).status == 0?0:1);
-		
+		// TODO: Problem is around here and others, fix here
 		ArrayList<VersionApk> versions = db.getOldApks(apkid);
-		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(7)),apkid,Integer.parseInt(tmp_get.get(6)), Integer.parseInt(tmp_get.get(4)));
+		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(5)),apkid, Integer.parseInt(tmp_get.get(4)));
 		versions.add(versionApkPassed);
 		
 		try {
 			PackageManager mPm = getApplicationContext().getPackageManager();
 			PackageInfo pkginfo = mPm.getPackageInfo(apkid, 0);
-			apkinfo.putExtra("instversion", new VersionApk(pkginfo.versionName,pkginfo.versionCode,apkid,-1,-1));
+			apkinfo.putExtra("instversion", new VersionApk(pkginfo.versionName,pkginfo.versionCode,apkid,-1));
 		} catch (NameNotFoundException e) {
 			//Not installed... do nothing
 		}
@@ -379,11 +378,11 @@ public class RemoteInSearch extends ListActivity{
         	}
         	String iconpath = new String(this.getString(R.string.icons_path)+node.apkid);
         	apk_line.put("icon", iconpath);
-         	apk_line.put("rat", node.rat);
+//         	apk_line.put("rat", node.rat);
         	result.add(apk_line);
         }
         SimpleAdapter show_out = new SimpleAdapter(this, result, R.layout.listicons, 
-        		new String[] {"name", "name2", "status", "status2", "icon", "rat"}, new int[] {R.id.name, R.id.nameup,  R.id.isinst, R.id.isupdt, R.id.appicon, R.id.rating});
+        		new String[] {"name", "name2", "status", "status2", "icon"}, new int[] {R.id.name, R.id.nameup,  R.id.isinst, R.id.isupdt, R.id.appicon});
         show_out.setViewBinder(new RemoteInSearch.LstBinder());
         
         setListAdapter(show_out);

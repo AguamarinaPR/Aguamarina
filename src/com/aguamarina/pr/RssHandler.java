@@ -58,9 +58,9 @@ public class RssHandler extends DefaultHandler{
 	private boolean apk_id = false;
 	private boolean apk_icon = false;
 	private boolean apk_date = false;
-	private boolean apk_rat = false;
+//	private boolean apk_rat = false;
 	private boolean apk_md5hash = false;
-	private boolean apk_down = false;
+//	private boolean apk_down = false;
 	private boolean apk_ctg = false;
 	private boolean apk_ctg2 = false;
 	private boolean apk_size = false;
@@ -108,8 +108,8 @@ public class RssHandler extends DefaultHandler{
 		tmp_apk.name = "";
 		tmp_apk.ver = "0.0";
 		tmp_apk.vercode = 0;
-		tmp_apk.rat = 0.0f;
-		tmp_apk.down = -1;
+//		tmp_apk.rat = 0.0f;
+//		tmp_apk.down = -1;
 		tmp_apk.date = "2000-01-01";
 		tmp_apk.md5hash = "";
 		tmp_apk.catg="";
@@ -157,16 +157,16 @@ public class RssHandler extends DefaultHandler{
 			hasIcon = true;
 		}else if(apk_date){
 			tmp_apk.date = new String(ch).substring(start, start + length);
-		}else if(apk_rat){
-			try{
-				tmp_apk.rat = new Float(new String(ch).substring(start, start + length));
-			}catch(Exception e){
-				tmp_apk.rat = 0.0f;
-			}
+//		}else if(apk_rat){
+//			try{
+//				tmp_apk.rat = new Float(new String(ch).substring(start, start + length));
+//			}catch(Exception e){
+//				tmp_apk.rat = 0.0f;
+//			}
 		}else if(apk_md5hash){
 			tmp_apk.md5hash = tmp_apk.md5hash.concat(new String(ch).substring(start, start + length));
-		}else if(apk_down){
-			tmp_apk.down = new Integer(new String(ch).substring(start, start + length));
+//		}else if(apk_down){
+//			tmp_apk.down = new Integer(new String(ch).substring(start, start + length));
 		}else if(apk_ctg){
 			String tmp = new String(ch).substring(start, start + length);
 			if(tmp.equals("Applications")){
@@ -233,14 +233,14 @@ public class RssHandler extends DefaultHandler{
 				ApkNode node = new ApkNode(tmp_apk.apkid, tmp_apk.vercode);
 				
 				if(!listapks.contains(node)){
-					db.insertApk(false,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, tmp_apk.rat, mserver, tmp_apk.md5hash, tmp_apk.down, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
+					db.insertApk(false,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, mserver, tmp_apk.md5hash, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
 					listapks.add(node);
 				}else{
 					int pos = listapks.indexOf(node);
 					ApkNode list = listapks.get(pos);
 					if(list.vercode < node.vercode){
 						db.copyFromRecentApkToOldApk(tmp_apk.apkid, mserver);
-						db.insertApk(true,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, tmp_apk.rat, mserver, tmp_apk.md5hash, tmp_apk.down, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
+						db.insertApk(true,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, mserver, tmp_apk.md5hash, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
 						listapks.add(node);
 					} else if(list.vercode != node.vercode){ db.insertOldApk(tmp_apk, mserver); }
 				}
@@ -256,9 +256,9 @@ public class RssHandler extends DefaultHandler{
 			tmp_apk.name = "";
 			tmp_apk.ver = "0.0";
 			tmp_apk.vercode = 0;
-			tmp_apk.rat = 0.0f;
+//			tmp_apk.rat = 0.0f;
 			tmp_apk.date = "2000-01-01";
-			tmp_apk.down = -1;
+//			tmp_apk.down = -1;
 			tmp_apk.md5hash = "";
 			tmp_apk.catg="";
 			tmp_apk.catg_type = 2;
@@ -280,12 +280,12 @@ public class RssHandler extends DefaultHandler{
 			apk_icon = false;
 		}else if(localName.trim().equals("date")){
 			apk_date = false;
-		}else if(localName.trim().equals("rat")){
-			apk_rat = false;
+//		}else if(localName.trim().equals("rat")){
+//			apk_rat = false;
 		}else if(localName.trim().equals("md5h")){
 			apk_md5hash = false;
-		}else if(localName.trim().equals("dwn")){
-			apk_down = false;
+//		}else if(localName.trim().equals("dwn")){
+//			apk_down = false;
 		}else if(localName.trim().equals("catg")){
 			apk_ctg = false;
 		}else if(localName.trim().equals("catg2")){
@@ -332,12 +332,12 @@ public class RssHandler extends DefaultHandler{
 			apk_icon = true;
 		}else if(localName.trim().equals("date")){
 			apk_date = true;
-		}else if(localName.trim().equals("rat")){
-			apk_rat = true;
+//		}else if(localName.trim().equals("rat")){
+//			apk_rat = true;
 		}else if(localName.trim().equals("md5h")){
 			apk_md5hash = true;
-		}else if(localName.trim().equals("dwn")){
-			apk_down = true;
+//		}else if(localName.trim().equals("dwn")){
+//			apk_down = true;
 		}else if(localName.trim().equals("catg")){
 			apk_ctg = true;
 		}else if(localName.trim().equals("catg2")){

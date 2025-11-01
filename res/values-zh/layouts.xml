@@ -6,8 +6,6 @@
     <string name="order_popup_title1">排列程序列表: </string>
     <string name="order_popup_lst1">按时间顺序 </string>
     <string name="order_popup_lst2">按字母顺序 </string>
-    <string name="order_popup_lst3">按星级顺序 </string>
-    <string name="order_popup_lst4">按下载次数 </string>
 
     <string name="order_popup_title2">显示程序: </string>
     <string name="order_popup_catg1">按分类 </string>

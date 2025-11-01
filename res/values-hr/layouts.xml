@@ -5,8 +5,6 @@
     
     <string name="order_popup_lst1">Najnovije prvo </string>
     <string name="order_popup_lst2">Po abecedi </string>
-    <string name="order_popup_lst3">Ocjena </string>
-    <string name="order_popup_lst4">Broj preuzimanja </string>
 
     <string name="order_popup_title2">Pokazi aplikacije: </string>
     <string name="order_popup_catg1">Po kategoriji </string>

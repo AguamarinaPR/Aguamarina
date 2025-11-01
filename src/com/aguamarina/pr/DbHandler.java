@@ -73,12 +73,12 @@ public class DbHandler {
 				+ " secure integer default 0 not null, updatetime text default 0 not null, delta text default 0 not null);";
 	
 	private static final String CREATE_TABLE_EXTRA = "create table if not exists " + TABLE_NAME_EXTRA
-				+ " (apkid text, rat number, dt date, desc text, dwn number, catg text default 'Other' not null,"
+				+ " (apkid text, dt date, desc text, catg text default 'Other' not null,"
 				+ " catg_ord integer default 2 not null, primary key(apkid));";
 	
 	private static final String CREATE_TABLE_OLD_VERSIONS = "create table if not exists " + TABLE_NAME_OLD_VERSIONS
 				+ " (apkid text, name text not null, path text not null, ver text not null, vercode number not null, " 
-				+ " md5hash text, size number default 0 not null, server text, dwn number, primary key(apkid,ver,server));";
+				+ " md5hash text, size number default 0 not null, server text, primary key(apkid,ver,server));";
 	
 	
 	Map<String, Object> getCountSecCatg(int ord){
@@ -246,7 +246,7 @@ public class DbHandler {
 		db.delete(TABLE_NAME_OLD_VERSIONS, "apkid='"+apkid+"' and ver='"+ver+"'", null);
 	}
 	 
-	public void insertApk(boolean delfirst, String name, String path, String ver, int vercode ,String apkid, String date, Float rat, String serv, String md5hash, int down, String catg, int catg_type, int size){
+	public void insertApk(boolean delfirst, String name, String path, String ver, int vercode ,String apkid, String date, String serv, String md5hash, String catg, int catg_type, int size){
 
 		if(delfirst){
 			db.delete(TABLE_NAME, "apkid='"+apkid+"'", null);
@@ -265,9 +265,9 @@ public class DbHandler {
 		db.insert(TABLE_NAME, null, tmp);
 		tmp.clear();
 		tmp.put("apkid", apkid);
-		tmp.put("rat", rat);
+//		tmp.put("rat", rat);
 		tmp.put("dt", date);
-		tmp.put("dwn", down);
+//		tmp.put("dwn", down);
 		tmp.put("catg_ord", catg_type);
 		for (String node : CATGS) {
 			if(node.equals(catg)){
@@ -301,7 +301,7 @@ public class DbHandler {
 	 * @param md5hash
 	 * @param size
 	 */
-	public void insertOldApk(String name, String path, String ver, int vercode ,String apkid, String serv, String md5hash, int size, int dwn){
+	public void insertOldApk(String name, String path, String ver, int vercode ,String apkid, String serv, String md5hash, int size){
 		
 		ContentValues tmp = new ContentValues();
 		tmp.put("apkid", apkid);
@@ -312,7 +312,7 @@ public class DbHandler {
 		tmp.put("md5hash", md5hash);
 		tmp.put("size", size);
 		tmp.put("server", serv);
-		tmp.put("dwn", dwn);
+//		tmp.put("dwn", dwn);
 		db.insert(TABLE_NAME_OLD_VERSIONS, null, tmp);
 		
    		PackageManager mPm = mctx.getPackageManager();
@@ -334,7 +334,7 @@ public class DbHandler {
 	 * @param mserver
 	 */
 	public void insertOldApk(ApkNodeFull tmp, String mserver){
-		insertOldApk(tmp.name, tmp.path, tmp.ver, tmp.vercode,tmp.apkid, mserver, tmp.md5hash, tmp.size, tmp.down);
+		insertOldApk(tmp.name, tmp.path, tmp.ver, tmp.vercode,tmp.apkid, mserver, tmp.md5hash, tmp.size);
 	}
 	
 	/**
@@ -428,25 +428,25 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode ,b.dt, b.rat, b.dwn, b.catg, b.catg_ord from "
+			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode ,b.dt, b.catg, b.catg_ord from "
 				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid";
 			
-			final String rat = " order by rat desc";
+//			final String rat = " order by rat desc";
 			final String mr = " order by dt desc";
 			final String alfb = " order by name collate nocase";
-			final String down = " order by dwn desc";
+//			final String down = " order by dwn desc";
 						
 			String search;
 			if(type.equalsIgnoreCase("abc")){
 				search = basic_query+alfb;
-			}else if(type.equalsIgnoreCase("dwn")){
-				search = basic_query+down;
+//			}else if(type.equalsIgnoreCase("dwn")){
+//				search = basic_query+down;
 			}else if(type.equalsIgnoreCase("rct")){
 				search = basic_query+mr;
-			}else if(type.equalsIgnoreCase("rat")){
-				search = basic_query+rat;
+//			}else if(type.equalsIgnoreCase("rat")){
+//				search = basic_query+rat;
 			}else{
 				search = basic_query;
 			}
@@ -486,10 +486,10 @@ public class DbHandler {
 					}
 					
 				}
-				node.rat = c.getFloat(7);
-				node.down = c.getInt(8);
-				node.catg = c.getString(9);
-				node.catg_ord = c.getInt(10);
+//				node.rat = c.getFloat(7);
+//				node.down = c.getInt(8);
+				node.catg = c.getString(7);
+				node.catg_ord = c.getInt(8);
 				tmp.add(node);
 				c.moveToNext();
 			}
@@ -510,26 +510,26 @@ public class DbHandler {
 			if(ctg == null)
 				catgi = "";
 			
-			final String basic_query = "select * from (select distinct c.apkid, c.name as name, c.instver as instver, c.lastver, c.instvercode, c.lastvercode ,b.dt as dt, b.rat as rat, b.dwn as dwn, b.catg as catg, b.catg_ord as catg_ord from "
+			final String basic_query = "select * from (select distinct c.apkid, c.name as name, c.instver as instver, c.lastver, c.instvercode, c.lastvercode ,b.dt as dt, b.catg as catg, b.catg_ord as catg_ord from "
 				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid) as d where " + catgi + "d.catg_ord = " + ord + " and d.instver is null";
 			
 			
-			final String rat = " order by rat desc";
+//			final String rat = " order by rat desc";
 			final String mr = " order by dt desc";
 			final String alfb = " order by name collate nocase";
-			final String down = " order by dwn desc";
+//			final String down = " order by dwn desc";
 						
 			String search;
 			if(type.equalsIgnoreCase("abc")){
 				search = basic_query+alfb;
-			}else if(type.equalsIgnoreCase("dwn")){
-				search = basic_query+down;
+//			}else if(type.equalsIgnoreCase("dwn")){
+//				search = basic_query+down;
 			}else if(type.equalsIgnoreCase("rct")){
 				search = basic_query+mr;
-			}else if(type.equalsIgnoreCase("rat")){
-				search = basic_query+rat;
+//			}else if(type.equalsIgnoreCase("rat")){
+//				search = basic_query+rat;
 			}else{
 				search = basic_query;
 			}
@@ -543,8 +543,8 @@ public class DbHandler {
 				node.name = c.getString(1);
 				node.status = 0;
 				node.ver = c.getString(3);
-				node.rat = c.getFloat(7);
-				node.down = c.getInt(8);
+//				node.rat = c.getFloat(7);
+//				node.down = c.getInt(8);
 				tmp.add(node);
 				c.moveToNext();
 			}
@@ -566,13 +566,13 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode, b.dt, b.rat, b.dwn from "
+			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode, b.dt from "
 				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, a.lastver as lastver, l.instvercode as instvercode, a.lastvercode as lastvercode from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid where name like '%" + exp + "%'";
 			
 			final String iu = " order by instver desc";
-			final String rat = " order by rat desc";
+//			final String rat = " order by rat desc";
 			final String mr = " order by dt desc";
 			final String alfb = " order by name collate nocase";
 			//final String down = " order by dwn desc";
@@ -585,8 +585,8 @@ public class DbHandler {
 				search = basic_query+iu;
 			}else if(type.equalsIgnoreCase("recent")){
 				search = basic_query+mr;
-			}else if(type.equalsIgnoreCase("rating")){
-				search = basic_query+rat;
+//			}else if(type.equalsIgnoreCase("rating")){
+//				search = basic_query+rat;
 			}else{
 				search = basic_query;
 			}
@@ -616,7 +616,7 @@ public class DbHandler {
 					}
 					
 				}
-				node.rat = c.getFloat(7);
+//				node.rat = c.getFloat(7);
 				tmp.add(node);
 				c.moveToNext();
 			}
@@ -637,26 +637,26 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode ,b.dt, b.rat, b.dwn from "
+			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode ,b.dt from "
 				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid where c.instvercode < c.lastvercode";
 			
-			final String rat = " order by rat desc";
+//			final String rat = " order by rat desc";
 			final String mr = " order by dt desc";
 			final String alfb = " order by name collate nocase";
-			final String down = " order by dwn desc";
+//			final String down = " order by dwn desc";
 			
 			
 			String search;
 			if(type.equalsIgnoreCase("abc")){
 				search = basic_query+alfb;
-			}else if(type.equalsIgnoreCase("dwn")){
-				search = basic_query+down;
+//			}else if(type.equalsIgnoreCase("dwn")){
+//				search = basic_query+down;
 			}else if(type.equalsIgnoreCase("rct")){
 				search = basic_query+mr;
-			}else if(type.equalsIgnoreCase("rat")){
-				search = basic_query+rat;
+//			}else if(type.equalsIgnoreCase("rat")){
+//				search = basic_query+rat;
 			}else{
 				search = basic_query;
 			}
@@ -688,7 +688,7 @@ public class DbHandler {
 					}
 					
 				}
-				node.rat = c.getFloat(7);
+//				node.rat = c.getFloat(7);
 				tmp.add(node);
 				c.moveToNext();
 			}
@@ -730,15 +730,15 @@ public class DbHandler {
 				tmp.add("\t"+c.getString(0)+"\n");
 			}
 			
-			c = db.query(TABLE_NAME_EXTRA, new String[] {"dwn", "rat"}, "apkid=\""+id.toString()+"\"", null, null, null, null);
-			c.moveToFirst();
-			int downloads = c.getInt(0);
-			float rat = c.getFloat(1);
+//			c = db.query(TABLE_NAME_EXTRA, new String[] {"dwn", "rat"}, "apkid=\""+id.toString()+"\"", null, null, null, null);
+//			c.moveToFirst();
+//			int downloads = c.getInt(0);
+//			float rat = c.getFloat(1);
 			
 			
-			tmp.add(Integer.toString(downloads));
+//			tmp.add(Integer.toString(downloads));
 			
-			tmp.add(Float.toString(rat));
+//			tmp.add(Float.toString(rat));
 			
 			tmp.add(new Integer(size).toString());
 
@@ -763,11 +763,11 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			c = db.query(TABLE_NAME_OLD_VERSIONS, new String[] {"ver", "size", "vercode", "dwn"}, "apkid=\""+apk_id+"\"", null, null, null, null);
+			c = db.query(TABLE_NAME_OLD_VERSIONS, new String[] {"ver", "size", "vercode"}, "apkid=\""+apk_id+"\"", null, null, null, null, null);
 			c.moveToFirst();
 			
 			do{
-				tmp.add( new VersionApk(c.getString(0), c.getInt(2), apk_id, c.getInt(1),c.getInt(3)) );
+				tmp.add( new VersionApk(c.getString(0), c.getInt(2), apk_id, c.getInt(1)) );
 			}while(c.moveToNext());
 			
 		}catch (Exception e){
@@ -798,7 +798,7 @@ public class DbHandler {
 		tmp_apk.md5hash = "";
 		tmp_apk.path="";
 		tmp_apk.size = 0;
-		tmp_apk.down = -1;
+//		tmp_apk.down = -1;
 		
 //		private static final String CREATE_TABLE_AGUAMARINA = "create table if not exists " + TABLE_NAME + " (apkid text, "
 //        + "name text not null, path text not null, lastver text not null, lastvercode number not null, "
@@ -821,9 +821,9 @@ public class DbHandler {
 			if(!c.isNull(5)) tmp_apk.md5hash = c.getString(5);
 			tmp_apk.size = c.getInt(6);
 			
-			c = db.query(TABLE_NAME_EXTRA, new String[] {"dwn"}, "apkid=\""+apk_id+"\"", null, null, null, null);
-			c.moveToFirst();
-			tmp_apk.down = c.getInt(0);
+//			c = db.query(TABLE_NAME_EXTRA, new String[] {"dwn"}, "apkid=\""+apk_id+"\"", null, null, null, null);
+//			c.moveToFirst();
+//			tmp_apk.down = c.getInt(0);
 			
 			this.insertOldApk(tmp_apk, server);
 			

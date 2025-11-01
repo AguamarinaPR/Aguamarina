@@ -71,23 +71,14 @@
         	android:layout_height="fill_parent"
         	android:orientation="vertical"
         	android:gravity="right">
-        	
+        	<!--
         	<TextView android:id="@+id/dwn"
             	android:textSize="12sp"
 				android:gravity="right"
             	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
             	/>
-            
-        	<RatingBar android:id="@+id/rating"
-        		style="?android:attr/ratingBarStyleSmall"
-        		android:layout_below="@id/dwn"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:isIndicator="true"
-        		android:numStars="5"
-        		/>
-        		
+        		-->
 	    </RelativeLayout>
             
             

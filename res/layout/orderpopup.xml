@@ -23,12 +23,6 @@
           <RadioButton android:checked="false"
                android:text="@string/order_popup_lst2" 
                android:id="@+id/org_abc" />
-          <RadioButton android:checked="false"
-               android:text="@string/order_popup_lst3" 
-               android:id="@+id/org_rat" />
-          <RadioButton android:checked="false"
-               android:text="@string/order_popup_lst4" 
-               android:id="@+id/org_dwn" />
      </RadioGroup> 
      
      <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="#FFFFFFFF" 

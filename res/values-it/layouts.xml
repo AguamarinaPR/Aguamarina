@@ -6,8 +6,6 @@
     <string name="order_popup_title1">Ordina lista applicazioni per: </string>
     <string name="order_popup_lst1">Più recenti </string>
     <string name="order_popup_lst2">Ordine alfabetico </string>
-    <string name="order_popup_lst3">Valutazione </string>
-    <string name="order_popup_lst4">Numero di download </string>
 
     <string name="order_popup_title2">Mostra applicazioni: </string>
     <string name="order_popup_catg1">Per categoria </string>

@@ -39,7 +39,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -241,17 +240,17 @@ public class BaseManagement extends Activity {
 		// Order
 		final RadioButton ord_rct = (RadioButton) view.findViewById(R.id.org_rct);
 		final RadioButton ord_abc = (RadioButton) view.findViewById(R.id.org_abc);
-		final RadioButton ord_rat = (RadioButton) view.findViewById(R.id.org_rat);
-		final RadioButton ord_dwn = (RadioButton) view.findViewById(R.id.org_dwn);
+//		final RadioButton ord_rat = (RadioButton) view.findViewById(R.id.org_rat);
+//		final RadioButton ord_dwn = (RadioButton) view.findViewById(R.id.org_dwn);
 		
 		if(order_lst.equals("abc"))
 			ord_abc.setChecked(true);
 		else if(order_lst.equals("rct"))
 			ord_rct.setChecked(true);
-		else if(order_lst.equals("rat"))
-			ord_rat.setChecked(true);
-		else if(order_lst.equals("dwn"))
-			ord_dwn.setChecked(true);
+//		else if(order_lst.equals("rat"))
+//			ord_rat.setChecked(true);
+//		else if(order_lst.equals("dwn"))
+//			ord_dwn.setChecked(true);
 		
 		final RadioGroup grp1 = (RadioGroup) view.findViewById(R.id.groupbtn);
 		grp1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -262,12 +261,12 @@ public class BaseManagement extends Activity {
 				}else if(checkedId == ord_abc.getId()){
 					pop_change = true;
 					order_lst = "abc";
-				}else if(checkedId == ord_rat.getId()){
-					pop_change = true;
-					order_lst = "rat";
-				}else if(checkedId == ord_dwn.getId()){
-					pop_change = true;
-					order_lst = "dwn";
+//				}else if(checkedId == ord_rat.getId()){
+//					pop_change = true;
+//					order_lst = "rat";
+//				}else if(checkedId == ord_dwn.getId()){
+//					pop_change = true;
+//					order_lst = "dwn";
 				}
 			}
 		});
@@ -439,10 +438,6 @@ public class BaseManagement extends Activity {
 						apk_line.put("pkg", node.apkid);
 						String iconpath = new String(getString(R.string.icons_path)+node.apkid);
 						apk_line.put("icon", iconpath);
-						apk_line.put("rat", node.rat);
-						
-						if(node.down >= 0)
-							apk_line.put("down", node.down + " Down.");
 						
 						if(node.status == 1){
 							
@@ -506,19 +501,19 @@ public class BaseManagement extends Activity {
 					for(Map<String, Object> map:instMap){ map.remove("statusSort"); }
 					
 					availAdpt = new SimpleAdapter(mctx, availMap, R.layout.listicons, 
-							new String[] {"pkg", "name", "name2", "status", "status2", "icon", "rat", "down"}, new int[] {R.id.pkg, R.id.name, R.id.nameup, R.id.isinst, R.id.isupdt, R.id.appicon, R.id.rating, R.id.dwn});
+							new String[] {"pkg", "name", "name2", "status", "status2", "icon"}, new int[] {R.id.pkg, R.id.name, R.id.nameup, R.id.isinst, R.id.isupdt, R.id.appicon});
 
 					availAdpt.setViewBinder(new LstBinder());
 
 					instAdpt = new SimpleAdapter(mctx, instMap, R.layout.listicons, 
-							new String[] {	"pkg", 		"name", 	"name2", 		"status", 		"status2", 		"status3", 						"icon", 		"rat"}, 
-							new int[] {		R.id.pkg, 	R.id.name, 	R.id.nameup, 	R.id.isinst, 	R.id.isupdt, 	R.id.isDowngradeAvailable, 		R.id.appicon, 	R.id.rating});
+							new String[] {	"pkg", 		"name", 	"name2", 		"status", 		"status2", 		"status3",					"icon"}, 
+							new int[] {		R.id.pkg, 	R.id.name, 	R.id.nameup, 	R.id.isinst, 	R.id.isupdt, 	R.id.isDowngradeAvailable,	R.id.appicon});
   
 					instAdpt.setViewBinder(new LstBinder());
 
 					updateAdpt = new SimpleAdapter(mctx, updtMap, R.layout.listicons, 
-							new String[] {	"pkg", 		"name", 	"name2", 		"status", 		"status2", 		"status3",					"icon", 		"rat"}, 
-							new int[] {		R.id.pkg, 	R.id.name, 	R.id.nameup, 	R.id.isinst, 	R.id.isupdt, 	R.id.isDowngradeAvailable,	R.id.appicon, 	R.id.rating});
+							new String[] {	"pkg", 		"name", 	"name2", 		"status", 		"status2", 		"status3",					"icon"}, 
+							new int[] {		R.id.pkg, 	R.id.name, 	R.id.nameup, 	R.id.isinst, 	R.id.isupdt, 	R.id.isDowngradeAvailable,	R.id.appicon});
 
 					updateAdpt.setViewBinder(new LstBinder());
 				
@@ -541,10 +536,10 @@ public class BaseManagement extends Activity {
 	{
 		public boolean setViewValue(View view, Object data, String textRepresentation)
 		{
-			if(view.getClass().toString().equalsIgnoreCase("class android.widget.RatingBar")){
-				RatingBar tmpr = (RatingBar)view;
-				tmpr.setRating(new Float(textRepresentation));
-			}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.TextView")){
+//			if(view.getClass().toString().equalsIgnoreCase("class android.widget.RatingBar")){
+//				RatingBar tmpr = (RatingBar)view;
+//				tmpr.setRating(new Float(textRepresentation));
+			if(view.getClass().toString().equalsIgnoreCase("class android.widget.TextView")){
 				TextView tmpr = (TextView)view;
 				tmpr.setText(textRepresentation);
 			}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.ImageView")){
@@ -667,17 +662,14 @@ public class BaseManagement extends Activity {
 			 apk_line.put("pkg", node.apkid);
 			 String iconpath = new String(getString(R.string.icons_path)+node.apkid);
 			 apk_line.put("icon", iconpath);
-			 apk_line.put("rat", node.rat);
 			 apk_line.put("status", "Version: " + node.ver);
 			 apk_line.put("name", node.name);
-			 if(node.down >= 0)
-				 apk_line.put("down", node.down + " Down.");
 			 availMap.add(apk_line);
 		 }
 
 
 		 rtnadp = new SimpleAdapter(mctx, availMap, R.layout.listicons, 
-				 new String[] {"pkg", "name", "name2", "status", "status2", "icon", "rat", "down"}, new int[] {R.id.pkg, R.id.name, R.id.nameup, R.id.isinst, R.id.isupdt, R.id.appicon, R.id.rating, R.id.dwn});
+				 new String[] {"pkg", "name", "name2", "status", "status2", "icon"}, new int[] {R.id.pkg, R.id.name, R.id.nameup, R.id.isinst, R.id.isupdt, R.id.appicon});
 
 		 rtnadp.setViewBinder(new LstBinder());
 

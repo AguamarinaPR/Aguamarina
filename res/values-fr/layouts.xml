@@ -6,8 +6,6 @@
     <string name="order_popup_title1">Classer les applications selon&#160;: </string>
     <string name="order_popup_lst1">Plus récent en premier </string>
     <string name="order_popup_lst2">Alphabétiquement </string>
-    <string name="order_popup_lst3">Appréciation </string>
-    <string name="order_popup_lst4">Nombre de téléchargements </string>
 
     <string name="order_popup_title2">Montrer les applications&#160;: </string>
     <string name="order_popup_catg1">Par catégorie </string>

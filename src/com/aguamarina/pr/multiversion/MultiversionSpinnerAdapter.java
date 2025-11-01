@@ -23,7 +23,7 @@ public class MultiversionSpinnerAdapter<T extends VersionApk> extends ArrayAdapt
 	
 	private static String versionLabel 	= "Version";
 	private static String sizeLabel 	= "Size";
-	private static String downLabel 	= "Downloads";
+//	private static String downLabel 	= "Downloads";
 	
 	public MultiversionSpinnerAdapter(Activity context, int textViewResourceId,
 			List<T> objects) {
@@ -68,7 +68,7 @@ public class MultiversionSpinnerAdapter<T extends VersionApk> extends ArrayAdapt
 		T currentEntry = super.getItem(position);
 		
 		multiVersionItemVersion.setText(versionLabel+" "+currentEntry.getVersion());
-		multiVersionItemSize.setText(formatSize(currentEntry)+", "+formatDownloads(currentEntry));
+		multiVersionItemSize.setText(formatSize(currentEntry));
 		
 		return convertView;
 	
@@ -78,12 +78,12 @@ public class MultiversionSpinnerAdapter<T extends VersionApk> extends ArrayAdapt
 		return sizeLabel + " " + ((version.getSize()>0)?(version.getSize()+ " kb"):"not available") ;
 	}
 	
-	public static String formatDownloads(VersionApk version){
-		return downLabel + " " + ((version.getDownloads()>=0)?version.getDownloads():"not available");
-	}
+//	public static String formatDownloads(VersionApk version){
+//		return downLabel + " " + ((version.getDownloads()>=0)?version.getDownloads():"not available");
+//	}
 	
 	public static String formatInfo(VersionApk version){
-		return formatSize(version)+", "+formatDownloads(version);
+		return formatSize(version);
 	}
 	
 	/**

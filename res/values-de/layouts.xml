@@ -5,8 +5,6 @@
     
     <string name="order_popup_lst1">Aktuellste zuerst </string>
     <string name="order_popup_lst2">Alphabetisch </string>
-    <string name="order_popup_lst3">Bewertung </string>
-    <string name="order_popup_lst4">Anzahl Downloads </string>
 
     <string name="order_popup_title2">Zeige Anwendungen: </string>
     <string name="order_popup_catg1">Nach Kategorie </string>

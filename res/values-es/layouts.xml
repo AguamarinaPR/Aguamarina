@@ -5,9 +5,7 @@
     
     <string name="order_popup_title1">Ordenar aplicaciones por: </string>
     <string name="order_popup_lst1">Mas reciente primero </string>
-    <string name="order_popup_lst2">Alfabeticamente </string>
-    <string name="order_popup_lst3">Ranking </string>
-    <string name="order_popup_lst4">Numero de descarga </string>
+    <string name="order_popup_lst2">Alfabéticamente </string>
 
     <string name="order_popup_title2">Mostrar aplicaciones: </string>
     <string name="order_popup_catg1">Por categoria </string>

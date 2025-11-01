@@ -37,7 +37,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -118,7 +117,7 @@ public class ApkInfo extends Activity{
 		apk_name_str = apkinfo.getStringExtra("name");
 		String apk_descr = apkinfo.getStringExtra("about");
 		apk_repo_str = apkinfo.getStringExtra("server");
-		String apk_rat_str = apkinfo.getStringExtra("rat");
+//		String apk_rat_str = apkinfo.getStringExtra("rat");
 		
 		// TODO: Add upcoming feature here and in res/layout/apkinfo.xml
 		/*Button serch_mrkt = (Button)findViewById(R.id.btn_market);
@@ -224,8 +223,8 @@ public class ApkInfo extends Activity{
 		}
 		
 		
-		RatingBar apk_rat_n = (RatingBar) findViewById(R.id.rating);
-		apk_rat_n.setRating(new Float(apk_rat_str));
+//		RatingBar apk_rat_n = (RatingBar) findViewById(R.id.rating);
+//		apk_rat_n.setRating(new Float(apk_rat_str));
 		
 		if(versions.size()!=0){
 			apk_ver_str_raw = versions.get(0).getVersion(); 

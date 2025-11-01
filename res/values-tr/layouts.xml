@@ -5,8 +5,6 @@
     
     <string name="order_popup_lst1">Önce en yenileri </string>
     <string name="order_popup_lst2">Alfabetik olarak </string>
-    <string name="order_popup_lst3">Reytinge dayalı </string>
-    <string name="order_popup_lst4">İndirme sayısına dayalı </string>
 
     <string name="order_popup_title2">Uygulamaların gösterimi: </string>
     <string name="order_popup_catg1">Kategoriler ile </string>

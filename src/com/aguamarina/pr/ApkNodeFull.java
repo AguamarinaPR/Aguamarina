@@ -10,8 +10,6 @@ public class ApkNodeFull extends Object{
 	public String ver;
 	public int vercode;
 	public String date;
-	public float rat;
-	public int down;
 	public String md5hash;
 	public String catg;
 	public int catg_type;

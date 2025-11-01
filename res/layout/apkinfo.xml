@@ -83,27 +83,6 @@
             			android:layout_height="wrap_content"/>    				
         		
         		</LinearLayout>
-        		
-
-			<RelativeLayout
-    			android:orientation="vertical" 
-    			android:layout_width="fill_parent" 
-    			android:layout_height="wrap_content"
-    			android:paddingTop="5.0dip"
-    			>	
-                 
-        		<RatingBar android:id="@+id/rating"
-        			style="?android:attr/ratingBarStyleSmall"
-        			android:layout_width="wrap_content"
-        			android:layout_height="wrap_content"
-        			android:isIndicator="true"
-        			android:paddingTop="1.0sp"
-        			android:numStars="5"
-					
-					android:layout_alignParentRight="true"
-        			android:layout_marginRight="5.0sp"/>
-        		
-	    	</RelativeLayout>
         	
         </LinearLayout>		
         </LinearLayout>
@@ -193,14 +172,14 @@
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:textColor="#FFFFFF" />
-			 <TextView 
+			 <!--<TextView 
             		android:id="@+id/dwn"
             		android:gravity="left" 
             		android:paddingTop="5.0dip"
           			android:paddingLeft="5.0sp"
             		android:layout_width="fill_parent"
             		android:layout_height="wrap_content"
-            		android:textColor="#FFFFFF" />
+            		android:textColor="#FFFFFF" />-->
 		      <TextView 
             		android:id="@+id/size"
             		android:gravity="left"

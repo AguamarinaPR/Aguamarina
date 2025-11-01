@@ -6,8 +6,6 @@
     <string name="order_popup_title1">فرز قائمة البرامج: </string>
     <string name="order_popup_lst1">الأحدث أولا</string>
     <string name="order_popup_lst2">أبجديا</string>
-    <string name="order_popup_lst3">التقييم </string>
-    <string name="order_popup_lst4">مرات التنزيل</string>
 
     <string name="order_popup_title2">عرض التطبيقات: </string>
     <string name="order_popup_catg1">حسب الفئة</string>

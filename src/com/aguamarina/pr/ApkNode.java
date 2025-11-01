@@ -33,8 +33,6 @@ public class ApkNode extends Object{
 	 * 2 - installed need update
 	 * 
 	 */
-	public float rat;
-	public int down;
 	public String catg;
 	public int catg_ord;
 	
