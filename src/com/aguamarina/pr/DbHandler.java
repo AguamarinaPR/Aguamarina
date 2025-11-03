@@ -63,7 +63,7 @@ public class DbHandler {
 	
 	private static final String CREATE_TABLE_AGUAMARINA = "create table if not exists " + TABLE_NAME + " (apkid text, "
 	            + "name text not null, path text not null, lastver text not null, lastvercode number not null, "
-	            + "server text, md5hash text, size number default 0 not null, primary key(apkid, server));";
+	            + "server text, md5hash text, size number default 0 not null, sdkver number default 0 not null, primary key(apkid, server));";
 	
 	private static final String CREATE_TABLE_LOCAL = "create table if not exists " + TABLE_NAME_LOCAL + " (apkid text, "
 				+ "instver text not null, instvercode number not null, primary key(apkid));";
@@ -78,7 +78,7 @@ public class DbHandler {
 	
 	private static final String CREATE_TABLE_OLD_VERSIONS = "create table if not exists " + TABLE_NAME_OLD_VERSIONS
 				+ " (apkid text, name text not null, path text not null, ver text not null, vercode number not null, " 
-				+ " md5hash text, size number default 0 not null, server text, primary key(apkid,ver,server));";
+				+ " md5hash text, size number default 0 not null, sdkver number default 0 not null, server text, primary key(apkid,ver,server));";
 	
 	
 	Map<String, Object> getCountSecCatg(int ord){
@@ -246,7 +246,7 @@ public class DbHandler {
 		db.delete(TABLE_NAME_OLD_VERSIONS, "apkid='"+apkid+"' and ver='"+ver+"'", null);
 	}
 	 
-	public void insertApk(boolean delfirst, String name, String path, String ver, int vercode ,String apkid, String date, String serv, String md5hash, String catg, int catg_type, int size){
+	public void insertApk(boolean delfirst, String name, String path, String ver, int vercode ,String apkid, String date, String serv, String md5hash, String catg, int catg_type, int size, int sdkver){
 
 		if(delfirst){
 			db.delete(TABLE_NAME, "apkid='"+apkid+"'", null);
@@ -262,6 +262,7 @@ public class DbHandler {
 		tmp.put("server", serv);
 		tmp.put("md5hash", md5hash);
 		tmp.put("size", size);
+		tmp.put("sdkver", sdkver);
 		db.insert(TABLE_NAME, null, tmp);
 		tmp.clear();
 		tmp.put("apkid", apkid);
@@ -301,7 +302,7 @@ public class DbHandler {
 	 * @param md5hash
 	 * @param size
 	 */
-	public void insertOldApk(String name, String path, String ver, int vercode ,String apkid, String serv, String md5hash, int size){
+	public void insertOldApk(String name, String path, String ver, int vercode ,String apkid, String serv, String md5hash, int size, int sdkver){
 		
 		ContentValues tmp = new ContentValues();
 		tmp.put("apkid", apkid);
@@ -311,6 +312,7 @@ public class DbHandler {
 		tmp.put("vercode", vercode);
 		tmp.put("md5hash", md5hash);
 		tmp.put("size", size);
+		tmp.put("sdkver", sdkver);
 		tmp.put("server", serv);
 //		tmp.put("dwn", dwn);
 		db.insert(TABLE_NAME_OLD_VERSIONS, null, tmp);
@@ -334,7 +336,7 @@ public class DbHandler {
 	 * @param mserver
 	 */
 	public void insertOldApk(ApkNodeFull tmp, String mserver){
-		insertOldApk(tmp.name, tmp.path, tmp.ver, tmp.vercode,tmp.apkid, mserver, tmp.md5hash, tmp.size);
+		insertOldApk(tmp.name, tmp.path, tmp.ver, tmp.vercode,tmp.apkid, mserver, tmp.md5hash, tmp.size, tmp.sdkver);
 	}
 	
 	/**
@@ -428,8 +430,8 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode ,b.dt, b.catg, b.catg_ord from "
-				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode from "
+			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode, c.sdkver ,b.dt, b.catg, b.catg_ord from "
+				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode, a.sdkver as sdkver from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid";
 			
@@ -490,6 +492,7 @@ public class DbHandler {
 //				node.down = c.getInt(8);
 				node.catg = c.getString(7);
 				node.catg_ord = c.getInt(8);
+				node.sdkver = c.getInt(9);
 				tmp.add(node);
 				c.moveToNext();
 			}
@@ -510,8 +513,8 @@ public class DbHandler {
 			if(ctg == null)
 				catgi = "";
 			
-			final String basic_query = "select * from (select distinct c.apkid, c.name as name, c.instver as instver, c.lastver, c.instvercode, c.lastvercode ,b.dt as dt, b.catg as catg, b.catg_ord as catg_ord from "
-				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode from "
+			final String basic_query = "select * from (select distinct c.apkid, c.name as name, c.instver as instver, c.lastver, c.instvercode, c.lastvercode, c.sdkver ,b.dt as dt, b.catg as catg, b.catg_ord as catg_ord from "
+				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode, a.sdkver as sdkver from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid) as d where " + catgi + "d.catg_ord = " + ord + " and d.instver is null";
 			
@@ -545,6 +548,7 @@ public class DbHandler {
 				node.ver = c.getString(3);
 //				node.rat = c.getFloat(7);
 //				node.down = c.getInt(8);
+				node.sdkver = c.getInt(9);
 				tmp.add(node);
 				c.moveToNext();
 			}
@@ -566,8 +570,8 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode, b.dt from "
-				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, a.lastver as lastver, l.instvercode as instvercode, a.lastvercode as lastvercode from "
+			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode, c.sdkver, b.dt from "
+				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, a.lastver as lastver, l.instvercode as instvercode, a.lastvercode as lastvercode, a.sdkver as sdkver from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid where name like '%" + exp + "%'";
 			
@@ -637,8 +641,8 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode ,b.dt from "
-				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode from "
+			final String basic_query = "select distinct c.apkid, c.name, c.instver, c.lastver, c.instvercode, c.lastvercode, c.sdkver ,b.dt from "
+				+ "(select distinct a.apkid as apkid, a.name as name, l.instver as instver, l.instvercode as instvercode, a.lastver as lastver, a.lastvercode as lastvercode, a.sdkver as sdkver from "
 				+ TABLE_NAME + " as a left join " + TABLE_NAME_LOCAL + " as l on a.apkid = l.apkid) as c left join "
 				+ TABLE_NAME_EXTRA + " as b on c.apkid = b.apkid where c.instvercode < c.lastvercode";
 			
@@ -763,7 +767,7 @@ public class DbHandler {
 		Cursor c = null;
 		try{
 			
-			c = db.query(TABLE_NAME_OLD_VERSIONS, new String[] {"ver", "size", "vercode"}, "apkid=\""+apk_id+"\"", null, null, null, null, null);
+			c = db.query(TABLE_NAME_OLD_VERSIONS, new String[] {"ver", "size", "vercode", "sdkver"}, "apkid=\""+apk_id+"\"", null, null, null, null, null);
 			c.moveToFirst();
 			
 			do{
@@ -798,6 +802,7 @@ public class DbHandler {
 		tmp_apk.md5hash = "";
 		tmp_apk.path="";
 		tmp_apk.size = 0;
+		tmp_apk.sdkver = 0;
 //		tmp_apk.down = -1;
 		
 //		private static final String CREATE_TABLE_AGUAMARINA = "create table if not exists " + TABLE_NAME + " (apkid text, "
@@ -810,7 +815,7 @@ public class DbHandler {
 		try{
 			
 			c = db.query(TABLE_NAME, 
-					new String[] {"name", "path", "lastver", "lastvercode", "server", "md5hash", "size"}
+					new String[] {"name", "path", "lastver", "lastvercode", "server", "md5hash", "size", "sdkver"}
 					, "server=\""+server+"\" and apkid=\""+apk_id+"\"", null, null, null, null);
 			c.moveToFirst();
 			tmp_apk.name = c.getString(0);
@@ -820,6 +825,7 @@ public class DbHandler {
 			server = c.getString(4);
 			if(!c.isNull(5)) tmp_apk.md5hash = c.getString(5);
 			tmp_apk.size = c.getInt(6);
+			tmp_apk.sdkver = c.getInt(7);
 			
 //			c = db.query(TABLE_NAME_EXTRA, new String[] {"dwn"}, "apkid=\""+apk_id+"\"", null, null, null, null);
 //			c.moveToFirst();
@@ -885,7 +891,7 @@ public class DbHandler {
 		Cursor c = null;
 		Cursor e = null;
 		try{
-			c = db.query(TABLE_NAME_OLD_VERSIONS, new String[] {"server", "path", "md5hash", "size"}, "apkid='"+id_apk+"' and ver ='"+ver+"'", null, null, null, null);
+			c = db.query(TABLE_NAME_OLD_VERSIONS, new String[] {"server", "path", "md5hash", "size", "sdkver"}, "apkid='"+id_apk+"' and ver ='"+ver+"'", null, null, null, null);
 			c.moveToFirst();
 			for(int i =0; i<c.getCount(); i++){
 				

@@ -39,6 +39,9 @@ public class ApkNode extends Object{
 	//Only used for update 
 	public int vercode;
 	
+	//Para filtrar as aplicaçaos incompatíveis
+	public int sdkver;
+	
 	public ApkNode(){
 		
 	}

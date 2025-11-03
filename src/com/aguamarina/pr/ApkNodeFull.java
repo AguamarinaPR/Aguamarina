@@ -14,6 +14,7 @@ public class ApkNodeFull extends Object{
 	public String catg;
 	public int catg_type;
 	public int size;
+	public int sdkver;
 	
 	public boolean isnew;
 	

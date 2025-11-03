@@ -64,6 +64,7 @@ public class RssHandler extends DefaultHandler{
 	private boolean apk_ctg = false;
 	private boolean apk_ctg2 = false;
 	private boolean apk_size = false;
+	private boolean apk_sdkver = false;
 	
 	private DbHandler db = null;
 	
@@ -186,6 +187,12 @@ public class RssHandler extends DefaultHandler{
 		/*}else if(apk_basepath){
 			basepath = new String(ch).substring(start, start + length);
 			db.updateBasePathRepo(mserver, basepath);*/
+		}else if(apk_sdkver){
+			try{
+				tmp_apk.sdkver = new Integer(new String(ch).substring(start, start + length));
+			}catch(Exception e){
+				tmp_apk.sdkver = 0;
+			}
 		}
 	}
 
@@ -232,17 +239,19 @@ public class RssHandler extends DefaultHandler{
 				
 				ApkNode node = new ApkNode(tmp_apk.apkid, tmp_apk.vercode);
 				
-				if(!listapks.contains(node)){
-					db.insertApk(false,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, mserver, tmp_apk.md5hash, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
-					listapks.add(node);
-				}else{
-					int pos = listapks.indexOf(node);
-					ApkNode list = listapks.get(pos);
-					if(list.vercode < node.vercode){
-						db.copyFromRecentApkToOldApk(tmp_apk.apkid, mserver);
-						db.insertApk(true,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, mserver, tmp_apk.md5hash, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size);
+				if (CompatibilityTest(tmp_apk)){
+					if(!listapks.contains(node)){
+						db.insertApk(false,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, mserver, tmp_apk.md5hash, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size, tmp_apk.sdkver);
 						listapks.add(node);
-					} else if(list.vercode != node.vercode){ db.insertOldApk(tmp_apk, mserver); }
+					}else{
+						int pos = listapks.indexOf(node);
+						ApkNode list = listapks.get(pos);
+						if(list.vercode < node.vercode){
+							db.copyFromRecentApkToOldApk(tmp_apk.apkid, mserver);
+							db.insertApk(true,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, mserver, tmp_apk.md5hash, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size, tmp_apk.sdkver);
+							listapks.add(node);
+						} else if(list.vercode != node.vercode){ db.insertOldApk(tmp_apk, mserver); }
+					}
 				}
 				
 			}
@@ -265,6 +274,7 @@ public class RssHandler extends DefaultHandler{
 			tmp_apk.path="";
 			icon_path = "";
 			tmp_apk.size = 0;
+			tmp_apk.sdkver = 0;
 			pd_tick.sendEmptyMessage(0);
 		}else if(localName.trim().equals("name")){
 			apk_name = false;
@@ -309,6 +319,8 @@ public class RssHandler extends DefaultHandler{
 			apk_size = false;
 		/*}else if(localName.trim().equals("basepath")){
 			apk_basepath = false;*/
+		}else if(localName.trim().equals("sdkver")){
+			apk_sdkver = false;
 		}
 	}
 
@@ -356,6 +368,8 @@ public class RssHandler extends DefaultHandler{
 			apk_size = true;
 		/*}else if(localName.trim().equals("basepath")){
 			apk_basepath = true;*/
+		}else if(localName.trim().equals("sdkver")){
+			apk_sdkver = true;
 		}
 	}
 	
@@ -516,6 +530,14 @@ public class RssHandler extends DefaultHandler{
 	private void cleanTransHeap(){
 		db.endTrans();
 		db.startTrans();
+	}
+	
+	// TODO: Ainda preciso adicionar esto ao menu das configurações, e depois adicionar o número do sdkver ao ApkInfo
+	private boolean CompatibilityTest(ApkNodeFull tmp_apk) {
+		if(tmp_apk.sdkver>Integer.parseInt(android.os.Build.VERSION.SDK))
+			return false;
+		
+		return true;
 	}
 
 	/*private void getIcon(String uri, String name){
