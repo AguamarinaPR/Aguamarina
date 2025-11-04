@@ -4,7 +4,7 @@
     android:id="@+id/cntrl"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal">z
     
     <LinearLayout
         android:layout_width="wrap_content"

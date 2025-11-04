@@ -2,12 +2,18 @@
 <resources>
    
     <string name="about_txt11">Version: %s\n(released under GNU GPL v2 license)\n\n
-    Credits:\n\n
+    Aguamarina credits:\n\n
+    &#160;Founder, Maintainer, Developer\n&#160;, &amp; Spanish &amp; Portuguese translator:\n
+    \t\t TropicalBananas\n\n
+    &#160;Russian translator:\n
+    \t\t AppData 174\n\n
+    Aguamarina is based on Aptoide 2.5.3\n
+    Aptoide credits:\n\n
     &#160;Creator:\n
     \t\t Roberto Jacinto &amp; Caixa Mágica\n\n
     &#160;Maintainer:\n
     \t\t Duarte Silveira &amp; Caixa Mágica\n\n
-    &#160;Developpers:\n
+    &#160;Developers:\n
     \t\t Duarte Silveira &amp; Caixa Mágica\n\n
     \t\t Rafael Campos &amp; Caixa Mágica\n\n
     \t\t Rui Mateus &amp; Caixa Mágica\n\n
