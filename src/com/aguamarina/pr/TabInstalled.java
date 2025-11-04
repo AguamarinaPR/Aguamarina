@@ -166,7 +166,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 		apkinfo.putExtra("type", 1);
 		
 		ArrayList<VersionApk> versions = db.getOldApks(pkg_id);
-		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(5)),pkg_id, Integer.parseInt(tmp_get.get(4)));
+		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(5)),pkg_id, Integer.parseInt(tmp_get.get(4)), Integer.parseInt(tmp_get.get(6)));
 		versions.add(versionApkPassed);
 		
 		
@@ -174,7 +174,7 @@ public class TabInstalled extends BaseManagement implements OnItemClickListener{
 		try {
 			PackageManager mPm = getApplicationContext().getPackageManager();
 			PackageInfo pkginfo = mPm.getPackageInfo(pkg_id, 0);
-			VersionApk versionInstApk = new VersionApk(pkginfo.versionName,pkginfo.versionCode,pkg_id,-1);
+			VersionApk versionInstApk = new VersionApk(pkginfo.versionName,pkginfo.versionCode,pkg_id,-1,-1);
 			apkinfo.putExtra("instversion", versionInstApk);
 //			Iterator<VersionApk> iteratorVersion = versions.iterator();
 //			while(iteratorVersion.hasNext()){

@@ -31,6 +31,7 @@
     <string name="multi_ver_prompt">Select an app version</string>
     <string name="version">Version</string>
     <string name="size">Size</string>
+    <string name="minapi">Minimum API</string>
     <string name="reinstall">Reinstall</string>
     <string name="version_inst">Version installed</string>
     <string name="installed_downgrade">Downgrade possible.</string>

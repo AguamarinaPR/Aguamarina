@@ -14,6 +14,7 @@
 	
 	<string name="app_pop_up_no_info">No info available on server.</string>
 	<string name="error_no_market">You don\'t have Google Market installed!</string>
+	<string name="not_declared">not declared</string>
 		
     <string name="settings_cache">Clearing cache...</string>
     

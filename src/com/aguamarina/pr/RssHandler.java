@@ -239,7 +239,7 @@ public class RssHandler extends DefaultHandler{
 				
 				ApkNode node = new ApkNode(tmp_apk.apkid, tmp_apk.vercode);
 				
-				if (CompatibilityTest(tmp_apk)){
+				if (filterTest(tmp_apk)){
 					if(!listapks.contains(node)){
 						db.insertApk(false,tmp_apk.name, tmp_apk.path, tmp_apk.ver, tmp_apk.vercode,tmp_apk.apkid, tmp_apk.date, mserver, tmp_apk.md5hash, tmp_apk.catg, tmp_apk.catg_type, tmp_apk.size, tmp_apk.sdkver);
 						listapks.add(node);
@@ -532,10 +532,11 @@ public class RssHandler extends DefaultHandler{
 		db.startTrans();
 	}
 	
-	// TODO: Ainda preciso adicionar esto ao menu das configurações, e depois adicionar o número do sdkver ao ApkInfo
-	private boolean CompatibilityTest(ApkNodeFull tmp_apk) {
+	// TODO: Ainda preciso adicionar esto ao menu das configurações
+	private boolean filterTest(ApkNodeFull tmp_apk) {
 		if(tmp_apk.sdkver>Integer.parseInt(android.os.Build.VERSION.SDK))
 			return false;
+		// Aqui adicionarei o filtro das funcionalidades indesejadas
 		
 		return true;
 	}

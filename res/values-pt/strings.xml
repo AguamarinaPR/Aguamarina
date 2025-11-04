@@ -27,6 +27,9 @@
     
     <string name="about_txt2"> aguamarina.altervista.org</string>
     <string name="about_txt3"> aguamarina@altervista.org</string>
+    <string name="version">Versão</string>
+    <string name="size">Tamanho</string>
+    <string name="minapi">API mínima</string>
 </resources>
 
 <!--

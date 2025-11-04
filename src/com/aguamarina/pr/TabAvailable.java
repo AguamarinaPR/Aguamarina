@@ -262,13 +262,13 @@ public class TabAvailable extends BaseManagement implements OnItemClickListener{
 			apkinfo.putExtra("type", 0);
 			
 			ArrayList<VersionApk> versions = db.getOldApks(pkg_id);
-			VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(5)),pkg_id, Integer.parseInt(tmp_get.get(4)));
+			VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(5)),pkg_id, Integer.parseInt(tmp_get.get(4)), Integer.parseInt(tmp_get.get(6)));
 			versions.add(versionApkPassed);
 			
 			try {
 				PackageManager mPm = getApplicationContext().getPackageManager();
 				PackageInfo pkginfo = mPm.getPackageInfo(pkg_id, 0);
-				apkinfo.putExtra("instversion", new VersionApk(pkginfo.versionName, pkginfo.versionCode,pkg_id,-1));
+				apkinfo.putExtra("instversion", new VersionApk(pkginfo.versionName, pkginfo.versionCode,pkg_id,-1,-1));
 			} catch (NameNotFoundException e) {
 				//Not installed... do nothing
 			}

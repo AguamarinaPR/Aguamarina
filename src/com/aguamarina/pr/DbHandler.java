@@ -708,8 +708,9 @@ public class DbHandler {
 		Cursor c = null;
 		int size = 0;
 		String lastvercode = "";
+		int minsdk = 1;
 		try{
-			c = db.query(TABLE_NAME, new String[] {"server", "lastver", "size", "lastvercode"}, "apkid=\""+id.toString()+"\"", null, null, null, null);
+			c = db.query(TABLE_NAME, new String[] {"server", "lastver", "size", "lastvercode", "sdkver"}, "apkid=\""+id.toString()+"\"", null, null, null, null);
 			c.moveToFirst();
 			/*String tmp_serv = new String();
 			for(int i=0; i<c.getCount(); i++){
@@ -723,6 +724,7 @@ public class DbHandler {
 			size = c.getInt(2);
 			
 			lastvercode = c.getInt(3)+"";
+			minsdk = c.getInt(4);
 			
 			c = db.query(TABLE_NAME_LOCAL, new String[] {"instver"}, "apkid=\""+id.toString()+"\"", null, null, null, null);
 			if(c.getCount() == 0){
@@ -747,6 +749,8 @@ public class DbHandler {
 			tmp.add(new Integer(size).toString());
 
 			tmp.add(lastvercode);
+			
+			tmp.add(new Integer(minsdk).toString());
 			//c.close();
 		}catch (Exception e){
 			//System.out.println(e.toString());
@@ -771,7 +775,7 @@ public class DbHandler {
 			c.moveToFirst();
 			
 			do{
-				tmp.add( new VersionApk(c.getString(0), c.getInt(2), apk_id, c.getInt(1)) );
+				tmp.add( new VersionApk(c.getString(0), c.getInt(2), apk_id, c.getInt(1),c.getInt(3)) );
 			}while(c.moveToNext());
 			
 		}catch (Exception e){

@@ -290,7 +290,7 @@ public class ApkInfo extends Activity{
 							previousGetter.cancel();
 						resetScreenshots.sendEmptyMessage(0);*/
 						
-						((TextView)ApkInfo.this.findViewById(R.id.versionInfo)).setText(MultiversionSpinnerAdapter.formatInfo((VersionApk)spinnerMulti.getSelectedItem()));
+						((TextView)ApkInfo.this.findViewById(R.id.versionInfo)).setText(MultiversionSpinnerAdapter.formatInfo((VersionApk)spinnerMulti.getSelectedItem(), mctx));
 						
 						//previousGetter = new GetScreenShots(apk_ver_str_raw);
 						//previousGetter.start();
@@ -349,7 +349,7 @@ public class ApkInfo extends Activity{
 							}
 							resetScreenshots.sendEmptyMessage(0);*/
 							
-							((TextView)ApkInfo.this.findViewById(R.id.versionInfo)).setText(MultiversionSpinnerAdapter.formatInfo((VersionApk)spinnerMulti.getSelectedItem()));
+							((TextView)ApkInfo.this.findViewById(R.id.versionInfo)).setText(MultiversionSpinnerAdapter.formatInfo((VersionApk)spinnerMulti.getSelectedItem(), mctx));
 							
 							//previousGetter = new GetScreenShots(apk_ver_str_raw);
 							//previousGetter.start();
@@ -383,7 +383,7 @@ public class ApkInfo extends Activity{
 						previousGetter.cancel();
 					resetScreenshots.sendEmptyMessage(0);*/
 					
-					((TextView)ApkInfo.this.findViewById(R.id.versionInfo)).setText(MultiversionSpinnerAdapter.formatInfo((VersionApk)spinnerMulti.getSelectedItem()));
+					((TextView)ApkInfo.this.findViewById(R.id.versionInfo)).setText(MultiversionSpinnerAdapter.formatInfo((VersionApk)spinnerMulti.getSelectedItem(), mctx));
 					
 					//previousGetter = new GetScreenShots(apk_ver_str_raw);
 					//previousGetter.start();

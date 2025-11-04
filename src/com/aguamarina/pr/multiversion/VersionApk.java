@@ -37,7 +37,7 @@ public class VersionApk implements Comparable<VersionApk>, Parcelable{
 	/**
 	 * 
 	 */
-//	private int downloads;
+	private int minSdk;
 	
 	/**
 	 * 
@@ -45,13 +45,13 @@ public class VersionApk implements Comparable<VersionApk>, Parcelable{
 	 * @param apkId
 	 * @param versionLabel
 	 */
-	public VersionApk(String version, int versionCode, String apkId, int size) {
+	public VersionApk(String version, int versionCode, String apkId, int size, int minSdk) {
 		
 		this.size 			= size;
 		this.version 		= version;
 		this.versionCode 	= versionCode;
 		this.apkId 			= apkId;
-//		this.downloads 		= downloads;
+		this.minSdk 		= minSdk;
 		
 	}
 	
@@ -79,9 +79,11 @@ public class VersionApk implements Comparable<VersionApk>, Parcelable{
 	 */
 	public int getSize() { return size; }
 	
-//	public int getDownloads() {
-//		return downloads;
-//	}
+	/**
+	 * 
+	 * @return This will return the minimum SDK/API version of an APK version
+	 */
+	public int getMinSdk() { return minSdk; }
 	
 	/**
 	 * 
@@ -132,7 +134,7 @@ public class VersionApk implements Comparable<VersionApk>, Parcelable{
 	 * @param in
 	 */
 	public VersionApk(Parcel in) { 
-		this(in.readString(),in.readInt(),in.readString(), in.readInt());
+		this(in.readString(),in.readInt(),in.readString(), in.readInt(), in.readInt());
 	}
 	
 	/**
@@ -153,7 +155,7 @@ public class VersionApk implements Comparable<VersionApk>, Parcelable{
 		dest.writeInt(this.getVersionCode());
 		dest.writeString(this.getApkId());
 		dest.writeInt(this.size);
-//		dest.writeInt(this.downloads);
+		dest.writeInt(this.minSdk);
 	}
 	
 	/**

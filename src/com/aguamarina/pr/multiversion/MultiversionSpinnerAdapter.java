@@ -7,6 +7,7 @@ import java.util.List;
 import com.aguamarina.pr.R;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,7 @@ import android.widget.TextView;
  * The adapter of the spinner responsible for showing the available versions.
  */
 public class MultiversionSpinnerAdapter<T extends VersionApk> extends ArrayAdapter<T> {
-	
-	private static String versionLabel 	= "Version";
-	private static String sizeLabel 	= "Size";
-//	private static String downLabel 	= "Downloads";
+	private Context ctx = (Activity) getContext();
 	
 	public MultiversionSpinnerAdapter(Activity context, int textViewResourceId,
 			List<T> objects) {
@@ -45,7 +43,7 @@ public class MultiversionSpinnerAdapter<T extends VersionApk> extends ArrayAdapt
 		T currentEntry = super.getItem(position);
 		
 		multiVersionItemVersion.setText(
-				versionLabel+" "+currentEntry.getVersion());
+				ctx.getString(R.string.version)+" "+currentEntry.getVersion());
 //		multiVersionItemInfo.setText(
 //				formatSize(currentEntry)+", "+formatDownloads(currentEntry));
 		
@@ -57,7 +55,6 @@ public class MultiversionSpinnerAdapter<T extends VersionApk> extends ArrayAdapt
 	 */
 	@Override
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {
-		
 		if(convertView==null){
 			LayoutInflater inflater = ((Activity)getContext()).getLayoutInflater();
 			convertView = inflater.inflate(R.layout.multiversionspinneritem, null);
@@ -67,23 +64,23 @@ public class MultiversionSpinnerAdapter<T extends VersionApk> extends ArrayAdapt
 		TextView multiVersionItemSize = (TextView) convertView.findViewById(R.id.infoMultiversion);
 		T currentEntry = super.getItem(position);
 		
-		multiVersionItemVersion.setText(versionLabel+" "+currentEntry.getVersion());
-		multiVersionItemSize.setText(formatSize(currentEntry));
+		multiVersionItemVersion.setText(ctx.getString(R.string.version)+" "+currentEntry.getVersion());
+		multiVersionItemSize.setText(formatSize(currentEntry, ctx)+", "+formatMinSdk(currentEntry, ctx));
 		
 		return convertView;
 	
 	}
 	
-	public static String formatSize(VersionApk version){
-		return sizeLabel + " " + ((version.getSize()>0)?(version.getSize()+ " kb"):"not available") ;
+	public static String formatSize(VersionApk version, Context mctx){
+		return mctx.getString(R.string.size) + " " + ((version.getSize()>0)?(version.getSize()+ " kb"):mctx.getString(R.string.not_declared)) ;
 	}
 	
-//	public static String formatDownloads(VersionApk version){
-//		return downLabel + " " + ((version.getDownloads()>=0)?version.getDownloads():"not available");
-//	}
+	public static String formatMinSdk(VersionApk version, Context mctx){
+		return mctx.getString(R.string.minapi) + " " + ((version.getMinSdk()>=1)?version.getMinSdk():mctx.getString(R.string.not_declared));
+	}
 	
-	public static String formatInfo(VersionApk version){
-		return formatSize(version);
+	public static String formatInfo(VersionApk version, Context mctx){
+		return formatSize(version, mctx)+", "+formatMinSdk(version, mctx);
 	}
 	
 	/**

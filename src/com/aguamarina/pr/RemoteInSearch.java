@@ -279,13 +279,13 @@ public class RemoteInSearch extends ListActivity{
 		apkinfo.putExtra("type", apk_lst.get(position).status == 0?0:1);
 		// TODO: Problem is around here and others, fix here
 		ArrayList<VersionApk> versions = db.getOldApks(apkid);
-		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(5)),apkid, Integer.parseInt(tmp_get.get(4)));
+		VersionApk versionApkPassed = new VersionApk(tmp_get.get(1).substring(1,tmp_get.get(1).length()-1),Integer.parseInt(tmp_get.get(5)),apkid, Integer.parseInt(tmp_get.get(4)), Integer.parseInt(tmp_get.get(6)));
 		versions.add(versionApkPassed);
 		
 		try {
 			PackageManager mPm = getApplicationContext().getPackageManager();
 			PackageInfo pkginfo = mPm.getPackageInfo(apkid, 0);
-			apkinfo.putExtra("instversion", new VersionApk(pkginfo.versionName,pkginfo.versionCode,apkid,-1));
+			apkinfo.putExtra("instversion", new VersionApk(pkginfo.versionName,pkginfo.versionCode,apkid,-1,-1));
 		} catch (NameNotFoundException e) {
 			//Not installed... do nothing
 		}
