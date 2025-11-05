@@ -21,8 +21,8 @@
     <string name="unsupported_androidnew">La versión de API de Android 26 (Android 8) elimina la opción de instalar APKs desde aplicaciones con APIs antiguos, causando que no se pueda instalar aplicaciones usando Aguamarina.\nPara continuar, Pulse al botón de Ok.</string>
     
     <string name="remote_in_noSD_title">No hay memoria</string>
-    <string name="remote_in_noSD">No tienes una SDcard.\nPor favor inserta una e intenta nuevamente.</string>
-    <string name="remote_in_noSDspace">No tienes espacio suficiente en tu SDcard para utilizar Aguamarina\nPor favor libera algo de espacio e intenta nuevamente.</string>
+    <string name="remote_in_noSD">No tienes una tarjeta SD.\nPor favor inserta una e intenta nuevamente.</string>
+    <string name="remote_in_noSDspace">No tienes espacio suficiente en tu tarjeta SD para utilizar Aguamarina.\nPor favor libera espacio e intenta nuevamente.</string>
     
     <string name="error_on_update">El proceso de actualizacion no pudo realizarse en los siguientes repositorios:\n</string>
     
@@ -55,3 +55,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!-- Copyright (C) 2023-2025 TropicalBananas -->
