@@ -18,11 +18,15 @@
     <string name="save_btn">Save </string>
     <string name="clear_cache_title">Cache</string>
     <string name="clear_cache_btn">Clear cache </string>
-    <string name="clear_cache_msg">Warning: removes all icons Aguamarina has cached, as well as all pending installs and updates. Don\'t do this if you have ongoing downloads!</string>
+    <string name="clear_cache_msg">Removes all cached icons, pending installs and updates. Also cancels ongoing downloads.</string>
     
     <string name="clear_dwn_title">Downloads</string>
     <string name="clear_dwn_btn">Download icons</string>
     <string name="clear_dwn_msg">Download icon rules </string>
+    
+    <string name="appfilter_title">Filter:</string>
+    <string name="hide_incomptitle_btn">Hide incompatible apps</string>
+    <string name="hide_incomptitle_msg">The repositories must be refreshed after the filter is enabled or disabled.</string>
     
     <string name="auto_updating">Please wait while processing update download...</string>
     
@@ -52,3 +56,4 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
+<!-- Copyright (C) 2023-2025 TropicalBananas -->

@@ -39,7 +39,7 @@
           <RadioButton android:checked="false"
                android:text="@string/order_popup_catg1" 
                android:id="@+id/shw_ct" />
-          <RadioButton android:checked="true"
+          <RadioButton android:checked="false"
                android:text="@string/order_popup_catg2" 
                android:id="@+id/shw_all" />
      </RadioGroup>

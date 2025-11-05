@@ -238,6 +238,7 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 	@Override
 	public void finish() {
 		prefEditFull.putString("icdown", sPref.getString("icdown", "error"));
+		prefEditFull.putBoolean("hideincomp", sPref.getBoolean("hideincomp", true));
 		prefEditFull.commit();
 		if(sPref.getString("icdown", "error").equalsIgnoreCase("nd")){
 			Intent serv = new Intent(mctx,FetchIconsService.class);

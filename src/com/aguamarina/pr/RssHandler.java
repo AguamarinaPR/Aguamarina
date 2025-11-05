@@ -532,9 +532,10 @@ public class RssHandler extends DefaultHandler{
 		db.startTrans();
 	}
 	
-	// TODO: Ainda preciso adicionar esto ao menu das configurações
 	private boolean filterTest(ApkNodeFull tmp_apk) {
-		if(tmp_apk.sdkver>Integer.parseInt(android.os.Build.VERSION.SDK))
+		if(!sPref.getBoolean("hideincomp", true)){
+			return true;
+		}else if(tmp_apk.sdkver>Integer.parseInt(android.os.Build.VERSION.SDK))
 			return false;
 		// Aqui adicionarei o filtro das funcionalidades indesejadas
 		

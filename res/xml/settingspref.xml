@@ -26,5 +26,16 @@
  
   </PreferenceCategory>
   
+  <PreferenceCategory
+        android:title="@string/appfilter_title">
+  		
+  	 <CheckBoxPreference
+     	android:title="@string/hide_incomptitle_btn"
+        android:summary="@string/hide_incomptitle_msg"
+        android:key="hideincomp"
+        android:defaultValue="true" />
+ 
+  </PreferenceCategory>
+  
   
 </PreferenceScreen>

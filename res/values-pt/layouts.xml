@@ -18,11 +18,15 @@
     <string name="save_btn">Guardar </string>
     <string name="clear_cache_title">Cache</string>
     <string name="clear_cache_btn">Limpar Cache </string>
-    <string name="clear_cache_msg">ATENÇÃO: remove todos os icons guardados </string>
+    <string name="clear_cache_msg">Remove todos os ícones e descargas guardados na cache.</string>
     
-    <string name="clear_dwn_title">Downloads</string>
-    <string name="clear_dwn_btn">Download de icons</string>
-    <string name="clear_dwn_msg">Regras para download dos icons </string>
+    <string name="clear_dwn_title">Descargas</string>
+    <string name="clear_dwn_btn">Descarga de ícones</string>
+    <string name="clear_dwn_msg">Regras para descarregar os ícones.</string>
+    
+    <string name="appfilter_title">Filtros:</string>
+    <string name="hide_incomptitle_btn">Ocultar aplicações incompatíveis</string>
+    <string name="hide_incomptitle_msg">Depois de alterar o filtro, os repositórios precisam ser actualizados.</string>
     
     <string-array name="dwnif">
         <item>3G e Wifi</item>

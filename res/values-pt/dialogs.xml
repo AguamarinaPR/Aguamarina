@@ -28,7 +28,7 @@
     
     <string name="updating_msg">A actualizar a lista de aplicações...</string>
     <string name="update_repos">Actualização</string>
-    <string name="update_main">A lista de repositórios foi alterada.\nDeseja realizar um update?</string>
+    <string name="update_main">A lista de repositórios foi alterada.\nDeseja realizar uma actualização?</string>
     
     <string name="updating_3g">Encontra-se ligado por 3G. É aconselhável que realize o update ligado por WiFi.\nProsseguir mesmo assim?</string>
     <string name="updating_cfrm">Confirma update dos repositórios?</string>
