@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="Carousel">
+        <attr name="android:galleryItemBackground" />
+    </declare-styleable>
     <declare-styleable name="galleryScreens">
         <attr name="android:galleryItemBackground" />
     </declare-styleable>

@@ -9,7 +9,9 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeoutException;
 
 import android.app.Activity;
@@ -78,6 +80,8 @@ public class BaseManagement extends Activity {
 	private static SimpleAdapter app_catg_adpt = null;
 	private static SimpleAdapter game_catg_adpt = null;
 	
+	protected static Map<View, String> app_id = new WeakHashMap<View, String>();
+	
 	
 	private static final String[] main_ctg = {"Games", "Applications", "Others"};
 	private static final String[] app_ctg = {"Comics", "Communication", "Entertainment", "Finance", "Health", "Lifestyle", "Multimedia", 
@@ -85,6 +89,8 @@ public class BaseManagement extends Activity {
 		 "Travel", "Faith", "Demo", "Software Libraries", "Other"};
 	private static final String[] game_ctg = {"Arcade & Action", "Brain & Puzzle", "Cards & Casino", "Casual", "Emulators", "Other"};
 	
+	static protected List<Map<String, Object>> crslMap = null;
+	static protected int deep = 0;
 
 	private DownloadQueueService downloadQueueService;
 	private ServiceConnection serviceConnection = new ServiceConnection() {
@@ -516,6 +522,18 @@ public class BaseManagement extends Activity {
 							new int[] {		R.id.pkg, 	R.id.name, 	R.id.nameup, 	R.id.isinst, 	R.id.isupdt, 	R.id.isDowngradeAvailable,	R.id.appicon});
 
 					updateAdpt.setViewBinder(new LstBinder());
+					
+					crslMap = new ArrayList<Map<String, Object>>(10);
+					if(availMap.size() <= 10){
+						crslMap = availMap;
+					}else{
+						Random r = new Random();
+						for(int i = 0; i < 10; i++){
+							int rindex = r.nextInt(availMap.size());
+							crslMap.add(availMap.get(rindex));
+							availMap.remove(rindex);
+						}
+					}
 				
 					//Log.d("Aguamarina", e.getMessage()+"");
 				}finally{
@@ -553,7 +571,7 @@ public class BaseManagement extends Activity {
 				}
 			}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.LinearLayout")){
 				LinearLayout tmpr = (LinearLayout)view;
-				tmpr.setTag(textRepresentation);
+				app_id.put(tmpr, textRepresentation);
 			}else{
 				return false;
 			}
@@ -570,7 +588,7 @@ public class BaseManagement extends Activity {
 				tmpr.setText(textRepresentation);
 			}else if(view.getClass().toString().equalsIgnoreCase("class android.widget.LinearLayout")){
 				LinearLayout tmpr = (LinearLayout)view;
-				tmpr.setTag(textRepresentation);
+				app_id.put(tmpr, textRepresentation);
 			}else{
 				return false;
 			}
@@ -621,23 +639,32 @@ public class BaseManagement extends Activity {
 	}
 	 
 	 protected SimpleAdapter getRootCtg(){
+		 deep = 0;
 		 main_catg_adpt.setViewBinder(new SimpeLstBinder());
 		 return main_catg_adpt;
 	 }
 	 
 	 protected SimpleAdapter getAppCtg(){
+		 deep = 1;
 		 app_catg_adpt.setViewBinder(new SimpeLstBinder());
 		 return app_catg_adpt;
 	 }
 	 
 	 protected SimpleAdapter getGamesCtg(){
+		 deep = 1;
 		 game_catg_adpt.setViewBinder(new SimpeLstBinder());
 		 return game_catg_adpt;
 	 }
 	 
 	 protected SimpleAdapter getAvailable(String show_now, int main_show_now){
+		 deep = 0;
 		 if(sPref.getBoolean("mode", false)){
 			 if(!(show_now == null) || main_show_now == 2){
+				 if(main_show_now == 2){
+					 deep = 1;
+				 }else{
+					 deep = 2;
+				 }
 				 return getGivenCatg(show_now, main_show_now);
 			 }
         	 main_catg_adpt.setViewBinder(new SimpeLstBinder());
