@@ -32,7 +32,7 @@
     <string name="update_main">The list of repositories in use has been changed.\nDo you wish to update them?</string>
     
     <string name="updating_3g">You are connected through 3G. It is advised to update with a WiFi connection.\nUpdate anyway?</string>
-    <string name="updating_cfrm">Confirm Aguamarina repositories update?</string>
+    <string name="updating_cfrm">Do you want to update the repositories?</string>
     <string name="updating_norepos">There are no enabled repositories in your list.\nPlease add a repository or enable at least one that you already have.</string>
     
     <string name="repo_ctx">Options</string>
