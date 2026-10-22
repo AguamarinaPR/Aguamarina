@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ver_str">"1.1"</string>
+    <string name="ver_str">"1.1.1"</string>
     <string name="change_log_url">http://www.aguamarina.altervista.org/changelog</string>
 </resources>
 

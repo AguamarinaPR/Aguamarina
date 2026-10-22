@@ -1,8 +1,11 @@
-/*This file was modified by TropicalBananas in 2023.*/
+/* Copyright (C) 2023-2026 TropicalBananas */
+/*This file was modified by PBLinuxMintDE6 in 2026.*/
 package com.aguamarina.pr;
 
 import java.net.URI;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.ConnectionReuseStrategy;
 import org.apache.http.Header;
@@ -22,10 +25,54 @@ import org.apache.http.protocol.HttpContext;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
 public class NetworkApis {
 
 	private static final String terminal_info = android.os.Build.MODEL + "("+ android.os.Build.PRODUCT + ")"
 	+";v"+android.os.Build.VERSION.RELEASE+";"+System.getProperty("os.arch");
+
+	private static String cookie = "";
+	private static boolean solvingChallenge = false;
+	private static Pattern p = Pattern.compile(
+			"var\\s+a=toNumbers\\(\"([0-9a-f]+)\"\\),\\s*" +
+					"b=toNumbers\\(\"([0-9a-f]+)\"\\),\\s*" +
+					"c=toNumbers\\(\"([0-9a-f]+)\"\\)"
+	);
+
+	private static String readStream(java.io.InputStream in) throws Exception {
+		java.io.BufferedReader r = new java.io.BufferedReader(new java.io.InputStreamReader(in, "UTF-8"));
+		StringBuffer sb = new StringBuffer();
+		String line;
+		while ((line = r.readLine()) != null) {
+			sb.append(line);
+		}
+		return sb.toString();
+	}
+
+	private static byte[] hexToBytes(String s) {
+		int len = s.length();
+		byte[] out = new byte[len / 2];
+		for (int i = 0; i < len; i += 2) {
+			out[i / 2] = (byte)(
+					(Character.digit(s.charAt(i), 16) << 4)
+							+ Character.digit(s.charAt(i + 1), 16)
+			);
+		}
+		return out;
+	}
+
+	private static String bytesToHex(byte[] b) {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < b.length; i++) {
+			int v = b[i] & 0xff;
+			if (v < 16) sb.append('0');
+			sb.append(Integer.toHexString(v));
+		}
+		return sb.toString();
+	}
 	
 	public static HttpResponse getHttpResponse(String url, String srv, Context mctx){
 		try{
@@ -57,6 +104,7 @@ public class NetworkApis {
 			HttpGet mHttpGet = new HttpGet(url);
 			mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
 			mHttpGet.setHeader("Accept-Encoding", "gzip");
+			mHttpGet.setHeader("Cookie", cookie);
 						
 /*			String[] logins = null; 
 			logins = db.getLogin(srv);
@@ -69,7 +117,42 @@ public class NetworkApis {
 */
 			
 			HttpResponse mHttpResponse = mHttpClient.execute(mHttpGet);
-			
+
+			Header ct = mHttpResponse.getFirstHeader("Content-Type");
+			if (!solvingChallenge && ct != null &&
+					ct.getValue().startsWith("text/html")) {
+
+				String html = readStream(mHttpResponse.getEntity().getContent());
+
+				Matcher m = p.matcher(html);
+				if (m.find()) {
+					solvingChallenge = true;
+
+					String aHex = m.group(1);
+					String bHex = m.group(2);
+					String cHex = m.group(3);
+
+					byte[] key = hexToBytes(aHex);
+					byte[] iv = hexToBytes(bHex);
+					byte[] ctf = hexToBytes(cHex);
+
+					Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
+
+					cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, "AES"), new IvParameterSpec(iv));
+
+					byte[] plain = cipher.doFinal(ctf);
+					cookie = "__test=" + bytesToHex(plain);
+
+					mHttpGet = new HttpGet(url);
+					mHttpGet.setHeader("User-Agent", "aguamarina-" + mctx.getString(R.string.ver_str)+";"+ terminal_info+";"+myscr+";id:"+myid);
+					mHttpGet.setHeader("Accept-Encoding", "gzip");
+					mHttpGet.setHeader("Cookie", cookie);
+
+					mHttpResponse = mHttpClient.execute(mHttpGet);
+
+					solvingChallenge = false;
+				}
+			}
 			
 			// Redirect used... 
 			Header[] azz = mHttpResponse.getHeaders("Location");
