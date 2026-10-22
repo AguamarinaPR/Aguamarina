@@ -1,3 +1,4 @@
+/* Copyright (C) 2023-2026 TropicalBananas */
 /*This file was modified by PBLinuxMintDE6 in 2026.*/
 package com.aguamarina.pr;
 
